@@ -42,7 +42,7 @@ FirstTouch is the **HubSpot-native LinkedIn outreach and social selling platform
 - **Respect** routing rules (owner-based), approval gates, and account-safety limits
 - **Expose** a public MCP server (`mcp.firsttouch.ai`) so AI agents run outreach without a browser
 
-Pricing reference (use in customer-facing copy): **$99/seat/month**, works with all HubSpot Hubs (incl. Free CRM), **SOC 2 Type II**, **human-in-the-loop**.
+Customer-facing positioning reference: works with HubSpot-connected workflows where configured and is built around **human-in-the-loop** execution. Check the live pricing and compliance pages before quoting price, HubSpot edition coverage, or certification details.
 
 ---
 

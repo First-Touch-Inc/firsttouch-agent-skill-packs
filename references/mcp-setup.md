@@ -23,7 +23,7 @@ If the agent can return campaign + seat data, the MCP is live.
 **What it exposes (conceptual tool surface):**
 - Campaign control — launch, pause, edit
 - LinkedIn actions — connection request, message, InMail, profile view
-- Engagement data — who liked/commented/viewed, inbox replies
+- Engagement data — who liked/commented/viewed. Inbox reply reading is not currently available.
 - Logging — write LinkedIn activity to HubSpot timelines
 - Safety — seat usage, daily limits, duplicate checks
 

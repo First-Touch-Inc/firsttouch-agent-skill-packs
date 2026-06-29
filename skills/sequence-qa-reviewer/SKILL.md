@@ -65,14 +65,14 @@ Each: ✅ Pass / ⚠ Issues / ❌ Fail, with specifics.
 CAMPAIGN QA — "{campaign name}" — {date}
 Overall: ⚠ REVIEW REQUIRED (2 issues, 1 hard block)
 
-A. Send safety:        ❌  — 180 connection requests in one step exceeds 25/day seat cap (HARD BLOCK)
+A. Send safety:        ❌  — 180 connection requests in one step exceeds the 20/day Sales Nav or 10/day free/basic connection-request limit (HARD BLOCK)
 B. Messaging quality:  ⚠  — Step 2 has a meeting ask in an opener (violates iron rule)
 C. Personalization:    ✅  — uses hiring-signal variable, tier-appropriate
 D. Duplicate risk:     ✅  — cooldown + duplicate gate enabled
 E. Compliance:         ✅  — claims verifiable, opt-out present
 
 FIXES (in order):
-1. HARD BLOCK: split step 1 into 8 daily batches of ≤25 (or raise seat warmup)
+1. HARD BLOCK: split step 1 into batches within the documented daily cap: ≤10/day on free/basic, ≤20/day on Sales Nav/Premium, and ≤15/day for recurring AI SDR queues
 2. Step 2: remove meeting ask; convert to value touch (see messaging-framework)
 3. Optional: add {recent_post} variable to step 1 for deeper personalization
 ```

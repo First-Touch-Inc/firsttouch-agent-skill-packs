@@ -67,7 +67,7 @@ Before presenting the draft, verify ALL:
 - [ ] Length within limits: connection note ≤300 chars, opener ≤60 words, follow-up ≤80 words
 - [ ] No jargon ("revolutionary," "leverage," "synergy," "supercharge")
 - [ ] No lazy flattery ("I love what you're building at…")
-- [ ] No em-dash overuse
+- [ ] Do not use em dashes in outreach copy
 - [ ] One ask max
 - [ ] Tone matches seniority
 
@@ -88,7 +88,7 @@ State clearly: *"Drafted for review. This will not send until you approve."*
 ### Good opener (Manager tier)
 > **Signal:** HubSpot shows Acme moved to "Scaling" lifecycle + 2 SDR hires last month
 > **To:** Dana Lee, Dir. Sales Ops @ Acme
-> "Dana, thanks for connecting. With the SDR team doubling, most ops leaders we talk to are scrambling to keep LinkedIn activity attributed in HubSpot — is that on your plate? Happy to send how Drift set theirs up."
+> "Dana, thanks for connecting. With the SDR team doubling, most ops leaders we talk to are scrambling to keep LinkedIn activity attributed in HubSpot. Is that on your plate? Happy to send how Drift set theirs up."
 
 ### Bad (do not do this)
 > "Hi Dana, I'd love to learn about your challenges and show you how our AI-powered platform can supercharge your outreach. Do you have 15 mins this week?"

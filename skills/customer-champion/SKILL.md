@@ -54,7 +54,7 @@ Rules:
 - if later used for advocacy, first deepen the relationship before asking for a case study / intro
 
 Example direction:
-> "Saw your team hit {milestone}. Love seeing that land — anything been especially useful so far?"
+> "Saw your team hit {milestone}. Love seeing that land. Anything been especially useful so far?"
 
 ### 5. Present for approval
 Show: contact, milestone, relationship state, draft.

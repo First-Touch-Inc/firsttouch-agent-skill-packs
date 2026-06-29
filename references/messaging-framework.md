@@ -73,7 +73,7 @@ Before presenting a draft, the agent verifies:
 - [ ] **Conversational tone** — sounds like a human, not a campaign robot
 - [ ] **No jargon** — no "revolutionary," "leverage," "synergy," "supercharge"
 - [ ] **No flattery** — no "I love what you're building at {company}" (lazy)
-- [ ] **No em-dashes as a crutch** — write naturally
+- [ ] **No em dashes in outreach copy** — write naturally without em dashes
 - [ ] **One ask max** — never stack multiple CTAs
 - [ ] **Simplest possible ask** — the message tries to start a conversation, not force a meeting
 - [ ] **Seniority-calibrated** — tone shifts for IC vs Manager vs VP/Founder

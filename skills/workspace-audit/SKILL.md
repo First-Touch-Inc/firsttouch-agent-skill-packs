@@ -73,6 +73,25 @@ PRIORITY FIXES (do before launch):
 3. Pause — seat near daily limit; resume tomorrow
 ```
 
+If HubSpot is not connected, mark CRM-only rows as unavailable rather than failing the whole workspace:
+
+```
+WORKSPACE READINESS — {customer} — {date}
+Overall: 68/100 — FIRSTTOUCH-ONLY PILOT READY
+
+Connections:       ⚠  70 — FirstTouch connected; HubSpot not connected
+Account health:    ✅  90 — seat below daily caps; no warnings
+Owner coverage:    N/A — HubSpot not connected
+Safety config:     ✅  90 — approval + duplicate gates configured
+Logging:           N/A — HubSpot timeline logging unavailable until connected
+Data hygiene:      ⚠  55 — LinkedIn URL coverage needs enrichment
+
+PRIORITY FIXES (do before launch):
+1. Pilot FirstTouch-only plays first: warm engagers, website visitor lists, or AI SDR via Discover Contacts
+2. Connect HubSpot before HubSpot signal, stalled-deal, customer-champion, or owner-routed plays
+3. Enrich LinkedIn URLs to >90% coverage
+```
+
 ## Output
 - Readiness scorecard (score + per-area status)
 - Prioritized fix list (what blocks launch, what's nice-to-have)

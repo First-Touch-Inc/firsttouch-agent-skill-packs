@@ -2,7 +2,7 @@
   "persona": "founder",
   "pack_name": "Founder Pack",
   "persona_pain": "Looking automated or spammy on LinkedIn risks the reputation you spent years building",
-  "persona_blurb": "You do your own sales. Your name is your brand, and every automated-feeling LinkedIn message risks undoing years of relationship-building. You need outreach that sounds exactly like you \u2014 in the signals you'd actually notice, at the volume that feels personal, not like a drip campaign. These plays are designed for founders who want LinkedIn to feel like them, not like an SDR they hired.",
+  "persona_blurb": "You do your own sales. Your name is your brand, and every automated-feeling LinkedIn message risks undoing years of relationship-building. You need outreach that sounds exactly like you — in the signals you'd actually notice, at the volume that feels personal, not like a drip campaign. These plays are designed for founders who want LinkedIn to feel like them, not like an SDR they hired.",
   "skills": [
     {
       "name": "firsttouch-messaging",
@@ -18,10 +18,6 @@
     },
     {
       "name": "website-visitor-followup",
-      "status": "live"
-    },
-    {
-      "name": "icp-outbound-builder",
       "status": "live"
     },
     {
@@ -43,7 +39,7 @@
   ],
   "recipes": [
     {
-      "name": "Social engagement flow \u2014 founder posts",
+      "name": "Social engagement flow — founder posts",
       "outcome": "Start with the warmest founder motion: ICP-qualify people engaging with your posts, check connection status, and draft a light founder-voice touch for approval. No HubSpot required.",
       "needs": "No HubSpot required; HubSpot optional for CRM context",
       "composes": [
@@ -52,7 +48,7 @@
       ]
     },
     {
-      "name": "Founder-led AI SDR \u2014 daily approval queue",
+      "name": "Founder-led AI SDR — daily approval queue",
       "outcome": "Use a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to 10/day free or 15/day Sales Nav/Premium founder-voice touches for approval.",
       "needs": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
       "composes": [
@@ -74,7 +70,7 @@
       "needs": "HubSpot tracking or RB2B/list source required; otherwise route to Founder AI SDR",
       "composes": [
         "website-visitor-followup",
-        "founder-led-outbound"
+        "firsttouch-messaging"
       ]
     },
     {
@@ -87,7 +83,7 @@
       ]
     },
     {
-      "name": "Stalled deal reactivation \u2014 60-day open-deal workflow",
+      "name": "Stalled deal reactivation — 60-day open-deal workflow",
       "outcome": "Trigger a contact-based HubSpot workflow when contacts are associated to open deals that are not Closed Won/Lost and have had no engagement for 60+ days, then draft a fresh founder-voice LinkedIn touch for approval.",
       "needs": "HubSpot required; contact-based workflow only, because deal-based triggers are unsupported",
       "composes": [
@@ -102,12 +98,6 @@
       "composes": [
         "customer-champion"
       ]
-    }
-  ],
-  "roadmap": [
-    {
-      "name": "Customer referral / advocacy ask",
-      "spec": "roadmap/customer-referral-advocacy.md"
     }
   ],
   "references": [

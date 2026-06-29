@@ -104,7 +104,7 @@ Do **not** send automatically. Output an approval table:
 | # | Prospect | Company | Source | Why them | Connection status | Enriched signal | First message | 2-day follow-up | Action | Owner | Status |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 
-Every row should be marked `awaiting approval`.
+Every row should be marked `awaiting approval`. Each first-touch outbound row requires individual approval; do not treat one table-level approval as approval to send the whole batch.
 
 ### 6. After approval → queue execution
 After human approval:
