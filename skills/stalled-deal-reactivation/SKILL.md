@@ -80,7 +80,7 @@ Output a table: deal, company, amount, stage, owner, last engagement date, stall
 ### 8. Execute + log (FirstTouch MCP)
 After approval only:
 - send or queue the approved FirstTouch action
-- log to the HubSpot deal + contact timeline
+- run Gate 5 by logging the executed action to the HubSpot deal + contact timeline within minutes
 - tag `stalled_open_deal_60d` and the stall cause for attribution
 - if HubSpot workflow action cards are unavailable in the connected portal, output exact manual HubSpot workflow/list setup steps instead of pretending the UI exists
 
@@ -95,8 +95,8 @@ Measure: reactivation replies, meetings re-opened, stage movement, and influence
 - Tagged cohort for attribution
 
 ## Examples
-**Deal:** Acme — $48k — Stage: Negotiation — no engagement 67 days — post-pricing silence.
-**Angle:** New proof point. **Draft (value touch to connected champion):** "Dana — saw our pricing thread went quiet, so I wanted to share one relevant proof point: RB2B tied $30M+ ARR to social-first outbound after tightening attribution. If attribution was still the open question, this may help frame the next step."
+**Deal:** Acme, $48k, Stage: Negotiation, no engagement 67 days, post-pricing silence.
+**Angle:** New proof point. **Draft (value touch to connected champion):** "Dana, saw our pricing thread went quiet, so I wanted to share one relevant proof point: RB2B tied $30M+ ARR to social-first outbound after tightening attribution. If attribution was still the open question, this may help frame the next step."
 
 ## Why this play wins
 "No decision" is the #1 competitor. This workflow catches quiet open deals while they can still be revived, routes by owner, and keeps every touch approval-gated and attributable.

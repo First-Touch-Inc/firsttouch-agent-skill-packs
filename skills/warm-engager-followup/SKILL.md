@@ -83,8 +83,8 @@ A **Warm Engager Follow-Up batch**:
 
 ## Examples
 **Trigger:** "Follow up on everyone who engaged with my post this week."
-**Signal source:** Their comment/like on your specific post — strongest possible "why now."
-**Draft (connection request, ≤300 chars):** "Hi Maya — appreciated your comment on the HubSpot attribution post. Connecting with RevOps leaders thinking through social attribution. Happy to share how AskElephant measures theirs."
+**Signal source:** Their comment/like on your specific post, the strongest possible "why now."
+**Draft (connection request, ≤300 chars):** "Hi Maya, appreciated your comment on the HubSpot attribution post. Connecting with RevOps leaders thinking through social attribution. Happy to share how AskElephant measures theirs."
 
 ## Pitfalls
 - **Treating all engagers equally** — a competitor employee who liked your post is not a lead. Filter by ICP.

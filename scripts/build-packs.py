@@ -46,6 +46,29 @@ def read_skill_description(skill_name: str) -> str:
     return first.group(1).strip() if first else desc[:120]
 
 
+def read_skill_needs(skill_name: str) -> str:
+    """Return a concise dependency label from SKILL.md frontmatter."""
+    skill_file = SKILLS_DIR / skill_name / "SKILL.md"
+    if not skill_file.exists():
+        return "See skill requirements"
+
+    content = skill_file.read_text(encoding="utf-8")
+    match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
+    if not match:
+        return "See skill requirements"
+
+    req_match = re.search(r"requires:\s*\[(.*?)\]", match.group(1), re.DOTALL)
+    if not req_match:
+        return "See skill requirements"
+
+    requires = {item.strip().strip("'\"") for item in req_match.group(1).split(",")}
+    if "hubspot-mcp" in requires:
+        return "HubSpot required"
+    if "firsttouch-mcp" in requires:
+        return "No HubSpot required unless recipe says so"
+    return "See skill requirements"
+
+
 def build_readme(manifest: dict, skill_descriptions: dict) -> str:
     """Generate per-pack README.md from manifest data."""
     pack_name = manifest["pack_name"]
@@ -53,8 +76,6 @@ def build_readme(manifest: dict, skill_descriptions: dict) -> str:
     blurb = manifest["persona_blurb"]
     skills = manifest.get("skills", [])
     recipes = manifest.get("recipes", [])
-    roadmap = manifest.get("roadmap", [])
-
     live_skills = [s for s in skills if s["status"] in ("live", "partial")]
 
     skills_rows = []
@@ -62,7 +83,8 @@ def build_readme(manifest: dict, skill_descriptions: dict) -> str:
         name = s["name"]
         desc = skill_descriptions.get(name, "")
         suffix = " *(partial)*" if s["status"] == "partial" else ""
-        skills_rows.append(f"| {name}{suffix} | {desc} | `{name}` |")
+        needs = read_skill_needs(name)
+        skills_rows.append(f"| {name}{suffix} | {desc} | {needs} | `{name}` |")
     skills_table = "\n".join(skills_rows) if skills_rows else "*(none)*"
 
     recipe_rows = []
@@ -71,18 +93,6 @@ def build_readme(manifest: dict, skill_descriptions: dict) -> str:
         needs = r.get("needs", "See skill requirements")
         recipe_rows.append(f"| {r['name']} | {r['outcome']} | {needs} | {composes_str} |")
     recipes_table = "\n".join(recipe_rows) if recipe_rows else "*(none)*"
-
-    roadmap_items = (
-        "\n".join(f"- {r['name']} — see `{r['spec']}`" for r in roadmap)
-        if roadmap
-        else "*(none)*"
-    )
-
-    not_included = (
-        "\n".join(f"- **{r['name']}** — see `{r['spec']}`" for r in roadmap)
-        if roadmap
-        else "*(nothing — all plays are live or composable as recipes)*"
-    )
 
     founder_hint = (
         "\n   - For founders, recommend **Social engagement flow** first. It does not require HubSpot."
@@ -103,6 +113,7 @@ Before running the first play in this pack, ask the user:
 1. **LinkedIn account type:** do they have Sales Navigator / Premium, or a free/basic account?
    - Free/basic: no connection notes; cap connection requests at **10/day**.
    - Sales Navigator / Premium: connection notes available; cap connection requests at **20/day**.
+   - For AI SDR daily queues specifically, use the stricter cap: **10/day** on free/basic or **15/day** on Sales Navigator / Premium.
 2. **HubSpot access:** do they use HubSpot, and can they connect the HubSpot MCP or provide a HubSpot service key / private app token?
    - If not, run FirstTouch-only plays or ask them to create a HubSpot list/source FirstTouch can access before running HubSpot-specific plays.
 3. **Play choice:** show the catalog below and recommend **high-intent plays first**, then outbound once those are running to keep the LinkedIn account healthy.{founder_hint}
@@ -112,8 +123,8 @@ Use `references/onboarding.md` for the full question flow, account-type rules, a
 ## Your plays
 
 ### ✅ Ready now (skills)
-| Play | What it does | Runs |
-|---|---|---|
+| Play | What it does | Needs / HubSpot status | Runs |
+|---|---|---|---|
 {skills_table}
 
 ### ⚠️ Recipes (composable, run with guidance)
@@ -121,15 +132,12 @@ Use `references/onboarding.md` for the full question flow, account-type rules, a
 |---|---|---|---|
 {recipes_table}
 
-### 🔜 Roadmap (not yet shipped)
-{roadmap_items}
-
 ## Install
 1. Download this pack (or clone the repo).
-2. Drop the `skills/` folder into your agent:
-   - **Claude Code:** copy each skill folder to `~/.claude/skills/<skill-name>/` (or `.claude/skills/` per-project)
+2. Drop the `skills/` folder **and the shared `references/` folder** into your agent. Skills use `../../references/...`, so references must sit two levels above each `SKILL.md`:
+   - **Claude Code:** copy each skill folder to `~/.claude/skills/<skill-name>/` and copy `references/` to `~/.claude/references/` (or use `.claude/skills/` plus `.claude/references/` per-project)
    - **Claude.ai:** Settings → Features → Skills → upload the pack `.zip`. *(If claude.ai only registers the first skill, unzip locally and upload each `<skill>/` folder's zip individually.)*
-   - **Cursor / Windsurf:** copy the `skills/` folder anywhere the agent reads
+   - **Cursor / Windsurf:** copy the `skills/` and `references/` folders anywhere the agent reads
    - **ChatGPT:** MCP connector only — no skills folder. Connect `https://mcp.firsttouch.ai` via Settings → Connectors.
 3. Connect MCPs: **FirstTouch MCP** for FirstTouch execution and approvals. Connect **HubSpot MCP** only for HubSpot-specific plays. See `references/mcp-setup.md`.
 4. Complete the first-run onboarding in `references/onboarding.md` before choosing a play.
@@ -139,8 +147,6 @@ Use `references/onboarding.md` for the full question flow, account-type rules, a
 - Built around LinkedIn's real limits. Owner/territory-safe routing.
 - See `references/safety-governance.md`.
 
-## What's NOT included
-{not_included}
 """
 
 
@@ -181,17 +187,6 @@ def build_pack(persona: str) -> None:
         ref_dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(ref_src, ref_dst)
         print(f"  + reference: {ref_rel}")
-
-    for rd_entry in manifest.get("roadmap", []):
-        rd_rel = rd_entry["spec"]
-        rd_src = ROOT / rd_rel
-        if not rd_src.exists():
-            print(f"  [WARN] Roadmap spec not found: {rd_src}")
-            continue
-        rd_dst = pack_dir / rd_rel
-        rd_dst.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(rd_src, rd_dst)
-        print(f"  + roadmap spec: {rd_rel}")
 
     readme_content = build_readme(manifest, skill_descriptions)
     (pack_dir / "README.md").write_text(readme_content, encoding="utf-8")
