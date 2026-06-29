@@ -50,3 +50,14 @@ Each pack zip contains:
 ## Safety
 
 Approval can be on or off based on your workspace policy. Packs are designed around owner-safe routing, LinkedIn account limits, and CRM logging.
+## Webflow Custom Embed
+
+Paste this into a Webflow Custom Embed element:
+
+```html
+<div data-ftmcp-embed></div>
+<script src="https://cdn.jsdelivr.net/gh/First-Touch-Inc/firsttouch-agent-skill-packs@v0.1.1/embed/ftmcp-landing.js"></script>
+```
+
+The embed loader injects the FirstTouch MCP landing section, styles, and interactivity.
+
