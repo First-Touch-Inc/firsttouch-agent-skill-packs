@@ -2,9 +2,9 @@
 """Build FirstTouch persona packs from manifests.
 
 Reads packs/<persona>.json, copies canonical skills + references into
-dist/<persona>-pack/, generates per-pack README.md, and zips each pack.
+dist/<persona>-pack/, generates per-pack README.md, zips each pack, and publishes the distributable zips to packs/.
 
-Idempotent: cleans dist/ on every run, then rebuilds from canonical source.
+Idempotent: cleans dist/ on every run, then rebuilds from canonical source and refreshes packs/*-pack.zip.
 """
 
 import json
@@ -83,6 +83,12 @@ def build_readme(manifest: dict, skill_descriptions: dict) -> str:
         else "*(nothing — all plays are live or composable as recipes)*"
     )
 
+    founder_hint = (
+        "\n   - For founders, recommend **Social engagement flow** first. It does not require HubSpot."
+        if manifest.get("persona") == "founder"
+        else ""
+    )
+
     return f"""# FirstTouch {pack_name}
 
 > {pain} — these are the plays for the job you actually do.
@@ -97,8 +103,8 @@ Before running the first play in this pack, ask the user:
    - Free/basic: no connection notes; cap connection requests at **10/day**.
    - Sales Navigator / Premium: connection notes available; cap connection requests at **20/day**.
 2. **HubSpot access:** do they use HubSpot, and can they connect the HubSpot MCP or provide a HubSpot service key / private app token?
-   - If not, HubSpot-specific plays are blocked unless they create a HubSpot list that FirstTouch can access.
-3. **Play choice:** show the catalog below and recommend **high-intent plays first**, then outbound once those are running to keep the LinkedIn account healthy.
+   - If not, run FirstTouch-only plays or ask them to create a HubSpot list/source FirstTouch can access before running HubSpot-specific plays.
+3. **Play choice:** show the catalog below and recommend **high-intent plays first**, then outbound once those are running to keep the LinkedIn account healthy.{founder_hint}
 
 Use `references/onboarding.md` for the full question flow, account-type rules, and play catalog.
 
@@ -124,7 +130,7 @@ Use `references/onboarding.md` for the full question flow, account-type rules, a
    - **Claude.ai:** Settings → Features → Skills → upload the pack `.zip`. *(If claude.ai only registers the first skill, unzip locally and upload each `<skill>/` folder's zip individually.)*
    - **Cursor / Windsurf:** copy the `skills/` folder anywhere the agent reads
    - **ChatGPT:** MCP connector only — no skills folder. Connect `https://mcp.firsttouch.ai` via Settings → Connectors.
-3. Connect MCPs: **FirstTouch MCP** + **HubSpot MCP** for most plays. See `references/mcp-setup.md`.
+3. Connect MCPs: **FirstTouch MCP** for FirstTouch execution and approvals. Connect **HubSpot MCP** only for HubSpot-specific plays. See `references/mcp-setup.md`.
 4. Complete the first-run onboarding in `references/onboarding.md` before choosing a play.
 
 ## Safety
@@ -217,7 +223,9 @@ def main() -> None:
     built = sorted(DIST_DIR.glob("*.zip"))
     print(f"Done. {len(built)} pack(s) built:")
     for z in built:
-        print(f"  {z.name}")
+        published = PACKS_DIR / z.name
+        shutil.copy2(z, published)
+        print(f"  {z.name} -> packs/{published.name}")
 
 
 if __name__ == "__main__":

@@ -35,7 +35,7 @@ Get recent high-intent visits with page path, timestamp, company/contact match c
 
 ### 2. Decide contact-level vs account-level motion
 - **Known contact identified** → work contact directly
-- **Only company known** → identify likely personas at the account (load `champion-mapper` if needed)
+- **Only company known** → use the target personas and available FirstTouch/HubSpot contact data to identify likely stakeholders at the account
 
 ### 3. Check connection status + routing
 - connected? yes/no
@@ -75,4 +75,4 @@ Measure reply and meeting rate by page type and signal confidence.
 
 ## Reference
 - Messaging: [`../../references/messaging-framework.md`](../../references/messaging-framework.md)
-- Mapping if only company known: load `champion-mapper`
+- If only company is known, use target personas and available FirstTouch/HubSpot contact data to select likely stakeholders.

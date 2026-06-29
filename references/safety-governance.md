@@ -24,9 +24,10 @@ Before messaging anyone, confirm they are **not** already in an active sequence 
 - If contacted in the last 30 days (configurable), **skip** and log the skip.
 
 ### Gate 2 — Owner routing
-Confirm the contact has an **owner** in HubSpot and that the authorized user is allowed to message on their behalf.
-- If no owner → route to enrichment/assignment, **do not send**.
+When HubSpot is connected, confirm the contact has an **owner** in HubSpot and that the authorized user is allowed to message on their behalf.
+- If HubSpot is connected and no owner exists → route to enrichment/assignment, **do not send**.
 - If owner mismatch → flag for human review, **do not send**.
+- If HubSpot is not connected and the user is running a single-seat FirstTouch-only play, state that CRM owner routing is unavailable and require explicit human approval before any send.
 
 ### Gate 3 — Account-safety limits
 Never exceed the authorized account's safe daily/weekly limits.
@@ -42,8 +43,9 @@ Present the **exact** draft (recipient, message, intended action) to a human.
 > **Approval must be per-send for first-touch outbound.** Batch approval is acceptable only for follow-ups in an already-approved sequence.
 
 ### Gate 5 — Log after send
-Every executed action is logged to the HubSpot contact timeline via FirstTouch, within minutes.
-- If logging fails → surface an alert; do not consider the play complete.
+When HubSpot is connected, every executed action is logged to the HubSpot contact timeline via FirstTouch, within minutes.
+- If HubSpot logging fails → surface an alert; do not consider the HubSpot-specific play complete.
+- If HubSpot is not connected, log the execution record in FirstTouch and clearly state that CRM timeline logging was skipped.
 
 ---
 
@@ -106,4 +108,4 @@ Every completed play produces a record:
 - **Whether** it sent + logged successfully
 - **Outcome** tracked over time (reply, meeting, influenced deal)
 
-This trail is what makes the **Pipeline Attribution Analyst** (play 07) possible — and what gives enterprise buyers confidence.
+This trail is what lets the team audit outcomes later and gives enterprise buyers confidence.

@@ -8,7 +8,7 @@ At a defined onboarding milestone (first value delivered, onboarding complete, 3
 
 ## Composes from
 - `customer-champion` — detects the onboarding or milestone trigger and drafts the initial CS touch
-- `owner-safe-outreach-operator` — routes the send to the CS owner's LinkedIn seat rather than the AE's, with owner verification
+- `safety-governance.md` — routes the send to the CS owner's LinkedIn seat rather than the AE's when HubSpot owner data is connected
 - `hubspot-signal-to-linkedin-touch` — reads the HubSpot lifecycle milestone that triggers the handoff event
 
 ## Trigger

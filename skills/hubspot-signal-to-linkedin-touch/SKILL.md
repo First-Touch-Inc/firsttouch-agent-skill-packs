@@ -58,7 +58,7 @@ Table of: contact, triggering event, owner, message type, draft. All marked awai
 On approval: send via FirstTouch, log to HubSpot timeline, tag with `signal_triggered_touch` + the signal type for attribution.
 
 ### 7. Track
-Cohort tagged by signal type → play 07 measures which signals produce the most pipeline.
+Cohort tagged by signal type so the team can review which signals produce replies, meetings, and pipeline.
 
 ## Output
 - Triggered-contact list with the HubSpot event per row

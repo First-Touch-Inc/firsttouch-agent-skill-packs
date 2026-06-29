@@ -33,7 +33,7 @@ Query deals with no activity in `threshold` days, within `lookback`, in scope st
 
 ### 2. Diagnose the stall
 For each stalled deal, infer the likely cause from context:
-- Single-threaded (only one contact) → need to multi-thread (play 03)
+- Single-threaded (only one contact) → identify another known stakeholder from HubSpot/contact data
 - Lost champion (contact left) → find successor
 - Went quiet after pricing → value/objection gap
 - No activity at all → priority slipped
@@ -58,7 +58,7 @@ Table: deal, company, amount, stall cause, target contact, angle, draft.
 Send via FirstTouch, log to deal + contact timeline, tag `stalled_reactivation` + stall cause for attribution.
 
 ### 7. Track
-Measure reactivation rate by angle → which stall causes respond best to which message. Feeds play 07.
+Measure reactivation rate by angle so the team can see which stall causes respond best to which message.
 
 ## Output
 - Stalled-deal list with diagnosed cause per deal
@@ -80,4 +80,4 @@ Measure reactivation rate by angle → which stall causes respond best to which 
 
 ## Reference
 - Messaging: [`../../references/messaging-framework.md`](../../references/messaging-framework.md)
-- For multi-threading stalled deals: load play `03-champion-mapper`.
+- For multi-threading stalled deals, use HubSpot/contact data to identify another known stakeholder before drafting.

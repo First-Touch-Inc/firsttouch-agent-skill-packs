@@ -96,7 +96,7 @@ State clearly: *"Drafted for review. This will not send until you approve."*
 
 ## Composability
 
-This skill is called by plays 01, 02, 03, 04, 06, 10. When a play says "draft the message(s) per `firsttouch-messaging`," load this skill, then return to the play for the surrounding workflow (who to target, how to log, etc.).
+This skill is called by any play that drafts LinkedIn copy, including social engagement, AI SDR, founder AI SDR, inbound follow-up, HubSpot signal touches, stalled-deal reactivation, website visitor follow-up, and customer champion outreach. When a play says "draft the message(s) per `firsttouch-messaging`," load this skill, then return to the play for the surrounding workflow.
 
 ## Pitfalls
 

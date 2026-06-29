@@ -9,10 +9,6 @@
       "status": "live"
     },
     {
-      "name": "owner-safe-outreach-operator",
-      "status": "live"
-    },
-    {
       "name": "inbound-speed-to-lead",
       "status": "live"
     },
@@ -41,22 +37,17 @@
       "status": "live"
     },
     {
-      "name": "pipeline-attribution-analyst",
-      "status": "live"
-    },
-    {
       "name": "workspace-audit",
       "status": "live"
     }
   ],
   "recipes": [
     {
-      "name": "HubSpot Workflow trigger — team-wide LinkedIn flows",
+      "name": "HubSpot Workflow trigger \u2014 team-wide LinkedIn flows",
       "outcome": "Use HubSpot lifecycle changes as triggers for LinkedIn outreach flows at scale across your team",
       "composes": [
         "hubspot-signal-to-linkedin-touch",
-        "inbound-speed-to-lead",
-        "owner-safe-outreach-operator"
+        "inbound-speed-to-lead"
       ]
     },
     {
@@ -80,21 +71,19 @@
       "outcome": "Review, QA, and monitor team-wide AI SDR daily queues before and after launch, including 10/15 daily caps and approval workflow",
       "composes": [
         "sequence-qa-reviewer",
-        "workspace-audit",
-        "owner-safe-outreach-operator"
+        "workspace-audit"
       ]
     },
     {
       "name": "Team-wide slipped lead recovery",
-      "outcome": "Identify dormant pipeline across all reps and reactivate systematically",
+      "outcome": "Identify dormant pipeline across all reps from HubSpot signals and prepare approved reactivation queues.",
       "composes": [
         "hubspot-signal-to-linkedin-touch",
-        "icp-outbound-builder",
-        "pipeline-attribution-analyst"
+        "icp-outbound-builder"
       ]
     },
     {
-      "name": "Closed-lost reengagement — team-wide",
+      "name": "Closed-lost reengagement \u2014 team-wide",
       "outcome": "Re-engage closed-lost deals with no engagement for 60+ days across all reps",
       "composes": [
         "hubspot-signal-to-linkedin-touch",
@@ -110,7 +99,7 @@
       ]
     },
     {
-      "name": "Event plays — pre-invite and post-follow-up",
+      "name": "Event plays \u2014 pre-invite and post-follow-up",
       "outcome": "Build audience and invite flow before an event, then run follow-up flows to attendees and no-shows",
       "composes": [
         "icp-outbound-builder",
@@ -120,7 +109,7 @@
     },
     {
       "name": "Customer thank-you",
-      "outcome": "Reach out when a customer hits a milestone — deepen the relationship before you need a favor",
+      "outcome": "Reach out when a customer hits a milestone \u2014 deepen the relationship before you need a favor",
       "composes": [
         "customer-champion"
       ]

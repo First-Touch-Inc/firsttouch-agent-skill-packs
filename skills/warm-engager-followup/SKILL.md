@@ -63,7 +63,7 @@ On human approval per row:
 - Confirm log success; if it fails, alert (Gate 5)
 
 ### 7. Track
-Tag these contacts with a `warm_engager_followup` property/list so play 07 (attribution) can measure downstream replies, meetings, and influenced deals.
+Tag these contacts with a `warm_engager_followup` property/list so the team can measure downstream replies, meetings, and influenced deals.
 
 ## Output (deliverable)
 A **Warm Engager Follow-Up batch**:

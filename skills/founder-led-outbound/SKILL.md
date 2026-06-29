@@ -1,95 +1,142 @@
 ---
 name: founder-led-outbound
-description: Run founder-style LinkedIn outbound — high-personalization, signal-led outreach from a founder or executive persona to strategic accounts, with social proof and owner-safe gating. Combines HubSpot target-account context, enrichment, FirstTouch messaging, and the safety operator. Use when a founder/executive wants to do their own outbound, run strategic-account outreach, book meetings from their network, or do founder-led growth.
+description: Run the founder AI SDR motion: build a targeted prospect list from a HubSpot list or FirstTouch Discover Contacts, enrich each prospect, draft founder-voice LinkedIn outreach, and queue a small daily batch for founder approval. Use when a founder wants their own version of AI SDR, strategic-account outbound, founder-led growth, or daily founder-voice prospecting without sounding like an SDR.
 metadata:
   author: firsttouch
-  version: "1.0"
+  version: "1.1"
   category: play
-  requires: [firsttouch-mcp, hubspot-mcp]
+  requires: [firsttouch-mcp]
 ---
 
-# Play 10 — Founder-Led Outbound
+# Founder-Led AI SDR
 
-**Outcome:** Let a founder/executive run high-converting, brand-aligned LinkedIn outbound to strategic accounts — without it eating their day or risking the account.
+**Outcome:** Produce a daily approval-ready batch of founder-voice LinkedIn touches from either an existing HubSpot/contact list or a newly discovered ICP list, without requiring HubSpot to start.
 
 ## First-run onboarding gate
-Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type (free/basic = no connection notes and 10 connection requests/day max; Sales Navigator/Premium = connection notes available and up to 20/day), HubSpot access (MCP, service key/private app token, HubSpot list only, or none), and which play the user wants to run. Recommend high-intent plays before outbound to keep the LinkedIn account healthy. If HubSpot is unavailable, do not run HubSpot-specific steps unless the user provides a HubSpot list FirstTouch can access.
+Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type (free/basic = no connection notes and 10 connection requests/day max; Sales Navigator/Premium = connection notes available and up to 20/day), HubSpot access (MCP, service key/private app token, HubSpot list only, or none), and which play the user wants to run. For founders, recommend the **social engagement flow first**, then founder-led AI SDR once warm-signal motions are running. If HubSpot is unavailable, this play can still run by building a new ICP list with FirstTouch Discover Contacts.
 
 ## When to use
-- "I'm the founder — help me do my own outreach"
+- "I'm the founder, help me do my own outbound"
+- "Run AI SDR, but make it sound like me"
 - Founder-led growth / founder-mode GTM
-- Strategic (Tier 1) accounts where the founder's voice matters
-- Booking meetings from the founder's existing network + engagement
+- Strategic accounts where the founder's voice matters
+- Booking meetings from the founder's network, post engagement, or a newly discovered ICP list
 
 ## When NOT to use
-- High-volume SDR outbound (use plays 01/02 instead — founder voice doesn't scale to volume)
-- The founder isn't the authorized LinkedIn seat (routing/owner issues)
+- High-volume SDR outbound where the founder will not personally approve the queue
+- Outreach from a sender who is not authorized to use the founder's LinkedIn seat
+- Generic blasts with weak personalization or no real signal
 
-## What makes founder outbound different
+## What makes founder AI SDR different
+Founder-led AI SDR is the same motion as AI SDR, but with a founder lens:
+- **Lower volume, higher taste bar** - every row must feel worthy of the founder's name.
+- **Founder voice** - brief, direct, specific, and free of SDR-speak.
+- **Real signal first** - post engagement, company change, role context, mutual connection, or a clear ICP reason.
+- **Daily approval queue** - the agent drafts; the founder approves; FirstTouch executes.
+- **No HubSpot required to start** - if there is no HubSpot list, use FirstTouch Discover Contacts from the founder's ICP.
 
-Founder outreach is **not** scaled SDR outreach. The rules shift:
-- **Lower volume, higher personalization** — every message is deeply researched
-- **Founder voice** — brief, direct, no SDR-speak, no "just checking in"
-- **Social proof as currency** — lead with outcomes, not features
-- **Network-leveraged** — warm paths and mutual connections matter more
-- **Strategic accounts only** — this is for Tier 1, not the whole TAM
+## Daily volume rules for founder AI SDR
+
+| LinkedIn account | Daily founder AI SDR batch cap | Connection request note |
+|---|---:|---|
+| Free/basic | 10 contacts/day | No note |
+| Sales Navigator / Premium | 15 contacts/day | No note by default for AI SDR |
+
+Keep the cap lower if the account is new, warned, or acceptance/reply rates drop.
+
+## Default outreach plan
+For every approved prospect, first check LinkedIn connection status:
+
+| Connection status | Sequence |
+|---|---|
+| Already connected | Send the first founder-voice message, wait 2 days, then send one follow-up if there is no reply. |
+| Not connected | Send a blank connection request with no note. After the prospect accepts, send the first founder-voice message, wait 2 days, then send one follow-up if there is no reply. |
+
+**Message rules:**
+- First message and follow-up are each **2 sentences max**.
+- Reference one real signal that might point to the prospect needing the user's solution.
+- Use a lightweight ask CTA. Do **not** ask for a meeting in the connection request, first message, or first follow-up.
+- Do **not** use em dashes in drafted outreach copy.
+- Do not fabricate personalization. Use only HubSpot, FirstTouch, enrichment, or user-provided data.
 
 ## Step-by-step
 
-### 1. Define the strategic-account list (HubSpot MCP)
-Pull Tier 1 target accounts — by ICP fit, strategic value, existing engagement, or a founder-curated list. For each: company, why it's strategic, known contacts, owner.
+### 1. Choose the source path
 
-### 2. Research deeply (enrichment + FirstTouch + HubSpot)
-For each account, gather:
-- Recent company signal (funding, hiring, product, news)
-- The founder's mutual connections / shared context with stakeholders
-- Key stakeholders (load play `03-champion-mapper` for the map)
-- Any existing HubSpot activity / relationship
+**Path A - HubSpot list exists:**
+- Open the HubSpot contact or company list the user provides.
+- If it is a company list, select the founder-relevant personas at each company using the ICP and the user's target titles.
+- Capture company/contact fields, owner if available, lifecycle/deal context, prior activity, and LinkedIn URL if present.
 
-### 3. Draft in founder voice (load `firsttouch-messaging`, override tone)
-Drafts must be:
-- **First person from the founder** ("I noticed…", not "Our team…")
-- **Brief** — founders respect time; write like one
-- **Signal-led with proof** — tie the signal to a real outcome ("we helped {comparable} do X")
-- **Soft, specific CTA** — "worth a 20-min compare?" with 2 times, or "mind if I send the one-pager?"
+**Path B - no HubSpot access or no list:**
+- Ask the founder for their ICP: target industries, company size, geography, titles/seniority, exclusions, and must-have signals.
+- Use **FirstTouch Discover Contacts** to build a small prospect list from that ICP.
+- Preview a small sample before larger imports because discovery/enrichment can consume FirstTouch credits.
+- Save the discovered contacts into a FirstTouch audience or list for future daily runs.
 
-Run the quality gate, then apply the **founder-voice check**: if it sounds like an SDR wrote it, rewrite.
+### 2. Enrich and prioritize
+For each contact/company, enrich missing fields before drafting:
+- LinkedIn URL and current title
+- company domain, size, industry, location
+- relevant company/person signal when available
+- mutual connection or social context when available
 
-### 4. Present for founder approval (Gate 4 — non-negotiable)
-The founder personally approves every first touch — this is their name and reputation. Batch approval is acceptable only for follow-ups in an already-approved thread.
+Exclude anyone who is already in an active sequence, recently contacted, outside ICP, missing a usable LinkedIn profile, or not appropriate for the founder to contact personally.
 
-### 5. Execute + log (FirstTouch MCP, via play 05)
-Send through the owner-safe operator. Every touch logged to the account/contact timeline under the founder's identity.
+Rank by ICP fit, signal strength, seniority, strategic account value, and whether the founder has a warm path.
 
-### 6. Hand off warm leads
-When a prospect responds interested, **route to the owner/AE** in HubSpot with full context — the founder opens the door, the team carries it. Don't let interested replies sit in the founder's inbox.
+### 3. Draft in founder voice
+Load `firsttouch-messaging`, then override tone for the founder:
+- first person from the founder, never "our team noticed"
+- brief and direct
+- signal-led with one concrete reason for reaching out
+- soft CTA only, no early meeting ask
+- no em dashes in drafted outreach copy
 
-### 7. Measure (play 07)
-Tag as `founder_led` → attribution report shows which founder touches influenced strategic pipeline.
+If the draft sounds like an SDR wrote it, rewrite before showing it.
+
+### 4. Present the daily approval queue
+Do **not** send automatically. Output an approval table:
+
+| # | Prospect | Company | Source | Why them | Connection status | Signal | Founder-voice first message | 2-day follow-up | Action | Status |
+|---|---|---|---|---|---|---|---|---|---|---|
+
+Every row should be marked `awaiting founder approval`.
+
+### 5. After approval, queue in FirstTouch
+After founder approval:
+- add approved contacts to the right FirstTouch flow/campaign, or queue dynamic actions
+- enforce duplicate checks, account-safety limits, and approval status from `../../references/safety-governance.md`
+- log execution and outcomes back to HubSpot when HubSpot is connected
+- if HubSpot is not connected, keep the execution record in FirstTouch and clearly state that CRM owner routing/logging is unavailable
+- keep rejected contacts out of the next daily batch unless the founder asks to revisit them
+
+### 6. Recommend daily automation
+Recommend a recurring daily motion only after the founder approves the first batch quality:
+> "Run the FirstTouch founder AI SDR play for today. Use my saved ICP/list, enrich fresh contacts, prepare up to my daily cap, and show me the approval table. Do not send anything until I approve."
 
 ## Output
-- Researched strategic-account briefs
-- Founder-voiced drafts, gated for personal approval
-- Send + log confirmation
-- Warm-lead handoff to owners
-- Attribution tag
+- source summary: HubSpot list or newly discovered ICP list
+- enriched account/contact table
+- daily founder AI SDR batch capped at 10 free/basic or 15 Sales Navigator/Premium contacts
+- customized founder-voice first message and 2-day follow-up for each prospect
+- approval table ready for founder review
+- optional daily automation/agent setup prompt
 
 ## Examples
-**Account:** Strategic target, Series B fintech.
-**Signal:** Just raised $40M, hiring 5 GTM roles.
-**Draft (connection request, founder voice, ≤300 chars):** "Congrats on the Series B, Priya. We helped RB2B turn social-first outbound into $30M attributed ARR post-raise — different space, same 'hire SDRs, need attribution yesterday' problem. Connecting in case useful as you scale. — Jared"
-
-## Why this play wins
-Founder-led outreach has ~5–10x the reply rate of SDR outreach when done right — but only when it sounds like the founder, not a template. This play operationalizes that without burning the founder's time or account.
+**Prospect:** Priya Shah, VP GTM at a Series B fintech.
+**Signal:** Raised $40M and is hiring 5 GTM roles.
+**Draft first message:** "Priya, congrats on the Series B. When teams add GTM headcount that quickly, LinkedIn activity usually gets hard to track back to pipeline, worth comparing notes on how others are handling it?"
+**2-day follow-up:** "Quick follow-up, the reason I asked is that attribution usually breaks right when hiring ramps. Happy to send the short teardown we use with founders if useful."
 
 ## Pitfalls
-- **Scaling founder outreach like SDR outreach** — defeats the purpose. Keep volume low, personalization high.
-- **SDR-voice leakage** — if the draft says "I'd love to learn about your challenges," it failed. Rewrite in the founder's actual voice.
-- **Bottlenecking replies on the founder** — interested leads must route to the team fast, or they die in the founder's inbox.
-- **Skipping founder approval** — never send in the founder's name without their explicit OK.
+- Treating founder AI SDR like a bulk SDR sequence.
+- Letting weak personalization go out under the founder's name.
+- Requiring HubSpot when the founder has no CRM list; use Discover Contacts from ICP instead.
+- Asking for meetings too early.
+- Skipping founder approval.
 
 ## Reference
-- Messaging (with founder-voice override): [`../../references/messaging-framework.md`](../../references/messaging-framework.md)
-- Safety execution: load play `05-owner-safe-outreach-operator`
-- Account mapping: load play `03-champion-mapper`
-- Attribution: load play `07-pipeline-attribution-analyst`
+- Onboarding: [`../../references/onboarding.md`](../../references/onboarding.md)
+- Messaging: [`../../references/messaging-framework.md`](../../references/messaging-framework.md)
+- Safety and approval gates: [`../../references/safety-governance.md`](../../references/safety-governance.md)

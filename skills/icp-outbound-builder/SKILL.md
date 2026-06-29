@@ -108,7 +108,7 @@ Every row should be marked `awaiting approval`.
 ### 6. After approval → queue execution
 After human approval:
 - add approved contacts to the right FirstTouch flow/campaign, or queue dynamic actions
-- route through `owner-safe-outreach-operator`
+- enforce duplicate checks, account-safety limits, and approval status from `../../references/safety-governance.md`
 - log execution and outcomes back to HubSpot when HubSpot is connected
 - keep rejected contacts out of the next daily batch unless the user asks to revisit them
 
@@ -139,5 +139,5 @@ Default daily automation prompt:
 ## Reference
 - Onboarding: [`../../references/onboarding.md`](../../references/onboarding.md)
 - Messaging: [`../../references/messaging-framework.md`](../../references/messaging-framework.md)
-- Safety/execution: load `owner-safe-outreach-operator`
-- Mapping: load `champion-mapper` when only the company/account is known
+- Safety and approval gates: [`../../references/safety-governance.md`](../../references/safety-governance.md)
+- If only a company/account is known, use the target personas and available FirstTouch/HubSpot contact data to select likely stakeholders.
