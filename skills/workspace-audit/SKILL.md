@@ -8,7 +8,7 @@ metadata:
   requires: [firsttouch-mcp]
 ---
 
-# Play 08 — Workspace Audit
+# Workspace Audit
 
 **Outcome:** Catch setup problems *before* they burn an account or waste sends. Produce a readiness scorecard so a customer knows exactly what to fix before going live.
 
@@ -26,7 +26,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 ### 1. Check MCP connectivity
 - FirstTouch MCP reachable + returns campaign/seat data? ✅/❌
 - HubSpot MCP reachable + returns contacts/owners? ✅/❌ (if a play needs it)
-- Enrichment MCP connected (if champion/founder plays will run)? ✅/❌/n/a
+- Enrichment MCP connected (if AI SDR, founder AI SDR, or customer-champion plays will run)? ✅/❌/n/a
 
 ### 2. LinkedIn account health (FirstTouch)
 - Seat connected and authenticated? ✅/❌
@@ -36,7 +36,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 
 ### 3. Owner coverage (HubSpot)
 - % of target contacts with an assigned owner
-- Orphaned contacts (no owner) → routing risk for play 02/05
+- Orphaned contacts (no owner) → routing risk for HubSpot signal, inbound, stalled-deal, and customer-champion plays
 - Owner-to-seat alignment (does the authorized LinkedIn user map to the right owners?)
 
 ### 4. Safety configuration
@@ -68,7 +68,7 @@ Logging:           ✅ 100 — timeline logging active
 Data hygiene:      ⚠  55 — LinkedIn URL coverage at 61%
 
 PRIORITY FIXES (do before launch):
-1. Assign owners to 253 orphaned contacts (blocks play 02/05 routing)
+1. Assign owners to 253 orphaned contacts (blocks owner-routed HubSpot plays)
 2. Enrich LinkedIn URLs to >90% coverage (enables all plays)
 3. Pause — seat near daily limit; resume tomorrow
 ```
@@ -81,7 +81,7 @@ PRIORITY FIXES (do before launch):
 ## Examples
 **Customer:** new onboarding, eager to launch.
 **Audit finds:** 38% no-owner contacts + 61% LinkedIn URL coverage → **not ready**.
-**Recommendation:** fix owners + enrich URLs first (blocks plays 02, 05). Safe to pilot play 01 (warm engager, doesn't need owners) immediately.
+**Recommendation:** fix owners + enrich URLs first (blocks owner-routed HubSpot plays). Safe to pilot warm-engager follow-up immediately if HubSpot owner routing is not required.
 
 ## Why this play wins
 Most outreach failures are setup failures dressed up as copy failures. This play surfaces the real blocker in 10 minutes instead of 3 weeks of "why aren't we getting replies?"

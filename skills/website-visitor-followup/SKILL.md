@@ -8,7 +8,7 @@ metadata:
   requires: [firsttouch-mcp, hubspot-mcp]
 ---
 
-# Play 13 — Website Visitor Follow-Up
+# Website Visitor Follow-Up
 
 **Outcome:** Convert high-intent website visits into social touches while the account is actively researching.
 
@@ -27,6 +27,9 @@ Before running this skill for the first time in a workspace, load `../../referen
 
 ## Step-by-step
 
+Before drafting or queueing any contact, run Gate 0 suppression/DNC from `../../references/safety-governance.md`. Suppressed, unsubscribed, opted-out, or do-not-contact records are skipped and logged.
+
+
 ### 1. Pull visitor signals
 Get recent high-intent visits with page path, timestamp, company/contact match confidence, and any associated HubSpot owner. **Two paths to the data:**
 - **HubSpot native tracking pixel** (default) — HubSpot logs known-contact page activity automatically. Sufficient for most accounts with steady inbound.
@@ -35,7 +38,7 @@ Get recent high-intent visits with page path, timestamp, company/contact match c
 
 ### 2. Decide contact-level vs account-level motion
 - **Known contact identified** → work contact directly
-- **Only company known** → identify likely personas at the account (load `champion-mapper` if needed)
+- **Only company known** → use the target personas and available FirstTouch/HubSpot contact data to identify likely stakeholders at the account
 
 ### 3. Check connection status + routing
 - connected? yes/no
@@ -75,4 +78,4 @@ Measure reply and meeting rate by page type and signal confidence.
 
 ## Reference
 - Messaging: [`../../references/messaging-framework.md`](../../references/messaging-framework.md)
-- Mapping if only company known: load `champion-mapper`
+- If only company is known, use target personas and available FirstTouch/HubSpot contact data to select likely stakeholders.

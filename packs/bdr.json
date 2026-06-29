@@ -2,14 +2,10 @@
   "persona": "bdr",
   "pack_name": "BDR Pack",
   "persona_pain": "Inbox busywork and slow follow-up make you miss the inbound window and look bad to your AE",
-  "persona_blurb": "Your job is meetings. You live in the gap between marketing handing over a lead and sales getting a discovery call on the calendar. Every delay in follow-up, every manual step, every no-show not chased — that's a meeting you didn't book. These plays close that gap: fast inbound response, warm-signal conversion, and lead recovery without the grind.",
+  "persona_blurb": "Your job is meetings. You live in the gap between marketing handing over a lead and sales getting a discovery call on the calendar. Every delay in follow-up, every manual step, every no-show not chased \u2014 that's a meeting you didn't book. These plays close that gap: fast inbound response, warm-signal conversion, and lead recovery without the grind.",
   "skills": [
     {
       "name": "firsttouch-messaging",
-      "status": "live"
-    },
-    {
-      "name": "owner-safe-outreach-operator",
       "status": "live"
     },
     {
@@ -36,40 +32,44 @@
   "recipes": [
     {
       "name": "Auto-connect on meeting or signup",
-      "outcome": "First LinkedIn touch goes out same day, no manual step — beat the inbound window",
+      "outcome": "Same-day LinkedIn draft ready for one-click approval, so the BDR beats the inbound window without autonomous sending.",
+      "needs": "HubSpot or FirstTouch-accessible inbound list/import required",
       "composes": [
         "inbound-speed-to-lead",
         "firsttouch-messaging"
       ]
     },
     {
-      "name": "Social engager flow — leadership posts",
-      "outcome": "Convert company content engagement into booked meetings before interest fades",
+      "name": "Social engager flow \u2014 leadership posts",
+      "outcome": "Convert engagement on CEO/exec/leadership posts into booked meetings before interest fades.",
+      "needs": "No HubSpot required; HubSpot optional for qualification/routing",
       "composes": [
         "warm-engager-followup",
-        "icp-outbound-builder"
+        "firsttouch-messaging"
       ]
     },
     {
       "name": "Website visitor play",
-      "outcome": "Turn pricing/demo/product-page visits into LinkedIn touches while intent is active",
+      "outcome": "Turn pricing/demo/product-page visits into LinkedIn touches while intent is active.",
+      "needs": "HubSpot tracking or RB2B/list source required; otherwise route to BDR AI SDR",
       "composes": [
         "website-visitor-followup",
         "icp-outbound-builder"
       ]
     },
     {
-      "name": "BDR AI SDR — daily approval queue",
-      "outcome": "View a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to 10/15 meeting-generation touches per day for approval",
+      "name": "BDR AI SDR \u2014 daily approval queue",
+      "outcome": "View a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to 10/day free or 15/day Sales Nav/Premium meeting-generation touches for approval.",
+      "needs": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
       "composes": [
         "icp-outbound-builder",
-        "owner-safe-outreach-operator",
         "firsttouch-messaging"
       ]
     },
     {
-      "name": "Scoop-up slipped leads — no-shows and old MQLs",
-      "outcome": "Reach back on no-shows and leads that never converted to opportunities",
+      "name": "Scoop-up slipped leads \u2014 no-shows and old MQLs",
+      "outcome": "Reach back on no-shows and leads that never converted to opportunities.",
+      "needs": "HubSpot required",
       "composes": [
         "hubspot-signal-to-linkedin-touch",
         "icp-outbound-builder",

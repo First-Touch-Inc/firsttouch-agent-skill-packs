@@ -16,7 +16,13 @@ Agents **draft**. Humans **approve**. FirstTouch **executes**. This sequence is 
 
 ---
 
-## The 5 safety gates (enforce all 5 before any send)
+## The safety gates (enforce all before any send)
+
+### Gate 0 — Suppression / DNC check
+Before messaging anyone, confirm they are **not** suppressed, unsubscribed, opted out, bounced, marked do-not-contact, or blocked by compliance policy.
+- When HubSpot is connected, check unsubscribe/marketing status, do-not-contact fields, bounced email status, suppression lists, and any customer-defined exclusion lists.
+- When HubSpot is not connected, check FirstTouch suppression/campaign history and any user-provided exclusion list.
+- If suppressed or opted out → **skip permanently**, log the reason, and do not draft.
 
 ### Gate 1 — Duplicate check
 Before messaging anyone, confirm they are **not** already in an active sequence or recently contacted.
@@ -24,9 +30,10 @@ Before messaging anyone, confirm they are **not** already in an active sequence 
 - If contacted in the last 30 days (configurable), **skip** and log the skip.
 
 ### Gate 2 — Owner routing
-Confirm the contact has an **owner** in HubSpot and that the authorized user is allowed to message on their behalf.
-- If no owner → route to enrichment/assignment, **do not send**.
+When HubSpot is connected, confirm the contact has an **owner** in HubSpot and that the authorized user is allowed to message on their behalf.
+- If HubSpot is connected and no owner exists → route to enrichment/assignment, **do not send**.
 - If owner mismatch → flag for human review, **do not send**.
+- If HubSpot is not connected and the user is running a single-seat FirstTouch-only play, state that CRM owner routing is unavailable and require explicit human approval before any send.
 
 ### Gate 3 — Account-safety limits
 Never exceed the authorized account's safe daily/weekly limits.
@@ -42,8 +49,9 @@ Present the **exact** draft (recipient, message, intended action) to a human.
 > **Approval must be per-send for first-touch outbound.** Batch approval is acceptable only for follow-ups in an already-approved sequence.
 
 ### Gate 5 — Log after send
-Every executed action is logged to the HubSpot contact timeline via FirstTouch, within minutes.
-- If logging fails → surface an alert; do not consider the play complete.
+When HubSpot is connected, every executed action is logged to the HubSpot contact timeline via FirstTouch, within minutes.
+- If HubSpot logging fails → surface an alert; do not consider the HubSpot-specific play complete.
+- If HubSpot is not connected, log the execution record in FirstTouch and clearly state that CRM timeline logging was skipped.
 
 ---
 
@@ -84,13 +92,14 @@ The agent should treat these as **hard stops**, not warnings.
 
 Hard-stop conditions (agent must pause and ask a human):
 
-1. Owner is missing or disputed
-2. Contact is already being actively worked by another sequence
-3. Account is near or over safety limits
-4. A safety/verification prompt appeared on the LinkedIn account
-5. The prospect asked to stop / marked not interested → **permanently suppress** and log
-6. Logging to HubSpot failed after a send
-7. Anything that "feels off" — ambiguous intent, missing context, conflicting data
+1. Prospect is suppressed, unsubscribed, opted out, bounced, marked do-not-contact, or appears on a suppression list
+2. Owner is missing or disputed
+3. Contact is already being actively worked by another sequence
+4. Account is near or over safety limits
+5. A safety/verification prompt appeared on the LinkedIn account
+6. The prospect asked to stop / marked not interested → **permanently suppress** and log
+7. Logging to HubSpot failed after a send
+8. Anything that "feels off" — ambiguous intent, missing context, conflicting data
 
 A cautious agent that stops early is worth far more than a fast one that burns an account.
 
@@ -106,4 +115,4 @@ Every completed play produces a record:
 - **Whether** it sent + logged successfully
 - **Outcome** tracked over time (reply, meeting, influenced deal)
 
-This trail is what makes the **Pipeline Attribution Analyst** (play 07) possible — and what gives enterprise buyers confidence.
+This trail is what lets the team audit outcomes later and gives enterprise buyers confidence.

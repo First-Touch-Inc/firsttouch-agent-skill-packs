@@ -8,7 +8,7 @@ metadata:
   requires: [firsttouch-mcp]
 ---
 
-# Play 09 — Sequence QA Reviewer
+# Sequence QA Reviewer
 
 **Outcome:** Catch a bad campaign before it launches — protecting the account and improving reply rates.
 

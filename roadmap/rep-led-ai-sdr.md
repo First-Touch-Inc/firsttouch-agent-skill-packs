@@ -8,7 +8,7 @@ An ongoing AI SDR motion in the rep's own voice — not founder-voice. Today, `f
 
 ## Composes from
 - `icp-outbound-builder` — sources and qualifies target accounts and personas within the rep's territory
-- `owner-safe-outreach-operator` — routes, gates, and logs every send with owner verification
+- `safety-governance.md` — routes, gates, and logs every send with owner verification when HubSpot is connected
 - `firsttouch-messaging` — drafts outreach calibrated to the rep's voice and the prospect's seniority
 - `founder-led-outbound` — borrows the high-personalization, signal-led approach; needs a rep-voice overlay rather than founder-voice
 

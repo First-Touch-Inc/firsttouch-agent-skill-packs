@@ -1,6 +1,6 @@
 ---
 name: warm-engager-followup
-description: Turn people who recently liked, commented on, or viewed your LinkedIn posts or profile into conversations and pipeline. Identifies warm engagers via FirstTouch, qualifies them against HubSpot, drafts a personalized connection request or opener, and gates the send for human approval. Use when the user wants to follow up on LinkedIn engagement, convert post likers/commenters, or work "warm" social engagement.
+description: Turn people who recently liked, commented on, or viewed the sender's posts/profile, an executive's posts/profile, or company/leadership content into conversations and pipeline. Identifies warm engagers via FirstTouch, optionally monitors a CEO/exec profile, qualifies engagers when HubSpot is connected, drafts a personalized connection request or opener, and gates the send for human approval. Use when the user wants to follow up on LinkedIn engagement, monitor leadership posts, convert post likers/commenters, or work "warm" social engagement.
 metadata:
   author: firsttouch
   version: "1.0"
@@ -8,7 +8,7 @@ metadata:
   requires: [firsttouch-mcp]
 ---
 
-# Play 01 — Warm Engager Follow-Up
+# Warm Engager Follow-Up
 
 **Outcome:** Convert recent LinkedIn engagement (likes, comments, profile views) into booked conversations, logged to HubSpot.
 
@@ -17,12 +17,13 @@ Before running this skill for the first time in a workspace, load `../../referen
 
 ## When to use
 - The user says "follow up on people engaging with my posts," "who liked my last post," "work my warm leads"
+- A BDR/AE/RevOps user wants to monitor a CEO, founder, exec, or company thought-leader profile and route engagers to reps
 - A post or campaign just got engagement and you want to turn it into pipeline
 - Weekly/biweekly warm-lead follow-up motion
 
 ## Inputs
 - **Window:** how far back to pull engagement (default: 7 days)
-- **Post scope:** specific post, or all recent activity (default: all)
+- **Post scope:** specific post, all recent activity, or a monitored CEO/exec/leadership profile (default: all)
 - **Tier filter:** which engagers to prioritize (default: ICP match + seniority)
 
 ## Step-by-step
@@ -30,9 +31,17 @@ Before running this skill for the first time in a workspace, load `../../referen
 ### 1. Pull engagement (FirstTouch MCP)
 Get recent engagers — likes, comments, profile views — within the window. Record for each: name, title, company, engagement type, what they engaged with, timestamp.
 
+### 1a. If monitoring a leader's or executive's profile
+Use the FirstTouch social engagement monitored-profile flow before pulling engagement:
+- add or confirm the CEO/founder/exec profile as a monitored profile, for example `manage_social_engagement_monitored_profile` with `action=add` and `enableSocialEngagement=true` when that tool is available in the connected harness
+- confirm the monitored profile is authorized by the customer and relevant to the sender/team
+- pull engagers from that monitored profile's posts, then route drafts through the appropriate sender/owner for approval
+- if the monitored-profile tool is unavailable, ask the user to provide a FirstTouch-accessible engager list exported from the leadership post
+
 ### 2. Qualify against HubSpot (if HubSpot MCP connected)
-For each engager, check:
+For each engager, run Gate 0 suppression/DNC first, then check:
 - Are they in HubSpot? → existing contact context, owner, lifecycle stage
+- Suppressed, unsubscribed, opted out, or DNC? → **skip** and log the reason
 - Already in an active sequence or recently contacted? → **skip** (Gate 1: duplicate check)
 - Do they match ICP? → tier them (T1 strategic / T2 mid / T3 volume)
 
@@ -63,7 +72,7 @@ On human approval per row:
 - Confirm log success; if it fails, alert (Gate 5)
 
 ### 7. Track
-Tag these contacts with a `warm_engager_followup` property/list so play 07 (attribution) can measure downstream replies, meetings, and influenced deals.
+Tag these contacts with a `warm_engager_followup` property/list so the team can measure downstream replies, meetings, and influenced deals.
 
 ## Output (deliverable)
 A **Warm Engager Follow-Up batch**:
@@ -81,6 +90,7 @@ A **Warm Engager Follow-Up batch**:
 - **Treating all engagers equally** — a competitor employee who liked your post is not a lead. Filter by ICP.
 - **Skipping the duplicate check** — half of engagers may already be in a sequence. Always gate.
 - **Generic "thanks for the like"** — that's not a signal-led message. Tie it to their context.
+- **Leadership-post ambiguity** — if the signal came from a CEO/exec/company profile, name that monitored profile and route through the right sender rather than pretending it was the rep's own post.
 - **Sending without approval** — never. Gate 4.
 
 ## Reference

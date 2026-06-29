@@ -2,14 +2,10 @@
   "persona": "ae",
   "pack_name": "AE Pack",
   "persona_pain": "Deals dying in silence while champions go dark and pipeline looks fine until it doesn't",
-  "persona_blurb": "You carry a number. Your whole job depends on deals staying alive and champions staying warm. Most CRM data tells you what happened last month — these plays tell you what to do today about the deal that's going quiet. You need fast inbound follow-up, multi-threading on booked meetings, and reactivation plays for pipeline that's been silent too long.",
+  "persona_blurb": "You carry a number. Your whole job depends on deals staying alive and champions staying warm. Most CRM data tells you what happened last month \u2014 these plays tell you what to do today about the deal that's going quiet. You need fast inbound follow-up, multi-threading on booked meetings, and reactivation plays for pipeline that's been silent too long.",
   "skills": [
     {
       "name": "firsttouch-messaging",
-      "status": "live"
-    },
-    {
-      "name": "owner-safe-outreach-operator",
       "status": "live"
     },
     {
@@ -33,10 +29,6 @@
       "status": "live"
     },
     {
-      "name": "champion-mapper",
-      "status": "live"
-    },
-    {
       "name": "stalled-deal-reactivation",
       "status": "live"
     }
@@ -44,58 +36,62 @@
   "recipes": [
     {
       "name": "Auto-connect on meeting or signup",
-      "outcome": "Agent connects with prospects the moment they book or submit, before the moment cools",
+      "outcome": "Draft a same-day LinkedIn touch for approval when prospects book or submit, before the moment cools.",
+      "needs": "HubSpot or FirstTouch-accessible inbound list/import required",
       "composes": [
         "inbound-speed-to-lead",
         "firsttouch-messaging"
       ]
     },
     {
-      "name": "Social engager flow — leadership's audience",
-      "outcome": "Reach people engaging with company content before they go cold",
+      "name": "Social engager flow \u2014 leadership's audience",
+      "outcome": "Reach people engaging with company or leadership content before they go cold.",
+      "needs": "No HubSpot required; HubSpot optional for qualification/routing",
       "composes": [
         "warm-engager-followup",
-        "icp-outbound-builder"
+        "firsttouch-messaging"
       ]
     },
     {
       "name": "Website visitor play",
-      "outcome": "Turn pricing/demo/product-page visits into LinkedIn touches while intent is active",
+      "outcome": "Turn pricing/demo/product-page visits into LinkedIn touches while intent is active.",
+      "needs": "HubSpot tracking or RB2B/list source required; otherwise route to AE AI SDR",
       "composes": [
         "website-visitor-followup",
         "icp-outbound-builder"
       ]
     },
     {
-      "name": "AE AI SDR — daily approval queue",
-      "outcome": "View a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to 10/15 AE-owned LinkedIn touches per day for approval",
+      "name": "AE AI SDR \u2014 daily approval queue",
+      "outcome": "View a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to 10/day free or 15/day Sales Nav/Premium AE-owned LinkedIn touches for approval.",
+      "needs": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
       "composes": [
         "icp-outbound-builder",
-        "owner-safe-outreach-operator",
         "firsttouch-messaging"
       ]
     },
     {
-      "name": "Scoop-up slipped leads — stale opps",
-      "outcome": "Identify and re-engage dormant deals and pipeline that has gone quiet 30+ days",
+      "name": "Stalled deal reactivation \u2014 60-day open-deal workflow",
+      "outcome": "Trigger a contact-based HubSpot workflow for contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days, then prepare approved reactivation touches.",
+      "needs": "HubSpot required; contact-based workflow only, because deal-based triggers are unsupported",
       "composes": [
-        "hubspot-signal-to-linkedin-touch",
         "stalled-deal-reactivation",
         "firsttouch-messaging"
       ]
     },
     {
-      "name": "Meeting-booked multi-thread",
-      "outcome": "When a meeting books, auto-connect other decision-makers so you're not single-threaded",
+      "name": "Meeting-booked stakeholder follow-up",
+      "outcome": "When a meeting books, draft LinkedIn touches to known decision-makers from HubSpot so the deal is not single-threaded.",
+      "needs": "HubSpot required",
       "composes": [
         "hubspot-signal-to-linkedin-touch",
-        "champion-mapper",
         "firsttouch-messaging"
       ]
     },
     {
       "name": "Closed-lost reengagement",
-      "outcome": "Re-engage closed-lost deals with no engagement for 60+ days via a fresh LinkedIn touch",
+      "outcome": "Re-engage historical closed-lost accounts with a fresh, approved LinkedIn touch when the user explicitly chooses a win-back motion.",
+      "needs": "HubSpot required; separate from stalled open-deal workflow",
       "composes": [
         "hubspot-signal-to-linkedin-touch",
         "icp-outbound-builder",

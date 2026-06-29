@@ -83,8 +83,8 @@ Steps 1–4 and 6–7 are where the agent earns its keep. Step 5 is FirstTouch. 
 | MCP | What it gives the agent | Required by |
 |-----|------------------------|-------------|
 | **FirstTouch MCP** | LinkedIn action execution, engagement data, logging | Every play |
-| **HubSpot MCP** | CRM context, lifecycle, owners, deals, lists | Plays 02–05, 07, 10 |
-| **Enrichment MCP** (Clay, Surfe, etc.) | LinkedIn URLs, emails, firmographics | Optional, for 03, 10 |
+| **HubSpot MCP** | CRM context, lifecycle, owners, deals, lists | HubSpot signal touches, inbound speed-to-lead, website visitor follow-up, stalled deal reactivation, customer champion, and HubSpot-backed recipes |
+| **Enrichment MCP** (Clay, Surfe, etc.) | LinkedIn URLs, emails, firmographics | Optional for AI SDR, founder AI SDR, warm-engager qualification, and customer-champion plays |
 
 Full setup instructions: [`mcp-setup.md`](mcp-setup.md).
 
