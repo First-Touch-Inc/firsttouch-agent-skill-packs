@@ -1,0 +1,135 @@
+{
+  "persona": "founder",
+  "pack_name": "Founder Pack",
+  "persona_pain": "Looking automated or spammy on LinkedIn risks the reputation you spent years building",
+  "persona_blurb": "You do your own sales. Your name is your brand, and every automated-feeling LinkedIn message risks undoing years of relationship-building. You need outreach that sounds exactly like you — in the signals you'd actually notice, at the volume that feels personal, not like a drip campaign. These plays are designed for founders who want LinkedIn to feel like them, not like an SDR they hired.",
+  "skills": [
+    {
+      "name": "firsttouch-messaging",
+      "status": "live"
+    },
+    {
+      "name": "owner-safe-outreach-operator",
+      "status": "live"
+    },
+    {
+      "name": "inbound-speed-to-lead",
+      "status": "live"
+    },
+    {
+      "name": "warm-engager-followup",
+      "status": "live"
+    },
+    {
+      "name": "website-visitor-followup",
+      "status": "live"
+    },
+    {
+      "name": "icp-outbound-builder",
+      "status": "live"
+    },
+    {
+      "name": "founder-led-outbound",
+      "status": "live"
+    },
+    {
+      "name": "customer-champion",
+      "status": "live"
+    },
+    {
+      "name": "hubspot-signal-to-linkedin-touch",
+      "status": "live"
+    }
+  ],
+  "recipes": [
+    {
+      "name": "Fast personal inbound follow-up",
+      "outcome": "Connect with high-intent signups and demo requests on LinkedIn same day, in your voice",
+      "composes": [
+        "inbound-speed-to-lead",
+        "firsttouch-messaging"
+      ]
+    },
+    {
+      "name": "Social engager flow — my posts",
+      "outcome": "ICP-qualify people reacting to your own posts and start conversations while intent is hot",
+      "composes": [
+        "warm-engager-followup",
+        "icp-outbound-builder"
+      ]
+    },
+    {
+      "name": "Website visitor play",
+      "outcome": "Turn pricing/demo/product-page visits into LinkedIn touches while intent is active",
+      "composes": [
+        "website-visitor-followup",
+        "icp-outbound-builder"
+      ]
+    },
+    {
+      "name": "Founder-led AI SDR — daily approval queue",
+      "outcome": "View a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to 10/15 founder-voice touches per day for approval",
+      "composes": [
+        "icp-outbound-builder",
+        "founder-led-outbound",
+        "owner-safe-outreach-operator"
+      ]
+    },
+    {
+      "name": "Scoop-up slipped leads",
+      "outcome": "HubSpot query for personal lost deals and dormant contacts worth a second look",
+      "composes": [
+        "hubspot-signal-to-linkedin-touch",
+        "icp-outbound-builder",
+        "firsttouch-messaging"
+      ]
+    },
+    {
+      "name": "Connection mining",
+      "outcome": "Search your own LinkedIn connections by ICP criteria, qualify them, and add to a campaign",
+      "composes": [
+        "icp-outbound-builder",
+        "owner-safe-outreach-operator"
+      ]
+    },
+    {
+      "name": "Closed-lost reengagement",
+      "outcome": "Re-engage closed-lost deals with no engagement for 60+ days via a fresh LinkedIn touch",
+      "composes": [
+        "hubspot-signal-to-linkedin-touch",
+        "icp-outbound-builder",
+        "firsttouch-messaging"
+      ]
+    },
+    {
+      "name": "Customer thank-you",
+      "outcome": "Reach out when a customer hits a milestone — deepen the relationship before you need a favor",
+      "composes": [
+        "customer-champion"
+      ]
+    }
+  ],
+  "roadmap": [
+    {
+      "name": "Customer referral / advocacy ask",
+      "spec": "roadmap/customer-referral-advocacy.md"
+    }
+  ],
+  "references": [
+    {
+      "src": "references/onboarding.md"
+    },
+    {
+      "src": "references/mcp-setup.md"
+    },
+    {
+      "src": "references/safety-governance.md"
+    },
+    {
+      "src": "references/messaging-framework.md"
+    },
+    {
+      "src": "references/system-grounding.md"
+    }
+  ]
+}

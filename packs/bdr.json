@@ -1,0 +1,103 @@
+{
+  "persona": "bdr",
+  "pack_name": "BDR Pack",
+  "persona_pain": "Inbox busywork and slow follow-up make you miss the inbound window and look bad to your AE",
+  "persona_blurb": "Your job is meetings. You live in the gap between marketing handing over a lead and sales getting a discovery call on the calendar. Every delay in follow-up, every manual step, every no-show not chased — that's a meeting you didn't book. These plays close that gap: fast inbound response, warm-signal conversion, and lead recovery without the grind.",
+  "skills": [
+    {
+      "name": "firsttouch-messaging",
+      "status": "live"
+    },
+    {
+      "name": "owner-safe-outreach-operator",
+      "status": "live"
+    },
+    {
+      "name": "inbound-speed-to-lead",
+      "status": "live"
+    },
+    {
+      "name": "warm-engager-followup",
+      "status": "live"
+    },
+    {
+      "name": "website-visitor-followup",
+      "status": "live"
+    },
+    {
+      "name": "icp-outbound-builder",
+      "status": "live"
+    },
+    {
+      "name": "hubspot-signal-to-linkedin-touch",
+      "status": "live"
+    }
+  ],
+  "recipes": [
+    {
+      "name": "Auto-connect on meeting or signup",
+      "outcome": "First LinkedIn touch goes out same day, no manual step — beat the inbound window",
+      "composes": [
+        "inbound-speed-to-lead",
+        "firsttouch-messaging"
+      ]
+    },
+    {
+      "name": "Social engager flow — leadership posts",
+      "outcome": "Convert company content engagement into booked meetings before interest fades",
+      "composes": [
+        "warm-engager-followup",
+        "icp-outbound-builder"
+      ]
+    },
+    {
+      "name": "Website visitor play",
+      "outcome": "Turn pricing/demo/product-page visits into LinkedIn touches while intent is active",
+      "composes": [
+        "website-visitor-followup",
+        "icp-outbound-builder"
+      ]
+    },
+    {
+      "name": "BDR AI SDR — daily approval queue",
+      "outcome": "View a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to 10/15 meeting-generation touches per day for approval",
+      "composes": [
+        "icp-outbound-builder",
+        "owner-safe-outreach-operator",
+        "firsttouch-messaging"
+      ]
+    },
+    {
+      "name": "Scoop-up slipped leads — no-shows and old MQLs",
+      "outcome": "Reach back on no-shows and leads that never converted to opportunities",
+      "composes": [
+        "hubspot-signal-to-linkedin-touch",
+        "icp-outbound-builder",
+        "firsttouch-messaging"
+      ]
+    }
+  ],
+  "roadmap": [
+    {
+      "name": "Rep-led AI SDR",
+      "spec": "roadmap/rep-led-ai-sdr.md"
+    }
+  ],
+  "references": [
+    {
+      "src": "references/onboarding.md"
+    },
+    {
+      "src": "references/mcp-setup.md"
+    },
+    {
+      "src": "references/safety-governance.md"
+    },
+    {
+      "src": "references/messaging-framework.md"
+    },
+    {
+      "src": "references/system-grounding.md"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+---
+name: inbound-speed-to-lead
+description: Attach LinkedIn connection requests and lightweight follow-up to inbound signups, trial starts, demo requests, or other high-intent HubSpot events. Checks connection status, drafts the smallest possible conversation-starting message, gates for approval, and logs the touch back to HubSpot. Use when the user wants to improve speed-to-lead for inbound, connect on LinkedIn after a signup/trial, or add a social touch to inbound conversion.
+metadata:
+  author: firsttouch
+  version: "1.0"
+  category: play
+  requires: [firsttouch-mcp, hubspot-mcp]
+---
+
+# Play 11 — Inbound Speed-to-Lead
+
+**Outcome:** Add a fast, light LinkedIn touch to high-intent inbound moments — signups, trials, demo requests — so the prospect sees a human touch immediately, not just email automation.
+
+## First-run onboarding gate
+Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type (free/basic = no connection notes and 10 connection requests/day max; Sales Navigator/Premium = connection notes available and up to 20/day), HubSpot access (MCP, service key/private app token, HubSpot list only, or none), and which play the user wants to run. Recommend high-intent plays before outbound to keep the LinkedIn account healthy. If HubSpot is unavailable, do not run HubSpot-specific steps unless the user provides a HubSpot list FirstTouch can access.
+
+## When to use
+- New signup or trial starts in HubSpot
+- Demo request submitted
+- Inbound contact reaches a high-intent lifecycle state
+- The user says "attach LinkedIn to inbound" or "improve speed to lead"
+
+## Inputs
+- **Trigger event:** signup / trial / demo / hand-raise form / list membership
+- **Window:** how soon after trigger to act (default: same day)
+- **Connection-note policy:** use note only if sender has Premium/Sales Nav and the motion is warm enough
+
+## Step-by-step
+
+### 1. Pull inbound contacts (HubSpot MCP)
+Query the trigger event and return contacts created or updated in the window. Capture: name, title, company, owner, event type, timestamp, lifecycle stage, LinkedIn URL.
+
+### 2. Check readiness
+For each contact:
+- Has owner? if no → route, do not send
+- Has LinkedIn URL / can be matched? if no → enrichment queue
+- Already connected? yes/no
+- Recently contacted? if yes → skip
+
+### 3. Choose the action
+- **Not connected** → connection request
+- **Already connected** → light opener / follow-up
+
+### 4. Draft the message (load `firsttouch-messaging`)
+Use the inbound event as the signal.
+
+Rules:
+- conversational, usually **2 sentences max**
+- smallest possible ask
+- do **not** force a meeting immediately unless the inbound event explicitly warrants it
+- if Premium/Sales Nav is available, a short connection note is allowed
+
+Example directions:
+- Demo request → "Saw you just requested a demo. Wanted to connect here too in case helpful as you evaluate."
+- Trial signup → "Saw you started a trial. Happy to be useful if anything jumps out as you get into it."
+
+### 5. Present for approval
+Show per contact:
+| Contact | Trigger | Connected? | Message type | Draft |
+Awaiting approval only.
+
+### 6. Execute + log
+On approval: send via FirstTouch, log to HubSpot timeline, tag as `inbound_speed_to_lead`.
+
+### 7. Track
+Measure touch-to-meeting rate and reply rate for inbound contacts who received the LinkedIn touch versus those who did not.
+
+## Output
+- prioritized inbound queue
+- drafted social touches, gated for approval
+- send + log confirmation
+- tagged cohort for attribution
+
+## Pitfalls
+- treating all inbound equally — prioritize hand-raisers over lightweight ebook downloads
+- asking for too much too fast — keep it conversational
+- missing the same-day window — this play depends on speed
+
+## Reference
+- Messaging: [`../../references/messaging-framework.md`](../../references/messaging-framework.md)
+- Safety: [`../../references/safety-governance.md`](../../references/safety-governance.md)
