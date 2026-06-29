@@ -18,7 +18,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 ## When to use
 - "When a contact hits MQL, reach out on LinkedIn"
 - "If a deal moves to 'Decision Maker Buy-In,' send a social touch"
-- "Anyone who filled out the pricing form this week — connect on LinkedIn"
+- "Anyone who filled out the pricing form this week, connect on LinkedIn"
 - Building trigger-based outbound rather than static sequences
 
 ## Inputs
@@ -45,6 +45,7 @@ The HubSpot event determines the message:
 |--------|-------------|-----|
 | New MQL / form fill | Connection request | Start relationship |
 | Lifecycle up (SQL→Opportunity) | Opener to connected | Warm the opp |
+| Meeting logged on an associated deal | Connection request to unconnected stakeholders, or opener/value touch to connected stakeholders | Multi-thread the account after a real meeting signal. Configure as a contact-based HubSpot list/workflow, for example: contacts at companies where an associated deal has a meeting logged in the last 7 days. |
 | Deal moved forward | Value touch to stakeholders | Reinforce |
 | Open deal not Closed Won/Lost and no engagement for 60+ days | Re-engage | Use the contact-based `stalled-deal-reactivation` workflow; deal triggers are unsupported |
 | Re-engaged after silence | Opener | Context renewed |
@@ -69,7 +70,7 @@ Cohort tagged by signal type so the team can review which signals produce replie
 
 ## Examples
 **Signal:** Contact filled "Request a demo" form, owner = AE, not yet connected on LinkedIn.
-**Draft (connection request):** "Hi Devon — saw you're exploring FirstTouch after the demo request. Connecting so I can share setup tips as you evaluate. — Riley"
+**Draft (connection request):** "Hi Devon, saw you're exploring FirstTouch after the demo request. Connecting so I can share setup tips as you evaluate."
 
 ## Why this play wins
 Static sequences message on a timer. This play messages on a **real event** — dramatically higher relevance and reply rate, and fully attributable in HubSpot.

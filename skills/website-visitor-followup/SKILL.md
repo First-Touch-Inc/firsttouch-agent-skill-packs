@@ -5,7 +5,8 @@ metadata:
   author: firsttouch
   version: "1.0"
   category: play
-  requires: [firsttouch-mcp, hubspot-mcp]
+  requires: [firsttouch-mcp]
+  optional: [hubspot-mcp]
 ---
 
 # Website Visitor Follow-Up

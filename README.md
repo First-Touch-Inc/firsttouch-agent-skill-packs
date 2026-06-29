@@ -132,7 +132,7 @@ In addition to the flat `skills/` folder above, this repo ships **4 downloadable
 
 | Pack | Persona | Skills included | Key plays |
 |---|---|---:|---|
-| `founder-pack` | Founders doing their own sales | 9 | Social engagement flow, founder AI SDR, inbound follow-up, stalled open-deal workflow, customer thank-you |
+| `founder-pack` | Founders doing their own sales | 8 | Social engagement flow, founder AI SDR, inbound follow-up, stalled open-deal workflow, customer thank-you |
 | `ae-pack` | Account Executives | 7 | Inbound speed-to-lead, stalled open-deal workflow, meeting-booked stakeholder follow-up, closed-lost re-engage |
 | `bdr-pack` | Business Development Reps | 6 | Inbound speed-to-lead, social engagement flow, target-list AI SDR, lead recovery |
 | `revops-pack` | Revenue Operations | 10 | Workspace audit, sequence QA, stalled open-deal workflow, HubSpot workflow build, team governance |
@@ -171,14 +171,3 @@ dist/
 ```
 
 Re-running the script syncs all packs to the current canonical state, rebuilds the zips in `dist/`, and publishes the distributable zips to `packs/*-pack.zip`.
-
-### Roadmap plays
-
-Some plays are specced but not yet buildable — the FirstTouch MCP capability doesn't exist yet. These are documented in `roadmap/` (clearly marked "Not yet implemented") so they appear in the pack READMEs as honest "coming soon" items, never as broken stub skills.
-
-| Roadmap play | Blocked on | Persona(s) |
-|---|---|---|
-| Customer referral / advocacy ask | Post-thank-you engagement logic | Founder, RevOps |
-| Rep-led AI SDR | Rep-voice overlay beyond the founder-specific workflow | AE, BDR |
-| Inbox triage + reply draft | FT MCP inbox read capability | BDR, AE |
-| CS handoff / retention connector | CS-as-sender routing at milestone | RevOps |

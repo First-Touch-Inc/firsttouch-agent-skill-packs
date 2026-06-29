@@ -56,7 +56,7 @@
       ]
     },
     {
-      "name": "HubSpot Workflow trigger \u2014 team-wide LinkedIn flows",
+      "name": "HubSpot Workflow trigger — team-wide LinkedIn flows",
       "outcome": "Use HubSpot lifecycle changes as triggers for LinkedIn outreach flows at scale across your team.",
       "needs": "HubSpot required",
       "composes": [
@@ -66,8 +66,8 @@
     },
     {
       "name": "Social engager setup for team",
-      "outcome": "Configure warm-engager signal capture and flows so the whole team benefits from content engagement.",
-      "needs": "No HubSpot required; HubSpot optional for qualification/routing",
+      "outcome": "Configure warm-engager signal capture and flows so the whole team benefits from content engagement; use ICP outbound builder only to enrich or qualify the engager audience before routing, not as a simultaneous send motion.",
+      "needs": "No HubSpot required; HubSpot optional for qualification/routing; ICP outbound builder is for audience enrichment/qualification fallback",
       "composes": [
         "warm-engager-followup",
         "icp-outbound-builder"
@@ -92,7 +92,7 @@
       ]
     },
     {
-      "name": "Stalled deal reactivation workflow \u2014 team-wide",
+      "name": "Stalled deal reactivation workflow — team-wide",
       "outcome": "Trigger a contact-based HubSpot workflow for contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days, then prepare approved reactivation queues by owner.",
       "needs": "HubSpot required; contact-based workflow only, because deal-based triggers are unsupported",
       "composes": [
@@ -101,7 +101,7 @@
       ]
     },
     {
-      "name": "Closed-lost reengagement \u2014 team-wide",
+      "name": "Closed-lost reengagement — team-wide",
       "outcome": "Re-engage historical closed-lost accounts across all reps when RevOps explicitly chooses a win-back motion.",
       "needs": "HubSpot required; separate from stalled open-deal workflow",
       "composes": [
@@ -119,7 +119,7 @@
       ]
     },
     {
-      "name": "Event plays \u2014 pre-invite and post-follow-up",
+      "name": "Event plays — pre-invite and post-follow-up",
       "outcome": "Build audience and invite flow before an event, then run follow-up flows to attendees and no-shows.",
       "needs": "HubSpot or imported attendee/source list required",
       "composes": [
@@ -130,21 +130,11 @@
     },
     {
       "name": "Customer thank-you",
-      "outcome": "Reach out when a customer hits a milestone \u2014 deepen the relationship before you need a favor.",
+      "outcome": "Reach out when a customer hits a milestone — deepen the relationship before you need a favor.",
       "needs": "HubSpot required",
       "composes": [
         "customer-champion"
       ]
-    }
-  ],
-  "roadmap": [
-    {
-      "name": "CS handoff / retention connector",
-      "spec": "roadmap/cs-handoff-retention.md"
-    },
-    {
-      "name": "Customer referral / advocacy ask",
-      "spec": "roadmap/customer-referral-advocacy.md"
     }
   ],
   "references": [

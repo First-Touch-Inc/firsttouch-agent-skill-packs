@@ -2,7 +2,7 @@
   "persona": "ae",
   "pack_name": "AE Pack",
   "persona_pain": "Deals dying in silence while champions go dark and pipeline looks fine until it doesn't",
-  "persona_blurb": "You carry a number. Your whole job depends on deals staying alive and champions staying warm. Most CRM data tells you what happened last month \u2014 these plays tell you what to do today about the deal that's going quiet. You need fast inbound follow-up, multi-threading on booked meetings, and reactivation plays for pipeline that's been silent too long.",
+  "persona_blurb": "You carry a number. Your whole job depends on deals staying alive and champions staying warm. Most CRM data tells you what happened last month — these plays tell you what to do today about the deal that's going quiet. You need fast inbound follow-up, multi-threading on booked meetings, and reactivation plays for pipeline that's been silent too long.",
   "skills": [
     {
       "name": "firsttouch-messaging",
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "name": "Social engager flow \u2014 leadership's audience",
+      "name": "Social engager flow — leadership's audience",
       "outcome": "Reach people engaging with company or leadership content before they go cold.",
       "needs": "No HubSpot required; HubSpot optional for qualification/routing",
       "composes": [
@@ -62,7 +62,7 @@
       ]
     },
     {
-      "name": "AE AI SDR \u2014 daily approval queue",
+      "name": "AE AI SDR — daily approval queue",
       "outcome": "View a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to 10/day free or 15/day Sales Nav/Premium AE-owned LinkedIn touches for approval.",
       "needs": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
       "composes": [
@@ -71,7 +71,7 @@
       ]
     },
     {
-      "name": "Stalled deal reactivation \u2014 60-day open-deal workflow",
+      "name": "Stalled deal reactivation — 60-day open-deal workflow",
       "outcome": "Trigger a contact-based HubSpot workflow for contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days, then prepare approved reactivation touches.",
       "needs": "HubSpot required; contact-based workflow only, because deal-based triggers are unsupported",
       "composes": [
@@ -97,12 +97,6 @@
         "icp-outbound-builder",
         "firsttouch-messaging"
       ]
-    }
-  ],
-  "roadmap": [
-    {
-      "name": "Rep-led AI SDR",
-      "spec": "roadmap/rep-led-ai-sdr.md"
     }
   ],
   "references": [
