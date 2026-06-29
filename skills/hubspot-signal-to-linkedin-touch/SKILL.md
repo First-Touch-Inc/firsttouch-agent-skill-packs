@@ -8,7 +8,7 @@ metadata:
   requires: [firsttouch-mcp, hubspot-mcp]
 ---
 
-# Play 02 — HubSpot Signal → LinkedIn Touch
+# HubSpot Signal → LinkedIn Touch
 
 **Outcome:** Make LinkedIn outreach event-driven — every touch is triggered by a real CRM event, not a cadence timer.
 
@@ -33,6 +33,7 @@ Pull contacts matching the trigger event within the window. For each, capture: n
 
 ### 2. Qualify
 For each triggered contact:
+- Run Gate 0 suppression/DNC check from `../../references/safety-governance.md`; if suppressed or unsubscribed → **skip**
 - Has an owner? → if no, **route to assignment, do not send** (Gate 2)
 - Within cooldown? → **skip**
 - Already in active sequence / recently contacted? → **skip** (Gate 1)
@@ -45,7 +46,7 @@ The HubSpot event determines the message:
 | New MQL / form fill | Connection request | Start relationship |
 | Lifecycle up (SQL→Opportunity) | Opener to connected | Warm the opp |
 | Deal moved forward | Value touch to stakeholders | Reinforce |
-| Deal stalled / no activity 14d | Re-engage | See play 04 |
+| Open deal not Closed Won/Lost and no engagement for 60+ days | Re-engage | Use the contact-based `stalled-deal-reactivation` workflow; deal triggers are unsupported |
 | Re-engaged after silence | Opener | Context renewed |
 
 ### 4. Draft (load `firsttouch-messaging`)

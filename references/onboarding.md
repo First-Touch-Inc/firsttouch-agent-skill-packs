@@ -46,11 +46,11 @@ Recommend **high-intent plays first**. They use warmer signals, protect the Link
 | Play | Why first | HubSpot needed? |
 |---|---|---|
 | Social Engagement Flow | Converts people already engaging with posts/profile. For founders, run this first. | No. HubSpot improves qualification/owner routing but is not required. |
-| Inbound Speed-to-Lead | Acts on demo requests, signups, trials, and other fresh hand-raisers. | HubSpot or a FirstTouch-accessible inbound list. |
+| Inbound Speed-to-Lead | Acts on demo requests, signups, trials, and other fresh hand-raisers. | HubSpot or a FirstTouch-accessible inbound list/import. |
 | Website Visitor Follow-Up | Uses pricing/demo/product-page intent while the account is researching. | HubSpot tracking or RB2B/list source. |
 | HubSpot Signal → LinkedIn Touch | Turns lifecycle/list/deal events into timely social touches. | Yes. |
 | Customer Champion | Warmer customer milestone outreach; low spam risk. | Yes. |
-| Stalled Deal Reactivation | Revives existing pipeline instead of cold volume. | Yes. |
+| Stalled Deal Reactivation | A contact-based HubSpot workflow for contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days. deal-based triggers are unsupported. | Yes. |
 
 ### Add after high-intent is running — outbound / volume
 

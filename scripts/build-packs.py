@@ -68,7 +68,8 @@ def build_readme(manifest: dict, skill_descriptions: dict) -> str:
     recipe_rows = []
     for r in recipes:
         composes_str = " + ".join(f"`{c}`" for c in r["composes"])
-        recipe_rows.append(f"| {r['name']} | {r['outcome']} | {composes_str} |")
+        needs = r.get("needs", "See skill requirements")
+        recipe_rows.append(f"| {r['name']} | {r['outcome']} | {needs} | {composes_str} |")
     recipes_table = "\n".join(recipe_rows) if recipe_rows else "*(none)*"
 
     roadmap_items = (
@@ -116,8 +117,8 @@ Use `references/onboarding.md` for the full question flow, account-type rules, a
 {skills_table}
 
 ### ⚠️ Recipes (composable, run with guidance)
-| Play | What it does | Composes from |
-|---|---|---|
+| Play | What it does | Needs / HubSpot status | Composes from |
+|---|---|---|---|
 {recipes_table}
 
 ### 🔜 Roadmap (not yet shipped)

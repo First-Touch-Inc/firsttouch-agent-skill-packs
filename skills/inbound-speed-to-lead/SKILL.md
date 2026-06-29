@@ -1,14 +1,14 @@
 ---
 name: inbound-speed-to-lead
-description: Attach LinkedIn connection requests and lightweight follow-up to inbound signups, trial starts, demo requests, or other high-intent HubSpot events. Checks connection status, drafts the smallest possible conversation-starting message, gates for approval, and logs the touch back to HubSpot. Use when the user wants to improve speed-to-lead for inbound, connect on LinkedIn after a signup/trial, or add a social touch to inbound conversion.
+description: Attach LinkedIn connection requests and lightweight follow-up to inbound signups, trial starts, demo requests, or other high-intent inbound lists. Can start from HubSpot events when connected or a FirstTouch-accessible inbound list/import when HubSpot is unavailable. Checks connection status, drafts the smallest possible conversation-starting message, gates for approval, and logs to HubSpot when connected. Use when the user wants to improve speed-to-lead for inbound, connect on LinkedIn after a signup/trial, or add a social touch to inbound conversion.
 metadata:
   author: firsttouch
   version: "1.0"
   category: play
-  requires: [firsttouch-mcp, hubspot-mcp]
+  requires: [firsttouch-mcp]
 ---
 
-# Play 11 — Inbound Speed-to-Lead
+# Inbound Speed-to-Lead
 
 **Outcome:** Add a fast, light LinkedIn touch to high-intent inbound moments — signups, trials, demo requests — so the prospect sees a human touch immediately, not just email automation.
 
@@ -28,12 +28,15 @@ Before running this skill for the first time in a workspace, load `../../referen
 
 ## Step-by-step
 
-### 1. Pull inbound contacts (HubSpot MCP)
-Query the trigger event and return contacts created or updated in the window. Capture: name, title, company, owner, event type, timestamp, lifecycle stage, LinkedIn URL.
+### 1. Pull inbound contacts
+**Path A — HubSpot connected:** query the trigger event and return contacts created or updated in the window. Capture: name, title, company, owner, event type, timestamp, lifecycle stage, LinkedIn URL.
+
+**Path B — no HubSpot access:** ask for a FirstTouch-accessible inbound list, CSV import, or other source list containing the hand-raisers. Capture the same fields when available. State that HubSpot owner routing and CRM timeline logging are unavailable until HubSpot is connected.
 
 ### 2. Check readiness
 For each contact:
-- Has owner? if no → route, do not send
+- Run Gate 0 suppression/DNC check from `../../references/safety-governance.md`; if suppressed or unsubscribed → skip
+- Has owner? if HubSpot is connected and no owner exists → route, do not send
 - Has LinkedIn URL / can be matched? if no → enrichment queue
 - Already connected? yes/no
 - Recently contacted? if yes → skip
@@ -61,7 +64,7 @@ Show per contact:
 Awaiting approval only.
 
 ### 6. Execute + log
-On approval: send via FirstTouch, log to HubSpot timeline, tag as `inbound_speed_to_lead`.
+On approval: send via FirstTouch. If HubSpot is connected, log to the HubSpot timeline and tag as `inbound_speed_to_lead`; if not, log the execution record in FirstTouch and state that CRM logging was skipped.
 
 ### 7. Track
 Measure touch-to-meeting rate and reply rate for inbound contacts who received the LinkedIn touch versus those who did not.
@@ -70,7 +73,7 @@ Measure touch-to-meeting rate and reply rate for inbound contacts who received t
 - prioritized inbound queue
 - drafted social touches, gated for approval
 - send + log confirmation
-- tagged cohort for attribution
+- tagged cohort for attribution when HubSpot/list metadata is available
 
 ## Pitfalls
 - treating all inbound equally — prioritize hand-raisers over lightweight ebook downloads

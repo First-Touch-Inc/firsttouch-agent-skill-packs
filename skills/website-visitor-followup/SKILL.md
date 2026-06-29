@@ -8,7 +8,7 @@ metadata:
   requires: [firsttouch-mcp, hubspot-mcp]
 ---
 
-# Play 13 — Website Visitor Follow-Up
+# Website Visitor Follow-Up
 
 **Outcome:** Convert high-intent website visits into social touches while the account is actively researching.
 
@@ -26,6 +26,9 @@ Before running this skill for the first time in a workspace, load `../../referen
 - **identity confidence:** known contact vs likely account only
 
 ## Step-by-step
+
+Before drafting or queueing any contact, run Gate 0 suppression/DNC from `../../references/safety-governance.md`. Suppressed, unsubscribed, opted-out, or do-not-contact records are skipped and logged.
+
 
 ### 1. Pull visitor signals
 Get recent high-intent visits with page path, timestamp, company/contact match confidence, and any associated HubSpot owner. **Two paths to the data:**

@@ -33,6 +33,10 @@
       "status": "live"
     },
     {
+      "name": "stalled-deal-reactivation",
+      "status": "live"
+    },
+    {
       "name": "hubspot-signal-to-linkedin-touch",
       "status": "live"
     }
@@ -41,15 +45,16 @@
     {
       "name": "Social engagement flow \u2014 founder posts",
       "outcome": "Start with the warmest founder motion: ICP-qualify people engaging with your posts, check connection status, and draft a light founder-voice touch for approval. No HubSpot required.",
+      "needs": "No HubSpot required; HubSpot optional for CRM context",
       "composes": [
         "warm-engager-followup",
-        "founder-led-outbound",
         "firsttouch-messaging"
       ]
     },
     {
       "name": "Founder-led AI SDR \u2014 daily approval queue",
-      "outcome": "Use a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to 10/15 founder-voice touches per day for approval.",
+      "outcome": "Use a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to 10/day free or 15/day Sales Nav/Premium founder-voice touches for approval.",
+      "needs": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
       "composes": [
         "founder-led-outbound"
       ]
@@ -57,6 +62,7 @@
     {
       "name": "Fast personal inbound follow-up",
       "outcome": "Connect with high-intent signups and demo requests on LinkedIn same day, in your voice.",
+      "needs": "HubSpot or FirstTouch-accessible inbound list/import required",
       "composes": [
         "inbound-speed-to-lead",
         "firsttouch-messaging"
@@ -64,7 +70,8 @@
     },
     {
       "name": "Website visitor play",
-      "outcome": "Turn pricing/demo/product-page visits into LinkedIn touches while intent is active. Requires a website-visitor source such as HubSpot tracking or RB2B feeding a FirstTouch-accessible list.",
+      "outcome": "Turn pricing/demo/product-page visits into LinkedIn touches while intent is active.",
+      "needs": "HubSpot tracking or RB2B/list source required; otherwise route to Founder AI SDR",
       "composes": [
         "website-visitor-followup",
         "founder-led-outbound"
@@ -73,22 +80,25 @@
     {
       "name": "Scoop-up slipped leads",
       "outcome": "Use HubSpot lifecycle/deal/list data to find personal lost deals and dormant contacts worth a second look.",
+      "needs": "HubSpot required",
       "composes": [
         "hubspot-signal-to-linkedin-touch",
         "firsttouch-messaging"
       ]
     },
     {
-      "name": "Closed-lost reengagement",
-      "outcome": "Re-engage closed-lost deals with no engagement for 60+ days via a fresh LinkedIn touch.",
+      "name": "Stalled deal reactivation \u2014 60-day open-deal workflow",
+      "outcome": "Trigger a contact-based HubSpot workflow when contacts are associated to open deals that are not Closed Won/Lost and have had no engagement for 60+ days, then draft a fresh founder-voice LinkedIn touch for approval.",
+      "needs": "HubSpot required; contact-based workflow only, because deal-based triggers are unsupported",
       "composes": [
-        "hubspot-signal-to-linkedin-touch",
+        "stalled-deal-reactivation",
         "firsttouch-messaging"
       ]
     },
     {
       "name": "Customer thank-you",
       "outcome": "Reach out when a customer hits a milestone, deepen the relationship before you need a favor.",
+      "needs": "HubSpot required",
       "composes": [
         "customer-champion"
       ]

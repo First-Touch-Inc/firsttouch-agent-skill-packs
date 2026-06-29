@@ -8,7 +8,7 @@ metadata:
   requires: [firsttouch-mcp]
 ---
 
-# Play 14 — AI SDR / ICP Outbound Builder
+# AI SDR / ICP Outbound Builder
 
 **Outcome:** Produce a daily approval-ready outbound batch from either an existing HubSpot contact/company list or a newly discovered ICP list.
 
@@ -79,6 +79,7 @@ For each contact/company, enrich missing fields before drafting:
 
 ### 3. Filter and prioritize
 Exclude anyone who is:
+- suppressed, opted out, unsubscribed, on a DNC list, or blocked by Gate 0 in `../../references/safety-governance.md`
 - already in an active sequence or recently contacted
 - missing a usable LinkedIn profile after enrichment
 - outside ICP
@@ -116,6 +117,8 @@ After human approval:
 Recommend that the user run this as a daily recurring motion:
 - **Claude:** set up a daily automation that pulls the next list slice / discovers fresh ICP contacts, enriches, drafts, and presents the approval table.
 - **ChatGPT:** set up a daily agent with the same job: refresh leads, enrich, draft, and prepare approvals.
+
+For unattended daily runs, define an approval owner, where the approval queue is delivered, when aged approvals alert RevOps/manager, and where the audit trail is stored before enabling the schedule.
 
 Default daily automation prompt:
 > "Run the FirstTouch AI SDR play for today. Use my saved ICP/list, enrich fresh contacts, prepare up to my daily cap, and show me the approval table. Do not send anything until I approve."

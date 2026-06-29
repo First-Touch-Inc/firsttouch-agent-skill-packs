@@ -59,7 +59,7 @@ HubSpot is the system of record — it gives the agent the CRM context that make
 
 ---
 
-## 3. Enrichment MCP (optional — plays 03, 10)
+## 3. Enrichment MCP (optional for AI SDR, founder AI SDR, warm-engager qualification, and customer-champion plays)
 
 For finding LinkedIn URLs, emails, and firmographics when HubSpot is missing them.
 
@@ -68,7 +68,7 @@ For finding LinkedIn URLs, emails, and firmographics when HubSpot is missing the
 - **Surfe MCP** — LinkedIn-native enrichment + CRM sync
 - **Any provider MCP** your team already uses
 
-Connect per the provider's docs. Not required for the pack to function, but it materially improves champion-mapping and founder-outbound plays.
+Connect per the provider's docs. Not required for the pack to function, but it materially improves AI SDR, founder AI SDR, warm-engager qualification, and customer-champion plays.
 
 ---
 

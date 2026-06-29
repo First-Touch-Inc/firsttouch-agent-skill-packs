@@ -93,7 +93,7 @@ Every pack should ask three questions before running volume:
 4. **Inbound Speed-to-Lead** — attach LinkedIn connection and follow-up to signups, trials, or demo requests.
 5. **Website Visitor Follow-Up** — act on pricing/demo/product-page intent from HubSpot tracking or RB2B/list sources.
 6. **HubSpot Signal Touches** — turn lifecycle, list, or deal events into timely social touches.
-7. **Stalled Deal Reactivation** — restart quiet opportunities with fresh context.
+7. **Stalled Deal Reactivation** — trigger a contact-based HubSpot workflow for contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days, then draft a fresh approved LinkedIn touch.
 8. **Customer Champion** — reach out around customer milestones.
 9. **Sequence QA / Workspace Audit** — make sure the setup and messaging are safe before scaling.
 
@@ -107,10 +107,10 @@ Every pack should ask three questions before running volume:
 | Warm Engager Follow-Up | Turn post engagers into conversations | FirstTouch; HubSpot optional for qualification/routing |
 | AI SDR / ICP Outbound Builder | Pull target accounts, qualify, find personas, and add to a daily approval queue | HubSpot list preferred; otherwise ICP brief + FirstTouch Discover Contacts |
 | Founder-Led AI SDR | Run the AI SDR workflow in founder voice | HubSpot list preferred; otherwise ICP brief + FirstTouch Discover Contacts |
-| Inbound Speed-to-Lead | Attach LinkedIn connection + follow-up to inbound signups or trials | HubSpot or FirstTouch-accessible inbound list |
+| Inbound Speed-to-Lead | Attach LinkedIn connection + follow-up to inbound signups or trials | HubSpot or FirstTouch-accessible inbound list/import |
 | HubSpot Signal → LinkedIn Touch | Act on CRM lifecycle/list/deal signals with social outreach | HubSpot required |
 | Website Visitor Follow-Up | Turn website visitor intent into social outreach | HubSpot tracking or RB2B/list source |
-| Stalled Deal Reactivation | Restart stuck opps with social proof | HubSpot required |
+| Stalled Deal Reactivation | Contact-based HubSpot workflow for contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days, then queue reactivation touches | HubSpot required |
 | Customer Champion | Reach out when a customer milestone is reached | HubSpot required |
 | Sequence QA Reviewer | Review campaigns for risk + quality | No HubSpot required |
 | Workspace Audit | Find setup gaps before launch | No HubSpot required; HubSpot improves CRM checks |
@@ -132,10 +132,10 @@ In addition to the flat `skills/` folder above, this repo ships **4 downloadable
 
 | Pack | Persona | Skills included | Key plays |
 |---|---|---:|---|
-| `founder-pack` | Founders doing their own sales | 8 | Social engagement flow, founder AI SDR, inbound follow-up, customer thank-you |
-| `ae-pack` | Account Executives | 7 | Stalled deal reactivation, meeting-booked stakeholder follow-up, closed-lost re-engage |
+| `founder-pack` | Founders doing their own sales | 9 | Social engagement flow, founder AI SDR, inbound follow-up, stalled open-deal workflow, customer thank-you |
+| `ae-pack` | Account Executives | 7 | Inbound speed-to-lead, stalled open-deal workflow, meeting-booked stakeholder follow-up, closed-lost re-engage |
 | `bdr-pack` | Business Development Reps | 6 | Inbound speed-to-lead, social engagement flow, target-list AI SDR, lead recovery |
-| `revops-pack` | Revenue Operations | 9 | Workspace audit, sequence QA, HubSpot workflow build, team governance |
+| `revops-pack` | Revenue Operations | 10 | Workspace audit, sequence QA, stalled open-deal workflow, HubSpot workflow build, team governance |
 
 ### Shared-core model
 
@@ -145,7 +145,7 @@ All 4 packs include the same 5 core plays, each with a persona-specific lens:
 2. **Social engagement flow** — act on post engagement from your posts, leadership posts, or company content
 3. **Website visitor play** — turn high-intent page visits into outreach
 4. **AI SDR build** — daily approval-ready outbound from a HubSpot contact/company list, or from a newly discovered ICP list when no HubSpot list exists
-5. **Scoop-up slipped leads** — recover dormant MQLs, no-shows, and stale pipeline when HubSpot/list data exists
+5. **Scoop-up slipped leads** — recover dormant MQLs, no-shows, and stale pipeline when HubSpot/list data exists. Stalled-deal reactivation specifically means a contact-based HubSpot workflow enrolling contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days.
 
 Each pack then adds persona-unique plays on top of this shared core.
 

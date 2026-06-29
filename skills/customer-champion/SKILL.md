@@ -8,7 +8,7 @@ metadata:
   requires: [firsttouch-mcp, hubspot-mcp]
 ---
 
-# Play 12 — Customer Champion
+# Customer Champion
 
 **Outcome:** Turn customer milestones into relationship-building moments on LinkedIn so champions feel seen before you need a favor, referral, quote, or renewal conversation.
 
@@ -28,6 +28,9 @@ Before running this skill for the first time in a workspace, load `../../referen
 - **goal** (relationship deepen / advocacy / expansion groundwork)
 
 ## Step-by-step
+
+Before drafting or queueing any contact, run Gate 0 suppression/DNC from `../../references/safety-governance.md`. Suppressed, unsubscribed, opted-out, or do-not-contact records are skipped and logged.
+
 
 ### 1. Pull milestone hits (HubSpot MCP)
 Find customer contacts/accounts matching the milestone. Capture: contact, company, owner/CSM, milestone hit, date, renewal/expansion context.

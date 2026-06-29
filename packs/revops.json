@@ -29,6 +29,10 @@
       "status": "live"
     },
     {
+      "name": "stalled-deal-reactivation",
+      "status": "live"
+    },
+    {
       "name": "customer-champion",
       "status": "live"
     },
@@ -43,8 +47,18 @@
   ],
   "recipes": [
     {
+      "name": "Pre-launch rollout audit",
+      "outcome": "Run a team-wide readiness checklist before rollout: MCP connections, approval workflow, suppression checks, sequence quality, and per-seat safety limits.",
+      "needs": "No HubSpot required; HubSpot improves CRM/owner checks",
+      "composes": [
+        "workspace-audit",
+        "sequence-qa-reviewer"
+      ]
+    },
+    {
       "name": "HubSpot Workflow trigger \u2014 team-wide LinkedIn flows",
-      "outcome": "Use HubSpot lifecycle changes as triggers for LinkedIn outreach flows at scale across your team",
+      "outcome": "Use HubSpot lifecycle changes as triggers for LinkedIn outreach flows at scale across your team.",
+      "needs": "HubSpot required",
       "composes": [
         "hubspot-signal-to-linkedin-touch",
         "inbound-speed-to-lead"
@@ -52,7 +66,8 @@
     },
     {
       "name": "Social engager setup for team",
-      "outcome": "Configure warm-engager signal capture and flows so the whole team benefits from content engagement",
+      "outcome": "Configure warm-engager signal capture and flows so the whole team benefits from content engagement.",
+      "needs": "No HubSpot required; HubSpot optional for qualification/routing",
       "composes": [
         "warm-engager-followup",
         "icp-outbound-builder"
@@ -60,7 +75,8 @@
     },
     {
       "name": "Website visitor play",
-      "outcome": "Turn pricing/demo/product-page visits into LinkedIn touches while intent is active",
+      "outcome": "Turn pricing/demo/product-page visits into LinkedIn touches while intent is active.",
+      "needs": "HubSpot tracking or RB2B/list source required",
       "composes": [
         "website-visitor-followup",
         "icp-outbound-builder"
@@ -68,23 +84,26 @@
     },
     {
       "name": "Govern and audit AI SDR daily queues",
-      "outcome": "Review, QA, and monitor team-wide AI SDR daily queues before and after launch, including 10/15 daily caps and approval workflow",
+      "outcome": "Review, QA, and monitor team-wide AI SDR daily queues before and after launch, including 10/15 daily caps, approval workflow, and aged-queue alerts.",
+      "needs": "No HubSpot required for QA/audit; HubSpot improves owner routing",
       "composes": [
         "sequence-qa-reviewer",
         "workspace-audit"
       ]
     },
     {
-      "name": "Team-wide slipped lead recovery",
-      "outcome": "Identify dormant pipeline across all reps from HubSpot signals and prepare approved reactivation queues.",
+      "name": "Stalled deal reactivation workflow \u2014 team-wide",
+      "outcome": "Trigger a contact-based HubSpot workflow for contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days, then prepare approved reactivation queues by owner.",
+      "needs": "HubSpot required; contact-based workflow only, because deal-based triggers are unsupported",
       "composes": [
-        "hubspot-signal-to-linkedin-touch",
-        "icp-outbound-builder"
+        "stalled-deal-reactivation",
+        "firsttouch-messaging"
       ]
     },
     {
       "name": "Closed-lost reengagement \u2014 team-wide",
-      "outcome": "Re-engage closed-lost deals with no engagement for 60+ days across all reps",
+      "outcome": "Re-engage historical closed-lost accounts across all reps when RevOps explicitly chooses a win-back motion.",
+      "needs": "HubSpot required; separate from stalled open-deal workflow",
       "composes": [
         "hubspot-signal-to-linkedin-touch",
         "icp-outbound-builder",
@@ -93,14 +112,16 @@
     },
     {
       "name": "HubSpot Workflow build with FirstTouch actions",
-      "outcome": "Coach through adding FT action cards (Enroll / View Profile / Connect) in HubSpot Automation UI",
+      "outcome": "Coach through adding FirstTouch action cards/actions such as enroll, view profile, or connect inside HubSpot workflows, when available in the connected portal.",
+      "needs": "HubSpot required; confirm action cards exist in the customer portal before promising UI steps",
       "composes": [
         "hubspot-signal-to-linkedin-touch"
       ]
     },
     {
       "name": "Event plays \u2014 pre-invite and post-follow-up",
-      "outcome": "Build audience and invite flow before an event, then run follow-up flows to attendees and no-shows",
+      "outcome": "Build audience and invite flow before an event, then run follow-up flows to attendees and no-shows.",
+      "needs": "HubSpot or imported attendee/source list required",
       "composes": [
         "icp-outbound-builder",
         "hubspot-signal-to-linkedin-touch",
@@ -109,7 +130,8 @@
     },
     {
       "name": "Customer thank-you",
-      "outcome": "Reach out when a customer hits a milestone \u2014 deepen the relationship before you need a favor",
+      "outcome": "Reach out when a customer hits a milestone \u2014 deepen the relationship before you need a favor.",
+      "needs": "HubSpot required",
       "composes": [
         "customer-champion"
       ]
