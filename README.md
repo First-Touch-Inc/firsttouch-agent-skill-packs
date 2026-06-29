@@ -56,7 +56,7 @@ Paste this into a Webflow Custom Embed element:
 
 ```html
 <div data-ftmcp-embed></div>
-<script src="https://cdn.jsdelivr.net/gh/First-Touch-Inc/firsttouch-agent-skill-packs@v0.1.1/embed/ftmcp-landing.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/First-Touch-Inc/firsttouch-agent-skill-packs@v0.1.2/embed/ftmcp-landing.js"></script>
 ```
 
 The embed loader injects the FirstTouch MCP landing section, styles, and interactivity.
