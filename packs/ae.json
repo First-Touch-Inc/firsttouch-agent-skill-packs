@@ -1,0 +1,129 @@
+{
+  "persona": "ae",
+  "pack_name": "AE Pack",
+  "persona_pain": "Deals dying in silence while champions go dark and pipeline looks fine until it doesn't",
+  "persona_blurb": "You carry a number. Your whole job depends on deals staying alive and champions staying warm. Most CRM data tells you what happened last month — these plays tell you what to do today about the deal that's going quiet. You need fast inbound follow-up, multi-threading on booked meetings, and reactivation plays for pipeline that's been silent too long.",
+  "skills": [
+    {
+      "name": "firsttouch-messaging",
+      "status": "live"
+    },
+    {
+      "name": "owner-safe-outreach-operator",
+      "status": "live"
+    },
+    {
+      "name": "inbound-speed-to-lead",
+      "status": "live"
+    },
+    {
+      "name": "warm-engager-followup",
+      "status": "live"
+    },
+    {
+      "name": "website-visitor-followup",
+      "status": "live"
+    },
+    {
+      "name": "icp-outbound-builder",
+      "status": "live"
+    },
+    {
+      "name": "hubspot-signal-to-linkedin-touch",
+      "status": "live"
+    },
+    {
+      "name": "champion-mapper",
+      "status": "live"
+    },
+    {
+      "name": "stalled-deal-reactivation",
+      "status": "live"
+    }
+  ],
+  "recipes": [
+    {
+      "name": "Auto-connect on meeting or signup",
+      "outcome": "Agent connects with prospects the moment they book or submit, before the moment cools",
+      "composes": [
+        "inbound-speed-to-lead",
+        "firsttouch-messaging"
+      ]
+    },
+    {
+      "name": "Social engager flow — leadership's audience",
+      "outcome": "Reach people engaging with company content before they go cold",
+      "composes": [
+        "warm-engager-followup",
+        "icp-outbound-builder"
+      ]
+    },
+    {
+      "name": "Website visitor play",
+      "outcome": "Turn pricing/demo/product-page visits into LinkedIn touches while intent is active",
+      "composes": [
+        "website-visitor-followup",
+        "icp-outbound-builder"
+      ]
+    },
+    {
+      "name": "AE AI SDR — daily approval queue",
+      "outcome": "View a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to 10/15 AE-owned LinkedIn touches per day for approval",
+      "composes": [
+        "icp-outbound-builder",
+        "owner-safe-outreach-operator",
+        "firsttouch-messaging"
+      ]
+    },
+    {
+      "name": "Scoop-up slipped leads — stale opps",
+      "outcome": "Identify and re-engage dormant deals and pipeline that has gone quiet 30+ days",
+      "composes": [
+        "hubspot-signal-to-linkedin-touch",
+        "stalled-deal-reactivation",
+        "firsttouch-messaging"
+      ]
+    },
+    {
+      "name": "Meeting-booked multi-thread",
+      "outcome": "When a meeting books, auto-connect other decision-makers so you're not single-threaded",
+      "composes": [
+        "hubspot-signal-to-linkedin-touch",
+        "champion-mapper",
+        "firsttouch-messaging"
+      ]
+    },
+    {
+      "name": "Closed-lost reengagement",
+      "outcome": "Re-engage closed-lost deals with no engagement for 60+ days via a fresh LinkedIn touch",
+      "composes": [
+        "hubspot-signal-to-linkedin-touch",
+        "icp-outbound-builder",
+        "firsttouch-messaging"
+      ]
+    }
+  ],
+  "roadmap": [
+    {
+      "name": "Rep-led AI SDR",
+      "spec": "roadmap/rep-led-ai-sdr.md"
+    }
+  ],
+  "references": [
+    {
+      "src": "references/onboarding.md"
+    },
+    {
+      "src": "references/mcp-setup.md"
+    },
+    {
+      "src": "references/safety-governance.md"
+    },
+    {
+      "src": "references/messaging-framework.md"
+    },
+    {
+      "src": "references/system-grounding.md"
+    }
+  ]
+}
