@@ -52,7 +52,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 - HubSpot write scope for timeline tags/properties confirmed? ✅/❌
 - Test action round-trip completed: create/approve one safe test action, then verify the HubSpot timeline/logging record and FirstTouch reply/status visibility came back as expected. If the team will not run a test action, mark attribution/logging `unverified`, not `ready`.
 - Attribution tags/properties created or writable (e.g. `linkedin_intent`, play tags)? ✅/❌/manual HubSpot check
-- FirstTouch reply tracking visible for outreach actions? ✅/❌ — the agent cannot read arbitrary inbox history, but FirstTouch-tracked outreach can surface reply events and captured reply text/status.
+- FirstTouch reply tracking visible for outreach actions? ✅/❌ — the agent cannot read arbitrary inbox history, but FirstTouch-tracked outreach can surface reply/engagement status for actions it manages.
 - Deals associated with contacts that have timeline activity? ✅/❌
 
 ### 6. Queue/status hygiene
@@ -104,10 +104,14 @@ PRIORITY FIXES (do before launch):
 3. Enrich LinkedIn URLs to >90% coverage
 ```
 
+### 9. Outcome metrics snapshot
+When FirstTouch team metrics are available, pull the trailing 30 days by flow, sender, and date: actions sent, replies, reply sentiment where available, meetings booked, and opportunities. Reconcile the results against HubSpot logging coverage so RevOps can distinguish "outreach ran" from "outreach is attributable." If metrics are unavailable, mark outcome reporting `unverified` and state the missing permission/source.
+
 ## Output
 - Readiness scorecard (score + per-area status)
 - Prioritized fix list (what blocks launch, what's nice-to-have)
 - Go/no-go recommendation
+- Outcome metrics snapshot: sends, replies, sentiment, meetings, opportunities by flow/sender/date when available
 
 ## Examples
 **Customer:** new onboarding, eager to launch.

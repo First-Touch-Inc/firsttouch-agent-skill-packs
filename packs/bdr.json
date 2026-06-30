@@ -80,8 +80,8 @@
     },
     {
       "name": "Scoop-up slipped leads \u2014 no-shows and old MQLs",
-      "outcome": "Reach back on no-shows and leads that never converted to opportunities.",
-      "needs": "HubSpot required; no-shows require a provided event list, HubSpot list, or custom property supplied by RevOps",
+      "outcome": "Work no-shows and old MQLs from a HubSpot/event list, RevOps-supplied property, or imported source; if no source exists, use BDR AI SDR instead.",
+      "needs": "HubSpot/event list, RevOps-supplied property, or imported source required",
       "composes": [
         "hubspot-signal-to-linkedin-touch",
         "icp-outbound-builder",
@@ -104,6 +104,9 @@
     },
     {
       "src": "references/system-grounding.md"
+    },
+    {
+      "src": "references/recipes.md"
     }
   ]
 }

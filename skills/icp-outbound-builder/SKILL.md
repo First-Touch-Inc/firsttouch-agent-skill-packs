@@ -32,12 +32,12 @@ Before running this skill for the first time in a workspace, load `../../referen
 
 ## Daily volume rules for AI SDR
 
-| LinkedIn account | Daily AI SDR batch cap | Connection request note |
+| LinkedIn account | Daily AI SDR connection-request row cap | Connection request note |
 |---|---:|---|
-| Free/basic | 10 contacts/day | No note |
-| Sales Navigator / Premium | 20 contacts/day | No note by default for cold AI SDR; notes are allowed only when the user explicitly approves a strong reason |
+| Free/basic | 10 connection-request rows/day | No note |
+| Sales Navigator / Premium | 20 connection-request rows/day | No note by default for cold AI SDR; notes are allowed only when the user explicitly approves a strong reason |
 
-These caps are intentionally conservative for a recurring outbound motion and share the sender's total daily connection-request budget. If AI SDR and another play run on the same day, the combined connection requests must stay within 10 or 20. If the account is new, warned, or acceptance/reply rates drop, lower the cap and pause for human review.
+These caps apply to rows that send connection requests and are intentionally conservative for a recurring outbound motion. Already-connected first-message rows draw from the separate message cap and still require approval. If AI SDR and another play run on the same day, the combined connection requests must stay within 10 or 20. If the account is new, warned, or acceptance/reply rates drop, lower the cap and pause for human review.
 
 ## Default outreach plan
 

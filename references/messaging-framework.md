@@ -131,7 +131,7 @@ Thought of your team given {reason}. No ask, just useful.
 ```
 {first_name}, seems like {their problem} is live for you right now.
 
-I can show you exactly how {comparable company} set this up in HubSpot in 15 min. {Two specific time options} work?
+I can show you exactly how {comparable company} set this up in 15 min. {Two specific time options} work?
 ```
 
 ### Break-up / re-engage (last touch)

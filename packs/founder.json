@@ -41,7 +41,7 @@
     {
       "name": "Social engagement flow \u2014 founder posts",
       "outcome": "Start with the warmest founder motion: ICP-qualify people engaging with your posts, or a relevant competitor founder/influencer profile if your own engagement is thin, then draft a light founder-voice touch for approval. No HubSpot required.",
-      "needs": "No HubSpot required; paid, non-trial Social Engagement required for monitored profiles, or use an exported engager list; profile views unavailable",
+      "needs": "No HubSpot required; Social Engagement must be enabled in the workspace for monitored profiles, or use an exported engager list; profile views unavailable",
       "composes": [
         "warm-engager-followup",
         "firsttouch-messaging"
@@ -116,6 +116,9 @@
     },
     {
       "src": "references/system-grounding.md"
+    },
+    {
+      "src": "references/recipes.md"
     }
   ]
 }

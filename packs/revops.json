@@ -60,6 +60,14 @@
       ]
     },
     {
+      "name": "Attribution & team performance review",
+      "outcome": "Run the recurring RevOps reporting cadence: pull FirstTouch team metrics for the trailing 30 days by flow, sender, and date, then reconcile sends, replies, sentiment, meetings, and opportunities against HubSpot logging coverage.",
+      "needs": "No HubSpot required for FirstTouch team metrics; HubSpot improves opportunity/pipeline reconciliation",
+      "composes": [
+        "workspace-audit"
+      ]
+    },
+    {
       "name": "HubSpot list trigger \u2014 team-wide LinkedIn flows",
       "outcome": "Use HubSpot lists or contact-based workflow outputs as the trigger source for FirstTouch LinkedIn outreach across your team. If HubSpot action cards exist in the portal, confirm them first; otherwise produce manual RevOps/admin setup steps.",
       "needs": "HubSpot required",
@@ -165,6 +173,9 @@
     },
     {
       "src": "references/system-grounding.md"
+    },
+    {
+      "src": "references/recipes.md"
     }
   ]
 }

@@ -30,7 +30,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 - Any campaign where the user expects unreviewed AI-generated copy for every recipient. If copy is dynamic per recipient, use row-level approval like AI SDR.
 
 ## How narrow is narrow enough
-Default to **25-100 people** for a first social campaign. Warn and ask for confirmation above **100**, require a stronger reason above **200**, and split anything larger into smaller waves by segment, sender, or launch window. Pull the daily-cap math into the sizing step: a 100-person campaign takes roughly 10 sending days on a free/basic seat at 10/day, or 5 sending days on Sales Navigator/Premium at 20/day, before any safety throttling. Never queue more connection requests than the sender's daily cap allows.
+Default to **25-100 people** for a first social campaign. Warn and ask for confirmation above **100**, require a stronger reason above **200**, and split anything larger into smaller waves by segment, sender, or launch window. Pull the daily-cap math into the sizing step. If AI SDR is also running for the same sender, either pause/reduce AI SDR during the campaign window or split the daily cap explicitly, for example 6 AI SDR + 4 campaign on a free/basic seat. Recompute campaign sending-day estimates against the campaign allocation: a 100-person campaign takes roughly 10 sending days only if the full 10/day free/basic cap is allocated to it, or 5 sending days only if the full 20/day Sales Navigator/Premium cap is allocated to it, before safety throttling. Never queue more connection requests than the sender's allocated daily cap allows.
 
 ## Examples by role
 
@@ -91,13 +91,15 @@ Use this decision tree:
 | If the segment depends on... | Use this path | HubSpot needed? |
 |---|---|---|
 | CRM fields: customer status, closed-won date, deal amount/stage/age, owner, territory field, no-show status stored in CRM | **HubSpot/list-driven**: read HubSpot MCP or a HubSpot list FirstTouch can access | Yes |
-| Market/ICP filters: title, geography, industry, company size, software company, event city | **FirstTouch Discover**: build and preview a small audience from Discover Contacts | No |
+| Market/ICP filters: title, geography, industry, company size, software company, event city | **FirstTouch Discover**: build and preview a small audience from Discover Contacts; state estimated max credits before bulk import | No |
 | User-provided contacts, event attendees, target accounts, or connection export | **Imported/list-driven**: use the CSV/list/audience, then enrich and check connection status | No, unless CRM fields are part of the criteria |
 | Existing sender/team connections at target accounts | **Team-connection**: start from FirstTouch Team LinkedIn Connections data or a user-provided connection export; if neither exists, ask for one before claiming a team-connection campaign | No, unless CRM fields are part of routing |
 
 Do not call this a team-connection campaign unless FirstTouch or the user provides connection data. If connection data is unavailable, run an imported/list or Discover campaign and mark connection status as unknown until checked prospect by prospect.
 
 ### 3. Enrich and qualify the audience
+Before bulk discovery or enrichment, run Gate 3a from `../../references/safety-governance.md`: preview a small sample, state estimated maximum credits, and get approval for bulk credit spend.
+
 For each candidate, enrich and verify:
 - LinkedIn URL and current title
 - company domain, size, industry, location

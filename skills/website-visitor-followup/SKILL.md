@@ -80,5 +80,6 @@ Measure reply and meeting rate by page type and signal confidence.
 - hitting visitors too late after the signal cools down
 
 ## Reference
+- Safety: [`../../references/safety-governance.md`](../../references/safety-governance.md)
 - Messaging: [`../../references/messaging-framework.md`](../../references/messaging-framework.md)
 - If only company is known, use target personas and available FirstTouch/HubSpot contact data to select likely stakeholders.

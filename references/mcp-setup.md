@@ -16,7 +16,7 @@ FirstTouch is the execution layer — it's what lets the agent actually perform 
 - **Scope:** scoped to the authorized user's LinkedIn account and connected HubSpot
 
 **Verify it's connected:**
-> Ask the agent: *"List my active FirstTouch campaigns and the seats connected."*
+> Ask the agent: *"Show my FirstTouch current user and workspace, then list my flow plans and audiences."*
 
 If the agent can return campaign + seat data, the MCP is live.
 
@@ -24,7 +24,7 @@ If the agent can return campaign + seat data, the MCP is live.
 - FirstTouch execution objects — audiences, flow plans/campaigns, dynamic actions, and enrollments depending on the connected workspace
 - Campaign/flow control — launch, pause, edit when the connected workspace exposes those actions
 - LinkedIn actions — connection request, message, email step, call task, or manual task depending on the flow/action type exposed in the workspace
-- Engagement data — LinkedIn post likes and comments from monitored profiles. Profile-view signals are not available. The agent cannot read arbitrary inbox history, but FirstTouch-tracked outreach can report when a prospect replies and expose the reply text/status captured on that activity.
+- Engagement data — LinkedIn post likes and comments from monitored profiles. Profile-view signals are not available. The agent cannot read arbitrary inbox history; FirstTouch-tracked outreach can report reply/engagement status for actions it manages, and team metrics can summarize reply sentiment where available.
 - Logging — FirstTouch/HubSpot activity logging where the workspace integration supports it
 - Safety — seat usage, daily limits, duplicate checks
 

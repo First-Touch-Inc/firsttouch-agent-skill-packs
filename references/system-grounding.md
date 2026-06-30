@@ -1,6 +1,6 @@
 # System Grounding — How FirstTouch, HubSpot, and Agents Fit Together
 
-*Read this once. Every play assumes this mental model.*
+*Read this once. This reference is shared across packs; execute only the skills and recipes included in the installed pack.*
 
 ---
 
@@ -28,7 +28,7 @@
 └─────────────────────────────────────────────────────────┘
 ```
 
-**The key idea:** the AI agent is the brain, FirstTouch is the hands, HubSpot is the memory. An agent without FirstTouch can *think* about outreach but can't *perform* it safely or log it. FirstTouch is what turns intent into governed action.
+**The key idea:** the AI agent is the brain and FirstTouch is the governed execution layer. FirstTouch can run standalone through Audiences, Flow Plans, Discover Contacts, Dynamic Actions, and Social Engagement. HubSpot adds CRM memory: owner routing, lifecycle/deal signals, and timeline logging when connected. An agent without FirstTouch can *think* about outreach but can't *perform* it safely or log it.
 
 ---
 
@@ -83,7 +83,7 @@ Steps 1–4 and 6–7 are where the agent earns its keep. Step 5 is FirstTouch. 
 | MCP | What it gives the agent | Required by |
 |-----|------------------------|-------------|
 | **FirstTouch MCP** | LinkedIn action execution, engagement data, logging | Every play |
-| **HubSpot MCP** | CRM context, lifecycle, owners, deals, lists | Required for HubSpot signal touches, stalled deal reactivation, customer champion, and CRM/deal/customer segments. Optional but useful for inbound speed-to-lead, website visitor follow-up, AI SDR, warm engagement, and social campaigns when those can start from FirstTouch/imported/Discover sources. |
+| **HubSpot MCP** | CRM context, lifecycle, owners, deals, lists | Required for HubSpot signal touches, stalled deal reactivation, customer/customer-milestone plays when installed, and CRM/deal/customer segments. Optional but useful for inbound speed-to-lead, website visitor follow-up, AI SDR, warm engagement, and social campaigns when those can start from FirstTouch/imported/Discover sources. |
 | **FirstTouch enrichment + optional external enrichment MCP** | LinkedIn URLs, emails, firmographics | FirstTouch can enrich when credits/data are available; Clay/Surfe/etc. are optional supplements, not prerequisites |
 
 Full setup instructions: [`mcp-setup.md`](mcp-setup.md).

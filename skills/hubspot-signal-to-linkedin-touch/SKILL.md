@@ -29,7 +29,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 ## Step-by-step
 
 ### 1. Define & query the signal (HubSpot MCP)
-Pull contacts matching the trigger event within the window. If the desired trigger needs a HubSpot workflow, produce the contact-based workflow/list criteria for RevOps/admin; do not claim the agent created a HubSpot workflow unless the connected portal exposes and confirms that capability. For each, capture: name, title, company, owner, lifecycle/deal stage, the triggering event + timestamp, and recent timeline activity.
+Pull contacts matching the trigger event within the window. FirstTouch supports HubSpot workflow actions that trigger FirstTouch flows; if the desired trigger needs a HubSpot workflow, confirm the customer portal exposes the needed FirstTouch action card and permissions, then produce the contact-based workflow/list criteria for RevOps/admin. Do not claim the agent created a HubSpot workflow unless the connected portal confirms that capability. For each, capture: name, title, company, owner, lifecycle/deal stage, the triggering event + timestamp, and recent timeline activity.
 
 ### 2. Qualify
 For each triggered contact:
@@ -48,6 +48,7 @@ The HubSpot event determines the message:
 | Meeting logged on an associated deal | Connection request to unconnected stakeholders, or opener/value touch to connected stakeholders | Multi-thread the account after a real meeting signal. Configure as a contact-based HubSpot list/workflow, for example: contacts at companies where an associated deal has a meeting logged in the last 7 days. |
 | Deal moved forward | Value touch to stakeholders | Reinforce |
 | Open deal not Closed Won/Lost and no engagement for 60+ days | Re-engage | Use a contact-based stalled-deal list/workflow-output pattern; if this pack does not include the stalled-deal skill, ask RevOps/admin to supply the qualifying HubSpot list or setup steps. Deal triggers are unsupported. |
+| Closed Lost deal selected for win-back | Connection request or re-engage | Use a contact-based list of contacts associated to Closed Lost deals; keep this separate from stalled open-deal reactivation. |
 | Re-engaged after silence | Opener | Context renewed |
 
 ### 4. Draft (load `firsttouch-messaging`)
@@ -71,6 +72,9 @@ Cohort tagged by signal type so the team can review which signals produce replie
 ## Examples
 **Signal:** Contact filled "Request a demo" form, owner = AE, not yet connected on LinkedIn.
 **Draft (connection request):** "Hi Devon, saw you're exploring FirstTouch after the demo request. Connecting so I can share setup tips as you evaluate."
+
+**Closed Lost win-back signal:** Contact is associated to a Closed Lost deal selected for a fresh reengagement motion.
+**Draft (re-engage opener):** "Hi Dana, noticed your team previously evaluated FirstTouch and wanted to share what changed since then. Worth comparing notes if social attribution is back on the roadmap."
 
 ## Why this play wins
 Static sequences message on a timer. This play messages on a **real event** — dramatically higher relevance and reply rate, and fully attributable in HubSpot.

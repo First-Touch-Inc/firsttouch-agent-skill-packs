@@ -29,7 +29,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 ## Step-by-step
 
 ### 1. Pull engagement (FirstTouch MCP)
-Before using monitored profiles, confirm the workspace has paid, non-trial FirstTouch Social Engagement access. If it does not, ask for a user-provided/exported engager list and continue from that list instead of promising monitored-profile capture. Social Engagement can monitor LinkedIn profiles for post likes and comments. Prefer the user's own founder/leadership/company profile. If they do not have enough owned engagement yet, plug in a relevant competitor founder, category influencer, or executive profile and work the ICP-fit people engaging there. User-provided/exported engager lists also work. Do **not** use profile views as a signal; FirstTouch does not provide profile-view capture for this play.
+Before using monitored profiles, confirm Social Engagement is enabled in the workspace. If it does not, ask for a user-provided/exported engager list and continue from that list instead of promising monitored-profile capture. Social Engagement can monitor LinkedIn profiles for post likes and comments. Prefer the user's own founder/leadership/company profile. If they do not have enough owned engagement yet, plug in a relevant competitor founder, category influencer, or executive profile and work the ICP-fit people engaging there. User-provided/exported engager lists also work. Do **not** use profile views as a signal; FirstTouch does not provide profile-view capture for this play.
 
 Get recent engagers — post likes and comments — within the window. Record for each: name, title, company, engagement type, what they engaged with, timestamp.
 
@@ -41,6 +41,8 @@ Use the FirstTouch social engagement monitored-profile flow before pulling engag
 - if the monitored-profile tool is unavailable in the connected harness, ask the user to provide a FirstTouch-accessible engager list exported from the leadership post; do not imply the play is broken
 
 ### 2. Qualify the engager
+If qualification requires FirstTouch discovery or enrichment beyond the captured engager fields, run Gate 3a from `../../references/safety-governance.md`: preview a small sample, state estimated maximum credits, and get approval for bulk credit spend.
+
 For each engager, run Gate 0 suppression/DNC first, then check:
 - If HubSpot is connected: existing contact context, owner, lifecycle stage, suppression fields, and prior activity
 - If HubSpot is not connected: ask for or use the saved ICP brief (industries, company size, geography, target titles, exclusions) and qualify from FirstTouch/enrichment/user-provided fields

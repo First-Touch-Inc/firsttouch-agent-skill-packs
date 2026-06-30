@@ -31,7 +31,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 ### 1. Pull inbound contacts
 **Path A — HubSpot connected:** query the trigger event and return contacts created or updated in the window. Capture: name, title, company, owner, event type, timestamp, lifecycle stage, LinkedIn URL.
 
-**Path B — no HubSpot access:** ask for a FirstTouch-accessible inbound list, CSV import, webhook-fed audience, or other source list containing the hand-raisers. A FirstTouch-accessible list means FirstTouch can read the contacts from an imported CSV/audience or connected source. State clearly: this is list/import-based unless a source continuously feeds FirstTouch; true speed-to-lead automation requires HubSpot or another connected inbound source. Capture the same fields when available. State that HubSpot owner routing and CRM timeline logging are unavailable until HubSpot is connected.
+**Path B — no HubSpot access:** ask for a FirstTouch-accessible inbound list, CSV import, audience, or other connected source list containing the hand-raisers. A FirstTouch-accessible list means FirstTouch can read the contacts from an imported CSV/audience or connected source. State clearly: this is list/import-based unless a source continuously feeds FirstTouch; true speed-to-lead automation requires HubSpot or another connected inbound source. Capture the same fields when available. State that HubSpot owner routing and CRM timeline logging are unavailable until HubSpot is connected.
 
 ### 2. Check readiness
 For each contact:

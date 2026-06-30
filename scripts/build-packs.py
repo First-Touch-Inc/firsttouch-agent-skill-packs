@@ -23,7 +23,7 @@ PERSONAS = ["founder", "ae", "bdr", "revops"]
 SKILL_NEEDS = {
     "firsttouch-messaging": "No HubSpot required",
     "inbound-speed-to-lead": "HubSpot or FirstTouch-accessible inbound list/import required; true automation needs a connected source",
-    "warm-engager-followup": "No HubSpot required; paid, non-trial FirstTouch Social Engagement required for monitored profiles; user-provided/exported engager lists also work",
+    "warm-engager-followup": "No HubSpot required; Social Engagement must be enabled in the workspace for monitored profiles; user-provided/exported engager lists also work",
     "website-visitor-followup": "HubSpot tracking or RB2B/list source required",
     "icp-outbound-builder": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
     "founder-led-outbound": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
@@ -36,10 +36,10 @@ SKILL_NEEDS = {
 }
 
 START_HERE = {
-    "founder": "Start with **Social engagement flow — founder posts**. If the founder does not have enough post engagement yet, monitor a relevant competitor founder, category influencer, or executive profile and work the people engaging there. Use **Founder-led AI SDR** only after the warm-engagement path or when the user explicitly wants a cold ICP queue. Use **Social campaigns** for narrow founder-led pushes such as feature feedback, product-update feedback, or travel-week outreach.",
-    "ae": "Start with **Auto-connect on meeting or signup** when an inbound source is already available. Use **Meeting-booked stakeholder follow-up** only when a meeting-booked HubSpot list/workflow or accessible source already exists, or ask RevOps for one-time setup first. Use **Stalled deal reactivation** after that when RevOps/admin can support the contact-based workflow or list. Without HubSpot, start with **Social engager flow** on company/leadership, competitor founder, or influencer profiles, then use **AE AI SDR** from a clear ICP.",
-    "bdr": "If there is no already-configured inbound feed, start with **BDR AI SDR** as the daily engine from ICP + Discover Contacts. Use **Auto-connect on meeting or signup** only when a HubSpot or FirstTouch-accessible inbound source is already available; it runs when the agent is run or scheduled unless a connected source continuously feeds it. Add **Social engager flow** from leadership, competitor founder, or influencer profiles when paid Social Engagement or an exported engager list is available. Use **Social campaigns** for special manager-approved pushes, usually as row-level dynamic actions rather than a self-serve flow-building exercise.",
-    "revops": "Start with **Pre-launch rollout audit** before any rep launches volume. Then roll out high-intent plays first: inbound, social engagement from owned or relevant external profiles, and HubSpot signal flows. Use **Social campaigns** after the audit passes, choosing row-level dynamic approvals for rep-led one-at-a-time pushes or flow-level approval for governed one-time static campaigns.",
+    "founder": "Start with the no-HubSpot path: **Social engagement flow — founder posts**, or a relevant competitor founder/influencer profile if owned engagement is thin. Then use **Founder-led AI SDR** from Discover Contacts when the founder wants a cold ICP queue, and **Social campaigns** for narrow founder-led pushes such as feature feedback, product-update feedback, or travel-week outreach. If the founder runs HubSpot, use the HubSpot plays as secondary CRM/deal motions, not the default path.",
+    "ae": "No HubSpot or cannot loop in RevOps? Start with **Social engager flow** on company/leadership, competitor founder, or influencer profiles, then use **AE AI SDR** from a clear ICP. HubSpot connected? Use **Auto-connect on meeting or signup**, **Meeting-booked stakeholder follow-up**, and **Stalled deal reactivation** from contact-based lists/workflows. This keeps the self-serve path first and the RevOps-gated path explicit.",
+    "bdr": "If there is no already-configured inbound feed, start with **BDR AI SDR** as the daily engine from ICP + Discover Contacts. To work no-shows and old MQLs, run **Scoop-up slipped leads** when you have a HubSpot/event list, RevOps-supplied property, or imported source. Use **Auto-connect on meeting or signup** only when a HubSpot or FirstTouch-accessible inbound source is already available; it runs when the agent is run or scheduled unless a connected source continuously feeds it. Add **Social engager flow** from leadership, competitor founder, or influencer profiles when Social Engagement is enabled in the workspace or an exported engager list is available. Use **Social campaigns** for special manager-approved pushes, usually as row-level dynamic actions rather than a self-serve flow-building exercise.",
+    "revops": "Start with **Pre-launch rollout audit** before any rep launches volume. Then govern the core rollout: HubSpot list triggers, AI SDR queue QA, social campaigns, stalled-deal workflows, and **Attribution & team performance review** as the recurring reporting cadence. Keep situational plays such as events, customer thank-you, website visitors, and closed-lost reengagement for after the core governance path is stable.",
 }
 
 NO_HUBSPOT = {
@@ -82,18 +82,70 @@ def read_skill_needs(skill_name: str) -> str:
     return SKILL_NEEDS.get(skill_name, "See skill requirements")
 
 
+def recipe_category(persona: str, recipe: dict) -> str:
+    """Return a persona-specific grouping label for recipe tables."""
+    name = recipe.get("name", "")
+    needs = recipe.get("needs", "")
+    if persona == "founder":
+        if needs.startswith("HubSpot required") or "; HubSpot required" in needs:
+            return "If you run HubSpot"
+        return "No-HubSpot founder starts"
+    if persona == "ae":
+        if needs.startswith("HubSpot required") or "; HubSpot required" in needs or needs.startswith("HubSpot or"):
+            return "HubSpot-connected deal and inbound plays"
+        return "No-HubSpot / self-serve starts"
+    if persona == "bdr":
+        if "BDR AI SDR" in name or "Social engager" in name or "Social campaigns" in name:
+            return "Daily engine and manager-approved pushes"
+        return "Requires inbound, HubSpot, or external source"
+    if persona == "revops":
+        core = ("Pre-launch", "HubSpot list", "Govern and audit", "Social campaigns", "Stalled deal")
+        if any(name.startswith(prefix) for prefix in core):
+            return "Core governance"
+        return "Situational rollout plays"
+    return "Recipes"
+
+
+def build_recipe_sections(persona: str, recipes: list, include_composes: bool = True) -> str:
+    """Build grouped markdown recipe tables."""
+    if not recipes:
+        return "*(none)*"
+    order = []
+    groups = {}
+    for recipe in recipes:
+        category = recipe_category(persona, recipe)
+        if category not in groups:
+            order.append(category)
+            groups[category] = []
+        composes = " + ".join(f"`{c}`" for c in recipe["composes"])
+        if include_composes:
+            groups[category].append(f"| {recipe['name']} | {recipe['outcome']} | {recipe.get('needs', 'See README')} | {composes} |")
+        else:
+            groups[category].append(f"| {recipe['name']} | {recipe['outcome']} | {recipe.get('needs', 'See README')} |")
+    parts = []
+    for category in order:
+        parts.append(f"#### {category}")
+        if include_composes:
+            parts.append("| Play | What it does | Needs | Composes from |")
+            parts.append("|---|---|---|---|")
+        else:
+            parts.append("| Recipe | What it does | Needs |")
+            parts.append("|---|---|---|")
+        parts.extend(groups[category])
+    return "\n".join(parts)
+
+
 def build_onboarding(manifest: dict) -> str:
     """Generate pack-specific onboarding so bundled docs do not advertise absent plays."""
     persona = manifest["persona"]
     pack_name = manifest["pack_name"]
     skills = {s["name"] for s in manifest.get("skills", [])}
-    recipe_lines = [f"| {r['name']} | {r['outcome']} | {r.get('needs', 'See README')} |" for r in manifest.get("recipes", [])]
-    recipes_table = "\n".join(recipe_lines) if recipe_lines else "*(none)*"
+    recipes_table = build_recipe_sections(persona, manifest.get("recipes", []), include_composes=False)
     skill_lines = [f"| `{s['name']}` | {read_skill_needs(s['name'])} |" for s in manifest.get("skills", [])]
     skills_table = "\n".join(skill_lines) if skill_lines else "*(none)*"
     social_note = ""
     if "warm-engager-followup" in skills:
-        social_note = "\n- Social engagement / warm engager flows are delivered by `warm-engager-followup`. They use LinkedIn post likes and comments from paid, non-trial Social Engagement monitoring, or a user-provided/exported engager list. Ask whether paid, non-trial Social Engagement is available before steering the user to a monitored-profile play. Profile-view capture is not treated as MCP-native."
+        social_note = "\n- Social engagement / warm engager flows are delivered by `warm-engager-followup`. They use LinkedIn post likes and comments from Social Engagement monitoring when enabled in the workspace, or a user-provided/exported engager list. Ask whether Social Engagement is enabled before steering the user to a monitored-profile play. Profile-view capture is not treated as MCP-native."
     voice_note = ""
     if "founder-led-outbound" in skills:
         voice_note = "\n- Founder voice capture is mandatory: collect 2-3 sample posts/messages or tone rules before founder-led outbound."
@@ -106,14 +158,13 @@ This onboarding is scoped to the skills and recipes actually included in this in
    - Free/basic: no connection notes; 10 connection requests/day max.
    - Sales Navigator/Premium: connection notes available for approved warm signals; up to 20 connection requests/day.
    - AI SDR and all other connection-request plays share the same daily budget.
+   - If AI SDR and a social campaign run on the same sender/day, pause/reduce one motion or split the daily cap explicitly before queueing sends.
 2. **HubSpot access:** MCP connected by an admin, service key/private app token from an admin, HubSpot list only, or none. Do not ask a rep/BDR to mint credentials they do not own.
 3. **ICP/list/source data:** if HubSpot is absent, ask for ICP criteria or an imported/FirstTouch-accessible list before qualifying prospects.
 4. **Persona start point:** {START_HERE[persona]}
 {social_note}{voice_note}
 
 ## Available recipes in this pack
-| Recipe | What it does | Needs |
-|---|---|---|
 {recipes_table}
 
 ## Included skills and dependency status
@@ -156,11 +207,7 @@ def build_recipes_reference(manifest: dict) -> str:
     """Generate a pack-specific recipe catalog for agents that install only skills + references."""
     persona = manifest["persona"]
     pack_name = manifest["pack_name"]
-    rows = []
-    for r in manifest.get("recipes", []):
-        composes = " + ".join(f"`{c}`" for c in r["composes"])
-        rows.append(f"| {r['name']} | {r['outcome']} | {r.get('needs', 'See README')} | {composes} |")
-    recipes_table = "\n".join(rows) if rows else "*(none)*"
+    recipes_table = build_recipe_sections(persona, manifest.get("recipes", []), include_composes=True)
     return f"""# Recipe Catalog — {pack_name}
 
 Use this file when the agent installed `skills/` and `references/` without loading the root README. These recipes are the recommended starting points for the {persona} persona.
@@ -169,8 +216,6 @@ Use this file when the agent installed `skills/` and `references/` without loadi
 {START_HERE[persona]}
 
 ## Recipes
-| Play | What it does | Needs | Composes from |
-|---|---|---|---|
 {recipes_table}
 
 ## Approval reminder
@@ -208,12 +253,7 @@ def build_readme(manifest: dict, skill_descriptions: dict) -> str:
         support_rows.append(f"| {name} | {desc} | {needs} | `{name}` |")
     support_table = "\n".join(support_rows) if support_rows else "*(none)*"
 
-    recipe_rows = []
-    for r in recipes:
-        composes_str = " + ".join(f"`{c}`" for c in r["composes"])
-        needs = r.get("needs", "See skill requirements")
-        recipe_rows.append(f"| {r['name']} | {r['outcome']} | {needs} | {composes_str} |")
-    recipes_table = "\n".join(recipe_rows) if recipe_rows else "*(none)*"
+    recipes_table = build_recipe_sections(persona, recipes, include_composes=True)
 
     term_note = (
         "\"AI SDR\" in this pack maps to `founder-led-outbound`."
@@ -234,6 +274,7 @@ def build_readme(manifest: dict, skill_descriptions: dict) -> str:
 ## How to use this pack
 - **Recipes** are the best starting point. They combine the right skills into the job you actually want done.
 - **Skills** are the individual building blocks. Run a skill directly only when you know the exact motion you want.
+- **Read once:** `references/system-grounding.md` explains how agents, FirstTouch, HubSpot, approvals, and measurement fit together.
 - **FirstTouch terms:** a campaign/sequence/social campaign in this pack becomes a FirstTouch audience, flow plan, dynamic action, or enrollment depending on the play. {term_note} The agent should use FirstTouch's available execution objects and state the exact object it created.
 - **Approval locations:** approvals can happen in-agent, in FirstTouch, Slack, or email depending on your workspace. If the approval location is not configured, the agent must present the table in chat and wait.
 
@@ -269,8 +310,6 @@ Use `references/onboarding.md` for the full question flow and account-type rules
 {support_table}
 
 ### Recipes (recommended starting points)
-| Play | What it does | Needs / HubSpot status | Composes from |
-|---|---|---|---|
 {recipes_table}
 
 ## Install
@@ -313,21 +352,24 @@ def build_pack(persona: str) -> None:
     for ref_entry in manifest.get("references", []):
         ref_rel = ref_entry["src"]
         ref_src = ROOT / ref_rel
-        if not ref_src.exists():
-            print(f"  [WARN] Reference not found: {ref_src}")
-            continue
         ref_dst = pack_dir / ref_rel
         ref_dst.parent.mkdir(parents=True, exist_ok=True)
         if ref_rel == "references/onboarding.md":
             ref_dst.write_text(build_onboarding(manifest), encoding="utf-8")
+        elif ref_rel == "references/recipes.md":
+            ref_dst.write_text(build_recipes_reference(manifest), encoding="utf-8")
         else:
+            if not ref_src.exists():
+                print(f"  [WARN] Reference not found: {ref_src}")
+                continue
             shutil.copy2(ref_src, ref_dst)
         print(f"  + reference: {ref_rel}")
 
     recipes_ref = pack_dir / "references" / "recipes.md"
-    recipes_ref.parent.mkdir(parents=True, exist_ok=True)
-    recipes_ref.write_text(build_recipes_reference(manifest), encoding="utf-8")
-    print("  + reference: references/recipes.md")
+    if not recipes_ref.exists():
+        recipes_ref.parent.mkdir(parents=True, exist_ok=True)
+        recipes_ref.write_text(build_recipes_reference(manifest), encoding="utf-8")
+        print("  + reference: references/recipes.md")
 
     readme_content = build_readme(manifest, skill_descriptions)
     (pack_dir / "README.md").write_text(readme_content, encoding="utf-8")

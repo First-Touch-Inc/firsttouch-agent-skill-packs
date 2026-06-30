@@ -85,7 +85,7 @@
     {
       "name": "Stalled deal reactivation \u2014 60-day open-deal workflow",
       "outcome": "Find contacts associated to open deals that are not Closed Won/Lost and have had no engagement for 60+ days, then build an owner-approved LinkedIn reactivation queue. Treat recurring workflow setup as a RevOps/admin step unless already configured.",
-      "needs": "HubSpot required; RevOps/admin may be needed only for recurring workflow setup",
+      "needs": "HubSpot required; an AE with HubSpot access can run once from a manually built/filtered contact list; RevOps/admin needed only for recurring workflow setup",
       "composes": [
         "stalled-deal-reactivation",
         "firsttouch-messaging"
@@ -94,7 +94,7 @@
     {
       "name": "Meeting-booked stakeholder follow-up",
       "outcome": "When a meeting-booked HubSpot list/workflow or accessible source already exists, draft LinkedIn touches to known decision-makers so the deal is not single-threaded; otherwise ask RevOps for one-time setup first.",
-      "needs": "HubSpot required; needs a contact-based list/workflow or accessible meeting-booked source; ask RevOps if the AE cannot configure CRM workflows",
+      "needs": "HubSpot required; AE can run once from a meeting-booked contact list/source; RevOps needed only for recurring workflow setup",
       "composes": [
         "hubspot-signal-to-linkedin-touch",
         "firsttouch-messaging"
@@ -102,7 +102,7 @@
     },
     {
       "name": "Closed-lost reengagement",
-      "outcome": "Re-engage historical closed-lost accounts with a fresh, approved LinkedIn touch when the user explicitly chooses a win-back motion; keep this separate from stalled open-deal reactivation.",
+      "outcome": "Re-engage historical closed-lost accounts with a fresh, approved LinkedIn touch from a HubSpot Closed Lost contact list; keep this separate from stalled open-deal reactivation.",
       "needs": "HubSpot required; separate from stalled open-deal workflow",
       "composes": [
         "hubspot-signal-to-linkedin-touch",
@@ -126,6 +126,9 @@
     },
     {
       "src": "references/system-grounding.md"
+    },
+    {
+      "src": "references/recipes.md"
     }
   ]
 }
