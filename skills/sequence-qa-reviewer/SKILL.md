@@ -72,7 +72,7 @@ D. Duplicate risk:     ✅  — cooldown + duplicate gate enabled
 E. Compliance:         ✅  — claims verifiable, opt-out present
 
 FIXES (in order):
-1. HARD BLOCK: split step 1 into batches within the documented daily cap: ≤10/day on free/basic, ≤20/day on Sales Nav/Premium, and ≤15/day for recurring AI SDR queues
+1. HARD BLOCK: split step 1 into batches within the documented daily cap: ≤10/day on free/basic, ≤20/day on Sales Nav/Premium, and ≤20/day for recurring AI SDR queues
 2. Step 2: remove meeting ask; convert to value touch (see messaging-framework)
 3. Optional: add {recent_post} variable to step 1 for deeper personalization
 ```

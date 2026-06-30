@@ -49,7 +49,7 @@
     },
     {
       "name": "Founder-led AI SDR — daily approval queue",
-      "outcome": "Use a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to 10/day free or 15/day Sales Nav/Premium founder-voice touches for approval.",
+      "outcome": "Use a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to 10/day free or 20/day Sales Nav/Premium founder-voice touches for approval.",
       "needs": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
       "composes": [
         "founder-led-outbound"

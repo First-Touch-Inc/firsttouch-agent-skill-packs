@@ -113,7 +113,7 @@ Before running the first play in this pack, ask the user:
 1. **LinkedIn account type:** do they have Sales Navigator / Premium, or a free/basic account?
    - Free/basic: no connection notes; cap connection requests at **10/day**.
    - Sales Navigator / Premium: connection notes available; cap connection requests at **20/day**.
-   - For AI SDR daily queues specifically, use the stricter cap: **10/day** on free/basic or **15/day** on Sales Navigator / Premium.
+   - For AI SDR daily queues specifically, use **10/day** on free/basic or **20/day** on Sales Navigator / Premium.
 2. **HubSpot access:** do they use HubSpot, and can they connect the HubSpot MCP or provide a HubSpot service key / private app token?
    - If not, run FirstTouch-only plays or ask them to create a HubSpot list/source FirstTouch can access before running HubSpot-specific plays.
 3. **Play choice:** show the catalog below and recommend **high-intent plays first**, then outbound once those are running to keep the LinkedIn account healthy.{founder_hint}

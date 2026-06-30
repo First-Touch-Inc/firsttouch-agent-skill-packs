@@ -35,9 +35,9 @@ Before running this skill for the first time in a workspace, load `../../referen
 | LinkedIn account | Daily AI SDR batch cap | Connection request note |
 |---|---:|---|
 | Free/basic | 10 contacts/day | No note |
-| Sales Navigator / Premium | 15 contacts/day | No note by default for AI SDR |
+| Sales Navigator / Premium | 20 contacts/day | No note by default for AI SDR |
 
-These caps are intentionally stricter than the general account ceiling because AI SDR is a recurring outbound motion. If the account is new, warned, or acceptance/reply rates drop, lower the cap and pause for human review.
+These caps are intentionally conservative for a recurring outbound motion. If the account is new, warned, or acceptance/reply rates drop, lower the cap and pause for human review.
 
 ## Default outreach plan
 
@@ -126,14 +126,14 @@ Default daily automation prompt:
 ## Output
 - source summary: HubSpot list or newly discovered ICP list
 - enriched account/contact table
-- daily AI SDR batch capped at 10 free/basic or 15 Sales Navigator/Premium contacts
+- daily AI SDR batch capped at 10 free/basic or 20 Sales Navigator/Premium contacts
 - customized first message and 2-day follow-up for each prospect
 - approval table ready for human review
 - optional daily automation/agent setup prompt
 
 ## Pitfalls
 - treating AI SDR as a one-time bulk blast instead of a daily approval queue
-- exceeding the stricter 10/15 daily AI SDR caps
+- exceeding the 10/20 daily AI SDR caps
 - drafting for un-enriched contacts with weak or fabricated personalization
 - requiring HubSpot when the user has no HubSpot list; use Discover Contacts from their ICP instead
 - skipping duplicate checks before adding contacts to a flow

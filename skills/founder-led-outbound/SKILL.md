@@ -40,7 +40,7 @@ Founder-led AI SDR is the same motion as AI SDR, but with a founder lens:
 | LinkedIn account | Daily founder AI SDR batch cap | Connection request note |
 |---|---:|---|
 | Free/basic | 10 contacts/day | No note |
-| Sales Navigator / Premium | 15 contacts/day | No note by default for AI SDR |
+| Sales Navigator / Premium | 20 contacts/day | No note by default for AI SDR |
 
 Keep the cap lower if the account is new, warned, or acceptance/reply rates drop.
 
@@ -118,7 +118,7 @@ Recommend a recurring daily motion only after the founder approves the first bat
 ## Output
 - source summary: HubSpot list or newly discovered ICP list
 - enriched account/contact table
-- daily founder AI SDR batch capped at 10 free/basic or 15 Sales Navigator/Premium contacts
+- daily founder AI SDR batch capped at 10 free/basic or 20 Sales Navigator/Premium contacts
 - customized founder-voice first message and 2-day follow-up for each prospect
 - approval table ready for founder review
 - optional daily automation/agent setup prompt

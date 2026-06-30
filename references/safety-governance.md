@@ -69,7 +69,7 @@ Capture account type during first-run onboarding, then use the stricter cap. Tun
 
 **Connection-note rule:** use connection notes only when the sender has Sales Navigator / Premium and the message is approved. For free/basic accounts, send blank connection requests and use the approved opener after the prospect accepts.
 
-**Play-specific stricter cap:** AI SDR uses a tighter recurring outbound cap: **10 contacts/day** for free/basic accounts and **15 contacts/day** for Sales Navigator/Premium.
+**Play-specific AI SDR cap:** AI SDR uses a recurring outbound cap of **10 contacts/day** for free/basic accounts and **20 contacts/day** for Sales Navigator/Premium.
 
 **Escalation cues — if any appear, pause the account:**
 - Warnings or restrictions from LinkedIn

@@ -81,7 +81,7 @@ Every pack should ask three questions before running volume:
 **Recommended order:**
 1. For founders, start with **Social Engagement Flow** first. It does not require HubSpot and uses the warmest signal available.
 2. Run other high-intent plays next: inbound speed-to-lead, website visitor follow-up, HubSpot signal touches, customer champion, and stalled-deal reactivation when the required data exists.
-3. Add AI SDR / Founder AI SDR only after warm motions are running, with daily approval batches of 10 free/basic or 15 Sales Navigator/Premium contacts.
+3. Add AI SDR / Founder AI SDR only after warm motions are running, with daily approval batches of 10 free/basic or 20 Sales Navigator/Premium contacts.
 
 ---
 
@@ -89,7 +89,7 @@ Every pack should ask three questions before running volume:
 
 1. **Social Engagement Flow** — act on post/profile engagement first; for founders this is the number one starter play and does not require HubSpot.
 2. **AI SDR / ICP Outbound** — build daily approval-ready batches from a HubSpot list or FirstTouch Discover Contacts.
-3. **Founder AI SDR** — the AI SDR workflow in founder voice, with the same approval queue and stricter 10/15 daily caps.
+3. **Founder AI SDR** — the AI SDR workflow in founder voice, with the same approval queue and 10/20 daily caps.
 4. **Inbound Speed-to-Lead** — attach LinkedIn connection and follow-up to signups, trials, or demo requests.
 5. **Website Visitor Follow-Up** — act on pricing/demo/product-page intent from HubSpot tracking or RB2B/list sources.
 6. **HubSpot Signal Touches** — turn lifecycle, list, or deal events into timely social touches.

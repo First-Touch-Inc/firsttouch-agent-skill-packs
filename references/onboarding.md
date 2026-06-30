@@ -69,7 +69,7 @@ After asking the questions, summarize the answer before running anything:
 ## FirstTouch onboarding summary
 - LinkedIn account: Free/basic or Sales Navigator/Premium
 - Daily connection cap: 10 or 20
-- AI SDR daily batch cap (if selected): 10 free/basic or 15 Sales Navigator/Premium
+- AI SDR daily batch cap (if selected): 10 free/basic or 20 Sales Navigator/Premium
 - Connection notes: yes/no
 - HubSpot access: MCP / service key / list only / none
 - Plays available now: ...

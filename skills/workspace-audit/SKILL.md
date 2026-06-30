@@ -61,7 +61,7 @@ WORKSPACE READINESS — {customer} — {date}
 Overall: 72/100 — READY WITH FIXES
 
 Connections:       ✅ 100 — FirstTouch + HubSpot connected
-Account health:    ⚠  60 — Seat at 22/25 daily connects; no warnings
+Account health:    ⚠  60 — Seat near daily connection cap; no warnings
 Owner coverage:    ❌ 40 — 38% of target contacts have no owner
 Safety config:     ✅  95 — all gates configured
 Logging:           ✅ 100 — timeline logging active

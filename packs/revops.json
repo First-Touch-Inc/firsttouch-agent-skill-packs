@@ -84,7 +84,7 @@
     },
     {
       "name": "Govern and audit AI SDR daily queues",
-      "outcome": "Review, QA, and monitor team-wide AI SDR daily queues before and after launch, including 10/15 daily caps, approval workflow, and aged-queue alerts.",
+      "outcome": "Review, QA, and monitor team-wide AI SDR daily queues before and after launch, including 10/20 daily caps, approval workflow, and aged-queue alerts.",
       "needs": "No HubSpot required for QA/audit; HubSpot improves owner routing",
       "composes": [
         "sequence-qa-reviewer",
