@@ -39,8 +39,8 @@ SKILL_NEEDS = {
 
 START_HERE = {
     "founder": "1. **No HubSpot + Social Engagement enabled:** run **Social engagement flow — founder posts** first. Confirm in FirstTouch Social / workspace settings before starting.\n2. **No HubSpot + thin/no engagement:** monitor a relevant competitor founder or category influencer, use an exported engager list, or go straight to **Founder-led AI SDR** from Discover Contacts.\n3. **Have HubSpot:** add inbound, visitor, and stalled-deal plays as secondary CRM/deal motions, not the default path.",
-    "ae": "1. **No HubSpot/list access:** run **AE AI SDR** first from ICP + Discover Contacts; this cannot touch existing pipeline without HubSpot or a FirstTouch-accessible contact list.\n2. **HubSpot + quiet pipeline:** run **Stalled deal reactivation** first from a manually filtered contact list.\n3. **HubSpot + fresh booked meetings/signups:** run **Meeting-booked stakeholder follow-up** or **Auto-connect on meeting or signup**. RevOps is needed only for recurring workflow automation.",
-    "bdr": "Use this source-based chooser:\n\n| What you have today | Run first | Why |\n|---|---|---|\n| No source/list yet | **BDR AI SDR** (`icp-outbound-builder`) | Daily meeting engine from ICP + Discover Contacts |\n| No-show, event, old-MQL, or HubSpot list | **Scoop-up slipped leads** | Lead recovery from a provided source |\n| Connected inbound feed or imported signup/demo list | **Auto-connect on meeting or signup** | Same-day inbound follow-up |\n| RB2B/HubSpot visitor source | **Website visitor play** | Conditional; most BDRs skip if no visitor source exists |\n\nThen add **Social engager flow** for leadership/competitor/influencer post engagement. Use **Social campaigns** only for manager-approved special pushes, not normal daily work.",
+    "ae": "1. **No HubSpot/list access:** run **AE AI SDR** first from ICP + Discover Contacts; this cannot touch existing pipeline without HubSpot or a FirstTouch-accessible contact list.\n2. **HubSpot + quiet pipeline:** run **Stalled deal reactivation** first from a manually filtered contact list.\n3. **HubSpot + fresh booked meetings/signups:** run **Meeting-booked stakeholder follow-up** or **Auto-connect on meeting or signup**. RevOps is needed only for recurring workflow automation.\n4. **HubSpot tasks already created for LinkedIn/social steps:** run **Automate due HubSpot social tasks** as a secondary task runner for tasks due today, not as a cadence/list creator.",
+    "bdr": "Use this source-based chooser:\n\n| What you have today | Run first | Why |\n|---|---|---|\n| No source/list yet | **BDR AI SDR** (`icp-outbound-builder`) | Daily meeting engine from ICP + Discover Contacts |\n| No-show, event, old-MQL, or HubSpot list | **Scoop-up slipped leads** | Lead recovery from a provided source |\n| Connected inbound feed or imported signup/demo list | **Auto-connect on meeting or signup** | Same-day inbound follow-up |\n| RB2B/HubSpot visitor source | **Website visitor play** | Conditional; most BDRs skip if no visitor source exists |\n| HubSpot tasks already created for LinkedIn/social steps | **Automate due HubSpot social tasks** | Secondary task runner for tasks due today in the user/owner queue; not a prospecting engine |\n\nThen add **Social engager flow** for leadership/competitor/influencer post engagement. Use **Social campaigns** only for manager-approved special pushes, not normal daily work.",
     "revops": "Start with **Pre-launch rollout audit** before any rep launches volume. Then govern the core rollout: HubSpot list triggers, AI SDR queue QA, social campaigns, stalled-deal workflows, and **Attribution & team performance review** as the recurring reporting cadence. Keep situational plays such as events, customer thank-you, website visitors, and closed-lost reengagement for after the core governance path is stable.",
 }
 
@@ -93,10 +93,14 @@ def recipe_category(persona: str, recipe: dict) -> str:
             return "Start here — no HubSpot needed"
         return "Needs HubSpot, RB2B, or a FirstTouch-accessible source"
     if persona == "ae":
+        if "HubSpot/CRM connector required" in needs or name.startswith("Automate due HubSpot social tasks"):
+            return "CRM social task automation — only if tasks already exist"
         if needs.startswith("HubSpot required") or "; HubSpot required" in needs or needs.startswith("HubSpot or"):
             return "HubSpot-connected deal and inbound plays"
         return "No-HubSpot / self-serve starts"
     if persona == "bdr":
+        if "HubSpot/CRM connector required" in needs or name.startswith("Automate due HubSpot social tasks"):
+            return "CRM social task automation — only if tasks already exist"
         if name.startswith("BDR AI SDR"):
             return "Daily engine"
         if name.startswith("Scoop-up slipped"):

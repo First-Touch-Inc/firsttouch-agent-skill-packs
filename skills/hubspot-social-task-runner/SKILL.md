@@ -1,6 +1,6 @@
 ---
 name: hubspot-social-task-runner
-description: Find HubSpot CRM tasks due today that already represent LinkedIn/social steps, such as connect, message, or follow-up, then execute the approved social action through FirstTouch and mark the HubSpot task complete only after the action is queued or sent. Use only when a CRM connector is available and the team already creates these social-step tasks every day.
+description: Find HubSpot CRM tasks due today in the user/owner queue that already represent LinkedIn/social steps, such as connect, message, or follow-up, then execute the approved social action through FirstTouch and mark the HubSpot task complete only after the action is queued or sent. Use only when a HubSpot task read/write connector is available and the team already creates these social-step tasks every day.
 metadata:
   author: firsttouch
   version: "1.1"
@@ -13,7 +13,7 @@ metadata:
 **Outcome:** Turn an existing HubSpot task queue into completed LinkedIn/social actions for the tasks due today. This play does **not** create a new cadence, infer missing task logic, or replace RevOps setup. It only works when HubSpot already has daily social-step tasks such as LinkedIn connect, LinkedIn message, or social follow-up.
 
 ## First-run onboarding gate
-Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type, HubSpot/CRM connector status, FirstTouch sender/account readiness, and whether HubSpot tasks are already being created daily for social steps. If the CRM connector cannot read tasks, or if no task queue exists, stop and recommend setting up the task source first.
+Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type, HubSpot task read/write connector status, FirstTouch sender/account readiness, and whether HubSpot tasks are already being created daily for social steps. If the HubSpot connector cannot read and complete tasks, or if no task queue exists, stop and recommend setting up the task source first.
 
 ## When to use
 - "Work my HubSpot LinkedIn tasks due today"
@@ -29,10 +29,10 @@ Before running this skill for the first time in a workspace, load `../../referen
 - The task is an email/call/manual research task rather than a LinkedIn connect/message/social follow-up
 
 ## Inputs
-- **Date scope:** default = tasks due today, not overdue backlog unless the user asks
-- **Task filters:** owner/sender, task status open/not started, due date today, task title/body/type containing LinkedIn/social/connect/message/follow-up cues
+- **Date scope:** default = tasks due today in the workspace timezone and inside the approved same-day send window, not overdue backlog unless the user asks. If the same-day send window has passed, preview the rows and ask before sending.
+- **Task filters:** user/owner queue, task status open/not started, due date today, task title/body/type containing LinkedIn/social/connect/message/follow-up cues such as `LinkedIn`, `LI`, `connect`, `connection request`, `message on LinkedIn`, or `social touch`
 - **Allowed social actions:** LinkedIn connection request, LinkedIn message to existing connection, post-accept follow-up when already modeled by the task
-- **Approval mode:** automatic only for tasks that came from an already-approved CRM workflow/play; otherwise preview and ask before execution
+- **Approval mode:** treat a task from an explicitly approved CRM workflow or approved daily task process as prior approval to execute exactly that task. If that prior approval is unclear, or if new copy is drafted, preview and ask before execution.
 
 ## Step-by-step
 
@@ -44,11 +44,11 @@ If daily tasks are not already being created, stop and recommend the appropriate
 
 ### 2. Pull due social tasks from HubSpot
 Using the CRM connector, query HubSpot tasks that are:
-- assigned to the requested owner/sender, or the current user if unspecified
-- due today in the workspace timezone
+- assigned to the requested user/owner/sender, or the current user if unspecified
+- due today in the workspace timezone and inside the approved same-day send window
 - open / not completed
 - associated to a contact or company/contact record
-- clearly labeled as a social step, for example task title/body contains `LinkedIn`, `LI`, `connect`, `connection request`, `message on LinkedIn`, `social touch`, or the customer's agreed task naming convention
+- clearly labeled as a social step, for example task title/body contains `LinkedIn`, `LI`, `connect`, `connection request`, `message on LinkedIn`, or `social touch`
 
 Do not include calls, emails, generic follow-ups, research tasks, or tasks with no contact association.
 
@@ -82,7 +82,7 @@ Use this mapping:
 
 | HubSpot task signal | FirstTouch action |
 |---|---|
-| connect / connection request / add on LinkedIn | LinkedIn connection request. Use a note only when Sales Navigator/Premium is available and the task includes approved note copy or the user approves it. |
+| connect / connection request / add on LinkedIn | LinkedIn connection request. Free/basic accounts use blank connection requests with no note. Use a note only when Sales Navigator/Premium is available and the task includes approved note copy or the user approves it. |
 | LinkedIn message / social message / follow-up and contact is already connected | LinkedIn message using task-approved copy or user-approved drafted copy. |
 | LinkedIn follow-up after accepted connection | LinkedIn message only if connection status or FirstTouch state confirms the contact is connected/accepted. |
 | unclear task | skip and report for manual review |
@@ -90,7 +90,7 @@ Use this mapping:
 Before creating any one-contact LinkedIn action, run `get_dynamic_action_guide`, then call `add_dynamic_action` in the supported order. Do not bypass the FirstTouch dynamic-action preflight.
 
 ### 6. Execute only approved/eligible rows
-Automatic execution is allowed only when the HubSpot task came from an approved workflow or approved daily task process and contains enough information to act safely. If the task was ad hoc, ambiguous, or requires freshly generated copy, show the approval table first and wait.
+A HubSpot task from an explicitly approved CRM workflow or approved daily task process counts as prior approval to execute exactly that task, as long as it contains enough information to act safely. If the task was ad hoc, ambiguous, outside the same-day send window, or requires freshly generated copy, show the approval table first and wait.
 
 Approval/execution table:
 

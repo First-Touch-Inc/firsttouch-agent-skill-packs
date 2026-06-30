@@ -49,8 +49,8 @@
     },
     {
       "name": "Automate due HubSpot social tasks",
-      "outcome": "Work today's existing HubSpot LinkedIn/social tasks for the BDR queue: connect, message, or follow up through FirstTouch, then mark tasks complete only after queue/send confirmation.",
-      "needs": "HubSpot/CRM connector required; use only if HubSpot tasks for social steps are already being created each day; not a prospecting engine",
+      "outcome": "Work today's existing HubSpot LinkedIn/social tasks in the BDR/user queue: connect, message, or follow up through FirstTouch, then mark tasks complete only after queue/send confirmation.",
+      "needs": "HubSpot task read/write connector required; use only if HubSpot tasks for social steps are already being created each day; not a cadence/list creator or prospecting engine",
       "composes": [
         "hubspot-social-task-runner"
       ]
