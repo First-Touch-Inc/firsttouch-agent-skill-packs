@@ -28,7 +28,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 - **ICP criteria:** industry, company size, geography, funding/stage, tech stack, role, seniority, exclusions
 - **Persona targets:** champion / manager / VP / founder / economic buyer
 - **LinkedIn account type:** free/basic or Sales Navigator/Premium
-- **Automation preference:** daily Claude automation or daily ChatGPT agent
+- **Automation preference:** optional agent-harness schedule/reminder such as daily Claude automation or daily ChatGPT agent; this is not a FirstTouch autonomous-send feature
 
 ## Daily volume rules for AI SDR
 

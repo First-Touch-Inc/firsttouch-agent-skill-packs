@@ -10,6 +10,8 @@ metadata:
 
 # Social Campaigns
 
+**BDR default:** row-level dynamic mode, manager-approved, skip unless explicitly asked. The static-flow governance below is mainly for RevOps/founder one-time campaigns.
+
 **Outcome:** Create a focused FirstTouch social campaign for a narrow, explicitly defined ICP segment. For reps and BDRs, this should often feel like AI SDR: a curated list of rows with one-at-a-time approval, not a flow-building exercise. For founders and RevOps, it can also become a one-time static-template flow with bulk approval after the exact audience and templates are approved.
 
 ## First-run onboarding gate
@@ -176,6 +178,7 @@ If the user approves, launch only the approved rows or approved flow. If they ed
 ### 7. Launch and log
 After approval:
 - publish or queue the FirstTouch dynamic actions, flow, campaign, or audience enrollment supported by the connected MCP
+- remember: publishing a flow activates it but does **not** enroll awaiting contacts; explicitly enroll approved contacts/items, then confirm they moved from awaiting to in-progress
 - enroll or queue only the approved audience/rows according to daily caps
 - log the campaign and attribution tag in FirstTouch and HubSpot when HubSpot is connected
 - report queued, sent, blocked, failed, and completed counts

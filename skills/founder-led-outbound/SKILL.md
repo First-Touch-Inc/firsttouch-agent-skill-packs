@@ -39,8 +39,8 @@ Founder-led AI SDR is the same motion as AI SDR, but with a founder lens:
 
 | LinkedIn account | Daily founder AI SDR batch cap | Connection request note |
 |---|---:|---|
-| Free/basic | 10 contacts/day | No note |
-| Sales Navigator / Premium | 20 contacts/day | No note by default for cold AI SDR; connection notes are allowed only when the founder explicitly approves a strong, relevant reason |
+| Free/basic | 10 connection-request rows/day | No note |
+| Sales Navigator / Premium | 20 connection-request rows/day | No note by default for cold AI SDR; connection notes are allowed only when the founder explicitly approves a strong, relevant reason |
 
 Keep the cap lower if the account is new, warned, or acceptance/reply rates drop. The no-note default is conservative: cold connection notes often reduce acceptance or feel automated under a founder's name. Warm-signal plays can use notes when Sales Nav/Premium is available and the note is explicitly approved.
 
@@ -112,19 +112,20 @@ Every row should be marked `awaiting founder approval`.
 ### 5. After approval, queue in FirstTouch
 After founder approval:
 - add approved contacts to the right FirstTouch flow/campaign, or queue dynamic actions
+- remember: publishing a flow activates it but does **not** enroll awaiting contacts; explicitly enroll approved contacts/items, then confirm they moved from awaiting to in-progress
 - enforce duplicate checks, account-safety limits, and approval status from `../../references/safety-governance.md`
 - log execution and outcomes back to HubSpot when HubSpot is connected
 - if HubSpot is not connected, keep the execution record in FirstTouch and clearly state that CRM owner routing/logging is unavailable
 - keep rejected contacts out of the next daily batch unless the founder asks to revisit them
 
 ### 6. Recommend daily automation
-Recommend a recurring daily motion only after the founder approves the first batch quality:
+Recommend a recurring daily motion only after the founder approves the first batch quality. This is an agent-harness schedule/reminder, not a FirstTouch autonomous-send feature:
 > "Run the FirstTouch founder AI SDR play for today. Use my saved ICP/list, enrich fresh contacts, prepare up to my daily cap, and show me the approval table. Do not send anything until I approve."
 
 ## Output
 - source summary: HubSpot list or newly discovered ICP list
 - enriched account/contact table
-- daily founder AI SDR batch capped at 10 free/basic or 20 Sales Navigator/Premium contacts
+- daily founder AI SDR batch capped at 10 free/basic or 20 Sales Navigator/Premium connection-request rows
 - customized founder-voice first message and 2-day follow-up for each prospect
 - approval table ready for founder review
 - optional daily automation/agent setup prompt

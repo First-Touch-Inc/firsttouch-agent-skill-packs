@@ -26,7 +26,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 ### 1. Check MCP connectivity
 - FirstTouch MCP reachable + returns campaign/seat data? ✅/❌
 - HubSpot MCP reachable + returns contacts/owners? ✅/❌ (if a play needs it)
-- FirstTouch enrichment available and credits understood for AI SDR/founder AI SDR? ✅/❌/n/a; external Clay/Surfe enrichment MCP is optional, not required
+- FirstTouch enrichment available and credits understood for AI SDR? ✅/❌/n/a; external Clay/Surfe enrichment MCP is optional, not required
 
 ### 2. LinkedIn account health (FirstTouch)
 - Seat connected and authenticated? ✅/❌
@@ -104,8 +104,8 @@ PRIORITY FIXES (do before launch):
 3. Enrich LinkedIn URLs to >90% coverage
 ```
 
-### 9. Outcome metrics snapshot
-When FirstTouch team metrics are available, pull the trailing 30 days by flow, sender, and date: actions sent, replies, reply sentiment where available, meetings booked, and opportunities. Reconcile the results against HubSpot logging coverage so RevOps can distinguish "outreach ran" from "outreach is attributable." If metrics are unavailable, mark outcome reporting `unverified` and state the missing permission/source.
+### 9. Outcome metrics handoff
+For recurring attribution reporting, run `team-performance-report`. In this readiness audit, only verify whether FirstTouch team metrics access and HubSpot logging coverage are available; do not treat a setup audit as the recurring report itself.
 
 ## Output
 - Readiness scorecard (score + per-area status)

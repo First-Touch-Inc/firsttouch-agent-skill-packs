@@ -13,7 +13,7 @@ Every FirstTouch play that involves sending words to a human builds on this skil
 
 
 ## First-run onboarding gate
-Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type (free/basic = no connection notes and 10 connection requests/day max; Sales Navigator/Premium = connection notes available and up to 20/day), HubSpot access (MCP, service key/private app token, HubSpot list only, or none), and which play the user wants to run. Recommend high-intent plays before outbound to keep the LinkedIn account healthy. If HubSpot is unavailable, do not run HubSpot-specific steps unless the user provides a HubSpot list FirstTouch can access.
+If onboarding has not already been completed in this session, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type (free/basic = no connection notes and 10 connection requests/day max; Sales Navigator/Premium = connection notes available and up to 20/day), HubSpot access (MCP, service key/private app token, HubSpot list only, or none), and which play the user wants to run. Recommend high-intent plays before outbound to keep the LinkedIn account healthy. If HubSpot is unavailable, do not run HubSpot-specific steps unless the user provides a HubSpot list FirstTouch can access.
 
 ## When to use
 
@@ -58,7 +58,7 @@ If you cannot find a real signal, **do not fabricate one.** Either drop the tier
 ### 4. Draft using the structure
 `Signal (why now) → Relevance (why you/this) → Soft CTA (what next)`
 
-Adapt a template from [`references/messaging-framework.md`](../../references/messaging-framework.md) — but **never copy blindly**. Every {{variable}} must resolve to something real.
+Adapt a template from [`../../references/messaging-framework.md`](../../references/messaging-framework.md) — but **never copy blindly**. Every {{variable}} must resolve to something real.
 
 ### 5. Run the quality gate (mandatory self-check)
 Before presenting the draft, verify ALL:
@@ -107,4 +107,4 @@ This skill is called by any installed play that drafts LinkedIn copy, including 
 
 ## Reference
 
-Full methodology, templates, and tier/tone matrix: [`references/messaging-framework.md`](../../references/messaging-framework.md)
+Full methodology, templates, and tier/tone matrix: [`../../references/messaging-framework.md`](../../references/messaging-framework.md)

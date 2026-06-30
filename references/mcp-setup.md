@@ -73,7 +73,7 @@ For finding LinkedIn URLs, emails, and firmographics when HubSpot is missing the
 
 Social Engagement note: monitor the user's own founder/leadership/company profile when available. If owned engagement is thin, monitor a relevant competitor founder, category influencer, or executive profile and work the ICP-fit people engaging there. Use post likes/comments only; profile views are not available.
 
-Use FirstTouch enrichment when the MCP exposes contact/company enrichment and credits are available. Clay, Surfe, or another enrichment MCP is optional and can supplement FirstTouch data, but it is not a prerequisite for AI SDR, founder AI SDR, or warm-engager qualification.
+Use FirstTouch enrichment when the MCP exposes contact/company enrichment and credits are available. Clay, Surfe, or another enrichment MCP is optional and can supplement FirstTouch data, but it is not a prerequisite for AI SDR or warm-engager qualification.
 
 If no enrichment MCP is connected, the agent should use HubSpot, FirstTouch, CSV/imported-list, or user-provided fields. Records missing a usable LinkedIn URL should be skipped or queued for enrichment, never filled with guessed data.
 

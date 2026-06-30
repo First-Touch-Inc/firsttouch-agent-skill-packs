@@ -38,7 +38,7 @@ When HubSpot is connected, confirm the contact has an **owner** in HubSpot and t
 
 ### Gate 3 — Account-safety limits
 Never exceed the authorized account's safe daily/weekly limits.
-- Check seat usage before queueing sends.
+- Check seat usage and current outreach queue/request state before queueing sends; use FirstTouch queue/status data when available rather than estimating from memory.
 - If near limit → **stop and report**, do not push volume.
 - AI SDR and all other plays share the same daily **connection-request** budget for rows that send connection requests. First messages to already-connected contacts draw from the separate LinkedIn message cap. If multiple plays run in one day, keep the combined connection-request total under 10/day for free/basic or 20/day for Sales Navigator/Premium.
 - When a social campaign and AI SDR run on the same sender/day, either pause/reduce AI SDR during the campaign window or split the daily cap explicitly (for example, 6 AI SDR + 4 campaign on a free/basic seat). Recompute campaign sending-day estimates against the reduced allocation, not the full daily cap.
@@ -70,12 +70,12 @@ When HubSpot is connected, every executed action is logged to the HubSpot contac
 
 Capture account type during first-run onboarding, then use the stricter cap. Tune down for new/warned accounts; never exceed:
 
-| Account / action | Suggested daily cap |
-|--------|---------------------|
-| Free/basic LinkedIn — connection requests | 10 |
-| Sales Navigator / Premium — connection requests | up to 20 |
-| LinkedIn messages | ~30–40 |
-| Post engagements | ~50 |
+| Account / action | Suggested daily cap | Source of limit |
+|--------|---------------------|---|
+| Free/basic LinkedIn — connection requests | 10 | FirstTouch pack rule / product-backed cap |
+| Sales Navigator / Premium — connection requests | up to 20 | FirstTouch pack rule / product-backed cap |
+| LinkedIn messages | ~30–40 | General LinkedIn safety norm, not FirstTouch-enforced |
+| Post engagements | ~50 | General LinkedIn safety norm, not FirstTouch-enforced |
 
 **Connection-note rule:** use connection notes only when the sender has Sales Navigator / Premium and the message is approved. For free/basic accounts, send blank connection requests and use the approved opener after the prospect accepts.
 

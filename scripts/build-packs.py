@@ -33,12 +33,13 @@ SKILL_NEEDS = {
     "customer-champion": "HubSpot required",
     "sequence-qa-reviewer": "No HubSpot for FirstTouch QA; HubSpot improves duplicate/owner checks",
     "workspace-audit": "No HubSpot for FirstTouch-only audit; HubSpot needed for owner/logging coverage",
+    "team-performance-report": "No HubSpot required for FirstTouch team metrics; HubSpot improves opportunity/pipeline reconciliation",
 }
 
 START_HERE = {
-    "founder": "**No HubSpot? Start here:** run **Social engagement flow — founder posts** first, use **Founder-led AI SDR** from Discover Contacts second, and use **Social campaigns** for narrow founder-led pushes such as feature feedback, product-update feedback, or travel-week outreach. **Have HubSpot?** Add inbound, visitor, and stalled-deal plays as secondary CRM/deal motions, not the default path.",
-    "ae": "**No HubSpot?** This pack can prospect through **Social engager flow** and **AE AI SDR**, but it cannot touch your existing pipeline without HubSpot or a FirstTouch-accessible contact list. **Have HubSpot/list access?** Run **Stalled deal reactivation**, **Meeting-booked stakeholder follow-up**, or **Auto-connect on meeting or signup** once today from a manually filtered contact list; RevOps is needed only for recurring workflow automation.",
-    "bdr": "**Daily engine:** start with **BDR AI SDR** from ICP + Discover Contacts when no inbound feed is wired. **Lead recovery:** run **Scoop-up slipped leads** for no-shows and old MQLs only when you have a HubSpot/event list, RevOps-supplied property, or imported source. **Inbound:** use **Auto-connect on meeting or signup** only when a HubSpot or FirstTouch-accessible inbound source already exists. **Conditional:** use **Website visitor play** only if RB2B/HubSpot tracking or a visitor list exists; most BDRs skip it. Add **Social engager flow** for leadership/competitor/influencer post engagement, and reserve **Social campaigns** for manager-approved special pushes.",
+    "founder": "**No HubSpot? Start here:** run **Social engagement flow — founder posts** first, but confirm Social Engagement is enabled in the workspace or use an exported engager list. If that source is not available yet, start with **Founder-led AI SDR** from Discover Contacts. Use **Social campaigns** for narrow founder-led pushes such as feature feedback, product-update feedback, or travel-week outreach. **Have HubSpot?** Add inbound, visitor, and stalled-deal plays as secondary CRM/deal motions, not the default path.",
+    "ae": "**No HubSpot?** Run **AE AI SDR** first; this pack can prospect through Discover Contacts and warm social signals, but it cannot touch your existing pipeline without HubSpot or a FirstTouch-accessible contact list. **Have HubSpot/list access?** Run **Stalled deal reactivation** first for quiet pipeline, then **Meeting-booked stakeholder follow-up**, then **Auto-connect on meeting or signup**. Each can run once today from a manually filtered contact list; RevOps is needed only for recurring workflow automation.",
+    "bdr": "Use this source-based chooser:\n\n| What you have today | Run first | Why |\n|---|---|---|\n| No source/list yet | **BDR AI SDR** | Daily meeting engine from ICP + Discover Contacts |\n| No-show, event, old-MQL, or HubSpot list | **Scoop-up slipped leads** | Lead recovery from a provided source |\n| Connected inbound feed or imported signup/demo list | **Auto-connect on meeting or signup** | Same-day inbound follow-up |\n| RB2B/HubSpot visitor source | **Website visitor play** | Conditional; most BDRs skip if no visitor source exists |\n\nThen add **Social engager flow** for leadership/competitor/influencer post engagement. Use **Social campaigns** only for manager-approved special pushes, not normal daily work.",
     "revops": "Start with **Pre-launch rollout audit** before any rep launches volume. Then govern the core rollout: HubSpot list triggers, AI SDR queue QA, social campaigns, stalled-deal workflows, and **Attribution & team performance review** as the recurring reporting cadence. Keep situational plays such as events, customer thank-you, website visitors, and closed-lost reengagement for after the core governance path is stable.",
 }
 
@@ -189,6 +190,8 @@ This onboarding is scoped to the skills and recipes actually included in this in
 Social Engagement can monitor relevant LinkedIn profiles for post likes and comments. Prefer the user's own founder/leadership/company profile when available; if they do not have enough owned engagement yet, monitor a relevant competitor founder, category influencer, or executive profile and work the ICP-fit people engaging there. Profile views are not an available signal.
 
 ## Approval model
+Publishing a flow activates it but does **not** enroll awaiting contacts. After approval, explicitly enroll the approved contacts/items, then confirm they moved from awaiting to in-progress.
+
 | Motion | Approval style |
 |---|---|
 | AI SDR / dynamic actions | Row-level approval. Each first-touch row must be approved individually. |
@@ -326,7 +329,8 @@ Use `references/onboarding.md` for the full question flow and account-type rules
 ## Safety
 - No play sends on its own. Every outbound action passes an approval gate.
 - Dynamic outbound and AI SDR require row-level approval. Social campaigns support two modes: rep/BDR one-at-a-time dynamic rows use row-level approval; one-time static campaign flows can use flow-level approval only after the exact audience, templates, sender routing, launch window, and daily cap are approved.
-- Built around LinkedIn's real limits: 10/day free/basic, 20/day Sales Navigator/Premium.
+- Publishing a flow activates it but does **not** enroll awaiting contacts. After approval, explicitly enroll the approved contacts/items, then confirm they moved from awaiting to in-progress.
+- Built around LinkedIn's real limits: 10/day free/basic, 20/day Sales Navigator/Premium. When possible, inspect current queue/usage before adding more connection-request rows, rather than relying on estimates.
 - See `references/safety-governance.md`.
 """
 

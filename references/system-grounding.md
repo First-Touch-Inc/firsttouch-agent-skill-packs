@@ -88,6 +88,9 @@ Steps 1–4 and 6–7 are where the agent earns its keep. Step 5 is FirstTouch. 
 
 Full setup instructions: [`mcp-setup.md`](mcp-setup.md).
 
+## Publish and enroll rule
+Publishing a flow activates it but does **not** enroll awaiting contacts. After approval, explicitly enroll the approved contacts/items, then confirm they moved from awaiting to in-progress before telling the user the motion is live.
+
 ## Social Engagement source note
 
 LinkedIn Social Engagement monitoring is a FirstTouch feature for post likes and comments. Prefer the user's own founder, executive, or company profile when there is enough owned engagement. If owned engagement is thin, monitor a relevant competitor founder, category influencer, or executive profile and work the ICP-fit people engaging there. Do not use profile views as a signal.
