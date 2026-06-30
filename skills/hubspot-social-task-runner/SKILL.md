@@ -1,6 +1,6 @@
 ---
 name: hubspot-social-task-runner
-description: Find HubSpot CRM tasks due today in the user/owner queue that already represent LinkedIn/social steps, such as connect, message, or follow-up, then execute the approved social action through FirstTouch and mark the HubSpot task complete only after the action is queued or sent. Use only when a HubSpot task read/write connector is available and the team already creates these social-step tasks every day.
+description: Find HubSpot CRM tasks due today in the user/owner queue that already represent LinkedIn/social steps, such as connect, message, or follow-up, then execute the approved social action through FirstTouch and mark the HubSpot task complete only after the action is queued or sent. Use only when HubSpot MCP is connected and the team already creates these social-step tasks every day.
 metadata:
   author: firsttouch
   version: "1.1"
@@ -13,7 +13,12 @@ metadata:
 **Outcome:** Turn an existing HubSpot task queue into completed LinkedIn/social actions for the tasks due today. This play does **not** create a new cadence, infer missing task logic, or replace RevOps setup. It only works when HubSpot already has daily social-step tasks such as LinkedIn connect, LinkedIn message, or social follow-up.
 
 ## First-run onboarding gate
-Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type, HubSpot task read/write connector status, FirstTouch sender/account readiness, and whether HubSpot tasks are already being created daily for social steps. If the HubSpot connector cannot read and complete tasks, or if no task queue exists, stop and recommend setting up the task source first.
+Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type, HubSpot MCP status, FirstTouch sender/account readiness, and whether HubSpot tasks are already being created daily for social steps. If HubSpot MCP cannot read and complete tasks, or if no task queue exists, stop and recommend setting up the task source first.
+
+## Example prompts
+- "Find my HubSpot LinkedIn tasks due today and execute the eligible ones through FirstTouch."
+- "Work the LinkedIn connection request and LinkedIn message tasks due today in my HubSpot queue."
+- "Check my HubSpot tasks for LinkedIn/social follow-ups due today, run the safe ones, and tell me what stayed open."
 
 ## When to use
 - "Work my HubSpot LinkedIn tasks due today"
