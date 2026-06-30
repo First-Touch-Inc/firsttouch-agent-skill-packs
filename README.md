@@ -36,6 +36,7 @@ firsttouch-skills/
 └── skills/
     ├── firsttouch-messaging/              ← foundation: how to write outreach
     ├── warm-engager-followup/             ← social engagement flow
+    ├── social-campaigns/                  ← one-time static-template campaigns
     ├── icp-outbound-builder/              ← AI SDR
     ├── founder-led-outbound/              ← founder AI SDR
     ├── inbound-speed-to-lead/
@@ -62,7 +63,7 @@ firsttouch-skills/
 2. Connect the MCPs your plays need — see [`references/mcp-setup.md`](references/mcp-setup.md).
    - **FirstTouch MCP** is required for FirstTouch execution and approvals.
    - **HubSpot MCP or a service key/private app token** unlocks HubSpot-specific plays.
-   - If HubSpot is unavailable, run FirstTouch-only plays such as social engagement, AI SDR from Discover Contacts, founder AI SDR, sequence QA, and workspace audit.
+   - If HubSpot is unavailable, run FirstTouch-only plays such as social engagement, social campaigns from Discover Contacts or imported lists, AI SDR from Discover Contacts, founder AI SDR, sequence QA, and workspace audit.
 3. Complete [`references/onboarding.md`](references/onboarding.md) before running the first play.
 4. Start with high-intent plays first; add outbound only after those are running and account limits are respected.
 
@@ -81,21 +82,23 @@ Every pack should ask three questions before running volume:
 **Recommended order:**
 1. For founders, start with **Social Engagement Flow** first. It does not require HubSpot and uses the warmest signal available.
 2. Run other high-intent plays next: inbound speed-to-lead, website visitor follow-up, HubSpot signal touches, customer champion, and stalled-deal reactivation when the required data exists.
-3. Add AI SDR / Founder AI SDR only after warm motions are running, with daily approval batches of 10 free/basic or 20 Sales Navigator/Premium contacts.
+3. Add one-time social campaigns when the audience is narrow and the user can approve static flow templates.
+4. Add AI SDR / Founder AI SDR only after warm motions are running, with daily approval batches of 10 free/basic or 20 Sales Navigator/Premium contacts.
 
 ---
 
 ## The plays that drive the most value
 
 1. **Social Engagement Flow** — act on post/profile engagement first; for founders this is the number one starter play and does not require HubSpot.
-2. **AI SDR / ICP Outbound** — build daily approval-ready batches from a HubSpot list or FirstTouch Discover Contacts.
-3. **Founder AI SDR** — the AI SDR workflow in founder voice, with the same approval queue and 10/20 daily caps.
-4. **Inbound Speed-to-Lead** — attach LinkedIn connection and follow-up to signups, trials, or demo requests.
-5. **Website Visitor Follow-Up** — act on pricing/demo/product-page intent from HubSpot tracking or RB2B/list sources.
-6. **HubSpot Signal Touches** — turn lifecycle, list, or deal events into timely social touches.
-7. **Stalled Deal Reactivation** — trigger a contact-based HubSpot workflow for contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days, then draft a fresh approved LinkedIn touch.
-8. **Customer Champion** — reach out around customer milestones.
-9. **Sequence QA / Workspace Audit** — make sure the setup and messaging are safe before scaling.
+2. **Social Campaigns** — build a one-time campaign for a very narrow ICP segment with static templates and flow-level approval.
+3. **AI SDR / ICP Outbound** — build daily approval-ready batches from a HubSpot list or FirstTouch Discover Contacts.
+4. **Founder AI SDR** — the AI SDR workflow in founder voice, with the same approval queue and 10/20 daily caps.
+5. **Inbound Speed-to-Lead** — attach LinkedIn connection and follow-up to signups, trials, or demo requests.
+6. **Website Visitor Follow-Up** — act on pricing/demo/product-page intent from HubSpot tracking or RB2B/list sources.
+7. **HubSpot Signal Touches** — turn lifecycle, list, or deal events into timely social touches.
+8. **Stalled Deal Reactivation** — trigger a contact-based HubSpot workflow for contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days, then draft a fresh approved LinkedIn touch.
+9. **Customer Champion** — reach out around customer milestones.
+10. **Sequence QA / Workspace Audit** — make sure the setup and messaging are safe before scaling.
 
 ---
 
@@ -105,6 +108,7 @@ Every pack should ask three questions before running volume:
 |------|---------|-------|
 | FirstTouch Messaging | Draft on-brand, high-converting LinkedIn outreach | No HubSpot required |
 | Warm Engager Follow-Up | Turn post engagers into conversations | FirstTouch; HubSpot optional for qualification/routing |
+| Social Campaigns | Build one-time LinkedIn campaigns for narrow ICP segments with static templates and flow-level approval | No HubSpot required for Discover Contacts/imported lists; HubSpot required for CRM/deal/customer segments |
 | AI SDR / ICP Outbound Builder | Pull target accounts, qualify, find personas, and add to a daily approval queue | HubSpot list preferred; otherwise ICP brief + FirstTouch Discover Contacts |
 | Founder-Led AI SDR | Run the AI SDR workflow in founder voice | HubSpot list preferred; otherwise ICP brief + FirstTouch Discover Contacts |
 | Inbound Speed-to-Lead | Attach LinkedIn connection + follow-up to inbound signups or trials | HubSpot or FirstTouch-accessible inbound list/import |
@@ -121,7 +125,7 @@ Every pack should ask three questions before running volume:
 
 - **Progressive disclosure** — only the relevant context loads. Metadata is always present; the body loads on trigger; references load on demand.
 - **Passive, deliverable-oriented** — each skill defines a deliverable, not a goal. The agent produces an artifact; a human approves before anything sends.
-- **Human-in-the-loop by default** — no play sends outbound autonomously. Every send goes through an approval gate (see [`references/safety-governance.md`](references/safety-governance.md)).
+- **Human-in-the-loop by default** — no play sends outbound autonomously. Dynamic plays require per-send approval; one-time social campaigns can use flow-level approval for the exact audience and static templates (see [`references/safety-governance.md`](references/safety-governance.md)).
 - **HubSpot-aware, not HubSpot-blocked where possible** — HubSpot-specific plays say so clearly; AI SDR and founder AI SDR can run from FirstTouch Discover Contacts when no HubSpot list exists.
 
 ---
@@ -132,20 +136,21 @@ In addition to the flat `skills/` folder above, this repo ships **4 downloadable
 
 | Pack | Persona | Skills included | Key plays |
 |---|---|---:|---|
-| `founder-pack` | Founders doing their own sales | 8 | Social engagement flow, founder AI SDR, inbound follow-up, stalled open-deal workflow, customer thank-you |
-| `ae-pack` | Account Executives | 7 | Inbound speed-to-lead, stalled open-deal workflow, meeting-booked stakeholder follow-up, closed-lost re-engage |
-| `bdr-pack` | Business Development Reps | 6 | Inbound speed-to-lead, social engagement flow, target-list AI SDR, lead recovery |
-| `revops-pack` | Revenue Operations | 10 | Workspace audit, sequence QA, stalled open-deal workflow, HubSpot workflow build, team governance |
+| `founder-pack` | Founders doing their own sales | 9 | Social engagement flow, social campaigns, founder AI SDR, inbound follow-up, stalled open-deal workflow, customer thank-you |
+| `ae-pack` | Account Executives | 8 | Inbound speed-to-lead, social campaigns, stalled open-deal workflow, meeting-booked stakeholder follow-up, closed-lost re-engage |
+| `bdr-pack` | Business Development Reps | 7 | Inbound speed-to-lead, social engagement flow, social campaigns, target-list AI SDR, lead recovery |
+| `revops-pack` | Revenue Operations | 11 | Workspace audit, sequence QA, social campaigns, stalled open-deal workflow, HubSpot workflow build, team governance |
 
 ### Shared-core model
 
-All 4 packs include the same 5 core plays, each with a persona-specific lens:
+All 4 packs include the same 6 core plays, each with a persona-specific lens:
 
 1. **Inbound speed-to-lead** — fast LinkedIn touch on signups, trials, demo requests
 2. **Social engagement flow** — act on post engagement from your posts, leadership posts, or company content
-3. **Website visitor play** — turn high-intent page visits into outreach
-4. **AI SDR build** — daily approval-ready outbound from a HubSpot contact/company list, or from a newly discovered ICP list when no HubSpot list exists
-5. **Scoop-up slipped leads** — recover dormant MQLs, no-shows, and stale pipeline when HubSpot/list data exists. Stalled-deal reactivation specifically means a contact-based HubSpot workflow enrolling contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days.
+3. **Social campaigns** — one-time campaigns for narrow ICP segments with static flow templates and flow-level approval
+4. **Website visitor play** — turn high-intent page visits into outreach
+5. **AI SDR build** — daily approval-ready outbound from a HubSpot contact/company list, or from a newly discovered ICP list when no HubSpot list exists
+6. **Scoop-up slipped leads** — recover dormant MQLs, no-shows, and stale pipeline when HubSpot/list data exists. Stalled-deal reactivation specifically means a contact-based HubSpot workflow enrolling contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days.
 
 Each pack then adds persona-unique plays on top of this shared core.
 

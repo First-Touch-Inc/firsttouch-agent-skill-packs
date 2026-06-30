@@ -25,6 +25,10 @@
       "status": "live"
     },
     {
+      "name": "social-campaigns",
+      "status": "live"
+    },
+    {
       "name": "customer-champion",
       "status": "live"
     },
@@ -53,6 +57,15 @@
       "needs": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
       "composes": [
         "founder-led-outbound"
+      ]
+    },
+    {
+      "name": "Social campaigns — founder-led narrow audience push",
+      "outcome": "Build a one-time founder-led campaign such as leadership connections for feature feedback, one-year customer thank-you notes, or VP Sales coffee invites during a travel week, using approved static templates and flow-level approval.",
+      "needs": "No HubSpot required for Discover Contacts or connection/list sources; HubSpot required for customer tenure or CRM-history segments",
+      "composes": [
+        "social-campaigns",
+        "firsttouch-messaging"
       ]
     },
     {

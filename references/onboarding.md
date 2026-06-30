@@ -13,7 +13,7 @@ Ask these questions before recommending or executing plays:
 2. **HubSpot access**
    - "Do you use HubSpot? If yes, can you connect the HubSpot MCP or provide a HubSpot service key / private app token so the agent can access internal CRM data?"
    - If they use HubSpot but cannot connect access yet: ask them to create a HubSpot list for the target audience so FirstTouch can access the contacts/accounts.
-   - If they do not use HubSpot: HubSpot-specific plays are unavailable, but FirstTouch-only plays can still run from Discover Contacts, social engagement, imported CSVs, or FirstTouch-accessible lists.
+   - If they do not use HubSpot: HubSpot-specific plays are unavailable, but FirstTouch-only plays can still run from Discover Contacts, social engagement, one-time social campaigns from imported lists, or FirstTouch-accessible lists.
 
 3. **Play selection**
    - "Which plays do you want to run first? I recommend starting with high-intent plays, then adding outbound once those are running."
@@ -35,7 +35,7 @@ Never exceed these caps. If the account is new, under warning, or acceptance/rep
 | HubSpot MCP connected | Full HubSpot-specific plays can read CRM context, owners, lifecycle/deal/list data, and log back where supported. |
 | HubSpot service key / private app token available | Full HubSpot-specific plays can run after the agent/harness connects the key with the required scopes. |
 | HubSpot used, but no MCP/key yet | Ask the user to create a HubSpot list and confirm FirstTouch can access it. Run only plays that can operate from that list until full access is connected. |
-| No HubSpot | Run FirstTouch-only plays: Social Engagement Flow, AI SDR / ICP Outbound from Discover Contacts, Founder-Led AI SDR, Sequence QA, and Workspace Audit. Do not run HubSpot-specific plays until a HubSpot list/source exists. |
+| No HubSpot | Run FirstTouch-only plays: Social Engagement Flow, Social Campaigns from Discover Contacts/imported lists, AI SDR / ICP Outbound from Discover Contacts, Founder-Led AI SDR, Sequence QA, and Workspace Audit. Do not run HubSpot-specific plays until a HubSpot list/source exists. |
 
 ## Recommended rollout order
 
@@ -58,6 +58,7 @@ Recommend **high-intent plays first**. They use warmer signals, protect the Link
 |---|---|---|
 | AI SDR / ICP Outbound Builder | After high-intent queues are stable. Starts from a HubSpot contact/company list, or builds a new ICP list with FirstTouch Discover Contacts. | HubSpot list preferred; otherwise use ICP brief + FirstTouch Discover Contacts. |
 | Founder-Led AI SDR | Founder-specific AI SDR with founder voice and a stricter taste bar. | HubSpot list preferred; otherwise use ICP brief + FirstTouch Discover Contacts. |
+| Social Campaigns | When the user has a very narrow one-time segment and can approve static flow templates before launch. | No HubSpot required for Discover Contacts/imported lists; HubSpot required for CRM/deal/customer/no-show criteria. |
 | Sequence QA Reviewer | Before launching or scaling any sequence. | No. |
 | Workspace Audit | Before team-wide rollout or when setup is uncertain. | No; HubSpot improves CRM checks. |
 
@@ -75,7 +76,7 @@ After asking the questions, summarize the answer before running anything:
 - Plays available now: ...
 - Plays blocked until HubSpot access/list exists: ...
 - Recommended first plays: high-intent plays first; for founders, social engagement flow first
-- Approval workflow: per-send human approval required
+- Approval workflow: per-send approval for dynamic plays; flow-level approval allowed for one-time social campaigns with exact audience + static templates
 ```
 
 Then show the relevant catalog from the tables above and ask which play to run first. If the user has not chosen, recommend one high-intent play based on their available data.

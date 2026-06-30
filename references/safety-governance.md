@@ -46,7 +46,7 @@ Present the **exact** draft (recipient, message, intended action) to a human.
 - Edit → re-queue with edits
 - Deny → log and stop
 
-> **Approval must be per-send for first-touch outbound.** Batch approval is acceptable only for follow-ups in an already-approved sequence.
+> **Approval must be per-send for dynamic first-touch outbound.** Batch approval is acceptable only for follow-ups in an already-approved sequence, or for a one-time `social-campaigns` flow where the human approves the exact segment, sender/routing rule, static templates, launch window, and daily cap before the flow launches. Do not treat social-campaign flow approval as permission for future dynamic or AI-generated campaigns.
 
 ### Gate 5 — Log after send
 When HubSpot is connected, every executed action is logged to the HubSpot contact timeline via FirstTouch, within minutes.

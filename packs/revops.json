@@ -29,6 +29,10 @@
       "status": "live"
     },
     {
+      "name": "social-campaigns",
+      "status": "live"
+    },
+    {
       "name": "stalled-deal-reactivation",
       "status": "live"
     },
@@ -88,6 +92,16 @@
       "needs": "No HubSpot required for QA/audit; HubSpot improves owner routing",
       "composes": [
         "sequence-qa-reviewer",
+        "workspace-audit"
+      ]
+    },
+    {
+      "name": "Social campaigns — team-routed operational campaigns",
+      "outcome": "Build governed one-time campaigns such as inbound-signup decision-maker enrichment, CEO touches to stuck $50k+ deals, or product-update messaging to first-degree team connections at target accounts.",
+      "needs": "No HubSpot required for imported target-account/connection lists; HubSpot required for inbound owner routing, deal amount, deal age, or customer/deal segments",
+      "composes": [
+        "social-campaigns",
+        "firsttouch-messaging",
         "workspace-audit"
       ]
     },

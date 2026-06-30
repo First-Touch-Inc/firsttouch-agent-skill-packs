@@ -27,6 +27,10 @@
     {
       "name": "hubspot-signal-to-linkedin-touch",
       "status": "live"
+    },
+    {
+      "name": "social-campaigns",
+      "status": "live"
     }
   ],
   "recipes": [
@@ -63,6 +67,15 @@
       "needs": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
       "composes": [
         "icp-outbound-builder",
+        "firsttouch-messaging"
+      ]
+    },
+    {
+      "name": "Social campaigns — narrow ICP meeting push",
+      "outcome": "Build a one-time LinkedIn campaign for a narrow BDR segment such as connected leadership titles, last-year no-shows, or ICP buyers in a tradeshow city, using approved static templates and flow-level approval.",
+      "needs": "No HubSpot required for Discover Contacts or connection/list sources; HubSpot required for no-show or CRM-history segments",
+      "composes": [
+        "social-campaigns",
         "firsttouch-messaging"
       ]
     },

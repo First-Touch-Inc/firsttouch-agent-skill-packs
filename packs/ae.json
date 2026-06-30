@@ -29,6 +29,10 @@
       "status": "live"
     },
     {
+      "name": "social-campaigns",
+      "status": "live"
+    },
+    {
       "name": "stalled-deal-reactivation",
       "status": "live"
     }
@@ -67,6 +71,15 @@
       "needs": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
       "composes": [
         "icp-outbound-builder",
+        "firsttouch-messaging"
+      ]
+    },
+    {
+      "name": "Social campaigns — territory and deal expansion",
+      "outcome": "Build a one-time LinkedIn campaign for a narrow AE segment such as VPs of Sales in territory, closed-won feature-upgrade targets, or open deals from last year, using approved static templates and flow-level approval.",
+      "needs": "No HubSpot required for Discover Contacts territory prospecting; HubSpot required for closed-won, open-deal, owner, or CRM-history segments",
+      "composes": [
+        "social-campaigns",
         "firsttouch-messaging"
       ]
     },
