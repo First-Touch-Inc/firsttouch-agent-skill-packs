@@ -25,8 +25,8 @@ Before running this skill for the first time in a workspace, load `../../referen
 - The user wants a product update, event invite, reactivation list, or team-connection push
 
 ## When NOT to use
-- Daily fresh prospecting or recurring AI SDR queues. Use the persona AI SDR skill instead: `founder-led-outbound` in the Founder pack, or `icp-outbound-builder` in AE/BDR/RevOps packs.
-- A BDR's normal daily queue unless the campaign is explicitly a narrow special push. For daily prospecting, use `inbound-speed-to-lead`, `warm-engager-followup`, or the persona AI SDR skill (`founder-led-outbound` in Founder, `icp-outbound-builder` in AE/BDR/RevOps).
+- Daily fresh prospecting or recurring AI SDR queues. Use the persona AI SDR skill instead: founder-led-outbound in the Founder pack, or icp-outbound-builder in AE/BDR/RevOps packs.
+- A BDR's normal daily queue unless the campaign is explicitly a narrow special push. For daily prospecting, use `inbound-speed-to-lead`, `warm-engager-followup`, or the persona AI SDR skill: founder-led-outbound in Founder, icp-outbound-builder in AE/BDR/RevOps.
 - Highly personalized one-off account strategy. Use the relevant signal, stalled-deal, or founder play.
 - A broad audience like "all VPs of Sales" without a narrow filter. Narrow it first.
 - Any campaign where the user expects unreviewed AI-generated copy for every recipient. If copy is dynamic per recipient, use row-level approval like AI SDR.
