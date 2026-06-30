@@ -21,8 +21,8 @@
 └───────────────┬─────────────────────────────────────────┘
                 │ logs + attributes to
 ┌───────────────▼─────────────────────────────────────────┐
-│  SYSTEM OF RECORD                                       │
-│  HubSpot — the brain / CRM                              │
+│  OPTIONAL SYSTEM OF RECORD                              │
+│  HubSpot — CRM memory when connected                    │
 │  Contacts, companies, deals, lifecycle, owners,         │
 │  activity timelines, pipeline                           │
 └─────────────────────────────────────────────────────────┘
@@ -34,7 +34,7 @@
 
 ## What FirstTouch actually does (the execution layer)
 
-FirstTouch is the **HubSpot-native LinkedIn outreach and social selling platform**. Through its MCP, an agent can:
+FirstTouch is a **governed LinkedIn outreach and social selling platform** that can run standalone and integrates deeply with HubSpot when connected. Through its MCP, an agent can:
 
 - **Trigger** supported LinkedIn/social actions (connection requests, messages, flow steps, manual tasks) from HubSpot workflows or directly
 - **Track** every touch and **attribute** it to contacts, companies, and deals
@@ -42,7 +42,7 @@ FirstTouch is the **HubSpot-native LinkedIn outreach and social selling platform
 - **Respect** routing rules (owner-based), approval gates, and account-safety limits
 - **Expose** a public MCP server (`mcp.firsttouch.ai`) so AI agents run outreach without a browser
 
-Customer-facing positioning reference: works with HubSpot-connected workflows where configured and is built around **human-in-the-loop** execution. Check the live pricing and compliance pages before quoting price, HubSpot edition coverage, or certification details.
+Customer-facing positioning reference: works standalone for FirstTouch audiences, flow plans, Discover Contacts, Dynamic Actions, and Social Engagement; works with HubSpot-connected workflows where configured; and is built around **human-in-the-loop** execution. Check the live pricing and compliance pages before quoting price, HubSpot edition coverage, or certification details.
 
 ---
 
@@ -56,7 +56,7 @@ When the **HubSpot MCP** is connected, the agent can read:
 - **Timeline activity** — emails, meetings, notes, and (via FirstTouch) LinkedIn touches
 - **Owners** — who owns the relationship (critical for routing)
 
-This is what makes plays **attribution-aware** and **owner-safe**. Without HubSpot context, an agent would blindly message prospects regardless of relationship state.
+This makes CRM-sourced plays **attribution-aware** and **owner-safe**. Without HubSpot context, the agent should use FirstTouch-only sources, imported lists, Discover Contacts, or Social Engagement, and should not claim CRM owner routing, deal context, or HubSpot timeline logging.
 
 ---
 
@@ -83,7 +83,7 @@ Steps 1–4 and 6–7 are where the agent earns its keep. Step 5 is FirstTouch. 
 | MCP | What it gives the agent | Required by |
 |-----|------------------------|-------------|
 | **FirstTouch MCP** | LinkedIn action execution, engagement data, logging | Every play |
-| **HubSpot MCP** | CRM context, lifecycle, owners, deals, lists | Required for HubSpot signal touches, stalled deal reactivation, customer/customer-milestone plays when installed, and CRM/deal/customer segments. Optional but useful for inbound speed-to-lead, website visitor follow-up, AI SDR, warm engagement, and social campaigns when those can start from FirstTouch/imported/Discover sources. |
+| **HubSpot MCP** | CRM context, lifecycle, owners, deals, lists | Required for HubSpot signal touches, stalled deal reactivation, and CRM/deal/customer segments when those plays are installed. Optional but useful for inbound speed-to-lead, website visitor follow-up, AI SDR, warm engagement, and social campaigns when those can start from FirstTouch/imported/Discover sources. |
 | **FirstTouch enrichment + optional external enrichment MCP** | LinkedIn URLs, emails, firmographics | FirstTouch can enrich when credits/data are available; Clay/Surfe/etc. are optional supplements, not prerequisites |
 
 Full setup instructions: [`mcp-setup.md`](mcp-setup.md).

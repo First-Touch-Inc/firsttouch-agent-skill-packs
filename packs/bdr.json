@@ -36,7 +36,7 @@
   "recipes": [
     {
       "name": "Auto-connect on meeting or signup",
-      "outcome": "When an inbound source is already connected or imported, prepare same-day LinkedIn drafts for one-click approval; this runs when the agent runs or on a schedule unless a source continuously feeds FirstTouch.",
+      "outcome": "Inbound only: when a meeting/signup source is already connected or imported, prepare same-day LinkedIn drafts for approval. If no inbound source exists, use BDR AI SDR instead.",
       "needs": "HubSpot or FirstTouch-accessible inbound list/import required",
       "composes": [
         "inbound-speed-to-lead",
@@ -45,7 +45,7 @@
     },
     {
       "name": "BDR AI SDR \u2014 daily approval queue",
-      "outcome": "View a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to 10/day free or 20/day Sales Nav/Premium meeting-generation touches for approval.",
+      "outcome": "Daily engine: discover or load ICP-fit prospects, enrich each prospect, and draft connection-request rows up to the 10/day free or 20/day Sales Nav/Premium connection-request cap for approval. Already-connected message rows use the separate message cap.",
       "needs": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
       "composes": [
         "icp-outbound-builder",
@@ -63,8 +63,8 @@
     },
     {
       "name": "Website visitor play",
-      "outcome": "Turn pricing/demo/product-page visits into LinkedIn touches while intent is active; if no visitor signal source exists, choose the BDR AI SDR recipe as a separate prospecting motion instead.",
-      "needs": "HubSpot tracking or RB2B/list source required; if no visitor signal source exists, use the persona AI SDR recipe as a separate prospecting motion",
+      "outcome": "Conditional, most BDRs skip unless RB2B/HubSpot tracking or a visitor list exists: turn pricing/demo/product-page visits into LinkedIn touches while intent is active.",
+      "needs": "Conditional; HubSpot tracking, RB2B/list source, or visitor export required; most BDRs skip if no source exists",
       "composes": [
         "website-visitor-followup"
       ]
@@ -80,7 +80,7 @@
     },
     {
       "name": "Scoop-up slipped leads \u2014 no-shows and old MQLs",
-      "outcome": "Work no-shows and old MQLs from a HubSpot/event list, RevOps-supplied property, or imported source; if no source exists, use BDR AI SDR instead.",
+      "outcome": "Lead recovery: work no-shows and old MQLs from a HubSpot/event list, RevOps-supplied property, or imported source. If no recovery source exists, use BDR AI SDR instead.",
       "needs": "HubSpot/event list, RevOps-supplied property, or imported source required",
       "composes": [
         "hubspot-signal-to-linkedin-touch",

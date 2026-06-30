@@ -40,8 +40,8 @@
   "recipes": [
     {
       "name": "Auto-connect on meeting or signup",
-      "outcome": "Draft a same-day LinkedIn touch for approval when prospects book or submit, before the moment cools.",
-      "needs": "HubSpot or FirstTouch-accessible inbound list/import required",
+      "outcome": "Draft a same-day LinkedIn touch for approval when prospects book or submit. An AE can run this once today from a HubSpot/exported inbound contact list; recurring automation needs a connected source or RevOps workflow.",
+      "needs": "HubSpot or FirstTouch-accessible inbound list/import required; AE can run once from a manual list; RevOps needed only for recurring automation",
       "composes": [
         "inbound-speed-to-lead",
         "firsttouch-messaging"
@@ -93,8 +93,8 @@
     },
     {
       "name": "Meeting-booked stakeholder follow-up",
-      "outcome": "When a meeting-booked HubSpot list/workflow or accessible source already exists, draft LinkedIn touches to known decision-makers so the deal is not single-threaded; otherwise ask RevOps for one-time setup first.",
-      "needs": "HubSpot required; AE can run once from a meeting-booked contact list/source; RevOps needed only for recurring workflow setup",
+      "outcome": "Draft stakeholder LinkedIn touches from a meeting-booked contact list/source so the deal is not single-threaded. An AE can run this once today from a manually filtered HubSpot list; RevOps is needed only for recurring setup.",
+      "needs": "HubSpot required; AE can run once from a manually built meeting-booked contact list/source; RevOps needed only for recurring workflow setup",
       "composes": [
         "hubspot-signal-to-linkedin-touch",
         "firsttouch-messaging"
@@ -102,8 +102,8 @@
     },
     {
       "name": "Closed-lost reengagement",
-      "outcome": "Re-engage historical closed-lost accounts with a fresh, approved LinkedIn touch from a HubSpot Closed Lost contact list; keep this separate from stalled open-deal reactivation.",
-      "needs": "HubSpot required; separate from stalled open-deal workflow",
+      "outcome": "Re-engage historical closed-lost accounts from a HubSpot Closed Lost contact list with a fresh, approved LinkedIn touch and a separate win-back angle; keep this separate from stalled open-deal reactivation.",
+      "needs": "HubSpot required; run from a Closed Lost contact list; separate from stalled open-deal workflow",
       "composes": [
         "hubspot-signal-to-linkedin-touch",
         "icp-outbound-builder",

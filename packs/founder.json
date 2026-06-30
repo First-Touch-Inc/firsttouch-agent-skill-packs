@@ -84,7 +84,7 @@
     },
     {
       "name": "Scoop-up slipped leads",
-      "outcome": "Use HubSpot lifecycle/deal/list data to find personal lost deals and dormant contacts worth a second look.",
+      "outcome": "Use HubSpot lifecycle/deal/list data to find personal lost deals and dormant contacts worth a second look. This is a secondary CRM motion, not the no-HubSpot founder start.",
       "needs": "HubSpot required",
       "composes": [
         "hubspot-signal-to-linkedin-touch",
@@ -93,7 +93,7 @@
     },
     {
       "name": "Stalled deal reactivation \u2014 60-day open-deal workflow",
-      "outcome": "Find contacts associated to open deals that are not Closed Won/Lost and have had no engagement for 60+ days, then build an owner-approved LinkedIn reactivation queue. Optional RevOps/admin workflow setup can automate the list later.",
+      "outcome": "Find contacts associated to open HubSpot deals that are not Closed Won/Lost and have had no engagement for 60+ days, then build an owner-approved LinkedIn reactivation queue. This is a secondary HubSpot motion after the no-HubSpot founder starts.",
       "needs": "HubSpot required; RevOps/admin may be needed only for recurring workflow setup",
       "composes": [
         "stalled-deal-reactivation",

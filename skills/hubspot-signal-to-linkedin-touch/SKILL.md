@@ -29,7 +29,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 ## Step-by-step
 
 ### 1. Define & query the signal (HubSpot MCP)
-Pull contacts matching the trigger event within the window. FirstTouch supports HubSpot workflow actions that trigger FirstTouch flows; if the desired trigger needs a HubSpot workflow, confirm the customer portal exposes the needed FirstTouch action card and permissions, then produce the contact-based workflow/list criteria for RevOps/admin. Do not claim the agent created a HubSpot workflow unless the connected portal confirms that capability. For each, capture: name, title, company, owner, lifecycle/deal stage, the triggering event + timestamp, and recent timeline activity.
+Pull contacts matching the trigger event within the window. For AE use, a manually filtered HubSpot contact list is enough for a one-time run today; RevOps/admin workflow setup is needed only for recurring automation. FirstTouch supports HubSpot workflow actions that trigger FirstTouch flows; if the desired trigger needs a HubSpot workflow, confirm the customer portal exposes the needed FirstTouch action card and permissions, then produce the contact-based workflow/list criteria for RevOps/admin. Do not claim the agent created a HubSpot workflow unless the connected portal confirms that capability. For each, capture: name, title, company, owner, lifecycle/deal stage, the triggering event + timestamp, and recent timeline activity.
 
 ### 2. Qualify
 For each triggered contact:
@@ -61,7 +61,7 @@ Table of: contact, triggering event, owner, message type, draft. All marked awai
 On approval: send via FirstTouch, log to HubSpot timeline, tag with `signal_triggered_touch` + the signal type for attribution.
 
 ### 7. Track
-Cohort tagged by signal type so the team can review which signals produce replies, meetings, and pipeline.
+Cohort tagged by signal type so the team can review which signals produce replies, meetings, and pipeline. When FirstTouch team metrics are available, pull metrics filtered by this flow/tag to report replies, meetings, and opportunities.
 
 ## Output
 - Triggered-contact list with the HubSpot event per row

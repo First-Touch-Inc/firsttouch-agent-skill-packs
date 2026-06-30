@@ -36,9 +36,9 @@ SKILL_NEEDS = {
 }
 
 START_HERE = {
-    "founder": "Start with the no-HubSpot path: **Social engagement flow — founder posts**, or a relevant competitor founder/influencer profile if owned engagement is thin. Then use **Founder-led AI SDR** from Discover Contacts when the founder wants a cold ICP queue, and **Social campaigns** for narrow founder-led pushes such as feature feedback, product-update feedback, or travel-week outreach. If the founder runs HubSpot, use the HubSpot plays as secondary CRM/deal motions, not the default path.",
-    "ae": "No HubSpot or cannot loop in RevOps? Start with **Social engager flow** on company/leadership, competitor founder, or influencer profiles, then use **AE AI SDR** from a clear ICP. HubSpot connected? Use **Auto-connect on meeting or signup**, **Meeting-booked stakeholder follow-up**, and **Stalled deal reactivation** from contact-based lists/workflows. This keeps the self-serve path first and the RevOps-gated path explicit.",
-    "bdr": "If there is no already-configured inbound feed, start with **BDR AI SDR** as the daily engine from ICP + Discover Contacts. To work no-shows and old MQLs, run **Scoop-up slipped leads** when you have a HubSpot/event list, RevOps-supplied property, or imported source. Use **Auto-connect on meeting or signup** only when a HubSpot or FirstTouch-accessible inbound source is already available; it runs when the agent is run or scheduled unless a connected source continuously feeds it. Add **Social engager flow** from leadership, competitor founder, or influencer profiles when Social Engagement is enabled in the workspace or an exported engager list is available. Use **Social campaigns** for special manager-approved pushes, usually as row-level dynamic actions rather than a self-serve flow-building exercise.",
+    "founder": "**No HubSpot? Start here:** run **Social engagement flow — founder posts** first, use **Founder-led AI SDR** from Discover Contacts second, and use **Social campaigns** for narrow founder-led pushes such as feature feedback, product-update feedback, or travel-week outreach. **Have HubSpot?** Add inbound, visitor, and stalled-deal plays as secondary CRM/deal motions, not the default path.",
+    "ae": "**No HubSpot?** This pack can prospect through **Social engager flow** and **AE AI SDR**, but it cannot touch your existing pipeline without HubSpot or a FirstTouch-accessible contact list. **Have HubSpot/list access?** Run **Stalled deal reactivation**, **Meeting-booked stakeholder follow-up**, or **Auto-connect on meeting or signup** once today from a manually filtered contact list; RevOps is needed only for recurring workflow automation.",
+    "bdr": "**Daily engine:** start with **BDR AI SDR** from ICP + Discover Contacts when no inbound feed is wired. **Lead recovery:** run **Scoop-up slipped leads** for no-shows and old MQLs only when you have a HubSpot/event list, RevOps-supplied property, or imported source. **Inbound:** use **Auto-connect on meeting or signup** only when a HubSpot or FirstTouch-accessible inbound source already exists. **Conditional:** use **Website visitor play** only if RB2B/HubSpot tracking or a visitor list exists; most BDRs skip it. Add **Social engager flow** for leadership/competitor/influencer post engagement, and reserve **Social campaigns** for manager-approved special pushes.",
     "revops": "Start with **Pre-launch rollout audit** before any rep launches volume. Then govern the core rollout: HubSpot list triggers, AI SDR queue QA, social campaigns, stalled-deal workflows, and **Attribution & team performance review** as the recurring reporting cadence. Keep situational plays such as events, customer thank-you, website visitors, and closed-lost reengagement for after the core governance path is stable.",
 }
 
@@ -87,19 +87,27 @@ def recipe_category(persona: str, recipe: dict) -> str:
     name = recipe.get("name", "")
     needs = recipe.get("needs", "")
     if persona == "founder":
-        if needs.startswith("HubSpot required") or "; HubSpot required" in needs:
-            return "If you run HubSpot"
-        return "No-HubSpot founder starts"
+        if needs.startswith("No HubSpot required"):
+            return "Start here — no HubSpot needed"
+        return "Needs HubSpot, RB2B, or a FirstTouch-accessible source"
     if persona == "ae":
         if needs.startswith("HubSpot required") or "; HubSpot required" in needs or needs.startswith("HubSpot or"):
             return "HubSpot-connected deal and inbound plays"
         return "No-HubSpot / self-serve starts"
     if persona == "bdr":
-        if "BDR AI SDR" in name or "Social engager" in name or "Social campaigns" in name:
-            return "Daily engine and manager-approved pushes"
+        if name.startswith("BDR AI SDR"):
+            return "Daily engine"
+        if name.startswith("Scoop-up slipped"):
+            return "Lead recovery"
+        if name.startswith("Auto-connect") or name.startswith("Website visitor"):
+            return "Inbound / source-gated plays"
+        if name.startswith("Social engager"):
+            return "Warm social signals"
+        if name.startswith("Social campaigns"):
+            return "Manager-approved special pushes"
         return "Requires inbound, HubSpot, or external source"
     if persona == "revops":
-        core = ("Pre-launch", "HubSpot list", "Govern and audit", "Social campaigns", "Stalled deal")
+        core = ("Pre-launch", "Attribution", "HubSpot list", "Govern and audit", "Social campaigns", "Stalled deal")
         if any(name.startswith(prefix) for prefix in core):
             return "Core governance"
         return "Situational rollout plays"
@@ -293,7 +301,7 @@ Use `references/onboarding.md` for the full question flow and account-type rules
 
 ## HubSpot reality check
 - **What works without HubSpot:** {NO_HUBSPOT[persona]}
-- **What needs HubSpot:** CRM lifecycle/deal criteria, owner routing, HubSpot timeline logging, stalled-deal workflows, and contact/company lists stored only in HubSpot.
+- **What needs HubSpot:** CRM lifecycle/deal criteria, owner routing, HubSpot timeline logging, stalled-deal workflows, and contact/company lists stored only in HubSpot. Without HubSpot/list access, use the FirstTouch-only recipes and do not promise existing-pipeline/deal recovery.
 - **FirstTouch-accessible list/import means:** a CSV, static list, audience, or HubSpot list that FirstTouch can read. For true inbound automation, connect HubSpot or another source that continuously feeds FirstTouch.
 - **Enrichment is optional but useful:** FirstTouch can enrich contacts/companies when credits and data are available. Clay/Surfe or another enrichment MCP is an optional supplement, not a prerequisite. Without a usable LinkedIn URL or enough verified data, the agent should skip or queue incomplete records rather than fabricate.
 
