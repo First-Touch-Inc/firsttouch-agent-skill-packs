@@ -3,7 +3,7 @@ name: hubspot-signal-to-linkedin-touch
 description: Turn a HubSpot CRM event — lifecycle stage change, deal stage movement, form fill, list addition — into a timely, personalized LinkedIn touch. Reads the signal from HubSpot, qualifies the contact, drafts outreach via FirstTouch, gates for approval, and logs back to the timeline. Use when the user wants to act on HubSpot activity with LinkedIn outreach, trigger social touches from CRM events, or make outbound "event-driven."
 metadata:
   author: firsttouch
-  version: "1.0"
+  version: "1.1"
   category: play
   requires: [firsttouch-mcp, hubspot-mcp]
 ---
@@ -29,7 +29,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 ## Step-by-step
 
 ### 1. Define & query the signal (HubSpot MCP)
-Pull contacts matching the trigger event within the window. For AE use, a manually filtered HubSpot contact list is enough for a one-time run today; RevOps/admin workflow setup is needed only for recurring automation. FirstTouch supports HubSpot workflow actions that trigger FirstTouch flows; if the desired trigger needs a HubSpot workflow, confirm the customer portal exposes the needed FirstTouch action card and permissions, then produce the contact-based workflow/list criteria for RevOps/admin. Do not claim the agent created a HubSpot workflow unless the connected portal confirms that capability. For each, capture: name, title, company, owner, lifecycle/deal stage, the triggering event + timestamp, and recent timeline activity.
+Pull contacts matching the trigger event within the window. For AE use, a manually filtered HubSpot contact list is enough for a one-time run today; RevOps/admin workflow setup is needed only for recurring automation. FirstTouch supports HubSpot workflow actions that trigger FirstTouch flows; if the desired trigger needs a HubSpot workflow, confirm the customer portal exposes the needed FirstTouch action card and permissions, then use `../../references/hubspot-setup.md` to produce the contact-based workflow/list criteria for RevOps/admin. Do not claim the agent created a HubSpot workflow unless the connected portal confirms that capability. For each, capture: name, title, company, owner, lifecycle/deal stage, the triggering event + timestamp, and recent timeline activity.
 
 ### 2. Qualify
 For each triggered contact:

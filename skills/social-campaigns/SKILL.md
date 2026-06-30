@@ -10,7 +10,7 @@ metadata:
 
 # Social Campaigns
 
-**BDR default:** row-level dynamic mode, manager-approved, skip unless explicitly asked. The static-flow governance below is mainly for RevOps/founder one-time campaigns.
+**Founder/RevOps use:** one-time narrow pushes such as feature-feedback, product-update, travel-week, or team-routed campaigns. **AE/BDR use:** row-level dynamic mode for manager-approved special pushes, not normal daily prospecting.
 
 **Outcome:** Create a focused FirstTouch social campaign for a narrow, explicitly defined ICP segment. For reps and BDRs, this should often feel like AI SDR: a curated list of rows with one-at-a-time approval, not a flow-building exercise. For founders and RevOps, it can also become a one-time static-template flow with bulk approval after the exact audience and templates are approved.
 
@@ -115,7 +115,7 @@ Run Gate 0 suppression/DNC and Gate 1 duplicate checks from `../../references/sa
 ### 4. Choose the execution object
 Create the FirstTouch execution object that matches the chosen mode and connected MCP support. State the exact object created.
 
-- **Rep/BDR dynamic-row mode:** build an audience and queue dynamic actions/manual approval rows, one prospect at a time; before adding per-contact dynamic actions, run the FirstTouch dynamic-action preflight guide, then add the action in the supported order.
+- **Rep/BDR dynamic-row mode:** build an audience and queue dynamic actions/manual approval rows, one prospect at a time; before adding per-contact dynamic actions, run `get_dynamic_action_guide`, then call `add_dynamic_action` in the supported order.
 - **Static campaign-flow mode:** build an audience plus flow plan/campaign with approved static templates.
 
 Recommended sequence:
@@ -177,7 +177,7 @@ If the user approves, launch only the approved rows or approved flow. If they ed
 
 ### 7. Launch and log
 After approval:
-- before queuing per-contact dynamic actions, run the FirstTouch dynamic-action preflight guide, then add the action in the supported order
+- before queuing per-contact dynamic actions, run `get_dynamic_action_guide`, then call `add_dynamic_action` in the supported order
 - publish or queue the FirstTouch dynamic actions, flow, campaign, or audience enrollment supported by the connected MCP
 - remember: publishing a flow activates it but does **not** enroll awaiting contacts; explicitly enroll approved contacts/items, then confirm they moved from awaiting to in-progress
 - enroll or queue only the approved audience/rows according to daily caps

@@ -3,7 +3,7 @@ name: firsttouch-messaging
 description: Write on-brand, high-converting LinkedIn outreach messages — connection requests, openers, follow-ups, and meeting asks — calibrated to the prospect's seniority and a real signal. Use this BEFORE any other FirstTouch play that involves drafting a message, or whenever the user asks to write LinkedIn outreach copy, draft a connection request, or personalize a sequence.
 metadata:
   author: firsttouch
-  version: "1.0"
+  version: "1.1"
   category: foundation
 ---
 

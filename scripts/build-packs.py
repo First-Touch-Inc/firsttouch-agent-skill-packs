@@ -37,9 +37,9 @@ SKILL_NEEDS = {
 }
 
 START_HERE = {
-    "founder": "**Start here:**\n1. **No HubSpot + Social Engagement enabled:** run **Social engagement flow — founder posts** first. Confirm in FirstTouch Social / workspace settings before starting.\n2. **No HubSpot + thin/no engagement:** monitor a relevant competitor founder or category influencer, use an exported engager list, or go straight to **Founder-led AI SDR** from Discover Contacts.\n3. **Have HubSpot:** add inbound, visitor, and stalled-deal plays as secondary CRM/deal motions, not the default path.",
-    "ae": "**Start here:**\n1. **No HubSpot/list access:** run **AE AI SDR** first from ICP + Discover Contacts; this cannot touch existing pipeline without HubSpot or a FirstTouch-accessible contact list.\n2. **HubSpot + quiet pipeline:** run **Stalled deal reactivation** first from a manually filtered contact list.\n3. **HubSpot + fresh booked meetings/signups:** run **Meeting-booked stakeholder follow-up** or **Auto-connect on meeting or signup**. RevOps is needed only for recurring workflow automation.",
-    "bdr": "Use this source-based chooser:\n\n| What you have today | Run first | Why |\n|---|---|---|\n| No source/list yet | **BDR AI SDR** | Daily meeting engine from ICP + Discover Contacts |\n| No-show, event, old-MQL, or HubSpot list | **Scoop-up slipped leads** | Lead recovery from a provided source |\n| Connected inbound feed or imported signup/demo list | **Auto-connect on meeting or signup** | Same-day inbound follow-up |\n| RB2B/HubSpot visitor source | **Website visitor play** | Conditional; most BDRs skip if no visitor source exists |\n\nThen add **Social engager flow** for leadership/competitor/influencer post engagement. Use **Social campaigns** only for manager-approved special pushes, not normal daily work.",
+    "founder": "1. **No HubSpot + Social Engagement enabled:** run **Social engagement flow — founder posts** first. Confirm in FirstTouch Social / workspace settings before starting.\n2. **No HubSpot + thin/no engagement:** monitor a relevant competitor founder or category influencer, use an exported engager list, or go straight to **Founder-led AI SDR** from Discover Contacts.\n3. **Have HubSpot:** add inbound, visitor, and stalled-deal plays as secondary CRM/deal motions, not the default path.",
+    "ae": "1. **No HubSpot/list access:** run **AE AI SDR** first from ICP + Discover Contacts; this cannot touch existing pipeline without HubSpot or a FirstTouch-accessible contact list.\n2. **HubSpot + quiet pipeline:** run **Stalled deal reactivation** first from a manually filtered contact list.\n3. **HubSpot + fresh booked meetings/signups:** run **Meeting-booked stakeholder follow-up** or **Auto-connect on meeting or signup**. RevOps is needed only for recurring workflow automation.",
+    "bdr": "Use this source-based chooser:\n\n| What you have today | Run first | Why |\n|---|---|---|\n| No source/list yet | **BDR AI SDR** (`icp-outbound-builder`) | Daily meeting engine from ICP + Discover Contacts |\n| No-show, event, old-MQL, or HubSpot list | **Scoop-up slipped leads** | Lead recovery from a provided source |\n| Connected inbound feed or imported signup/demo list | **Auto-connect on meeting or signup** | Same-day inbound follow-up |\n| RB2B/HubSpot visitor source | **Website visitor play** | Conditional; most BDRs skip if no visitor source exists |\n\nThen add **Social engager flow** for leadership/competitor/influencer post engagement. Use **Social campaigns** only for manager-approved special pushes, not normal daily work.",
     "revops": "Start with **Pre-launch rollout audit** before any rep launches volume. Then govern the core rollout: HubSpot list triggers, AI SDR queue QA, social campaigns, stalled-deal workflows, and **Attribution & team performance review** as the recurring reporting cadence. Keep situational plays such as events, customer thank-you, website visitors, and closed-lost reengagement for after the core governance path is stable.",
 }
 
@@ -255,6 +255,29 @@ def build_readme(manifest: dict, skill_descriptions: dict) -> str:
         needs = read_skill_needs(name)
         skills_rows.append(f"| {name}{suffix} | {desc} | {needs} | `{name}` |")
     skills_table = "\n".join(skills_rows) if skills_rows else "*(none)*"
+    if persona == "founder" and skills_rows:
+        no_hubspot_rows = []
+        sourced_rows = []
+        for s in play_skills:
+            name = s["name"]
+            desc = skill_descriptions.get(name, "")
+            suffix = " *(partial)*" if s["status"] == "partial" else ""
+            needs = read_skill_needs(name)
+            row = f"| {name}{suffix} | {desc} | {needs} | `{name}` |"
+            if needs.startswith("No HubSpot required"):
+                no_hubspot_rows.append(row)
+            else:
+                sourced_rows.append(row)
+        skills_table = (
+            "#### Start here, no HubSpot needed\n"
+            "| Skill | What it does | Needs / access status | Runs |\n"
+            "|---|---|---|---|\n"
+            + "\n".join(no_hubspot_rows)
+            + "\n\n#### Needs HubSpot, RB2B, or a FirstTouch-accessible source\n"
+            "| Skill | What it does | Needs / access status | Runs |\n"
+            "|---|---|---|---|\n"
+            + "\n".join(sourced_rows)
+        )
 
     support_rows = []
     for s in support_skills:
@@ -287,7 +310,7 @@ def build_readme(manifest: dict, skill_descriptions: dict) -> str:
 - **Skills** are the individual building blocks. Run a skill directly only when you know the exact motion you want.
 - **Read once:** `references/system-grounding.md` explains how agents, FirstTouch, HubSpot, approvals, and measurement fit together.
 - **FirstTouch terms:** a campaign/sequence/social campaign in this pack becomes a FirstTouch audience, flow plan, dynamic action, or enrollment depending on the play. {term_note} The agent should use FirstTouch's available execution objects and state the exact object it created.
-- **Approval locations:** approvals can happen in-agent, in FirstTouch, Slack, or email depending on your workspace. If the approval location is not configured, the agent must present the table in chat and wait.
+- **Approval locations:** default to in-agent or FirstTouch approval. Slack/email approval delivery requires external workspace configuration and is not assumed FirstTouch-native; if that routing is not configured, the agent must present the table in chat and wait.
 
 ## First-run onboarding
 Before running the first play in this pack, ask the user:
@@ -311,8 +334,6 @@ Use `references/onboarding.md` for the full question flow and account-type rules
 ## Your plays
 
 ### Skills catalog (check Needs before running)
-| Skill | What it does | Needs / access status | Runs |
-|---|---|---|---|
 {skills_table}
 
 ### 🧩 Support skills (called by plays)

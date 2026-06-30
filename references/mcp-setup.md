@@ -87,9 +87,9 @@ If no enrichment MCP is connected, the agent should use HubSpot, FirstTouch, CSV
 - [ ] If HubSpot is not connected, a HubSpot list or other FirstTouch-accessible source is available for any HubSpot-dependent play
 - [ ] The authorized FirstTouch user's LinkedIn account is healthy (not near limits)
 - [ ] You know **who owns** the target contacts in HubSpot (plays route by owner)
-- [ ] You've decided the **approval workflow** — Slack, email, or in-agent review (see `safety-governance.md`)
+- [ ] You've decided the **approval workflow** — FirstTouch/in-agent by default; Slack/email only if externally configured (see `safety-governance.md`)
 
-If Slack/email/FirstTouch approvals are not configured yet, use in-agent approval: the agent presents the approval table in chat, marks every row or flow as awaiting approval, and waits for the human before executing anything.
+Slack/email approval delivery requires external workspace configuration and is not assumed FirstTouch-native. If Slack/email/FirstTouch approvals are not configured yet, use in-agent approval: the agent presents the approval table in chat, marks every row or flow as awaiting approval, and waits for the human before executing anything.
 
 ---
 

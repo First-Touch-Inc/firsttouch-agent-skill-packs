@@ -3,7 +3,7 @@ name: workspace-audit
 description: Audit a FirstTouch + HubSpot workspace for readiness before launching outreach — checks MCP connections, owner coverage, LinkedIn account health, safety limits, logging setup, and data hygiene. Produces a readiness scorecard with prioritized fixes. Use when onboarding a new customer, before launching a campaign, or when outreach "isn't working" and you suspect setup issues.
 metadata:
   author: firsttouch
-  version: "1.0"
+  version: "1.1"
   category: play
   requires: [firsttouch-mcp]
 ---

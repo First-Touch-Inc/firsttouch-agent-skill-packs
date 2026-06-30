@@ -3,7 +3,7 @@ name: sequence-qa-reviewer
 description: Review a FirstTouch LinkedIn campaign/sequence for risk and quality before it launches — checking send safety, messaging quality, personalization depth, duplicate risk, and compliance with the FirstTouch messaging framework. Produces a risk-scored review with specific fixes. Use when the user wants to QA a campaign, review a sequence before launch, check if outreach is safe/good, or audit existing live campaigns.
 metadata:
   author: firsttouch
-  version: "1.0"
+  version: "1.1"
   category: play
   requires: [firsttouch-mcp]
 ---

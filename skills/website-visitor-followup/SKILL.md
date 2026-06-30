@@ -3,7 +3,7 @@ name: website-visitor-followup
 description: Turn website-visitor intent into LinkedIn outreach by using de-anonymized visitor data or HubSpot website-visitor signals, checking connection status, drafting a lightweight message, and gating execution for approval. Use when the user wants to act on website visitors, use de-anon tools with FirstTouch, or add social touches to pricing-page and high-intent web activity.
 metadata:
   author: firsttouch
-  version: "1.0"
+  version: "1.1"
   category: play
   requires: [firsttouch-mcp]
   optional: [hubspot-mcp]

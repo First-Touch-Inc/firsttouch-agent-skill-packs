@@ -37,7 +37,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 | Free/basic | 10 connection-request rows/day | No note |
 | Sales Navigator / Premium | 20 connection-request rows/day | No note by default for cold AI SDR; notes are allowed only when the user explicitly approves a strong reason |
 
-These caps apply to rows that send connection requests and are intentionally conservative for a recurring outbound motion. Already-connected first-message rows draw from the separate message cap and still require approval. If AI SDR and another play run on the same day, the combined connection requests must stay within 10 or 20. If the account is new, warned, or acceptance/reply rates drop, lower the cap and pause for human review.
+These caps apply to rows that send connection requests and are intentionally conservative for a recurring outbound motion. Already-connected first-message rows draw from the separate message cap and still require approval. If AI SDR and another play run on the same day, the combined connection requests must stay within 10 or 20. Before adding rows, inspect the sender's LinkedIn outreach queue/status for active, in-queue, blocked/review-required, and today's completed/pending connection requests. If the account is new, warned, or acceptance/reply rates drop, lower the cap and pause for human review.
 
 ## Default outreach plan
 
@@ -108,6 +108,7 @@ Every row should be marked `awaiting approval`. Each first-touch outbound row re
 
 ### 6. After approval → queue execution
 After human approval:
+- before queuing per-contact dynamic actions, run `get_dynamic_action_guide`, then call `add_dynamic_action` in the supported order
 - add approved contacts to the right FirstTouch flow/campaign, or queue dynamic actions
 - enforce duplicate checks, account-safety limits, and approval status from `../../references/safety-governance.md`
 - log execution and outcomes back to HubSpot when HubSpot is connected

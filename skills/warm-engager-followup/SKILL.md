@@ -3,7 +3,7 @@ name: warm-engager-followup
 description: Turn people who recently liked or commented on the sender's posts, an executive's posts, company/leadership content, or a relevant competitor founder/influencer profile into conversations and pipeline. Identifies warm engagers via FirstTouch, optionally monitors a CEO/exec, competitor founder, or influencer profile, qualifies engagers when HubSpot is connected, drafts a personalized connection request or opener, and gates the send for human approval. Use when the user wants to follow up on LinkedIn engagement, monitor leadership posts, convert post likers/commenters, or work "warm" social engagement.
 metadata:
   author: firsttouch
-  version: "1.0"
+  version: "1.1"
   category: play
   requires: [firsttouch-mcp]
 ---

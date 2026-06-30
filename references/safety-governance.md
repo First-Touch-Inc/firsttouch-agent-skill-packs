@@ -38,7 +38,7 @@ When HubSpot is connected, confirm the contact has an **owner** in HubSpot and t
 
 ### Gate 3 — Account-safety limits
 Never exceed the authorized account's safe daily/weekly limits.
-- Before queueing sends, pull FirstTouch outreach queue/status data for the sender when available: active/in-queue/blocked LinkedIn outreach rows plus today's completed/pending connection-request rows. Count today's connection requests against the sender's 10/day free/basic or 20/day Sales Nav/Premium cap before adding more rows; if queue data is unavailable, say the cap check is estimated and use the safer lower batch size.
+- Before queueing sends, pull FirstTouch LinkedIn outreach queue/status data for the sender, including `active`, `in_queue`, blocked/review-required, and today's completed/pending connection-request rows. Count today's connection requests against the sender's 10/day free/basic or 20/day Sales Nav/Premium cap before adding more rows; if queue data is unavailable, say the cap check is estimated and use the safer lower batch size.
 - If near limit → **stop and report**, do not push volume.
 - AI SDR and all other plays share the same daily **connection-request** budget for rows that send connection requests. First messages to already-connected contacts draw from the separate LinkedIn message cap. If multiple plays run in one day, keep the combined connection-request total under 10/day for free/basic or 20/day for Sales Navigator/Premium.
 - When a social campaign and AI SDR run on the same sender/day, either pause/reduce AI SDR during the campaign window or split the daily cap explicitly (for example, 6 AI SDR + 4 campaign on a free/basic seat). Recompute campaign sending-day estimates against the reduced allocation, not the full daily cap.
@@ -55,7 +55,7 @@ Present the **exact** draft (recipient, message, intended action) to a human.
 - Approve → execute via FirstTouch
 - Edit → re-queue with edits
 - Deny → log and stop
-- If Slack/email/FirstTouch approval workflow is not configured, use in-agent approval: show the approval table in chat and wait for the human response before executing anything.
+- Slack/email approval delivery requires external workspace configuration and is not assumed FirstTouch-native. If Slack/email/FirstTouch approval workflow is not configured, use in-agent approval: show the approval table in chat and wait for the human response before executing anything.
 
 > **Approval must be per-send for dynamic first-touch outbound.** Batch approval is acceptable only for follow-ups in an already-approved sequence, or for a one-time `social-campaigns` flow where the human approves the exact segment, sender/routing rule, static templates, launch window, and daily cap before the flow launches. Do not treat social-campaign flow approval as permission for future dynamic or AI-generated campaigns.
 

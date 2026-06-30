@@ -3,7 +3,7 @@ name: team-performance-report
 description: Pull FirstTouch team metrics for a selected date range, flow, sender, or campaign cohort, then summarize sends, replies, reply sentiment where available, meetings booked, opportunities, and HubSpot logging coverage. Use when RevOps asks what is working, needs a monthly attribution report, or wants performance by flow/sender/date after launch.
 metadata:
   author: firsttouch
-  version: "1.0"
+  version: "1.1"
   category: play
   requires: [firsttouch-mcp]
 ---

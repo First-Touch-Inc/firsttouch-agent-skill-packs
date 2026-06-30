@@ -3,7 +3,7 @@ name: inbound-speed-to-lead
 description: Attach LinkedIn connection requests and lightweight follow-up to inbound signups, trial starts, demo requests, or other high-intent inbound lists. Can start from HubSpot events when connected or a FirstTouch-accessible inbound list/import when HubSpot is unavailable. Checks connection status, drafts the smallest possible conversation-starting message, gates for approval, and logs to HubSpot when connected. Use when the user wants to improve speed-to-lead for inbound, connect on LinkedIn after a signup/trial, or add a social touch to inbound conversion.
 metadata:
   author: firsttouch
-  version: "1.0"
+  version: "1.1"
   category: play
   requires: [firsttouch-mcp]
 ---

@@ -121,3 +121,6 @@ The agent should behave like a **competent, cautious SDR**, not a script:
 - It **knows when to stop** and ask, rather than push volume
 
 This persona is reinforced in every play's `SKILL.md`. If an agent ever seems to be racing to send volume, something is wrong — pull it back to draft-and-gate.
+
+## Reply and sentiment scope
+Reply sentiment is limited to FirstTouch-managed outreach metrics where available. The agent must not claim arbitrary LinkedIn inbox, email inbox, or unmanaged-thread sentiment access.
