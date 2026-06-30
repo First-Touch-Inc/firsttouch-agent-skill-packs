@@ -10,7 +10,7 @@ metadata:
 
 # Inbound Speed-to-Lead
 
-**RevOps/team note:** When this skill is installed in the RevOps pack, run it as a team-governed motion with owner-based routing, per-seat cap sharing, approval review, and FirstTouch/HubSpot logging checks — not as an ungoverned single-rep send.
+**Team-governance note:** For team-wide rollouts, run this with owner-based routing, per-seat cap sharing, approval review, and FirstTouch/HubSpot logging checks — not as an ungoverned single-rep send.
 
 
 **Outcome:** Add a fast, light LinkedIn touch to high-intent inbound moments — signups, trials, demo requests — when the agent runs or on a configured schedule. True live speed-to-lead requires a connected source that continuously feeds FirstTouch.
