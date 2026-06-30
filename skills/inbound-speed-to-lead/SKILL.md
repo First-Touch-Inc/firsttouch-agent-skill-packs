@@ -10,7 +10,7 @@ metadata:
 
 # Inbound Speed-to-Lead
 
-**Outcome:** Add a fast, light LinkedIn touch to high-intent inbound moments — signups, trials, demo requests — so the prospect sees a human touch immediately, not just email automation.
+**Outcome:** Add a fast, light LinkedIn touch to high-intent inbound moments — signups, trials, demo requests — when the agent runs or on a configured schedule. True live speed-to-lead requires a connected source that continuously feeds FirstTouch.
 
 ## First-run onboarding gate
 Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type (free/basic = no connection notes and 10 connection requests/day max; Sales Navigator/Premium = connection notes available and up to 20/day), HubSpot access (MCP, service key/private app token, HubSpot list only, or none), and which play the user wants to run. Recommend high-intent plays before outbound to keep the LinkedIn account healthy. If HubSpot is unavailable, do not run HubSpot-specific steps unless the user provides a HubSpot list FirstTouch can access.
@@ -31,12 +31,12 @@ Before running this skill for the first time in a workspace, load `../../referen
 ### 1. Pull inbound contacts
 **Path A — HubSpot connected:** query the trigger event and return contacts created or updated in the window. Capture: name, title, company, owner, event type, timestamp, lifecycle stage, LinkedIn URL.
 
-**Path B — no HubSpot access:** ask for a FirstTouch-accessible inbound list, CSV import, or other source list containing the hand-raisers. Capture the same fields when available. State that HubSpot owner routing and CRM timeline logging are unavailable until HubSpot is connected.
+**Path B — no HubSpot access:** ask for a FirstTouch-accessible inbound list, CSV import, webhook-fed audience, or other source list containing the hand-raisers. A FirstTouch-accessible list means FirstTouch can read the contacts from an imported CSV/audience or connected source. State clearly: this is list/import-based unless a source continuously feeds FirstTouch; true speed-to-lead automation requires HubSpot or another connected inbound source. Capture the same fields when available. State that HubSpot owner routing and CRM timeline logging are unavailable until HubSpot is connected.
 
 ### 2. Check readiness
 For each contact:
 - Run Gate 0 suppression/DNC check from `../../references/safety-governance.md`; if suppressed or unsubscribed → skip
-- Has owner? if HubSpot is connected and no owner exists → route, do not send
+- Has owner? if HubSpot is connected and no owner exists → stop, report the no-owner contact, and ask the user/RevOps to assign it before drafting
 - Has LinkedIn URL / can be matched? if no → enrichment queue
 - Already connected? yes/no
 - Recently contacted? if yes → skip
@@ -78,7 +78,7 @@ Measure touch-to-meeting rate and reply rate for inbound contacts who received t
 ## Pitfalls
 - treating all inbound equally — prioritize hand-raisers over lightweight ebook downloads
 - asking for too much too fast — keep it conversational
-- missing the same-day window — this play depends on speed
+- missing the same-day window — this play depends on running the agent quickly or scheduling it against a connected inbound source
 
 ## Reference
 - Messaging: [`../../references/messaging-framework.md`](../../references/messaging-framework.md)

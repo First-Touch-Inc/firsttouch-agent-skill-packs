@@ -2,7 +2,7 @@
   "persona": "revops",
   "pack_name": "RevOps Pack",
   "persona_pain": "Data chaos and untracked touches make it impossible to prove what's working or govern the team",
-  "persona_blurb": "You own the stack and the data. Every untracked touch is attribution you'll never recover. You care about owner routing, approval workflows, HubSpot data hygiene, and whether this creates compliance risk or solves it. These plays give you the governance layer, the attribution reports, and the team-wide setup plays that turn individual reps' outreach into a measurable, auditable revenue motion.",
+  "persona_blurb": "You own the stack and the data. Every untracked touch is attribution you'll never recover. You care about owner routing, approval workflows, HubSpot data hygiene, and whether this creates compliance risk or solves it. These plays give you the governance layer, the attribution readiness checks, reply visibility, and the team-wide setup plays that turn individual reps' outreach into a measurable, auditable revenue motion.",
   "skills": [
     {
       "name": "firsttouch-messaging",
@@ -52,7 +52,7 @@
   "recipes": [
     {
       "name": "Pre-launch rollout audit",
-      "outcome": "Run a team-wide readiness checklist before rollout: MCP connections, approval workflow, suppression checks, sequence quality, and per-seat safety limits.",
+      "outcome": "Run once before first launch or major rollout: MCP connections, approval workflow, suppression checks, sequence quality, logging round-trip, and per-seat safety limits.",
       "needs": "No HubSpot required; HubSpot improves CRM/owner checks",
       "composes": [
         "workspace-audit",
@@ -60,8 +60,8 @@
       ]
     },
     {
-      "name": "HubSpot Workflow trigger — team-wide LinkedIn flows",
-      "outcome": "Use HubSpot lifecycle changes as triggers for LinkedIn outreach flows at scale across your team.",
+      "name": "HubSpot list trigger \u2014 team-wide LinkedIn flows",
+      "outcome": "Use HubSpot lists or contact-based workflow outputs as the trigger source for FirstTouch LinkedIn outreach across your team. If HubSpot action cards exist in the portal, confirm them first; otherwise produce manual RevOps/admin setup steps.",
       "needs": "HubSpot required",
       "composes": [
         "hubspot-signal-to-linkedin-touch",
@@ -71,7 +71,7 @@
     {
       "name": "Social engager setup for team",
       "outcome": "Configure warm-engager signal capture and flows so the whole team benefits from content engagement; use ICP outbound builder only to enrich or qualify the engager audience before routing, not as a simultaneous send motion.",
-      "needs": "No HubSpot required; HubSpot optional for qualification/routing; ICP outbound builder is for audience enrichment/qualification fallback",
+      "needs": "No HubSpot required; monitor owned leadership or relevant competitor/influencer profiles; HubSpot optional for qualification/routing; ICP outbound builder is for audience enrichment/qualification fallback; profile views unavailable",
       "composes": [
         "warm-engager-followup",
         "icp-outbound-builder"
@@ -79,25 +79,24 @@
     },
     {
       "name": "Website visitor play",
-      "outcome": "Turn pricing/demo/product-page visits into LinkedIn touches while intent is active.",
-      "needs": "HubSpot tracking or RB2B/list source required",
+      "outcome": "Turn pricing/demo/product-page visits into LinkedIn touches while intent is active; if no visitor signal source exists, choose the AI SDR recipe as a separate prospecting motion instead.",
+      "needs": "HubSpot tracking or RB2B/list source required; if no visitor signal source exists, use the persona AI SDR recipe as a separate prospecting motion",
       "composes": [
-        "website-visitor-followup",
-        "icp-outbound-builder"
+        "website-visitor-followup"
       ]
     },
     {
       "name": "Govern and audit AI SDR daily queues",
-      "outcome": "Review, QA, and monitor team-wide AI SDR daily queues before and after launch, including 10/20 daily caps, approval workflow, and aged-queue alerts.",
-      "needs": "No HubSpot required for QA/audit; HubSpot improves owner routing",
+      "outcome": "Run on a recurring cadence after launch: review team-wide AI SDR queues, 10/20 daily caps, approval workflow, blocked/review-required rows, failed actions, and queue hygiene. Do not promise automated aged-queue alerts unless an alerting workflow is configured.",
+      "needs": "No HubSpot required for QA/audit; HubSpot improves owner routing; queue status depends on FirstTouch outreach/task visibility",
       "composes": [
         "sequence-qa-reviewer",
         "workspace-audit"
       ]
     },
     {
-      "name": "Social campaigns — team-routed operational campaigns",
-      "outcome": "Build governed one-time campaigns such as inbound-signup decision-maker enrichment, CEO touches to stuck $50k+ deals, or product-update messaging to first-degree team connections at target accounts.",
+      "name": "Social campaigns \u2014 team-routed operational campaigns",
+      "outcome": "Build governed campaigns such as inbound-signup decision-maker enrichment, CEO touches to stuck $50k+ deals, or product-update messaging to first-degree team connections at target accounts. RevOps chooses row-level dynamic approvals or a static flow-level campaign based on risk.",
       "needs": "No HubSpot required for imported target-account/connection lists; HubSpot required for inbound owner routing, deal amount, deal age, or customer/deal segments",
       "composes": [
         "social-campaigns",
@@ -106,17 +105,17 @@
       ]
     },
     {
-      "name": "Stalled deal reactivation workflow — team-wide",
-      "outcome": "Trigger a contact-based HubSpot workflow for contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days, then prepare approved reactivation queues by owner.",
-      "needs": "HubSpot required; contact-based workflow only, because deal-based triggers are unsupported",
+      "name": "Stalled deal reactivation spec \u2014 team-wide",
+      "outcome": "Produce the contact-based stalled-deal qualification spec, qualifying HubSpot list/workflow setup steps, and owner-approved LinkedIn reactivation queue. Automation is only claimed after RevOps confirms the portal/source can feed FirstTouch.",
+      "needs": "HubSpot required; RevOps/admin may be needed only for recurring workflow setup",
       "composes": [
         "stalled-deal-reactivation",
         "firsttouch-messaging"
       ]
     },
     {
-      "name": "Closed-lost reengagement — team-wide",
-      "outcome": "Re-engage historical closed-lost accounts across all reps when RevOps explicitly chooses a win-back motion.",
+      "name": "Closed-lost reengagement \u2014 team-wide",
+      "outcome": "Re-engage historical closed-lost accounts across all reps when RevOps explicitly chooses a win-back motion; keep this separate from stalled open-deal reactivation.",
       "needs": "HubSpot required; separate from stalled open-deal workflow",
       "composes": [
         "hubspot-signal-to-linkedin-touch",
@@ -125,15 +124,15 @@
       ]
     },
     {
-      "name": "HubSpot Workflow build with FirstTouch actions",
-      "outcome": "Coach through adding FirstTouch action cards/actions such as enroll, view profile, or connect inside HubSpot workflows, when available in the connected portal.",
+      "name": "HubSpot setup guide for FirstTouch-triggered actions",
+      "outcome": "Coach through confirming whether FirstTouch HubSpot action cards exist; if not, document the supported fallback: a HubSpot list/source that FirstTouch reads, then FirstTouch enrolls or queues actions.",
       "needs": "HubSpot required; confirm action cards exist in the customer portal before promising UI steps",
       "composes": [
         "hubspot-signal-to-linkedin-touch"
       ]
     },
     {
-      "name": "Event plays — pre-invite and post-follow-up",
+      "name": "Event plays \u2014 pre-invite and post-follow-up",
       "outcome": "Build audience and invite flow before an event, then run follow-up flows to attendees and no-shows.",
       "needs": "HubSpot or imported attendee/source list required",
       "composes": [
@@ -144,7 +143,7 @@
     },
     {
       "name": "Customer thank-you",
-      "outcome": "Reach out when a customer hits a milestone — deepen the relationship before you need a favor.",
+      "outcome": "Reach out when a customer hits a milestone \u2014 deepen the relationship before you need a favor.",
       "needs": "HubSpot required",
       "composes": [
         "customer-champion"

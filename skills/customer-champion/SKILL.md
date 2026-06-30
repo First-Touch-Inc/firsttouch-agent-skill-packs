@@ -3,7 +3,7 @@ name: customer-champion
 description: Reach out to customers when a meaningful milestone is hit — onboarding completed, usage threshold reached, expansion motion started, renewal window opened, or a champion moment appears. Uses HubSpot/customer milestones as signals, drafts a lightweight LinkedIn touch to deepen the relationship, and logs the action. Use when the user wants to strengthen customer champions, build advocates, or attach social touches to customer-success milestones.
 metadata:
   author: firsttouch
-  version: "1.0"
+  version: "1.1"
   category: play
   requires: [firsttouch-mcp, hubspot-mcp]
 ---
@@ -29,7 +29,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 
 ## Step-by-step
 
-Before drafting or queueing any contact, run Gate 0 suppression/DNC from `../../references/safety-governance.md`. Suppressed, unsubscribed, opted-out, or do-not-contact records are skipped and logged.
+Before drafting or queueing any contact, run the standard safety gates from `../../references/safety-governance.md`: Gate 0 suppression/DNC, Gate 1 duplicate/recent-contact check, Gate 2 owner/CSM routing, Gate 3 daily cap sharing, and Gate 4 human approval. Suppressed, unsubscribed, opted-out, do-not-contact, duplicate, recently contacted, or misrouted records are skipped and logged.
 
 
 ### 1. Pull milestone hits (HubSpot MCP)
@@ -37,8 +37,9 @@ Find customer contacts/accounts matching the milestone. Capture: contact, compan
 
 ### 2. Check relationship state
 - connected on LinkedIn? yes/no
-- recently messaged? yes/no
-- owner/CSM alignment? yes/no
+- recently messaged? yes/no (Gate 1)
+- owner/CSM alignment? yes/no (Gate 2)
+- sender has capacity under the shared 10/day free/basic or 20/day Sales Nav/Premium connection cap? yes/no (Gate 3)
 
 ### 3. Choose the touch
 - **Not connected** → connect (warm, milestone-led)
@@ -57,7 +58,7 @@ Example direction:
 > "Saw your team hit {milestone}. Love seeing that land. Anything been especially useful so far?"
 
 ### 5. Present for approval
-Show: contact, milestone, relationship state, draft.
+Show an approval table: contact, company, owner/CSM, milestone, relationship state, message type, draft, gate status. Each row must be marked awaiting approval and must not send until approved.
 
 ### 6. Execute + log
 On approval: send via FirstTouch, log to HubSpot timeline, tag as `customer_champion`.

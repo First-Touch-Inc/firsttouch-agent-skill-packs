@@ -2,7 +2,7 @@
   "persona": "ae",
   "pack_name": "AE Pack",
   "persona_pain": "Deals dying in silence while champions go dark and pipeline looks fine until it doesn't",
-  "persona_blurb": "You carry a number. Your whole job depends on deals staying alive and champions staying warm. Most CRM data tells you what happened last month — these plays tell you what to do today about the deal that's going quiet. You need fast inbound follow-up, multi-threading on booked meetings, and reactivation plays for pipeline that's been silent too long.",
+  "persona_blurb": "You carry a number. Your whole job depends on deals staying alive and champions staying warm. Most CRM data tells you what happened last month \u2014 these plays tell you what to do today about the deal that's going quiet. You need fast inbound follow-up, multi-threading on booked meetings, and reactivation plays for pipeline that's been silent too long.",
   "skills": [
     {
       "name": "firsttouch-messaging",
@@ -48,9 +48,9 @@
       ]
     },
     {
-      "name": "Social engager flow — leadership's audience",
+      "name": "Social engager flow \u2014 leadership's audience",
       "outcome": "Reach people engaging with company or leadership content before they go cold.",
-      "needs": "No HubSpot required; HubSpot optional for qualification/routing",
+      "needs": "No HubSpot required; use company/leadership, competitor founder, or influencer profile engagement; HubSpot optional for qualification/routing; profile views unavailable",
       "composes": [
         "warm-engager-followup",
         "firsttouch-messaging"
@@ -58,15 +58,14 @@
     },
     {
       "name": "Website visitor play",
-      "outcome": "Turn pricing/demo/product-page visits into LinkedIn touches while intent is active.",
-      "needs": "HubSpot tracking or RB2B/list source required; otherwise route to AE AI SDR",
+      "outcome": "Turn pricing/demo/product-page visits into LinkedIn touches while intent is active; if no visitor signal source exists, choose the AE AI SDR recipe as a separate prospecting motion instead.",
+      "needs": "HubSpot tracking or RB2B/list source required; if no visitor signal source exists, use the persona AI SDR recipe as a separate prospecting motion",
       "composes": [
-        "website-visitor-followup",
-        "icp-outbound-builder"
+        "website-visitor-followup"
       ]
     },
     {
-      "name": "AE AI SDR — daily approval queue",
+      "name": "AE AI SDR \u2014 daily approval queue",
       "outcome": "View a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to 10/day free or 20/day Sales Nav/Premium AE-owned LinkedIn touches for approval.",
       "needs": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
       "composes": [
@@ -75,18 +74,18 @@
       ]
     },
     {
-      "name": "Social campaigns — territory and deal expansion",
-      "outcome": "Build a one-time LinkedIn campaign for a narrow AE segment such as VPs of Sales in territory, closed-won feature-upgrade targets, or open deals from last year, using approved static templates and flow-level approval.",
-      "needs": "No HubSpot required for Discover Contacts territory prospecting; HubSpot required for closed-won, open-deal, owner, or CRM-history segments",
+      "name": "Social campaigns \u2014 territory and deal expansion",
+      "outcome": "Build a narrow AE push for a territory, event, customer expansion, or stalled-pipeline segment. Default to row-level dynamic approvals like AI SDR; use static flow-level approval only when RevOps/founder approves the exact audience and templates.",
+      "needs": "No HubSpot required for pure ICP/imported/Discover segments; HubSpot required for territory/deal/customer CRM segments; row-level approval by default",
       "composes": [
         "social-campaigns",
         "firsttouch-messaging"
       ]
     },
     {
-      "name": "Stalled deal reactivation — 60-day open-deal workflow",
-      "outcome": "Trigger a contact-based HubSpot workflow for contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days, then prepare approved reactivation touches.",
-      "needs": "HubSpot required; contact-based workflow only, because deal-based triggers are unsupported",
+      "name": "Stalled deal reactivation \u2014 60-day open-deal workflow",
+      "outcome": "Find contacts associated to open deals that are not Closed Won/Lost and have had no engagement for 60+ days, then build an owner-approved LinkedIn reactivation queue. Treat recurring workflow setup as a RevOps/admin step unless already configured.",
+      "needs": "HubSpot required; RevOps/admin may be needed only for recurring workflow setup",
       "composes": [
         "stalled-deal-reactivation",
         "firsttouch-messaging"
@@ -94,8 +93,8 @@
     },
     {
       "name": "Meeting-booked stakeholder follow-up",
-      "outcome": "When a meeting books, draft LinkedIn touches to known decision-makers from HubSpot so the deal is not single-threaded.",
-      "needs": "HubSpot required",
+      "outcome": "When a meeting-booked HubSpot list/workflow or accessible source already exists, draft LinkedIn touches to known decision-makers so the deal is not single-threaded; otherwise ask RevOps for one-time setup first.",
+      "needs": "HubSpot required; needs a contact-based list/workflow or accessible meeting-booked source; ask RevOps if the AE cannot configure CRM workflows",
       "composes": [
         "hubspot-signal-to-linkedin-touch",
         "firsttouch-messaging"
@@ -103,7 +102,7 @@
     },
     {
       "name": "Closed-lost reengagement",
-      "outcome": "Re-engage historical closed-lost accounts with a fresh, approved LinkedIn touch when the user explicitly chooses a win-back motion.",
+      "outcome": "Re-engage historical closed-lost accounts with a fresh, approved LinkedIn touch when the user explicitly chooses a win-back motion; keep this separate from stalled open-deal reactivation.",
       "needs": "HubSpot required; separate from stalled open-deal workflow",
       "composes": [
         "hubspot-signal-to-linkedin-touch",

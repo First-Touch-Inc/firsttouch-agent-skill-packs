@@ -2,7 +2,7 @@
   "persona": "bdr",
   "pack_name": "BDR Pack",
   "persona_pain": "Inbox busywork and slow follow-up make you miss the inbound window and look bad to your AE",
-  "persona_blurb": "Your job is meetings. You live in the gap between marketing handing over a lead and sales getting a discovery call on the calendar. Every delay in follow-up, every manual step, every no-show not chased — that's a meeting you didn't book. These plays close that gap: fast inbound response, warm-signal conversion, and lead recovery without the grind.",
+  "persona_blurb": "Your job is meetings. You live in the gap between marketing handing over a lead and sales getting a discovery call on the calendar. Every delay in follow-up, every manual step, every no-show not chased \u2014 that's a meeting you didn't book. These plays close that gap: fast inbound response, warm-signal conversion, and lead recovery without the grind.",
   "skills": [
     {
       "name": "firsttouch-messaging",
@@ -36,7 +36,7 @@
   "recipes": [
     {
       "name": "Auto-connect on meeting or signup",
-      "outcome": "Same-day LinkedIn draft ready for one-click approval, so the BDR beats the inbound window without autonomous sending.",
+      "outcome": "When an inbound source is already connected or imported, prepare same-day LinkedIn drafts for one-click approval; this runs when the agent runs or on a schedule unless a source continuously feeds FirstTouch.",
       "needs": "HubSpot or FirstTouch-accessible inbound list/import required",
       "composes": [
         "inbound-speed-to-lead",
@@ -44,25 +44,7 @@
       ]
     },
     {
-      "name": "Social engager flow — leadership posts",
-      "outcome": "Convert engagement on CEO/exec/leadership posts into booked meetings before interest fades.",
-      "needs": "No HubSpot required; HubSpot optional for qualification/routing",
-      "composes": [
-        "warm-engager-followup",
-        "firsttouch-messaging"
-      ]
-    },
-    {
-      "name": "Website visitor play",
-      "outcome": "Turn pricing/demo/product-page visits into LinkedIn touches while intent is active; if no visitor signal source exists, fall back to the BDR AI SDR recipe instead of running both on the same contacts.",
-      "needs": "HubSpot tracking or RB2B/list source required; otherwise route to BDR AI SDR",
-      "composes": [
-        "website-visitor-followup",
-        "icp-outbound-builder"
-      ]
-    },
-    {
-      "name": "BDR AI SDR — daily approval queue",
+      "name": "BDR AI SDR \u2014 daily approval queue",
       "outcome": "View a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to 10/day free or 20/day Sales Nav/Premium meeting-generation touches for approval.",
       "needs": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
       "composes": [
@@ -71,18 +53,35 @@
       ]
     },
     {
-      "name": "Social campaigns — narrow ICP meeting push",
-      "outcome": "Build a one-time LinkedIn campaign for a narrow BDR segment such as connected leadership titles, last-year no-shows, or ICP buyers in a tradeshow city, using approved static templates and flow-level approval.",
-      "needs": "No HubSpot required for Discover Contacts or connection/list sources; HubSpot required for no-show or CRM-history segments",
+      "name": "Social engager flow \u2014 leadership posts",
+      "outcome": "Convert engagement on CEO/exec/leadership posts into booked meetings before interest fades.",
+      "needs": "No HubSpot required; use leadership, competitor founder, or influencer profile engagement; HubSpot optional for qualification/routing; profile views unavailable",
+      "composes": [
+        "warm-engager-followup",
+        "firsttouch-messaging"
+      ]
+    },
+    {
+      "name": "Website visitor play",
+      "outcome": "Turn pricing/demo/product-page visits into LinkedIn touches while intent is active; if no visitor signal source exists, choose the BDR AI SDR recipe as a separate prospecting motion instead.",
+      "needs": "HubSpot tracking or RB2B/list source required; if no visitor signal source exists, use the persona AI SDR recipe as a separate prospecting motion",
+      "composes": [
+        "website-visitor-followup"
+      ]
+    },
+    {
+      "name": "Social campaigns \u2014 special row-level push",
+      "outcome": "Build a manager-approved narrow BDR push such as tradeshow-city buyers, no-shows from a provided event/HubSpot list, or connected leadership titles. Default to AI-SDR-like row-level dynamic approvals, not self-serve flow building.",
+      "needs": "No HubSpot required for Discover Contacts or imported/event lists; HubSpot required for no-show or CRM-history segments; row-level approval by default; manager/RevOps approval recommended",
       "composes": [
         "social-campaigns",
         "firsttouch-messaging"
       ]
     },
     {
-      "name": "Scoop-up slipped leads — no-shows and old MQLs",
+      "name": "Scoop-up slipped leads \u2014 no-shows and old MQLs",
       "outcome": "Reach back on no-shows and leads that never converted to opportunities.",
-      "needs": "HubSpot required",
+      "needs": "HubSpot required; no-shows require a provided event list, HubSpot list, or custom property supplied by RevOps",
       "composes": [
         "hubspot-signal-to-linkedin-touch",
         "icp-outbound-builder",

@@ -20,72 +20,193 @@ DIST_DIR = ROOT / "dist"
 
 PERSONAS = ["founder", "ae", "bdr", "revops"]
 
+SKILL_NEEDS = {
+    "firsttouch-messaging": "No HubSpot required",
+    "inbound-speed-to-lead": "HubSpot or FirstTouch-accessible inbound list/import required; true automation needs a connected source",
+    "warm-engager-followup": "No HubSpot required; paid, non-trial FirstTouch Social Engagement required for monitored profiles; user-provided/exported engager lists also work",
+    "website-visitor-followup": "HubSpot tracking or RB2B/list source required",
+    "icp-outbound-builder": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
+    "founder-led-outbound": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
+    "hubspot-signal-to-linkedin-touch": "HubSpot required",
+    "social-campaigns": "No HubSpot for pure ICP/imported/connection-list campaigns; HubSpot required for CRM/deal/customer segments",
+    "stalled-deal-reactivation": "HubSpot required; may need RevOps/admin for workflow setup",
+    "customer-champion": "HubSpot required",
+    "sequence-qa-reviewer": "No HubSpot for FirstTouch QA; HubSpot improves duplicate/owner checks",
+    "workspace-audit": "No HubSpot for FirstTouch-only audit; HubSpot needed for owner/logging coverage",
+}
+
+START_HERE = {
+    "founder": "Start with **Social engagement flow — founder posts**. If the founder does not have enough post engagement yet, monitor a relevant competitor founder, category influencer, or executive profile and work the people engaging there. Use **Founder-led AI SDR** only after the warm-engagement path or when the user explicitly wants a cold ICP queue. Use **Social campaigns** for narrow founder-led pushes such as feature feedback, product-update feedback, or travel-week outreach.",
+    "ae": "Start with **Auto-connect on meeting or signup** when an inbound source is already available. Use **Meeting-booked stakeholder follow-up** only when a meeting-booked HubSpot list/workflow or accessible source already exists, or ask RevOps for one-time setup first. Use **Stalled deal reactivation** after that when RevOps/admin can support the contact-based workflow or list. Without HubSpot, start with **Social engager flow** on company/leadership, competitor founder, or influencer profiles, then use **AE AI SDR** from a clear ICP.",
+    "bdr": "If there is no already-configured inbound feed, start with **BDR AI SDR** as the daily engine from ICP + Discover Contacts. Use **Auto-connect on meeting or signup** only when a HubSpot or FirstTouch-accessible inbound source is already available; it runs when the agent is run or scheduled unless a connected source continuously feeds it. Add **Social engager flow** from leadership, competitor founder, or influencer profiles when paid Social Engagement or an exported engager list is available. Use **Social campaigns** for special manager-approved pushes, usually as row-level dynamic actions rather than a self-serve flow-building exercise.",
+    "revops": "Start with **Pre-launch rollout audit** before any rep launches volume. Then roll out high-intent plays first: inbound, social engagement from owned or relevant external profiles, and HubSpot signal flows. Use **Social campaigns** after the audit passes, choosing row-level dynamic approvals for rep-led one-at-a-time pushes or flow-level approval for governed one-time static campaigns.",
+}
+
+NO_HUBSPOT = {
+    "founder": "Social engagement flow from the founder's posts or a relevant competitor founder/influencer profile, Founder-led AI SDR from FirstTouch Discover Contacts, Social campaigns from Discover/imported/connection lists, and messaging QA.",
+    "ae": "Social engager flow from company/leadership, competitor founder, or influencer profiles, plus AE AI SDR from FirstTouch Discover Contacts. Most AE deal, customer, territory, and stalled-pipeline use cases need HubSpot.",
+    "bdr": "BDR AI SDR from FirstTouch Discover Contacts, social engager flow from leadership/competitor/influencer profiles, and special social campaigns from imported/Discover lists. Inbound speed-to-lead needs HubSpot or a FirstTouch-accessible inbound source.",
+    "revops": "Workspace audit of FirstTouch-only settings, sequence QA, AI SDR governance, social engagement setup on owned or relevant external profiles, and social campaigns from imported/Discover lists. Owner/logging/deal/customer checks need HubSpot.",
+}
+
+INSTALL_NOTES = """1. Download this pack zip and extract it so `skills/` and `references/` sit side by side.
+2. Install for your agent:
+   - **Claude Code:** copy `skills/<skill-name>/` folders to `~/.claude/skills/` and copy `references/` to `~/.claude/references/`. The generated recipe catalog lives in `references/recipes.md` and the full onboarding/play chooser lives in `references/onboarding.md`, so recipes survive non-zip installs. From `~/.claude/skills/<skill-name>/SKILL.md`, `../../references/` resolves to `~/.claude/references/`.
+   - **Claude.ai:** Settings → Features → Skills → upload the pack `.zip`. If only one skill registers, unzip locally and upload each `<skill>/` folder zip individually.
+   - **Cursor / Windsurf:** copy this pack into the project or workspace location your agent reads for skills; keep `skills/` and `references/` together at the same root.
+   - **ChatGPT:** connect `https://mcp.firsttouch.ai` as an MCP connector. ChatGPT does not consume the skills folder directly; use the README/skill text as operating prompts if needed.
+3. Connect **FirstTouch MCP**. Connect **HubSpot MCP** only for HubSpot-specific plays. See `references/mcp-setup.md`.
+4. Complete first-run onboarding before choosing a play."""
+
 
 def read_skill_description(skill_name: str) -> str:
     """Return the first sentence of the description from SKILL.md frontmatter."""
     skill_file = SKILLS_DIR / skill_name / "SKILL.md"
     if not skill_file.exists():
         return f"(skill file not found: {skill_name})"
-
     content = skill_file.read_text(encoding="utf-8")
     match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
     if not match:
         return f"(no frontmatter in {skill_name})"
-
     frontmatter = match.group(1)
-    desc_match = re.search(
-        r"^description:\s*(.+?)(?=\nmetadata:|\Z)",
-        frontmatter,
-        re.DOTALL | re.MULTILINE,
-    )
+    desc_match = re.search(r"^description:\s*(.+?)(?=\nmetadata:|\Z)", frontmatter, re.DOTALL | re.MULTILINE)
     if not desc_match:
         return f"(no description in {skill_name})"
-
     desc = re.sub(r"\s+", " ", desc_match.group(1)).strip()
     first = re.match(r"([^.!?]+[.!?])", desc)
     return first.group(1).strip() if first else desc[:120]
 
 
 def read_skill_needs(skill_name: str) -> str:
-    """Return a concise dependency label from SKILL.md frontmatter."""
-    skill_file = SKILLS_DIR / skill_name / "SKILL.md"
-    if not skill_file.exists():
-        return "See skill requirements"
+    """Return a customer-readable dependency label for generated README tables."""
+    return SKILL_NEEDS.get(skill_name, "See skill requirements")
 
-    content = skill_file.read_text(encoding="utf-8")
-    match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
-    if not match:
-        return "See skill requirements"
 
-    req_match = re.search(r"requires:\s*\[(.*?)\]", match.group(1), re.DOTALL)
-    if not req_match:
-        return "See skill requirements"
+def build_onboarding(manifest: dict) -> str:
+    """Generate pack-specific onboarding so bundled docs do not advertise absent plays."""
+    persona = manifest["persona"]
+    pack_name = manifest["pack_name"]
+    skills = {s["name"] for s in manifest.get("skills", [])}
+    recipe_lines = [f"| {r['name']} | {r['outcome']} | {r.get('needs', 'See README')} |" for r in manifest.get("recipes", [])]
+    recipes_table = "\n".join(recipe_lines) if recipe_lines else "*(none)*"
+    skill_lines = [f"| `{s['name']}` | {read_skill_needs(s['name'])} |" for s in manifest.get("skills", [])]
+    skills_table = "\n".join(skill_lines) if skill_lines else "*(none)*"
+    social_note = ""
+    if "warm-engager-followup" in skills:
+        social_note = "\n- Social engagement / warm engager flows are delivered by `warm-engager-followup`. They use LinkedIn post likes and comments from paid, non-trial Social Engagement monitoring, or a user-provided/exported engager list. Ask whether paid, non-trial Social Engagement is available before steering the user to a monitored-profile play. Profile-view capture is not treated as MCP-native."
+    voice_note = ""
+    if "founder-led-outbound" in skills:
+        voice_note = "\n- Founder voice capture is mandatory: collect 2-3 sample posts/messages or tone rules before founder-led outbound."
+    return f"""# First-Run Onboarding — {pack_name}
 
-    requires = {item.strip().strip("'\"") for item in req_match.group(1).split(",")}
-    if "hubspot-mcp" in requires:
-        return "HubSpot required"
-    if "firsttouch-mcp" in requires:
-        return "No HubSpot required unless recipe says so"
-    return "See skill requirements"
+This onboarding is scoped to the skills and recipes actually included in this installed pack.
+
+## Ask before running anything
+1. **LinkedIn account type:** free/basic or Sales Navigator/Premium.
+   - Free/basic: no connection notes; 10 connection requests/day max.
+   - Sales Navigator/Premium: connection notes available for approved warm signals; up to 20 connection requests/day.
+   - AI SDR and all other connection-request plays share the same daily budget.
+2. **HubSpot access:** MCP connected by an admin, service key/private app token from an admin, HubSpot list only, or none. Do not ask a rep/BDR to mint credentials they do not own.
+3. **ICP/list/source data:** if HubSpot is absent, ask for ICP criteria or an imported/FirstTouch-accessible list before qualifying prospects.
+4. **Persona start point:** {START_HERE[persona]}
+{social_note}{voice_note}
+
+## Available recipes in this pack
+| Recipe | What it does | Needs |
+|---|---|---|
+{recipes_table}
+
+## Included skills and dependency status
+| Skill | Needs |
+|---|---|
+{skills_table}
+
+## HubSpot access rules for this pack
+- If HubSpot is connected, HubSpot-specific recipes can read CRM context, owner, lifecycle/deal/list data, and log back where supported.
+- If HubSpot is used but no MCP/key is connected, ask for a HubSpot list or other FirstTouch-accessible source before running HubSpot-dependent motions.
+- If HubSpot is not used, run only the recipes above whose Needs column says no HubSpot or imported/Discover/list source is enough.
+
+## Social Engagement source options
+Social Engagement can monitor relevant LinkedIn profiles for post likes and comments. Prefer the user's own founder/leadership/company profile when available; if they do not have enough owned engagement yet, monitor a relevant competitor founder, category influencer, or executive profile and work the ICP-fit people engaging there. Profile views are not an available signal.
+
+## Approval model
+| Motion | Approval style |
+|---|---|
+| AI SDR / dynamic actions | Row-level approval. Each first-touch row must be approved individually. |
+| Warm engager, inbound, website visitor, HubSpot signal, customer/stalled deal | Row-level approval unless FirstTouch records an equivalent per-contact approval. |
+| Social campaigns | Two modes: rep/BDR dynamic rows use row-level approval like AI SDR; RevOps/founder one-time static campaigns can use flow-level approval after exact audience, templates, sender/routing rule, launch window, and daily cap are approved. |
+
+## Onboarding output format
+```markdown
+## FirstTouch onboarding summary
+- Persona: {persona}
+- LinkedIn account: Free/basic or Sales Navigator/Premium
+- Daily connection cap: 10 or 20 shared across all plays
+- HubSpot access: MCP / service key / list only / none
+- ICP/list available if no HubSpot: yes/no + source
+- Plays available now from this pack: ...
+- Plays blocked until HubSpot access/list or source data exists: ...
+- Recommended first play: ...
+- Approval workflow: row-level for dynamic plays; flow-level only for approved one-time social campaigns
+```
+"""
+
+
+def build_recipes_reference(manifest: dict) -> str:
+    """Generate a pack-specific recipe catalog for agents that install only skills + references."""
+    persona = manifest["persona"]
+    pack_name = manifest["pack_name"]
+    rows = []
+    for r in manifest.get("recipes", []):
+        composes = " + ".join(f"`{c}`" for c in r["composes"])
+        rows.append(f"| {r['name']} | {r['outcome']} | {r.get('needs', 'See README')} | {composes} |")
+    recipes_table = "\n".join(rows) if rows else "*(none)*"
+    return f"""# Recipe Catalog — {pack_name}
+
+Use this file when the agent installed `skills/` and `references/` without loading the root README. These recipes are the recommended starting points for the {persona} persona.
+
+## Recommended start point
+{START_HERE[persona]}
+
+## Recipes
+| Play | What it does | Needs | Composes from |
+|---|---|---|---|
+{recipes_table}
+
+## Approval reminder
+Dynamic/AI SDR rows require row-level approval. Static social-campaign flows can use flow-level approval only after the exact audience, static templates, sender/routing rule, launch window, and daily cap are approved.
+"""
 
 
 def build_readme(manifest: dict, skill_descriptions: dict) -> str:
     """Generate per-pack README.md from manifest data."""
+    persona = manifest["persona"]
     pack_name = manifest["pack_name"]
     pain = manifest["persona_pain"]
     blurb = manifest["persona_blurb"]
     skills = manifest.get("skills", [])
     recipes = manifest.get("recipes", [])
     live_skills = [s for s in skills if s["status"] in ("live", "partial")]
+    support_skill_names = {"firsttouch-messaging"}
+    play_skills = [s for s in live_skills if s["name"] not in support_skill_names]
+    support_skills = [s for s in live_skills if s["name"] in support_skill_names]
 
     skills_rows = []
-    for s in live_skills:
+    for s in play_skills:
         name = s["name"]
         desc = skill_descriptions.get(name, "")
         suffix = " *(partial)*" if s["status"] == "partial" else ""
         needs = read_skill_needs(name)
         skills_rows.append(f"| {name}{suffix} | {desc} | {needs} | `{name}` |")
     skills_table = "\n".join(skills_rows) if skills_rows else "*(none)*"
+
+    support_rows = []
+    for s in support_skills:
+        name = s["name"]
+        desc = skill_descriptions.get(name, "")
+        needs = read_skill_needs(name)
+        support_rows.append(f"| {name} | {desc} | {needs} | `{name}` |")
+    support_table = "\n".join(support_rows) if support_rows else "*(none)*"
 
     recipe_rows = []
     for r in recipes:
@@ -94,10 +215,10 @@ def build_readme(manifest: dict, skill_descriptions: dict) -> str:
         recipe_rows.append(f"| {r['name']} | {r['outcome']} | {needs} | {composes_str} |")
     recipes_table = "\n".join(recipe_rows) if recipe_rows else "*(none)*"
 
-    founder_hint = (
-        "\n   - For founders, recommend **Social engagement flow** first. It does not require HubSpot."
-        if manifest.get("persona") == "founder"
-        else ""
+    term_note = (
+        "\"AI SDR\" in this pack maps to `founder-led-outbound`."
+        if persona == "founder"
+        else "\"AI SDR\" in this pack maps to `icp-outbound-builder`."
     )
 
     return f"""# FirstTouch {pack_name}
@@ -107,46 +228,59 @@ def build_readme(manifest: dict, skill_descriptions: dict) -> str:
 ## Who this is for
 {blurb}
 
+## Start here
+{START_HERE[persona]}
+
+## How to use this pack
+- **Recipes** are the best starting point. They combine the right skills into the job you actually want done.
+- **Skills** are the individual building blocks. Run a skill directly only when you know the exact motion you want.
+- **FirstTouch terms:** a campaign/sequence/social campaign in this pack becomes a FirstTouch audience, flow plan, dynamic action, or enrollment depending on the play. {term_note} The agent should use FirstTouch's available execution objects and state the exact object it created.
+- **Approval locations:** approvals can happen in-agent, in FirstTouch, Slack, or email depending on your workspace. If the approval location is not configured, the agent must present the table in chat and wait.
+
 ## First-run onboarding
 Before running the first play in this pack, ask the user:
 
 1. **LinkedIn account type:** do they have Sales Navigator / Premium, or a free/basic account?
    - Free/basic: no connection notes; cap connection requests at **10/day**.
    - Sales Navigator / Premium: connection notes available; cap connection requests at **20/day**.
-   - For AI SDR daily queues specifically, use **10/day** on free/basic or **20/day** on Sales Navigator / Premium.
-2. **HubSpot access:** do they use HubSpot, and can they connect the HubSpot MCP or provide a HubSpot service key / private app token?
-   - If not, run FirstTouch-only plays or ask them to create a HubSpot list/source FirstTouch can access before running HubSpot-specific plays.
-3. **Play choice:** show the catalog below and recommend **high-intent plays first**, then outbound once those are running to keep the LinkedIn account healthy.{founder_hint}
+   - AI SDR shares the same daily connection-request budget. If AI SDR and another play run on the same day, the total across all plays must stay within 10 or 20.
+2. **HubSpot access:** do they use HubSpot, and can an admin connect the HubSpot MCP, provide a service key / private app token, or at least provide a HubSpot list FirstTouch can access?
+   - If not, use the FirstTouch-only paths below or ask them to create a HubSpot list/source FirstTouch can access before running HubSpot-specific plays.
+3. **Play choice:** show the catalog below and recommend the persona-specific start-here play above.
 
-Use `references/onboarding.md` for the full question flow, account-type rules, and play catalog.
+Use `references/onboarding.md` for the full question flow and account-type rules. Use `references/recipes.md` for the generated recipe catalog if the README is not loaded by the agent.
+
+## HubSpot reality check
+- **What works without HubSpot:** {NO_HUBSPOT[persona]}
+- **What needs HubSpot:** CRM lifecycle/deal criteria, owner routing, HubSpot timeline logging, stalled-deal workflows, and contact/company lists stored only in HubSpot.
+- **FirstTouch-accessible list/import means:** a CSV, static list, audience, or HubSpot list that FirstTouch can read. For true inbound automation, connect HubSpot or another source that continuously feeds FirstTouch.
+- **Enrichment is optional but useful:** FirstTouch can enrich contacts/companies when credits and data are available. Clay/Surfe or another enrichment MCP is an optional supplement, not a prerequisite. Without a usable LinkedIn URL or enough verified data, the agent should skip or queue incomplete records rather than fabricate.
 
 ## Your plays
 
-### ✅ Ready now (skills)
-| Play | What it does | Needs / HubSpot status | Runs |
+### Skills catalog (check Needs before running)
+| Skill | What it does | Needs / access status | Runs |
 |---|---|---|---|
 {skills_table}
 
-### ⚠️ Recipes (composable, run with guidance)
+### 🧩 Support skills (called by plays)
+| Skill | What it does | Needs / HubSpot status | Runs |
+|---|---|---|---|
+{support_table}
+
+### Recipes (recommended starting points)
 | Play | What it does | Needs / HubSpot status | Composes from |
 |---|---|---|---|
 {recipes_table}
 
 ## Install
-1. Download this pack (or clone the repo).
-2. Drop the `skills/` folder **and the shared `references/` folder** into your agent. Skills use `../../references/...`, so references must sit two levels above each `SKILL.md`:
-   - **Claude Code:** copy each skill folder to `~/.claude/skills/<skill-name>/` and copy `references/` to `~/.claude/references/` (or use `.claude/skills/` plus `.claude/references/` per-project)
-   - **Claude.ai:** Settings → Features → Skills → upload the pack `.zip`. *(If claude.ai only registers the first skill, unzip locally and upload each `<skill>/` folder's zip individually.)*
-   - **Cursor / Windsurf:** copy the `skills/` and `references/` folders anywhere the agent reads
-   - **ChatGPT:** MCP connector only — no skills folder. Connect `https://mcp.firsttouch.ai` via Settings → Connectors.
-3. Connect MCPs: **FirstTouch MCP** for FirstTouch execution and approvals. Connect **HubSpot MCP** only for HubSpot-specific plays. See `references/mcp-setup.md`.
-4. Complete the first-run onboarding in `references/onboarding.md` before choosing a play.
+{INSTALL_NOTES}
 
 ## Safety
 - No play sends on its own. Every outbound action passes an approval gate.
-- Built around LinkedIn's real limits. Owner/territory-safe routing.
+- Dynamic outbound and AI SDR require row-level approval. Social campaigns support two modes: rep/BDR one-at-a-time dynamic rows use row-level approval; one-time static campaign flows can use flow-level approval only after the exact audience, templates, sender routing, launch window, and daily cap are approved.
+- Built around LinkedIn's real limits: 10/day free/basic, 20/day Sales Navigator/Premium.
 - See `references/safety-governance.md`.
-
 """
 
 
@@ -163,7 +297,6 @@ def build_pack(persona: str) -> None:
     skills_out.mkdir(parents=True, exist_ok=True)
 
     skill_descriptions = {}
-
     for skill_entry in manifest.get("skills", []):
         skill_name = skill_entry["name"]
         src = SKILLS_DIR / skill_name
@@ -185,12 +318,20 @@ def build_pack(persona: str) -> None:
             continue
         ref_dst = pack_dir / ref_rel
         ref_dst.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(ref_src, ref_dst)
+        if ref_rel == "references/onboarding.md":
+            ref_dst.write_text(build_onboarding(manifest), encoding="utf-8")
+        else:
+            shutil.copy2(ref_src, ref_dst)
         print(f"  + reference: {ref_rel}")
+
+    recipes_ref = pack_dir / "references" / "recipes.md"
+    recipes_ref.parent.mkdir(parents=True, exist_ok=True)
+    recipes_ref.write_text(build_recipes_reference(manifest), encoding="utf-8")
+    print("  + reference: references/recipes.md")
 
     readme_content = build_readme(manifest, skill_descriptions)
     (pack_dir / "README.md").write_text(readme_content, encoding="utf-8")
-    print(f"  + README.md generated")
+    print("  + README.md generated")
 
     zip_path = DIST_DIR / f"{persona}-pack.zip"
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:

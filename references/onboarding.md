@@ -3,7 +3,6 @@
 Every persona pack starts here. The agent must complete this onboarding once per workspace before running the first play, then reuse the answers for later runs.
 
 ## What the agent must ask first
-
 Ask these questions before recommending or executing plays:
 
 1. **LinkedIn account type**
@@ -15,18 +14,26 @@ Ask these questions before recommending or executing plays:
    - If they use HubSpot but cannot connect access yet: ask them to create a HubSpot list for the target audience so FirstTouch can access the contacts/accounts.
    - If they do not use HubSpot: HubSpot-specific plays are unavailable, but FirstTouch-only plays can still run from Discover Contacts, social engagement, one-time social campaigns from imported lists, or FirstTouch-accessible lists.
 
-3. **Play selection**
-   - "Which plays do you want to run first? I recommend starting with high-intent plays, then adding outbound once those are running."
-   - For founders, recommend **Social Engagement Flow** first. It is the warmest founder motion and does not require HubSpot.
+3. **ICP / source data**
+   - "If HubSpot is not connected, what ICP or list should we use? Please provide target industries, company size, geography, titles/seniority, exclusions, and any must-have signals, or provide a CSV/imported list."
+   - Do not qualify warm engagers, AI SDR prospects, or Discover audiences without either HubSpot context, a saved ICP, or a user-provided list.
+
+4. **Play selection**
+   - Recommend the persona-specific start point below, not a generic catalog dump.
+   - Then show the available recipes and ask which one to run first.
 
 ## Account-type rules
 
 | LinkedIn account | Connection notes | Safe daily connection-request cap |
 |---|---:|---:|
 | Free/basic | No connection notes; send blank connection requests and use a light post-connect opener | 10/day max |
-| Sales Navigator / Premium | Connection notes available for approved connection requests | up to 20/day max |
+| Sales Navigator / Premium | Connection notes are available for approved warm-signal requests | up to 20/day max |
 
 Never exceed these caps. If the account is new, under warning, or acceptance/reply rates drop, lower the cap and pause for human review.
+
+**Shared cap rule:** AI SDR uses the same daily connection-request budget as every other play. If AI SDR and another play run on the same day, the combined connection requests across all plays must stay under 10/day free/basic or 20/day Sales Navigator/Premium.
+
+**Connection-note rule:** Sales Nav/Premium accounts can use connection notes for warm signals such as post engagement, inbound hand-raisers, customer milestones, and HubSpot events. For cold AI SDR and one-time social campaigns, default to blank connection requests even with Sales Nav unless the user explicitly approves a strong note.
 
 ## HubSpot access rules
 
@@ -35,7 +42,18 @@ Never exceed these caps. If the account is new, under warning, or acceptance/rep
 | HubSpot MCP connected | Full HubSpot-specific plays can read CRM context, owners, lifecycle/deal/list data, and log back where supported. |
 | HubSpot service key / private app token available | Full HubSpot-specific plays can run after the agent/harness connects the key with the required scopes. |
 | HubSpot used, but no MCP/key yet | Ask the user to create a HubSpot list and confirm FirstTouch can access it. Run only plays that can operate from that list until full access is connected. |
-| No HubSpot | Run FirstTouch-only plays: Social Engagement Flow, Social Campaigns from Discover Contacts/imported lists, AI SDR / ICP Outbound from Discover Contacts, Founder-Led AI SDR, Sequence QA, and Workspace Audit. Do not run HubSpot-specific plays until a HubSpot list/source exists. |
+| No HubSpot | Run FirstTouch-only plays: Social Engagement Flow from owned or relevant external profiles, Social Campaigns from Discover Contacts/imported lists, AI SDR / ICP Outbound from Discover Contacts, Founder-Led AI SDR, Sequence QA, and FirstTouch-only Workspace Audit. Do not run HubSpot-specific plays until a HubSpot list/source exists. |
+
+**FirstTouch-accessible list/import means:** a CSV, static list, audience, or HubSpot list that FirstTouch can read. If the list is manually uploaded, the play is list-based, not fully automated. For true inbound automation, connect HubSpot or another source that continuously feeds FirstTouch.
+
+## Persona-specific first play recommendations
+
+| Persona | Start here if HubSpot is connected | Start here without HubSpot |
+|---|---|---|
+| Founder | Social engagement flow first; customer thank-you or stalled deal only when CRM data exists | Social engagement flow first using founder posts or a relevant competitor/influencer profile, then Founder-led AI SDR from a saved ICP |
+| AE | Meeting-booked stakeholder follow-up or inbound speed-to-lead first; stalled deal after RevOps/admin workflow support is clear | Social engager flow from company/leadership, competitor founder, or influencer profiles, then AE AI SDR from a saved ICP. Position the AE pack as much stronger with HubSpot. |
+| BDR | Auto-connect on meeting/signup for inbound; otherwise BDR AI SDR is the daily engine | BDR AI SDR first when no inbound feed exists; add warm engager follow-up from leadership/competitor/influencer profiles. Social campaigns are special pushes, usually row-level dynamic actions. |
+| RevOps | Pre-launch rollout audit, then HubSpot signal or team-wide high-intent flows | FirstTouch-only workspace audit, sequence QA, social engagement setup on owned or external profiles, and Discover/imported-list campaigns |
 
 ## Recommended rollout order
 
@@ -45,22 +63,30 @@ Recommend **high-intent plays first**. They use warmer signals, protect the Link
 
 | Play | Why first | HubSpot needed? |
 |---|---|---|
-| Social Engagement Flow | Converts people already engaging with posts/profile. For founders, run this first. | No. HubSpot improves qualification/owner routing but is not required. |
-| Inbound Speed-to-Lead | Acts on demo requests, signups, trials, and other fresh hand-raisers. | HubSpot or a FirstTouch-accessible inbound list/import. |
-| Website Visitor Follow-Up | Uses pricing/demo/product-page intent while the account is researching. | HubSpot tracking or RB2B/list source. |
+| Social Engagement Flow | Converts people already engaging with posts. For founders, run this first from owned posts; if owned engagement is thin, monitor a relevant competitor founder, category influencer, or executive profile. Profile views are not a signal. | No. HubSpot improves qualification/owner routing but is not required if ICP is defined manually. |
+| Inbound Speed-to-Lead | Acts on demo requests, signups, trials, and other fresh hand-raisers. | HubSpot or a FirstTouch-accessible inbound list/import. True automation needs a connected source. |
+| Website Visitor Follow-Up | Uses pricing/demo/product-page intent while the account is researching. | HubSpot tracking or RB2B/list source required. If no signal source exists, this play is unavailable. |
 | HubSpot Signal → LinkedIn Touch | Turns lifecycle/list/deal events into timely social touches. | Yes. |
 | Customer Champion | Warmer customer milestone outreach; low spam risk. | Yes. |
-| Stalled Deal Reactivation | A contact-based HubSpot workflow for contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days. deal-based triggers are unsupported. | Yes. |
+| Stalled Deal Reactivation | A contact-based HubSpot workflow for contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days. Deal-based triggers are unsupported. | Yes. May need RevOps/admin setup if workflow creation is unavailable. |
 
 ### Add after high-intent is running — outbound / volume
 
 | Play | When to add | HubSpot needed? |
 |---|---|---|
-| AI SDR / ICP Outbound Builder | After high-intent queues are stable. Starts from a HubSpot contact/company list, or builds a new ICP list with FirstTouch Discover Contacts. | HubSpot list preferred; otherwise use ICP brief + FirstTouch Discover Contacts. |
-| Founder-Led AI SDR | Founder-specific AI SDR with founder voice and a stricter taste bar. | HubSpot list preferred; otherwise use ICP brief + FirstTouch Discover Contacts. |
-| Social Campaigns | When the user has a very narrow one-time segment and can approve static flow templates before launch. | No HubSpot required for Discover Contacts/imported lists; HubSpot required for CRM/deal/customer/no-show criteria. |
-| Sequence QA Reviewer | Before launching or scaling any sequence. | No. |
-| Workspace Audit | Before team-wide rollout or when setup is uncertain. | No; HubSpot improves CRM checks. |
+| AI SDR / ICP Outbound Builder | For BDRs with no inbound feed or HubSpot, this is the daily engine. For other personas, add after warm/high-intent queues are stable. Starts from a HubSpot contact/company list, or builds a new ICP list with FirstTouch Discover Contacts. | HubSpot list optional; otherwise use ICP brief + FirstTouch Discover Contacts. |
+| Founder-Led AI SDR | Founder-specific AI SDR with founder voice and a stricter taste bar. | HubSpot list optional; otherwise use ICP brief + FirstTouch Discover Contacts. |
+| Social Campaigns | When the user has a very narrow segment. Rep/BDR mode should feel like AI SDR: curated rows approved one at a time. RevOps/founder campaign mode can use static flow templates with flow-level approval. | No HubSpot for Discover/imported/connection-list campaigns; HubSpot required for CRM/deal/customer/no-show criteria. |
+| Sequence QA Reviewer | Before launching or scaling any sequence. | No. HubSpot improves duplicate/owner checks. |
+| Workspace Audit | Before team-wide rollout or when setup is uncertain. | No for FirstTouch-only checks; HubSpot improves CRM/owner/logging checks. |
+
+## Approval model
+
+| Motion | Approval style |
+|---|---|
+| AI SDR / founder AI SDR / dynamic actions | Row-level approval. Each first-touch row must be approved individually. |
+| Warm engager, inbound, website visitor, HubSpot signal, customer champion, stalled deal | Row-level approval unless the connected FirstTouch/approval system records an equivalent per-contact approval. |
+| Social campaigns | Two modes: rep/BDR dynamic rows use row-level approval like AI SDR; one-time static campaigns can use flow-level approval with exact audience, templates, sender/routing rule, launch window, and daily cap approved. This does not authorize future dynamic or AI-generated campaigns. |
 
 ## Onboarding output format
 
@@ -68,15 +94,16 @@ After asking the questions, summarize the answer before running anything:
 
 ```markdown
 ## FirstTouch onboarding summary
+- Persona: Founder / AE / BDR / RevOps
 - LinkedIn account: Free/basic or Sales Navigator/Premium
-- Daily connection cap: 10 or 20
-- AI SDR daily batch cap (if selected): 10 free/basic or 20 Sales Navigator/Premium
-- Connection notes: yes/no
+- Daily connection cap: 10 or 20 shared across all plays
+- Connection notes: yes for approved warm signals / no for free-basic / blank by default for cold AI SDR
 - HubSpot access: MCP / service key / list only / none
+- ICP/list available if no HubSpot: yes/no + source
 - Plays available now: ...
 - Plays blocked until HubSpot access/list exists: ...
-- Recommended first plays: high-intent plays first; for founders, social engagement flow first
-- Approval workflow: per-send approval for dynamic plays; flow-level approval allowed for one-time social campaigns with exact audience + static templates
+- Recommended first play for this persona: ...
+- Approval workflow: per-row approval for dynamic plays; flow-level approval allowed only for one-time social campaigns with exact audience + static templates
 ```
 
-Then show the relevant catalog from the tables above and ask which play to run first. If the user has not chosen, recommend one high-intent play based on their available data.
+Then show the relevant recipe catalog and ask which play to run first. If the user has not chosen, recommend the persona-specific first play above.

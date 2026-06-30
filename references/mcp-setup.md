@@ -21,11 +21,14 @@ FirstTouch is the execution layer — it's what lets the agent actually perform 
 If the agent can return campaign + seat data, the MCP is live.
 
 **What it exposes (conceptual tool surface):**
-- Campaign control — launch, pause, edit
-- LinkedIn actions — connection request, message, InMail, profile view
-- Engagement data — who liked/commented/viewed. Inbox reply reading is not currently available.
-- Logging — write LinkedIn activity to HubSpot timelines
+- FirstTouch execution objects — audiences, flow plans/campaigns, dynamic actions, and enrollments depending on the connected workspace
+- Campaign/flow control — launch, pause, edit when the connected workspace exposes those actions
+- LinkedIn actions — connection request, message, email step, call task, or manual task depending on the flow/action type exposed in the workspace
+- Engagement data — LinkedIn post likes and comments from monitored profiles. Profile-view signals are not available. The agent cannot read arbitrary inbox history, but FirstTouch-tracked outreach can report when a prospect replies and expose the reply text/status captured on that activity.
+- Logging — FirstTouch/HubSpot activity logging where the workspace integration supports it
 - Safety — seat usage, daily limits, duplicate checks
+
+**Terminology note:** this skill pack uses human-friendly words like "play," "sequence," "campaign," and "queue." In FirstTouch, the actual object may be an **Audience**, **Flow Plan**, **Dynamic Action**, or **Enrollment**. The agent should state which FirstTouch object it created or used.
 
 ---
 
@@ -59,7 +62,7 @@ HubSpot is the system of record — it gives the agent the CRM context that make
 
 ---
 
-## 3. Enrichment MCP (optional for AI SDR, founder AI SDR, warm-engager qualification, and customer-champion plays)
+## 3. Enrichment (FirstTouch native; external MCP optional)
 
 For finding LinkedIn URLs, emails, and firmographics when HubSpot is missing them.
 
@@ -68,7 +71,11 @@ For finding LinkedIn URLs, emails, and firmographics when HubSpot is missing the
 - **Surfe MCP** — LinkedIn-native enrichment + CRM sync
 - **Any provider MCP** your team already uses
 
-Connect per the provider's docs. Not required for the pack to function, but it materially improves AI SDR, founder AI SDR, warm-engager qualification, and customer-champion plays.
+Social Engagement note: monitor the user's own founder/leadership/company profile when available. If owned engagement is thin, monitor a relevant competitor founder, category influencer, or executive profile and work the ICP-fit people engaging there. Use post likes/comments only; profile views are not available.
+
+Use FirstTouch enrichment when the MCP exposes contact/company enrichment and credits are available. Clay, Surfe, or another enrichment MCP is optional and can supplement FirstTouch data, but it is not a prerequisite for AI SDR, founder AI SDR, or warm-engager qualification.
+
+If no enrichment MCP is connected, the agent should use HubSpot, FirstTouch, CSV/imported-list, or user-provided fields. Records missing a usable LinkedIn URL should be skipped or queued for enrichment, never filled with guessed data.
 
 ---
 
@@ -81,6 +88,8 @@ Connect per the provider's docs. Not required for the pack to function, but it m
 - [ ] The authorized FirstTouch user's LinkedIn account is healthy (not near limits)
 - [ ] You know **who owns** the target contacts in HubSpot (plays route by owner)
 - [ ] You've decided the **approval workflow** — Slack, email, or in-agent review (see `safety-governance.md`)
+
+If Slack/email/FirstTouch approvals are not configured yet, use in-agent approval: the agent presents the approval table in chat, marks every row or flow as awaiting approval, and waits for the human before executing anything.
 
 ---
 

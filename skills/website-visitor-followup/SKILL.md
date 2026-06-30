@@ -32,6 +32,8 @@ Before drafting or queueing any contact, run Gate 0 suppression/DNC from `../../
 
 
 ### 1. Pull visitor signals
+This play requires a website visitor signal source. If neither HubSpot tracking nor an RB2B/list source exists, stop and say the website-visitor play is unavailable; offer to run the persona AI SDR recipe separately using ICP filters instead.
+
 Get recent high-intent visits with page path, timestamp, company/contact match confidence, and any associated HubSpot owner. **Two paths to the data:**
 - **HubSpot native tracking pixel** (default) — HubSpot logs known-contact page activity automatically. Sufficient for most accounts with steady inbound.
 - **RB2B (or similar de-anon tool)** — recommended when HubSpot-native web-visit volume is low or you need company-level identification for anonymous visitors. RB2B pushes identified visitors to a HubSpot list (or Slack), which FirstTouch then picks up. Wire RB2B → HubSpot list → FirstTouch picks up from the list.
@@ -61,7 +63,7 @@ Keep it light, conversational, and 2 sentences max.
 Show the visitor signal, confidence level, target contact, and draft.
 
 ### 6. Execute + log
-On approval: send via FirstTouch, log to HubSpot, tag `website_visitor_followup`.
+On approval: send via FirstTouch. If HubSpot is connected, log to HubSpot and tag `website_visitor_followup`; if the source is RB2B/import without HubSpot, log the execution record in FirstTouch and state that CRM timeline logging was skipped.
 
 ### 7. Track
 Measure reply and meeting rate by page type and signal confidence.

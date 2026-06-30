@@ -35,9 +35,9 @@ Before running this skill for the first time in a workspace, load `../../referen
 | LinkedIn account | Daily AI SDR batch cap | Connection request note |
 |---|---:|---|
 | Free/basic | 10 contacts/day | No note |
-| Sales Navigator / Premium | 20 contacts/day | No note by default for AI SDR |
+| Sales Navigator / Premium | 20 contacts/day | No note by default for cold AI SDR; notes are allowed only when the user explicitly approves a strong reason |
 
-These caps are intentionally conservative for a recurring outbound motion. If the account is new, warned, or acceptance/reply rates drop, lower the cap and pause for human review.
+These caps are intentionally conservative for a recurring outbound motion and share the sender's total daily connection-request budget. If AI SDR and another play run on the same day, the combined connection requests must stay within 10 or 20. If the account is new, warned, or acceptance/reply rates drop, lower the cap and pause for human review.
 
 ## Default outreach plan
 
@@ -71,7 +71,7 @@ For every approved AI SDR prospect, first check LinkedIn connection status:
 - Save the discovered contacts into a FirstTouch audience or list for future daily runs.
 
 ### 2. Enrich every candidate
-For each contact/company, enrich missing fields before drafting:
+For each contact/company, enrich missing fields before drafting. If no enrichment MCP is connected, use HubSpot, FirstTouch, CSV, or user-provided fields; skip or queue records missing a usable LinkedIn URL rather than fabricating data:
 - LinkedIn URL and current title
 - company domain, size, industry, location
 - relevant company/person signal when available
@@ -91,7 +91,7 @@ Rank the remaining candidates by ICP fit, signal strength, seniority, and accoun
 For the top daily batch only, load `firsttouch-messaging` and generate customized LinkedIn-first outreach for each prospect:
 - check whether the prospect is already connected on LinkedIn
 - if already connected: draft the first message and a 2-day follow-up
-- if not connected: queue a blank connection request with **no note**, then draft the post-accept first message and 2-day follow-up
+- if not connected: queue a blank connection request with **no note** by default for cold AI SDR, then draft the post-accept first message and 2-day follow-up
 - keep every message to 2 sentences max
 - reference a real signal that might point to the prospect needing the user's solution
 - use a lightweight ask CTA, not a meeting ask

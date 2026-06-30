@@ -24,14 +24,14 @@ Before running this skill for the first time in a workspace, load `../../referen
 ## Step-by-step
 
 ### 1. Pull the campaign (FirstTouch MCP)
-Get the sequence definition: steps, message types, timing, target list, sender seat, personalization variables used.
+Get the available FirstTouch campaign/flow/sequence definition: steps, message types, timing, target list, sender seat, and personalization variables used. If the MCP cannot retrieve the full definition, ask the user to paste or export the sequence steps and mark missing fields as `manual review required` rather than failing silently.
 
 ### 2. Run the 5 review dimensions
 
 #### A. Send safety
 - Total volume vs. seat daily/weekly limits
 - Step timing (too aggressive = account risk)
-- Mix of action types (connect/message/InMail) within safe bounds
+- Mix of action types (connection request, LinkedIn message, email/call/manual task where supported) within safe bounds
 - Any active account warnings? → **hard stop**
 
 #### B. Messaging quality (load `firsttouch-messaging`)
@@ -54,7 +54,7 @@ For each step's message, run the quality gate:
 
 #### E. Compliance & brand
 - Claims verifiable (no fabricated proof points)
-- Unsubscribe/opt-out path for InMail
+- Unsubscribe/opt-out path for email or any message type that requires one
 - Tone matches brand voice
 
 ### 3. Score each dimension

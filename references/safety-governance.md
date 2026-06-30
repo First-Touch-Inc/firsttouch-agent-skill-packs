@@ -31,7 +31,8 @@ Before messaging anyone, confirm they are **not** already in an active sequence 
 
 ### Gate 2 — Owner routing
 When HubSpot is connected, confirm the contact has an **owner** in HubSpot and that the authorized user is allowed to message on their behalf.
-- If HubSpot is connected and no owner exists → route to enrichment/assignment, **do not send**.
+
+- If HubSpot is connected and no owner exists → stop, report the no-owner record, ask the user/RevOps to assign it in HubSpot, and **do not send**.
 - If owner mismatch → flag for human review, **do not send**.
 - If HubSpot is not connected and the user is running a single-seat FirstTouch-only play, state that CRM owner routing is unavailable and require explicit human approval before any send.
 
@@ -39,12 +40,14 @@ When HubSpot is connected, confirm the contact has an **owner** in HubSpot and t
 Never exceed the authorized account's safe daily/weekly limits.
 - Check seat usage before queueing sends.
 - If near limit → **stop and report**, do not push volume.
+- AI SDR and all other connection-request plays share the same daily connection-request budget. If multiple plays run in one day, keep the combined total under 10/day for free/basic or 20/day for Sales Navigator/Premium.
 
 ### Gate 4 — Human approval
 Present the **exact** draft (recipient, message, intended action) to a human.
 - Approve → execute via FirstTouch
 - Edit → re-queue with edits
 - Deny → log and stop
+- If Slack/email/FirstTouch approval workflow is not configured, use in-agent approval: show the approval table in chat and wait for the human response before executing anything.
 
 > **Approval must be per-send for dynamic first-touch outbound.** Batch approval is acceptable only for follow-ups in an already-approved sequence, or for a one-time `social-campaigns` flow where the human approves the exact segment, sender/routing rule, static templates, launch window, and daily cap before the flow launches. Do not treat social-campaign flow approval as permission for future dynamic or AI-generated campaigns.
 
@@ -63,8 +66,7 @@ Capture account type during first-run onboarding, then use the stricter cap. Tun
 |--------|---------------------|
 | Free/basic LinkedIn — connection requests | 10 |
 | Sales Navigator / Premium — connection requests | up to 20 |
-| Messages / InMail | ~30–40 |
-| Profile views | ~80 |
+| LinkedIn messages | ~30–40 |
 | Post engagements | ~50 |
 
 **Connection-note rule:** use connection notes only when the sender has Sales Navigator / Premium and the message is approved. For free/basic accounts, send blank connection requests and use the approved opener after the prospect accepts.

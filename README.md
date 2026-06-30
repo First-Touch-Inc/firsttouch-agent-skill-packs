@@ -89,8 +89,8 @@ Every pack should ask three questions before running volume:
 
 ## The plays that drive the most value
 
-1. **Social Engagement Flow** — act on post/profile engagement first; for founders this is the number one starter play and does not require HubSpot.
-2. **Social Campaigns** — build a one-time campaign for a very narrow ICP segment with static templates and flow-level approval.
+1. **Social Engagement Flow** — act on post likes/comments first; for founders this is the number one starter play and can use owned posts or a relevant competitor founder/influencer profile.
+2. **Social Campaigns** — build a narrow campaign using either row-level dynamic approvals for rep/BDR pushes or static templates with flow-level approval for governed one-time campaigns.
 3. **AI SDR / ICP Outbound** — build daily approval-ready batches from a HubSpot list or FirstTouch Discover Contacts.
 4. **Founder AI SDR** — the AI SDR workflow in founder voice, with the same approval queue and 10/20 daily caps.
 5. **Inbound Speed-to-Lead** — attach LinkedIn connection and follow-up to signups, trials, or demo requests.
@@ -136,7 +136,7 @@ In addition to the flat `skills/` folder above, this repo ships **4 downloadable
 
 | Pack | Persona | Skills included | Key plays |
 |---|---|---:|---|
-| `founder-pack` | Founders doing their own sales | 9 | Social engagement flow, social campaigns, founder AI SDR, inbound follow-up, stalled open-deal workflow, customer thank-you |
+| `founder-pack` | Founders doing their own sales | 8 | Social engagement flow, social campaigns, founder AI SDR, inbound follow-up, stalled open-deal workflow |
 | `ae-pack` | Account Executives | 8 | Inbound speed-to-lead, social campaigns, stalled open-deal workflow, meeting-booked stakeholder follow-up, closed-lost re-engage |
 | `bdr-pack` | Business Development Reps | 7 | Inbound speed-to-lead, social engagement flow, social campaigns, target-list AI SDR, lead recovery |
 | `revops-pack` | Revenue Operations | 11 | Workspace audit, sequence QA, social campaigns, stalled open-deal workflow, HubSpot workflow build, team governance |

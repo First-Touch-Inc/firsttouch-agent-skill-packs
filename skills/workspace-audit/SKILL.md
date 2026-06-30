@@ -26,18 +26,20 @@ Before running this skill for the first time in a workspace, load `../../referen
 ### 1. Check MCP connectivity
 - FirstTouch MCP reachable + returns campaign/seat data? ✅/❌
 - HubSpot MCP reachable + returns contacts/owners? ✅/❌ (if a play needs it)
-- Enrichment MCP connected (if AI SDR, founder AI SDR, or customer-champion plays will run)? ✅/❌/n/a
+- FirstTouch enrichment available and credits understood for AI SDR/founder AI SDR? ✅/❌/n/a; external Clay/Surfe enrichment MCP is optional, not required
 
 ### 2. LinkedIn account health (FirstTouch)
 - Seat connected and authenticated? ✅/❌
-- Current usage vs. daily limits (connection requests, messages, views)
+- Current usage vs. daily limits (connection requests, messages, views) when available from FirstTouch
 - Any active warnings/restrictions on the account? 🚩 (hard stop if yes)
-- SSI / account age / warmup status
+- SSI / account age / warmup status — manual/dashboard check unless FirstTouch exposes it directly
+- If FirstTouch cannot return a metric, ask the user to check the FirstTouch dashboard and mark that metric `manual check required`
 
 ### 3. Owner coverage (HubSpot)
-- % of target contacts with an assigned owner
-- Orphaned contacts (no owner) → routing risk for HubSpot signal, inbound, stalled-deal, and customer-champion plays
+- % of target contacts with an assigned owner when HubSpot is connected
+- Orphaned contacts (no owner) → routing risk for HubSpot signal, inbound, stalled-deal, and other owner-routed plays
 - Owner-to-seat alignment (does the authorized LinkedIn user map to the right owners?)
+- If HubSpot or owner reports are unavailable, ask the user/RevOps to provide an owner export and mark this area `manual check required`, not failed
 
 ### 4. Safety configuration
 - Duplicate-check enabled? ✅/❌
@@ -45,17 +47,25 @@ Before running this skill for the first time in a workspace, load `../../referen
 - Daily limit caps configured? ✅/❌
 - Approval workflow defined (who approves, where)? ✅/❌
 
-### 5. Logging & attribution readiness
+### 5. Logging, replies & attribution readiness
 - FirstTouch→HubSpot timeline logging active? ✅/❌
-- Attribution tags/properties created (e.g. `linkedin_intent`, play tags)? ✅/❌
+- HubSpot write scope for timeline tags/properties confirmed? ✅/❌
+- Test action round-trip completed: create/approve one safe test action, then verify the HubSpot timeline/logging record and FirstTouch reply/status visibility came back as expected. If the team will not run a test action, mark attribution/logging `unverified`, not `ready`.
+- Attribution tags/properties created or writable (e.g. `linkedin_intent`, play tags)? ✅/❌/manual HubSpot check
+- FirstTouch reply tracking visible for outreach actions? ✅/❌ — the agent cannot read arbitrary inbox history, but FirstTouch-tracked outreach can surface reply events and captured reply text/status.
 - Deals associated with contacts that have timeline activity? ✅/❌
 
-### 6. Data hygiene
+### 6. Queue/status hygiene
+- Current outreach queues: pending, blocked, review-required, failed, canceled, completed counts when available
+- Stuck approval rows or actions older than the team's SLA? list them as queue hygiene issues, not automated alerts unless an alerting workflow is explicitly configured
+- Email/LinkedIn queue blockers: missing account, missing recipient/profile, approval required, account readiness, scheduler/limit delay
+
+### 7. Data hygiene
 - LinkedIn URL coverage on target contacts (%)
 - Duplicate contacts in HubSpot
 - Stale contacts (no activity > 180 days) in active lists
 
-### 7. Produce the readiness scorecard
+### 8. Produce the readiness scorecard
 ```
 WORKSPACE READINESS — {customer} — {date}
 Overall: 72/100 — READY WITH FIXES
@@ -64,7 +74,8 @@ Connections:       ✅ 100 — FirstTouch + HubSpot connected
 Account health:    ⚠  60 — Seat near daily connection cap; no warnings
 Owner coverage:    ❌ 40 — 38% of target contacts have no owner
 Safety config:     ✅  95 — all gates configured
-Logging:           ✅ 100 — timeline logging active
+Logging/replies:   ✅ 100 — test action round-trip verified; timeline logging and FirstTouch reply tracking active
+Queue hygiene:     ⚠  70 — 14 rows pending approval >2 days; no automated alerts configured
 Data hygiene:      ⚠  55 — LinkedIn URL coverage at 61%
 
 PRIORITY FIXES (do before launch):
@@ -83,12 +94,13 @@ Connections:       ⚠  70 — FirstTouch connected; HubSpot not connected
 Account health:    ✅  90 — seat below daily caps; no warnings
 Owner coverage:    N/A — HubSpot not connected
 Safety config:     ✅  90 — approval + duplicate gates configured
-Logging:           N/A — HubSpot timeline logging unavailable until connected
+Logging/replies:   ⚠  70 — FirstTouch reply tracking available; HubSpot timeline logging unavailable until connected
+Queue hygiene:     ✅  90 — no blocked rows older than SLA
 Data hygiene:      ⚠  55 — LinkedIn URL coverage needs enrichment
 
 PRIORITY FIXES (do before launch):
 1. Pilot FirstTouch-only plays first: warm engagers, website visitor lists, or AI SDR via Discover Contacts
-2. Connect HubSpot before HubSpot signal, stalled-deal, customer-champion, or owner-routed plays
+2. Connect HubSpot before HubSpot signal, stalled-deal, customer milestone, or owner-routed plays
 3. Enrich LinkedIn URLs to >90% coverage
 ```
 

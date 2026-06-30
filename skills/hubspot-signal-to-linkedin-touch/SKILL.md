@@ -19,7 +19,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 - "When a contact hits MQL, reach out on LinkedIn"
 - "If a deal moves to 'Decision Maker Buy-In,' send a social touch"
 - "Anyone who filled out the pricing form this week, connect on LinkedIn"
-- Building trigger-based outbound rather than static sequences
+- Building event-driven outbound from HubSpot lists, lifecycle fields, forms, or contact-based workflow outputs
 
 ## Inputs
 - **Signal definition:** which HubSpot event triggers the play (lifecycle change / deal stage / form / list membership / inactivity)
@@ -29,7 +29,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 ## Step-by-step
 
 ### 1. Define & query the signal (HubSpot MCP)
-Pull contacts matching the trigger event within the window. For each, capture: name, title, company, owner, lifecycle/deal stage, the triggering event + timestamp, and recent timeline activity.
+Pull contacts matching the trigger event within the window. If the desired trigger needs a HubSpot workflow, produce the contact-based workflow/list criteria for RevOps/admin; do not claim the agent created a HubSpot workflow unless the connected portal exposes and confirms that capability. For each, capture: name, title, company, owner, lifecycle/deal stage, the triggering event + timestamp, and recent timeline activity.
 
 ### 2. Qualify
 For each triggered contact:
@@ -47,7 +47,7 @@ The HubSpot event determines the message:
 | Lifecycle up (SQL→Opportunity) | Opener to connected | Warm the opp |
 | Meeting logged on an associated deal | Connection request to unconnected stakeholders, or opener/value touch to connected stakeholders | Multi-thread the account after a real meeting signal. Configure as a contact-based HubSpot list/workflow, for example: contacts at companies where an associated deal has a meeting logged in the last 7 days. |
 | Deal moved forward | Value touch to stakeholders | Reinforce |
-| Open deal not Closed Won/Lost and no engagement for 60+ days | Re-engage | Use the contact-based `stalled-deal-reactivation` workflow; deal triggers are unsupported |
+| Open deal not Closed Won/Lost and no engagement for 60+ days | Re-engage | Use a contact-based stalled-deal list/workflow-output pattern; if this pack does not include the stalled-deal skill, ask RevOps/admin to supply the qualifying HubSpot list or setup steps. Deal triggers are unsupported. |
 | Re-engaged after silence | Opener | Context renewed |
 
 ### 4. Draft (load `firsttouch-messaging`)

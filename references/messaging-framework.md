@@ -1,6 +1,6 @@
 # FirstTouch LinkedIn Messaging Framework
 
-*The methodology behind every message an agent drafts in this pack. Skill `00-firsttouch-messaging` operationalizes this.*
+*The methodology behind every message an agent drafts in this pack. Skill `firsttouch-messaging` operationalizes this.*
 
 ---
 

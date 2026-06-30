@@ -40,9 +40,9 @@ Founder-led AI SDR is the same motion as AI SDR, but with a founder lens:
 | LinkedIn account | Daily founder AI SDR batch cap | Connection request note |
 |---|---:|---|
 | Free/basic | 10 contacts/day | No note |
-| Sales Navigator / Premium | 20 contacts/day | No note by default for AI SDR |
+| Sales Navigator / Premium | 20 contacts/day | No note by default for cold AI SDR; connection notes are allowed only when the founder explicitly approves a strong, relevant reason |
 
-Keep the cap lower if the account is new, warned, or acceptance/reply rates drop.
+Keep the cap lower if the account is new, warned, or acceptance/reply rates drop. The no-note default is conservative: cold connection notes often reduce acceptance or feel automated under a founder's name. Warm-signal plays can use notes when Sales Nav/Premium is available and the note is explicitly approved.
 
 ## Default outreach plan
 For every approved prospect, first check LinkedIn connection status:
@@ -61,6 +61,12 @@ For every approved prospect, first check LinkedIn connection status:
 
 ## Step-by-step
 
+### 0. Capture founder voice and define the founder ICP
+Ask for 2-3 sample founder posts/messages or concise tone rules: phrases to use, phrases to avoid, level of formality, common founder POV, and topics the founder will not touch. Use this voice profile for every draft; if it is missing, draft one conservative sample and ask for calibration before building volume.
+
+### 0b. Confirm or define the founder ICP
+If HubSpot is unavailable or no saved ICP exists, ask the founder for a concise ICP before using Discover Contacts: industries, company size, geography, target titles/seniority, exclusions, and 1-3 must-have signals. Save that ICP summary in the output so future daily runs reuse it instead of guessing.
+
 ### 1. Choose the source path
 
 **Path A - HubSpot list exists:**
@@ -69,7 +75,7 @@ For every approved prospect, first check LinkedIn connection status:
 - Capture company/contact fields, owner if available, lifecycle/deal context, prior activity, and LinkedIn URL if present.
 
 **Path B - no HubSpot access or no list:**
-- Ask the founder for their ICP: target industries, company size, geography, titles/seniority, exclusions, and must-have signals.
+- Use the saved founder ICP from Step 0b, or ask for it if missing: target industries, company size, geography, titles/seniority, exclusions, and must-have signals.
 - Use **FirstTouch Discover Contacts** to build a small prospect list from that ICP.
 - Preview a small sample before larger imports because discovery/enrichment can consume FirstTouch credits.
 - Save the discovered contacts into a FirstTouch audience or list for future daily runs.
@@ -81,7 +87,7 @@ For each contact/company, enrich missing fields before drafting:
 - relevant company/person signal when available
 - mutual connection or social context when available
 
-Exclude anyone who is already in an active sequence, recently contacted, outside ICP, missing a usable LinkedIn profile, or not appropriate for the founder to contact personally.
+Before drafting, run Gate 0 suppression/DNC and Gate 1 duplicate/recent-contact checks from `../../references/safety-governance.md`. Exclude anyone who is suppressed, opted out, already in an active sequence, recently contacted, outside ICP, missing a usable LinkedIn profile, owned by someone else without routing approval, or not appropriate for the founder to contact personally.
 
 Rank by ICP fit, signal strength, seniority, strategic account value, and whether the founder has a warm path.
 
@@ -132,7 +138,7 @@ Recommend a recurring daily motion only after the founder approves the first bat
 ## Pitfalls
 - Treating founder AI SDR like a bulk SDR sequence.
 - Letting weak personalization go out under the founder's name.
-- Requiring HubSpot when the founder has no CRM list; use Discover Contacts from ICP instead.
+- Requiring HubSpot when the founder has no CRM list; define the ICP and use Discover Contacts instead.
 - Asking for meetings too early.
 - Skipping founder approval.
 

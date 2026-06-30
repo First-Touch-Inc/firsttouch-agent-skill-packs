@@ -36,9 +36,9 @@
 
 FirstTouch is the **HubSpot-native LinkedIn outreach and social selling platform**. Through its MCP, an agent can:
 
-- **Trigger** LinkedIn actions (connection requests, messages, InMail) from HubSpot workflows or directly
+- **Trigger** supported LinkedIn/social actions (connection requests, messages, flow steps, manual tasks) from HubSpot workflows or directly
 - **Track** every touch and **attribute** it to contacts, companies, and deals
-- **Log** LinkedIn activity to the HubSpot contact timeline automatically
+- **Log** LinkedIn activity to HubSpot where the FirstTouch-HubSpot integration and workspace permissions support it
 - **Respect** routing rules (owner-based), approval gates, and account-safety limits
 - **Expose** a public MCP server (`mcp.firsttouch.ai`) so AI agents run outreach without a browser
 
@@ -83,10 +83,28 @@ Steps 1–4 and 6–7 are where the agent earns its keep. Step 5 is FirstTouch. 
 | MCP | What it gives the agent | Required by |
 |-----|------------------------|-------------|
 | **FirstTouch MCP** | LinkedIn action execution, engagement data, logging | Every play |
-| **HubSpot MCP** | CRM context, lifecycle, owners, deals, lists | HubSpot signal touches, inbound speed-to-lead, website visitor follow-up, stalled deal reactivation, customer champion, and HubSpot-backed recipes |
-| **Enrichment MCP** (Clay, Surfe, etc.) | LinkedIn URLs, emails, firmographics | Optional for AI SDR, founder AI SDR, warm-engager qualification, and customer-champion plays |
+| **HubSpot MCP** | CRM context, lifecycle, owners, deals, lists | Required for HubSpot signal touches, stalled deal reactivation, customer champion, and CRM/deal/customer segments. Optional but useful for inbound speed-to-lead, website visitor follow-up, AI SDR, warm engagement, and social campaigns when those can start from FirstTouch/imported/Discover sources. |
+| **FirstTouch enrichment + optional external enrichment MCP** | LinkedIn URLs, emails, firmographics | FirstTouch can enrich when credits/data are available; Clay/Surfe/etc. are optional supplements, not prerequisites |
 
 Full setup instructions: [`mcp-setup.md`](mcp-setup.md).
+
+## Social Engagement source note
+
+LinkedIn Social Engagement monitoring is a FirstTouch feature for post likes and comments. Prefer the user's own founder, executive, or company profile when there is enough owned engagement. If owned engagement is thin, monitor a relevant competitor founder, category influencer, or executive profile and work the ICP-fit people engaging there. Do not use profile views as a signal.
+
+## FirstTouch object glossary
+
+This pack uses human-friendly terms because users ask for "campaigns," "sequences," and "queues." When executing, translate them into the object the connected FirstTouch MCP supports:
+
+| Pack term | FirstTouch execution concept |
+|---|---|
+| Play | The overall workflow the agent follows |
+| Audience/list | The contacts/accounts selected for a motion |
+| Flow plan/campaign/sequence | The approved series of LinkedIn actions and timing |
+| Dynamic action queue | Per-contact actions awaiting row-level approval |
+| Enrollment | Adding approved contacts to the flow/campaign |
+
+The agent should state the exact FirstTouch object used so the user does not have to guess where approval or execution happened.
 
 ---
 
