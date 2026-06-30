@@ -10,6 +10,9 @@ metadata:
 
 # Warm Engager Follow-Up
 
+**RevOps/team note:** When this skill is installed in the RevOps pack, run it as a team-governed motion with owner-based routing, per-seat cap sharing, approval review, and FirstTouch/HubSpot logging checks — not as an ungoverned single-rep send.
+
+
 **Outcome:** Convert recent LinkedIn engagement (post likes and comments) into booked conversations. Log to HubSpot when connected; otherwise log the execution record in FirstTouch and state that CRM timeline logging is unavailable.
 
 ## First-run onboarding gate

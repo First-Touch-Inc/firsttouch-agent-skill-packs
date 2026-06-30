@@ -32,7 +32,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 ## Step-by-step
 
 ### 1. Query or define the contact-based stalled-deal audience
-First, query or accept a HubSpot list of contacts associated to qualifying open deals. An AE with HubSpot access can run this once today from a manually built/filtered HubSpot contact list; RevOps is needed only to automate recurring enrollment. Build a workflow through the connected HubSpot/FirstTouch action cards only when the portal supports it and the user explicitly wants recurring automation. If the agent lacks workflow-create capability or the AE lacks HubSpot admin permissions, produce exact manual setup steps for RevOps/admin and stop before launch. Either way, this must be a **contact-based** HubSpot workflow. Deal-based workflow triggers are unsupported for this motion, so enroll contacts associated to qualifying deals. Use enrollment criteria that identify contacts where the associated deal has:
+FirstTouch/MCP cannot natively query the full stalled-open-deal cohort by itself. For a one-time AE/admin run, first build or accept a HubSpot filtered contact list: associated deal is open, not Closed Won/Lost, and last activity/engagement is more than 60 days ago. First, query or accept a HubSpot list of contacts associated to qualifying open deals. An AE with HubSpot access can run this once today from a manually built/filtered HubSpot contact list; RevOps is needed only to automate recurring enrollment. Build a workflow through the connected HubSpot/FirstTouch action cards only when the portal supports it and the user explicitly wants recurring automation. If the agent lacks workflow-create capability or the AE lacks HubSpot admin permissions, produce exact manual setup steps for RevOps/admin and stop before launch. Either way, this must be a **contact-based** HubSpot workflow. Deal-based workflow triggers are unsupported for this motion, so enroll contacts associated to qualifying deals. Use enrollment criteria that identify contacts where the associated deal has:
 - Deal stage **is not** `Closed Won`
 - Deal stage **is not** `Closed Lost`
 - Deal is in an active/open pipeline stage
@@ -109,6 +109,7 @@ Measure: reactivation replies, meetings re-opened, stage movement, and influence
 - **Skipping suppression checks** — RevOps must be able to prove DNC/opt-out handling before any workflow-based outreach.
 
 ## Reference
+- HubSpot setup reference: [`../../references/hubspot-setup.md`](../../references/hubspot-setup.md)
 - Messaging: [`../../references/messaging-framework.md`](../../references/messaging-framework.md)
 - Safety: [`../../references/safety-governance.md`](../../references/safety-governance.md)
 - For generic HubSpot event touches, use [`../hubspot-signal-to-linkedin-touch/SKILL.md`](../hubspot-signal-to-linkedin-touch/SKILL.md).

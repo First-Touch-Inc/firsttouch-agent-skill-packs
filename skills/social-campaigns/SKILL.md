@@ -25,8 +25,8 @@ Before running this skill for the first time in a workspace, load `../../referen
 - The user wants a product update, event invite, reactivation list, or team-connection push
 
 ## When NOT to use
-- Daily fresh prospecting or recurring AI SDR queues. Use the AI SDR skill included in the installed pack instead.
-- A BDR's normal daily queue unless the campaign is explicitly a narrow special push. For daily prospecting, use `inbound-speed-to-lead`, `warm-engager-followup`, or the AI SDR skill included in the installed pack.
+- Daily fresh prospecting or recurring AI SDR queues. Use the persona AI SDR skill instead: `founder-led-outbound` in the Founder pack, or `icp-outbound-builder` in AE/BDR/RevOps packs.
+- A BDR's normal daily queue unless the campaign is explicitly a narrow special push. For daily prospecting, use `inbound-speed-to-lead`, `warm-engager-followup`, or the persona AI SDR skill (`founder-led-outbound` in Founder, `icp-outbound-builder` in AE/BDR/RevOps).
 - Highly personalized one-off account strategy. Use the relevant signal, stalled-deal, or founder play.
 - A broad audience like "all VPs of Sales" without a narrow filter. Narrow it first.
 - Any campaign where the user expects unreviewed AI-generated copy for every recipient. If copy is dynamic per recipient, use row-level approval like AI SDR.
@@ -115,7 +115,7 @@ Run Gate 0 suppression/DNC and Gate 1 duplicate checks from `../../references/sa
 ### 4. Choose the execution object
 Create the FirstTouch execution object that matches the chosen mode and connected MCP support. State the exact object created.
 
-- **Rep/BDR dynamic-row mode:** build an audience and queue dynamic actions/manual approval rows, one prospect at a time.
+- **Rep/BDR dynamic-row mode:** build an audience and queue dynamic actions/manual approval rows, one prospect at a time; before adding per-contact dynamic actions, run the FirstTouch dynamic-action preflight guide, then add the action in the supported order.
 - **Static campaign-flow mode:** build an audience plus flow plan/campaign with approved static templates.
 
 Recommended sequence:
@@ -177,6 +177,7 @@ If the user approves, launch only the approved rows or approved flow. If they ed
 
 ### 7. Launch and log
 After approval:
+- before queuing per-contact dynamic actions, run the FirstTouch dynamic-action preflight guide, then add the action in the supported order
 - publish or queue the FirstTouch dynamic actions, flow, campaign, or audience enrollment supported by the connected MCP
 - remember: publishing a flow activates it but does **not** enroll awaiting contacts; explicitly enroll approved contacts/items, then confirm they moved from awaiting to in-progress
 - enroll or queue only the approved audience/rows according to daily caps

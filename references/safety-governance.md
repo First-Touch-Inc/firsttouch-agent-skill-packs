@@ -38,7 +38,7 @@ When HubSpot is connected, confirm the contact has an **owner** in HubSpot and t
 
 ### Gate 3 — Account-safety limits
 Never exceed the authorized account's safe daily/weekly limits.
-- Check seat usage and current outreach queue/request state before queueing sends; use FirstTouch queue/status data when available rather than estimating from memory.
+- Before queueing sends, pull FirstTouch outreach queue/status data for the sender when available: active/in-queue/blocked LinkedIn outreach rows plus today's completed/pending connection-request rows. Count today's connection requests against the sender's 10/day free/basic or 20/day Sales Nav/Premium cap before adding more rows; if queue data is unavailable, say the cap check is estimated and use the safer lower batch size.
 - If near limit → **stop and report**, do not push volume.
 - AI SDR and all other plays share the same daily **connection-request** budget for rows that send connection requests. First messages to already-connected contacts draw from the separate LinkedIn message cap. If multiple plays run in one day, keep the combined connection-request total under 10/day for free/basic or 20/day for Sales Navigator/Premium.
 - When a social campaign and AI SDR run on the same sender/day, either pause/reduce AI SDR during the campaign window or split the daily cap explicitly (for example, 6 AI SDR + 4 campaign on a free/basic seat). Recompute campaign sending-day estimates against the reduced allocation, not the full daily cap.

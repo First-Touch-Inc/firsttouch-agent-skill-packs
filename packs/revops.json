@@ -73,7 +73,7 @@
     },
     {
       "name": "HubSpot list trigger \u2014 team-wide LinkedIn flows",
-      "outcome": "Use HubSpot lists or contact-based workflow outputs as the trigger source for FirstTouch LinkedIn outreach across your team. If HubSpot action cards exist in the portal, confirm them first; otherwise produce manual RevOps/admin setup steps.",
+      "outcome": "Use HubSpot lists or contact-based workflow outputs as the trigger source for FirstTouch LinkedIn outreach across your team. Confirm FirstTouch action cards using references/hubspot-setup.md; if cards are not present, use the documented HubSpot list/source fallback.",
       "needs": "HubSpot required",
       "composes": [
         "hubspot-signal-to-linkedin-touch",
@@ -137,7 +137,7 @@
     },
     {
       "name": "HubSpot setup guide for FirstTouch-triggered actions",
-      "outcome": "Coach through confirming whether FirstTouch HubSpot action cards exist; if not, document the supported fallback: a HubSpot list/source that FirstTouch reads, then FirstTouch enrolls or queues actions.",
+      "outcome": "Coach RevOps/admin through references/hubspot-setup.md: confirm whether FirstTouch action cards exist in HubSpot workflows, or use the supported fallback of a HubSpot list/source that FirstTouch reads before enrolling/queueing actions.",
       "needs": "HubSpot required; confirm action cards exist in the customer portal before promising UI steps",
       "composes": [
         "hubspot-signal-to-linkedin-touch"
@@ -177,6 +177,9 @@
     },
     {
       "src": "references/system-grounding.md"
+    },
+    {
+      "src": "references/hubspot-setup.md"
     },
     {
       "src": "references/recipes.md"

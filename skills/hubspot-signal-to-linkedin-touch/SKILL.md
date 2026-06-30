@@ -85,5 +85,6 @@ Static sequences message on a timer. This play messages on a **real event** — 
 - **No cooldown** — a contact bouncing stages gets spammed. Enforce cooldown.
 
 ## Reference
+- HubSpot setup reference: [`../../references/hubspot-setup.md`](../../references/hubspot-setup.md)
 - Messaging: [`../../references/messaging-framework.md`](../../references/messaging-framework.md)
 - Safety gates: [`../../references/safety-governance.md`](../../references/safety-governance.md)

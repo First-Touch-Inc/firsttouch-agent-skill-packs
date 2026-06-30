@@ -10,6 +10,9 @@ metadata:
 
 # Customer Champion
 
+**RevOps/team note:** When this skill is installed in the RevOps pack, run it as a team-governed motion with owner-based routing, per-seat cap sharing, approval review, and FirstTouch/HubSpot logging checks — not as an ungoverned single-rep send.
+
+
 **Outcome:** Turn customer milestones into relationship-building moments on LinkedIn so champions feel seen before you need a favor, referral, quote, or renewal conversation.
 
 ## First-run onboarding gate

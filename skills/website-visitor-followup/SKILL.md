@@ -11,6 +11,12 @@ metadata:
 
 # Website Visitor Follow-Up
 
+**Founder/no-source note:** If the workspace has no HubSpot tracking, RB2B/list source, or visitor export, skip this play and use Founder-led AI SDR / the persona AI SDR path instead.
+
+
+**RevOps/team note:** When this skill is installed in the RevOps pack, run it as a team-governed motion with owner-based routing, per-seat cap sharing, approval review, and FirstTouch/HubSpot logging checks — not as an ungoverned single-rep send.
+
+
 **Outcome:** Convert high-intent website visits into social touches while the account is actively researching.
 
 ## First-run onboarding gate

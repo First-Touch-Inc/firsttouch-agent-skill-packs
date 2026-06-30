@@ -67,7 +67,7 @@ For every approved AI SDR prospect, first check LinkedIn connection status:
 **Path B — no HubSpot access or no existing list:**
 - Ask the user for their ideal ICP: target industries, company size, geography, titles/seniority, exclusions, and any must-have signals.
 - Use **FirstTouch Discover Contacts** to build a prospect list from that ICP.
-- Preview a small sample before larger imports because discovery/enrichment can consume FirstTouch credits.
+- Run Gate 3a from `../../references/safety-governance.md`: preview a small sample, state estimated maximum discovery/enrichment credits, and get approval before larger imports because discovery/enrichment can consume FirstTouch credits.
 - Save the discovered contacts into a FirstTouch audience or list for future daily runs.
 
 ### 2. Enrich every candidate
