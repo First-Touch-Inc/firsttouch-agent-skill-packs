@@ -28,6 +28,7 @@ SKILL_NEEDS = {
     "icp-outbound-builder": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
     "founder-led-outbound": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
     "hubspot-signal-to-linkedin-touch": "HubSpot required",
+    "hubspot-social-task-runner": "HubSpot/CRM connector required; use only when LinkedIn/social tasks already exist daily",
     "social-campaigns": "No HubSpot for pure ICP/imported/connection-list campaigns; HubSpot required for CRM/deal/customer segments",
     "stalled-deal-reactivation": "HubSpot required; may need RevOps/admin for workflow setup",
     "customer-champion": "HubSpot required",
