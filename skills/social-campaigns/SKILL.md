@@ -15,7 +15,7 @@ metadata:
 **Outcome:** Create a focused FirstTouch social campaign for a narrow, explicitly defined ICP segment. For reps and BDRs, this should often feel like AI SDR: a curated list of rows with one-at-a-time approval, not a flow-building exercise. For founders and RevOps, it can also become a one-time static-template flow with bulk approval after the exact audience and templates are approved.
 
 ## First-run onboarding gate
-Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type (free/basic = no connection notes and 10 connection requests/day max; Sales Navigator/Premium = connection notes available and up to 20/day), HubSpot access (MCP, service key/private app token, HubSpot list only, or none), and which campaign the user wants to run. If the requested audience depends on HubSpot data such as no-shows, closed-won customers, deal amount, deal age, territory, owner, or lifecycle status, require HubSpot access or a HubSpot list/source FirstTouch can access.
+Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type (free/basic = no connection notes; recommend 10 connection requests/day and never exceed the FirstTouch max of 20/day; Sales Navigator/Premium = connection notes available; recommend 20 connection requests/day and never exceed the FirstTouch max of 30/day), HubSpot access (MCP, service key/private app token, HubSpot list only, or none), and which campaign the user wants to run. If the requested audience depends on HubSpot data such as no-shows, closed-won customers, deal amount, deal age, territory, owner, or lifecycle status, require HubSpot access or a HubSpot list/source FirstTouch can access.
 
 ## When to use
 - A founder wants a one-time feature-feedback, product-update, or travel-week outreach campaign
@@ -123,8 +123,8 @@ Recommended sequence:
 - If not connected: send a connection request. Use a note only when the account has Sales Navigator/Premium and the user approves a strong reason for the note; otherwise send a blank connection request and use the approved message after accept.
 
 Daily cap:
-- free/basic: 10 connection requests/day
-- Sales Navigator/Premium: up to 20 connection requests/day
+- free/basic: recommend 10 connection requests/day; FirstTouch max 20/day
+- Sales Navigator/Premium: recommend 20 connection requests/day; FirstTouch max 30/day
 - lower the cap if the account is new, under warning, or close to limits
 
 ### 5. Draft messages or static templates
@@ -200,7 +200,7 @@ After approval:
 - making reps/BDRs learn flow-building when row-level dynamic actions would fit better
 - launching without flow-level human approval
 - using connection notes on free/basic accounts
-- exceeding the 10/20 daily connection cap
+- exceeding the recommended 10/20 daily connection cap or the FirstTouch 20/30 max
 - using HubSpot-dependent criteria without HubSpot access or a FirstTouch-accessible HubSpot list
 - claiming FirstTouch can natively de-anonymize website visitors; use RB2B/HubSpot/list sources instead
 - turning a one-time campaign into recurring automation without a fresh approval cycle

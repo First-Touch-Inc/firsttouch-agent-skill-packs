@@ -24,16 +24,16 @@ Ask these questions before recommending or executing plays:
 
 ## Account-type rules
 
-| LinkedIn account | Connection notes | Safe daily connection-request cap |
-|---|---:|---:|
-| Free/basic | No connection notes; send blank connection requests and use a light post-connect opener | 10/day max |
-| Sales Navigator / Premium | Connection notes are available for approved warm-signal requests | up to 20/day max |
+| LinkedIn account | Connection notes | Recommended safe connection-request cap | FirstTouch max |
+|---|---|---:|---:|
+| Free/basic | No connection notes; send blank connection requests and use a light post-connect opener | 10/day | 20/day |
+| Sales Navigator / Premium | Connection notes are available for approved warm-signal requests | 20/day | 30/day |
 
-Never exceed these caps. If the account is new, under warning, or acceptance/reply rates drop, lower the cap and pause for human review.
+Never exceed the FirstTouch max. Use the recommended cap by default; if the account is new, under warning, or acceptance/reply rates drop, lower the cap and pause for human review.
 
-**Shared cap rule:** AI SDR uses the same daily connection-request budget as every other play. If AI SDR and another play run on the same day, the combined connection requests across all plays must stay under 10/day free/basic or 20/day Sales Navigator/Premium.
+**Shared cap rule:** AI SDR uses the same daily connection-request budget as every other play. If AI SDR and another play run on the same day, keep combined connection requests under the recommended 10/day free/basic or 20/day Sales Navigator/Premium cap unless the user explicitly approves a higher day; never exceed the FirstTouch max of 20/day free/basic or 30/day Sales Navigator/Premium.
 
-**Message norm:** already-connected first-message rows use a separate FirstTouch-supported message cap: 20/day on free/basic LinkedIn and up to 40/day on Sales Navigator/Premium. Stay under the applicable cap and reduce volume if acceptance or reply quality drops.
+**Message cap:** already-connected LinkedIn message rows use a separate FirstTouch-supported message cap. Free/basic max and recommended safe cap are 20/day. Sales Navigator/Premium max is 30/day and the recommended safe cap is also 30/day. Reduce volume if acceptance or reply quality drops.
 
 **Connection-note rule:** Sales Nav/Premium accounts can use connection notes for warm signals such as post engagement, inbound hand-raisers, customer milestones, and HubSpot events. For cold AI SDR and one-time social campaigns, default to blank connection requests even with Sales Nav unless the user explicitly approves a strong note.
 
@@ -52,10 +52,10 @@ Never exceed these caps. If the account is new, under warning, or acceptance/rep
 
 | Persona | Start here if HubSpot is connected | Start here without HubSpot |
 |---|---|---|
-| Founder | Social engagement flow first if Social Engagement is enabled; customer thank-you or stalled deal only when CRM data exists | If Social Engagement is enabled, use founder/executive personal-profile posts or a relevant competitor/influencer personal profile. FirstTouch does not track company-page/profile engagement. If Social Engagement is not enabled and cannot be enabled now, start with Founder-led AI SDR from Discover Contacts or a user-provided/exported engager list. |
+| Founder | Social engagement flow first; customer thank-you or stalled deal only when CRM data exists | Enable Social Engagement through FirstTouch MCP for founder/executive personal-profile posts or a relevant competitor/influencer personal profile. FirstTouch does not track company-page/profile engagement. If no monitored profile or engager list is available, start with Founder-led AI SDR from Discover Contacts. |
 | AE | Auto-connect on meeting or signup is the #1 AE use case; meeting-booked stakeholder follow-up is next for multi-threading; stalled deal after RevOps/admin workflow support is clear | Social engager flow can use leadership/executive personal profiles, competitor founder profiles, or influencer personal profiles. FirstTouch does not track company-page/profile engagement. Position the AE pack as much stronger with HubSpot. |
 | BDR | Auto-connect on meeting/signup for inbound; otherwise BDR AI SDR is the daily engine | BDR AI SDR first when no inbound feed exists; add warm engager follow-up from leadership/competitor/influencer profiles. Social campaigns are special pushes, usually row-level dynamic actions. |
-| RevOps | Pre-launch rollout audit, then Team-wide AI SDR, HubSpot signal, or team-wide high-intent flows | FirstTouch-only workspace audit, sequence QA, Team-wide AI SDR from Discover Contacts, social engagement setup on owned or external personal profiles, and Discover/imported-list campaigns |
+| RevOps | Pre-launch rollout audit, then Team-wide AI SDR, HubSpot signal, or team-wide high-intent flows | FirstTouch-only workspace audit, sequence QA, Team-wide AI SDR from Discover Contacts, social engagement setup via FirstTouch MCP on owned or external personal profiles, and Discover/imported-list campaigns |
 
 ## Recommended rollout order
 
@@ -65,7 +65,7 @@ Recommend **high-intent plays first**. They use warmer signals, protect the Link
 
 | Play | Why first | HubSpot needed? |
 |---|---|---|
-| Social Engagement Flow | Converts people already engaging with personal-profile posts. For founders, run this first from owned founder/executive personal-profile posts if Social Engagement is enabled; if owned engagement is thin, monitor a relevant competitor founder, category influencer, or executive personal profile. FirstTouch does not track company-page/profile engagement. All monitored-profile plays require Social Engagement enabled. Profile views are not a signal. | No HubSpot. Social Engagement must be enabled for monitored profiles; a user-provided/exported engager list can work without monitored-profile access. |
+| Social Engagement Flow | Converts people already engaging with personal-profile posts. For founders, run this first from owned founder/executive personal-profile posts; if owned engagement is thin, monitor a relevant competitor founder, category influencer, or executive personal profile. FirstTouch does not track company-page/profile engagement. Profile views are not a signal. | No HubSpot. Enable Social Engagement through FirstTouch MCP for monitored profiles; a user-provided/exported engager list can work without monitored-profile access. |
 | Inbound Speed-to-Lead | Acts on demo requests, signups, trials, and other fresh hand-raisers. | HubSpot or a FirstTouch-accessible inbound list/import. True automation needs a connected source. |
 | Website Visitor Follow-Up | Uses pricing/demo/product-page intent while the account is researching. | HubSpot tracking or RB2B/list source required. If no signal source exists, this play is unavailable. |
 | HubSpot Signal → LinkedIn Touch | Turns lifecycle/list/deal events into timely social touches. | Yes. |
@@ -86,8 +86,8 @@ Recommend **high-intent plays first**. They use warmer signals, protect the Link
 
 | Motion | Approval style |
 |---|---|
-| AI SDR / founder AI SDR / dynamic actions | Row-level approval. Each first-touch row must be approved individually. |
-| Warm engager, inbound, website visitor, HubSpot signal, customer champion, stalled deal | Row-level approval unless the connected FirstTouch/approval system records an equivalent per-contact approval. |
+| AI SDR / founder AI SDR / dynamic actions | Row-level approval. Each first-touch row must be approved individually; if the workspace uses approval tasks, the task is sent to the owner in HubSpot or appears in the FirstTouch app under **Tasks**. |
+| Warm engager, inbound, website visitor, HubSpot signal, customer champion, stalled deal | Row-level approval unless the connected FirstTouch/approval system records an equivalent per-contact approval; approval tasks route to the owner in HubSpot or the app **Tasks** view when that workflow is enabled. |
 | Social campaigns | Two modes: rep/BDR dynamic rows use row-level approval like AI SDR; one-time static campaigns can use flow-level approval with exact audience, templates, sender/routing rule, launch window, and daily cap approved. This does not authorize future dynamic or AI-generated campaigns. |
 
 ## Onboarding output format
@@ -98,8 +98,8 @@ After asking the questions, summarize the answer before running anything:
 ## FirstTouch onboarding summary
 - Persona: Founder / AE / BDR / RevOps
 - LinkedIn account: Free/basic or Sales Navigator/Premium
-- Daily connection cap: 10 or 20 shared across all plays
-- Daily message cap: 20/day free/basic or up to 40/day Sales Nav/Premium for already-connected LinkedIn message rows
+- Daily connection cap: recommended 10/day free/basic or 20/day Sales Nav/Premium; FirstTouch max 20/day free/basic or 30/day Sales Nav/Premium
+- Daily message cap: 20/day free/basic; 30/day Sales Nav/Premium
 - Connection notes: yes for approved warm signals / no for free-basic / blank by default for cold AI SDR
 - HubSpot access: MCP / service key / list only / none
 - Social Engagement enabled: yes/no/unknown
@@ -107,7 +107,7 @@ After asking the questions, summarize the answer before running anything:
 - Plays available now: ...
 - Plays blocked until HubSpot access/list exists: ...
 - Recommended first play for this persona: ...
-- Approval workflow: per-row approval for dynamic plays; flow-level approval allowed only for one-time social campaigns with exact audience + static templates
+- Approval workflow: per-row approval for dynamic plays; approval tasks route to the owner in HubSpot or FirstTouch app Tasks when enabled; flow-level approval allowed only for one-time social campaigns with exact audience + static templates
 ```
 
 Then show the relevant recipe catalog and ask which play to run first. If the user has not chosen, recommend the persona-specific first play above.

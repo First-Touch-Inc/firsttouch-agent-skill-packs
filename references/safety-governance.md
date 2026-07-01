@@ -38,10 +38,10 @@ When HubSpot is connected, confirm the contact has an **owner** in HubSpot and t
 
 ### Gate 3 — Account-safety limits
 Never exceed the authorized account's safe daily/weekly limits.
-- Before queueing sends, pull FirstTouch LinkedIn outreach queue/status data for the sender, including `active`, `in_queue`, blocked/review-required, and today's completed/pending connection-request rows. Count today's connection requests against the sender's 10/day free/basic or 20/day Sales Nav/Premium cap before adding more rows; if queue data is unavailable, say the cap check is estimated and use the safer lower batch size.
+- Before queueing sends, pull FirstTouch LinkedIn outreach queue/status data for the sender, including `active`, `in_queue`, blocked/review-required, and today's completed/pending connection-request rows. Count today's connection requests against the recommended sender cap (10/day free/basic or 20/day Sales Nav/Premium) before adding more rows; if the user explicitly approves higher volume, never exceed the FirstTouch max (20/day free/basic or 30/day Sales Nav/Premium). If queue data is unavailable, say the cap check is estimated and use the recommended safe batch size.
 - If near limit → **stop and report**, do not push volume.
-- AI SDR and all other plays share the same daily **connection-request** budget for rows that send connection requests. First messages to already-connected contacts draw from the separate LinkedIn message cap. If multiple plays run in one day, keep the combined connection-request total under 10/day for free/basic or 20/day for Sales Navigator/Premium.
-- When a social campaign and AI SDR run on the same sender/day, either pause/reduce AI SDR during the campaign window or split the daily cap explicitly (for example, 6 AI SDR + 4 campaign on a free/basic seat). Recompute campaign sending-day estimates against the reduced allocation, not the full daily cap.
+- AI SDR and all other plays share the same daily **connection-request** budget for rows that send connection requests. First messages to already-connected contacts draw from the separate LinkedIn message cap. If multiple plays run in one day, keep the combined connection-request total under the recommended 10/day for free/basic or 20/day for Sales Navigator/Premium unless the user explicitly approves more; never exceed the FirstTouch max of 20/day free/basic or 30/day Sales Navigator/Premium.
+- When a social campaign and AI SDR run on the same sender/day, either pause/reduce AI SDR during the campaign window or split the daily cap explicitly (for example, 6 AI SDR + 4 campaign against the recommended 10/day free/basic cap). Recompute campaign sending-day estimates against the reduced allocation, not the full daily cap.
 
 ### Gate 3a — Credit/spend governance
 Discovery and enrichment can consume FirstTouch credits.
@@ -57,7 +57,7 @@ Present the **exact** draft (recipient, message, intended action) to a human.
 - Deny → log and stop
 - Slack/email approval delivery requires external workspace configuration and is not assumed FirstTouch-native. If Slack/email/FirstTouch approval workflow is not configured, use in-agent approval: show the approval table in chat and wait for the human response before executing anything.
 
-> **Approval must be per-send for dynamic first-touch outbound.** Batch approval is acceptable only for follow-ups in an already-approved sequence, or for a one-time `social-campaigns` flow where the human approves the exact segment, sender/routing rule, static templates, launch window, and daily cap before the flow launches. Do not treat social-campaign flow approval as permission for future dynamic or AI-generated campaigns.
+> **Approval must be per-send for dynamic first-touch outbound.** Batch approval is acceptable only for follow-ups in an already-approved sequence, or for a one-time `social-campaigns` flow where the human approves the exact segment, sender/routing rule, static templates, launch window, and daily cap before the flow launches. When approval tasks are enabled, route the approval task to the contact/account owner in HubSpot or the FirstTouch app under **Tasks**. Do not treat social-campaign flow approval as permission for future dynamic or AI-generated campaigns.
 
 ### Gate 5 — Log after send
 When HubSpot is connected, every executed action is logged to the HubSpot contact timeline via FirstTouch, within minutes.
@@ -70,17 +70,17 @@ When HubSpot is connected, every executed action is logged to the HubSpot contac
 
 Capture account type during first-run onboarding, then use the stricter cap. Tune down for new/warned accounts; never exceed:
 
-| Account / action | Suggested daily cap | Source of limit |
-|--------|---------------------|---|
-| Free/basic LinkedIn — connection requests | 10 | FirstTouch pack rule / product-backed cap |
-| Sales Navigator / Premium — connection requests | up to 20 | FirstTouch pack rule / product-backed cap |
-| LinkedIn messages — free/basic | 20/day | FirstTouch-supported cap |
-| LinkedIn messages — Sales Navigator/Premium | up to 40/day | FirstTouch-supported cap |
-| Post engagements | ~50 | General LinkedIn safety norm, not FirstTouch-enforced |
+| Account / action | Recommended safe daily cap | FirstTouch max | Source of limit |
+|---|---:|---:|---|
+| Free/basic LinkedIn — connection requests | 10/day | 20/day | FirstTouch-supported max; pack recommends lower for safety |
+| Sales Navigator / Premium — connection requests | 20/day | 30/day | FirstTouch-supported max; pack recommends lower for safety |
+| LinkedIn messages — free/basic | 20/day | 20/day | FirstTouch-supported max |
+| LinkedIn messages — Sales Navigator/Premium | 30/day | 30/day | FirstTouch-supported max |
+| Post engagements | ~50/day | N/A | General LinkedIn safety norm, not FirstTouch-enforced |
 
 **Connection-note rule:** use connection notes only when the sender has Sales Navigator / Premium and the message is approved. For free/basic accounts, send blank connection requests and use the approved opener after the prospect accepts.
 
-**Play-specific AI SDR cap:** AI SDR uses a recurring outbound cap of **10 connection-request rows/day** for free/basic accounts and **20 connection-request rows/day** for Sales Navigator/Premium. Already-connected message rows still require approval and should respect the separate message cap.
+**Play-specific AI SDR cap:** AI SDR uses the recommended recurring outbound cap of **10 connection-request rows/day** for free/basic accounts and **20 connection-request rows/day** for Sales Navigator/Premium. Already-connected message rows still require approval and should respect the separate message cap: 20/day free/basic and 30/day Sales Navigator/Premium.
 
 **Escalation cues — if any appear, pause the account:**
 - Warnings or restrictions from LinkedIn

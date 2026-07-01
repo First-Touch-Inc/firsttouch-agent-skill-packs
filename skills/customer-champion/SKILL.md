@@ -16,7 +16,7 @@ metadata:
 **Outcome:** Turn customer milestones into relationship-building moments on LinkedIn so champions feel seen before you need a favor, referral, quote, or renewal conversation.
 
 ## First-run onboarding gate
-Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type (free/basic = no connection notes and 10 connection requests/day max; Sales Navigator/Premium = connection notes available and up to 20/day), HubSpot access (MCP, service key/private app token, HubSpot list only, or none), and which play the user wants to run. Recommend high-intent plays before outbound to keep the LinkedIn account healthy. If HubSpot is unavailable, do not run HubSpot-specific steps unless the user provides a HubSpot list FirstTouch can access.
+Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type (free/basic = no connection notes; recommend 10 connection requests/day and never exceed the FirstTouch max of 20/day; Sales Navigator/Premium = connection notes available; recommend 20 connection requests/day and never exceed the FirstTouch max of 30/day), HubSpot access (MCP, service key/private app token, HubSpot list only, or none), and which play the user wants to run. Recommend high-intent plays before outbound to keep the LinkedIn account healthy. If HubSpot is unavailable, do not run HubSpot-specific steps unless the user provides a HubSpot list FirstTouch can access.
 
 ## When to use
 - onboarding completed
@@ -42,7 +42,7 @@ Find customer contacts/accounts matching the milestone. Capture: contact, compan
 - connected on LinkedIn? yes/no
 - recently messaged? yes/no (Gate 1)
 - owner/CSM alignment? yes/no (Gate 2)
-- sender has capacity under the shared 10/day free/basic or 20/day Sales Nav/Premium connection cap? yes/no (Gate 3)
+- sender has capacity under the recommended shared connection cap (10/day free/basic or 20/day Sales Nav/Premium) and below the FirstTouch max (20/day free/basic or 30/day Sales Nav/Premium)? yes/no (Gate 3)
 
 ### 3. Choose the touch
 - **Not connected** → connect (warm, milestone-led)

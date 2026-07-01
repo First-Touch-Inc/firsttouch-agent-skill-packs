@@ -40,8 +40,8 @@
   "recipes": [
     {
       "name": "Social engagement flow \u2014 founder posts",
-      "outcome": "Start with the warmest founder motion: ICP-qualify people engaging with your posts, or a relevant competitor founder/influencer profile if your own engagement is thin, then draft a light founder-voice touch for approval. No HubSpot required.",
-      "needs": "No HubSpot required; Social Engagement must be enabled in the workspace for monitored profiles, or use an exported engager list; profile views unavailable",
+      "outcome": "Social Engagement can be enabled through FirstTouch MCP; Start with the warmest founder motion: ICP-qualify people engaging with your posts, or a relevant competitor founder/influencer profile if your own engagement is thin, then draft a light founder-voice touch for approval. No HubSpot required.",
+      "needs": "No HubSpot required; Social Engagement can be enabled through FirstTouch MCP for monitored profiles; profile views unavailable",
       "composes": [
         "warm-engager-followup",
         "firsttouch-messaging"
@@ -49,7 +49,7 @@
     },
     {
       "name": "Founder-led AI SDR \u2014 daily approval queue",
-      "outcome": "Use a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to 10/day free or 20/day Sales Nav/Premium founder-voice touches for approval.",
+      "outcome": "Use a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to the recommended recommended 10/day free/basic or 20/day Sales Nav/Premium founder-voice touches for approval.",
       "needs": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
       "composes": [
         "founder-led-outbound"

@@ -92,7 +92,7 @@ Every pack should ask three questions before running volume:
 1. **Social Engagement Flow** — act on post likes/comments first; for founders this is the number one starter play and can use owned posts or a relevant competitor founder/influencer profile.
 2. **Social Campaigns** — build a narrow campaign using either row-level dynamic approvals for rep/BDR pushes or static templates with flow-level approval for governed one-time campaigns.
 3. **AI SDR / ICP Outbound** — build daily approval-ready batches from a HubSpot list or FirstTouch Discover Contacts.
-4. **Founder AI SDR** — the AI SDR workflow in founder voice, with the same approval queue and 10/20 daily caps.
+4. **Founder AI SDR** — the AI SDR workflow in founder voice, with the same approval queue and recommended 10/20 daily connection caps.
 5. **Inbound Speed-to-Lead** — attach LinkedIn connection and follow-up to signups, trials, or demo requests.
 6. **Website Visitor Follow-Up** — act on pricing/demo/product-page intent from HubSpot tracking or RB2B/list sources.
 7. **HubSpot Signal Touches** — turn lifecycle, list, or deal events into timely social touches.

@@ -13,7 +13,7 @@ metadata:
 **Outcome:** Produce a daily approval-ready outbound batch from either an existing HubSpot contact/company list or a newly discovered ICP list.
 
 ## First-run onboarding gate
-Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type (free/basic = no connection notes and 10 connection requests/day max; Sales Navigator/Premium = connection notes available and up to 20/day), HubSpot access (MCP, service key/private app token, HubSpot list only, or none), and which play the user wants to run. Recommend high-intent plays before outbound to keep the LinkedIn account healthy. If HubSpot is unavailable, this AI SDR play can still run by building a new ICP list with FirstTouch Discover Contacts.
+Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type (free/basic = no connection notes; recommend 10 connection requests/day and never exceed the FirstTouch max of 20/day; Sales Navigator/Premium = connection notes available; recommend 20 connection requests/day and never exceed the FirstTouch max of 30/day), HubSpot access (MCP, service key/private app token, HubSpot list only, or none), and which play the user wants to run. Recommend high-intent plays before outbound to keep the LinkedIn account healthy. If HubSpot is unavailable, this AI SDR play can still run by building a new ICP list with FirstTouch Discover Contacts.
 
 ## When to use
 - "Run AI SDR"
@@ -34,10 +34,10 @@ Before running this skill for the first time in a workspace, load `../../referen
 
 | LinkedIn account | Daily AI SDR connection-request row cap | Connection request note |
 |---|---:|---|
-| Free/basic | 10 connection-request rows/day | No note |
-| Sales Navigator / Premium | 20 connection-request rows/day | No note by default for cold AI SDR; notes are allowed only when the user explicitly approves a strong reason |
+| Free/basic | Recommend 10 connection-request rows/day; FirstTouch max 20/day | No note |
+| Sales Navigator / Premium | Recommend 20 connection-request rows/day; FirstTouch max 30/day | No note by default for cold AI SDR; notes are allowed only when the user explicitly approves a strong reason |
 
-These caps apply to rows that send connection requests and are intentionally conservative for a recurring outbound motion. Already-connected first-message rows draw from the separate message cap and still require approval. If AI SDR and another play run on the same day, the combined connection requests must stay within 10 or 20. Before adding rows, inspect the sender's LinkedIn outreach queue/status for active, in-queue, blocked/review-required, and today's completed/pending connection requests. If the account is new, warned, or acceptance/reply rates drop, lower the cap and pause for human review.
+These caps apply to rows that send connection requests and are intentionally conservative for a recurring outbound motion. Already-connected first-message rows draw from the separate message cap and still require approval. If AI SDR and another play run on the same day, the combined connection requests should stay within the recommended 10 or 20 daily connection-request cap unless the user explicitly approves going higher; never exceed the FirstTouch max of 20/day free/basic or 30/day Sales Navigator/Premium. Before adding rows, inspect the sender's LinkedIn outreach queue/status for active, in-queue, blocked/review-required, and today's completed/pending connection requests. If the account is new, warned, or acceptance/reply rates drop, lower the cap and pause for human review.
 
 ## Default outreach plan
 
@@ -134,7 +134,7 @@ Default daily automation prompt:
 
 ## Pitfalls
 - treating AI SDR as a one-time bulk blast instead of a daily approval queue
-- exceeding the 10/20 daily AI SDR caps
+- exceeding the recommended 10/20 daily AI SDR connection-request caps, or the FirstTouch hard max of 20/30
 - drafting for un-enriched contacts with weak or fabricated personalization
 - requiring HubSpot when the user has no HubSpot list; use Discover Contacts from their ICP instead
 - skipping duplicate checks before adding contacts to a flow

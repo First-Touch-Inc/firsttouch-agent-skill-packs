@@ -61,8 +61,8 @@
     },
     {
       "name": "Social engager flow \u2014 leadership's audience",
-      "outcome": "Reach people engaging with leadership/executive personal-profile content before they go cold.",
-      "needs": "No HubSpot required; use leadership/executive personal-profile, competitor founder, or influencer personal-profile engagement; HubSpot optional for qualification/routing; profile views unavailable",
+      "outcome": "Social Engagement can be enabled through FirstTouch MCP; Reach people engaging with leadership/executive personal-profile content before they go cold.",
+      "needs": "Social Engagement can be enabled through FirstTouch MCP; No HubSpot required; use leadership/executive personal-profile, competitor founder, or influencer personal-profile engagement; HubSpot optional for qualification/routing; profile views unavailable",
       "composes": [
         "warm-engager-followup",
         "firsttouch-messaging"
@@ -78,7 +78,7 @@
     },
     {
       "name": "AE AI SDR \u2014 daily approval queue",
-      "outcome": "View a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to 10/day free or 20/day Sales Nav/Premium AE-owned LinkedIn touches for approval.",
+      "outcome": "View a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to the recommended recommended 10/day free/basic or 20/day Sales Nav/Premium AE-owned LinkedIn touches for approval.",
       "needs": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
       "composes": [
         "icp-outbound-builder",

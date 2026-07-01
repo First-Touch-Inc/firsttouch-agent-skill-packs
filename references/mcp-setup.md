@@ -86,7 +86,7 @@ If no enrichment MCP is connected, the agent should use HubSpot, FirstTouch, CSV
 ## Connection checklist (do this before running any play)
 
 - [ ] FirstTouch MCP connected and returns campaign data
-- [ ] LinkedIn account type captured: free/basic (10 connection requests/day max, no connection notes) or Sales Navigator/Premium (up to 20/day, connection notes available)
+- [ ] LinkedIn account type captured: free/basic (recommend 10 connection requests/day, FirstTouch max 20/day, no connection notes) or Sales Navigator/Premium (recommend 20 connection requests/day, FirstTouch max 30/day, connection notes available)
 - [ ] HubSpot MCP or service key/private app token connected and returns contacts + owners (if your play needs it)
 - [ ] HubSpot MCP can read open tasks and supports task completion before running the HubSpot social task runner
 - [ ] If HubSpot is not connected, a HubSpot list or other FirstTouch-accessible source is available for any HubSpot-dependent play

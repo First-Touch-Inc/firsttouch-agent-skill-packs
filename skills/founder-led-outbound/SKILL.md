@@ -13,7 +13,7 @@ metadata:
 **Outcome:** Produce a daily approval-ready batch of founder-voice LinkedIn touches from either an existing HubSpot/contact list or a newly discovered ICP list, without requiring HubSpot to start.
 
 ## First-run onboarding gate
-Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type (free/basic = no connection notes and 10 connection requests/day max; Sales Navigator/Premium = connection notes available and up to 20/day), HubSpot access (MCP, service key/private app token, HubSpot list only, or none), and which play the user wants to run. For founders, recommend the **social engagement flow first**, then founder-led AI SDR once warm-signal motions are running. If HubSpot is unavailable, this play can still run by building a new ICP list with FirstTouch Discover Contacts.
+Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type (free/basic = no connection notes; recommend 10 connection requests/day and never exceed the FirstTouch max of 20/day; Sales Navigator/Premium = connection notes available; recommend 20 connection requests/day and never exceed the FirstTouch max of 30/day), HubSpot access (MCP, service key/private app token, HubSpot list only, or none), and which play the user wants to run. For founders, recommend the **social engagement flow first**, then founder-led AI SDR once warm-signal motions are running. If HubSpot is unavailable, this play can still run by building a new ICP list with FirstTouch Discover Contacts.
 
 ## When to use
 - "I'm the founder, help me do my own outbound"
@@ -39,8 +39,8 @@ Founder-led AI SDR is the same motion as AI SDR, but with a founder lens:
 
 | LinkedIn account | Daily founder AI SDR batch cap | Connection request note |
 |---|---:|---|
-| Free/basic | 10 connection-request rows/day | No note |
-| Sales Navigator / Premium | 20 connection-request rows/day | No note by default for cold AI SDR; connection notes are allowed only when the founder explicitly approves a strong, relevant reason |
+| Free/basic | Recommend 10 connection-request rows/day; FirstTouch max 20/day | No note |
+| Sales Navigator / Premium | Recommend 20 connection-request rows/day; FirstTouch max 30/day | No note by default for cold AI SDR; connection notes are allowed only when the founder explicitly approves a strong, relevant reason |
 
 Keep the cap lower if the account is new, warned, or acceptance/reply rates drop. The no-note default is conservative: cold connection notes often reduce acceptance or feel automated under a founder's name. Warm-signal plays can use notes when Sales Nav/Premium is available and the note is explicitly approved.
 

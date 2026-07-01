@@ -83,7 +83,7 @@
     {
       "name": "Social engager setup for team",
       "outcome": "Configure warm-engager signal capture and flows so the whole team benefits from personal-profile content engagement; use Team-wide AI SDR as the separate prospecting fallback when Social Engagement is unavailable or thin.",
-      "needs": "No HubSpot required; monitor owned leadership personal profiles or relevant competitor/influencer personal profiles; HubSpot optional for qualification/routing; profile views and company-page engagement unavailable",
+      "needs": "No HubSpot required; enable Social Engagement through FirstTouch MCP to monitor owned leadership personal profiles or relevant competitor/influencer personal profiles; HubSpot optional for qualification/routing; profile views and company-page engagement unavailable",
       "composes": [
         "warm-engager-followup",
         "icp-outbound-builder"
@@ -99,7 +99,7 @@
     },
     {
       "name": "Team-wide AI SDR \u2014 daily approval queues",
-      "outcome": "Action AI SDR across the whole team, not just one user: define the ICP, choose senders/owners, discover or load prospects, enrich each prospect, apply per-sender 10/20 connection caps and 20/40 message caps, then produce team-wide approval queues.",
+      "outcome": "Action AI SDR across the whole team, not just one user: define the ICP, choose senders/owners, discover or load prospects, enrich each prospect, apply per-sender recommended 10/20 connection caps, FirstTouch 20/30 connection max, and 20/30 message caps, then produce team-wide approval queues.",
       "needs": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot/list optional for owner routing and account context",
       "composes": [
         "icp-outbound-builder",
