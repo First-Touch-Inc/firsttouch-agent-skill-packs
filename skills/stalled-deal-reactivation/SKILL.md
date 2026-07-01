@@ -81,6 +81,8 @@ Output a table: deal, company, amount, stage, owner, last engagement date, stall
 
 ### 8. Execute + log (FirstTouch MCP)
 After approval only:
+- before queueing any one-contact LinkedIn action, run `get_dynamic_action_guide`, then call `add_dynamic_action` in the supported order
+- if a LinkedIn message should only send after a connection request is accepted, append it to the `connection_accepted` branch rather than queueing it as an immediate message
 - send or queue the approved FirstTouch action
 - run Gate 5 by logging the executed action to the HubSpot deal + contact timeline within minutes when the connected FirstTouch-HubSpot integration supports it; otherwise keep the FirstTouch execution record and state CRM logging was skipped
 - tag `stalled_open_deal_60d` and the stall cause for attribution

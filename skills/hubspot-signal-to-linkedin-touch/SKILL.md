@@ -60,7 +60,12 @@ The **signal is the HubSpot event itself** — e.g. "saw you just downloaded the
 Table of: contact, triggering event, owner, message type, draft. All marked awaiting approval.
 
 ### 6. Execute + log (FirstTouch MCP)
-On approval: send via FirstTouch. Log to the HubSpot timeline when the connected FirstTouch-HubSpot integration supports it; otherwise log the execution record in FirstTouch and state CRM logging was skipped. Tag with `signal_triggered_touch` + the signal type for attribution when tagging is available.
+On approval per row:
+- before creating any one-contact LinkedIn action, run `get_dynamic_action_guide`, then call `add_dynamic_action` in the supported order
+- if a LinkedIn message should only send after a connection request is accepted, append it to the `connection_accepted` branch rather than queueing it as an immediate message
+- send via FirstTouch
+- log to the HubSpot timeline when the connected FirstTouch-HubSpot integration supports it; otherwise log the execution record in FirstTouch and state CRM logging was skipped
+- tag with `signal_triggered_touch` + the signal type for attribution when tagging is available.
 
 ### 7. Track
 Cohort tagged by signal type so the team can review which signals produce replies, meetings, and pipeline. When FirstTouch team metrics are available, pull metrics filtered by this flow/tag to report replies, meetings, and opportunities.

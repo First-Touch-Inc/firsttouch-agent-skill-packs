@@ -53,7 +53,7 @@ If owner routing is missing or ambiguous, stop and ask. Do not send a customer t
 ### 3. Check LinkedIn relationship state
 For each customer contact:
 - **Already connected** → draft a LinkedIn message.
-- **Not connected** → queue a connection request first; after the connection is accepted, queue the thank-you/referral message on the accepted branch.
+- **Not connected** → queue a connection request first; after the connection is accepted, queue the thank-you/referral message on the `connection_accepted` branch.
 - **Unknown connection state** → inspect FirstTouch/LinkedIn relationship data where available; if still unknown, present the row for review and do not assume connected.
 
 Connection-note behavior:
