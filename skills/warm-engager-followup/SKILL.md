@@ -78,6 +78,7 @@ Each row clearly marked *"awaiting approval — will not send."*
 
 ### 6. After approval → execute + log (FirstTouch MCP)
 On human approval per row:
+- before creating any one-contact LinkedIn action, run `get_dynamic_action_guide`, then call `add_dynamic_action` in the supported order
 - FirstTouch sends the LinkedIn action
 - If the connected FirstTouch-HubSpot integration supports timeline logging, log the touch to the HubSpot contact timeline and confirm log success; if it fails or is unsupported, alert (Gate 5) and keep the FirstTouch execution record
 - If HubSpot is not connected, log the execution record in FirstTouch and clearly state that CRM timeline logging was skipped

@@ -21,7 +21,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 - "Reactivate stalled deals" / "Which open deals have gone quiet?"
 - A deal is still open but has no email, meeting, note, call, or LinkedIn engagement for 60+ days
 - RevOps wants a contact-based HubSpot workflow that automatically catches no-decision risk before quarter-end
-- AEs need owner-routed reactivation queues for quiet opportunities
+- You, or an AE/BDR if you have one, need owner-routed reactivation queues for quiet opportunities
 
 ## Inputs
 - **Workflow object:** contact-based HubSpot workflow only. Deal-based workflow triggers are unsupported; deal-based triggers are unsupported for this motion. Enroll contacts associated to qualifying deals instead.
@@ -34,7 +34,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 ## Step-by-step
 
 ### 1. Query or define the contact-based stalled-deal audience
-FirstTouch/MCP cannot natively query the full stalled-open-deal cohort by itself. For a one-time AE/admin run, first build or accept a HubSpot filtered contact list: associated deal is open, not Closed Won/Lost, and last activity/engagement is more than 60 days ago. RevOps is needed only to automate recurring enrollment. Build a workflow through the connected HubSpot/FirstTouch action cards only when the portal supports it and the user explicitly wants recurring automation. If the agent lacks workflow-create capability or the AE lacks HubSpot admin permissions, use `../../references/hubspot-setup.md` to produce the manual RevOps/admin setup steps and stop before launch. Either way, this must be a **contact-based** HubSpot workflow. Deal-based workflow triggers are unsupported for this motion, so enroll contacts associated to qualifying deals. Use enrollment criteria that identify contacts where the associated deal has:
+FirstTouch/MCP cannot natively query the full stalled-open-deal cohort by itself; compound deal-stage plus engagement-age filtering must come from a HubSpot list or contact-based workflow. For a one-time founder/admin or AE run, first build or accept a HubSpot filtered contact list: associated deal is open, not Closed Won/Lost, and last activity/engagement is more than 60 days ago. RevOps is needed only to automate recurring enrollment. Build a workflow through the connected HubSpot/FirstTouch action cards only when the portal supports it and the user explicitly wants recurring automation. If the agent lacks workflow-create capability or the AE lacks HubSpot admin permissions, use `../../references/hubspot-setup.md` to produce the manual RevOps/admin setup steps and stop before launch. Either way, this must be a **contact-based** HubSpot workflow. Deal-based workflow triggers are unsupported for this motion, so enroll contacts associated to qualifying deals. Use enrollment criteria that identify contacts where the associated deal has:
 - Deal stage **is not** `Closed Won`
 - Deal stage **is not** `Closed Lost`
 - Deal is in an active/open pipeline stage
