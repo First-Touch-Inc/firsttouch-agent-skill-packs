@@ -36,6 +36,7 @@ SKILL_NEEDS = {
     "sequence-qa-reviewer": "No HubSpot for FirstTouch QA; HubSpot improves duplicate/owner checks",
     "workspace-audit": "No HubSpot for FirstTouch-only audit; HubSpot needed for owner/logging coverage",
     "team-performance-report": "No HubSpot required for FirstTouch team metrics; HubSpot improves opportunity/pipeline reconciliation",
+    "campaign-pause-and-fix": "No HubSpot required; works on any running FirstTouch flow",
 }
 
 START_HERE = {

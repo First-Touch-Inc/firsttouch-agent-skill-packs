@@ -2,6 +2,15 @@
 
 All notable changes to the FirstTouch Agent Skill Packs.
 
+## 1.2.0 — 2026-07-01
+
+### Added
+- New skill: `campaign-pause-and-fix` — pause a live campaign mid-send, diagnose (copy/audience/volume), cancel affected enrollments, fix, and restart with validated re-enrollment and no duplicate sends. Included in all four persona packs.
+
+### Changed
+- Skill quality pass: exact FirstTouch MCP tool names at previously vague steps across 8 skills; trigger descriptions de-collided (one-time vs daily-recurring, founder-voice vs team AI SDR, inbound-only vs any-CRM-event); workspace-audit scorecard split into MCP-verified vs manual-check-required
+- New references/troubleshooting.md shipped in every pack; reply-handling protocol and expanded glossary in system-grounding.md
+
 ## 1.1.0 — 2026-07-01
 
 ### Added

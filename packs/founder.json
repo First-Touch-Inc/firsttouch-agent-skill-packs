@@ -1,7 +1,7 @@
 {
   "persona": "founder",
   "pack_name": "Founder Pack",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "persona_pain": "Looking automated or spammy on LinkedIn risks the reputation you spent years building",
   "persona_blurb": "You do your own sales. Your name is your brand, and every automated-feeling LinkedIn message risks undoing years of relationship-building. You need outreach that sounds exactly like you — in the signals you'd actually notice, at the volume that feels personal, not like a drip campaign. These plays are designed for founders who want LinkedIn to feel like them, not like an SDR they hired.",
   "skills": [
@@ -39,6 +39,10 @@
     },
     {
       "name": "hubspot-signal-to-linkedin-touch",
+      "status": "live"
+    },
+    {
+      "name": "campaign-pause-and-fix",
       "status": "live"
     }
   ],

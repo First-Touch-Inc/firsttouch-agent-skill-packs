@@ -48,7 +48,8 @@ firsttouch-skills/
     ├── hubspot-social-task-runner/        ← execute due HubSpot social tasks
     ├── team-performance-report/           ← FirstTouch team metrics + attribution
     ├── sequence-qa-reviewer/
-    └── workspace-audit/
+    ├── workspace-audit/
+    └── campaign-pause-and-fix/            ← mid-send escape hatch: pause, fix, restart
 ```
 
 **Two layers:**
@@ -143,6 +144,7 @@ Every pack should ask three questions before running volume:
 | HubSpot Social Task Runner | Execute due HubSpot LinkedIn/social tasks through FirstTouch and mark them complete after queueing | HubSpot MCP with task read/write required |
 | Team Performance Report | Summarize sends, replies, meetings, opportunities, and HubSpot logging coverage by flow/sender/date | FirstTouch; HubSpot improves logging coverage checks |
 | Sequence QA Reviewer | Review campaigns for risk + quality | No HubSpot required |
+| Campaign Pause & Fix | Pause a live flow mid-send, diagnose, fix copy/audience/volume, and restart with safe re-enrollment | No HubSpot required |
 | Workspace Audit | Find setup gaps before launch | No HubSpot required; HubSpot improves CRM checks |
 
 ---
@@ -162,10 +164,10 @@ In addition to the flat `skills/` folder above, this repo ships **4 downloadable
 
 | Pack | Persona | Skills included | Key plays |
 |---|---|---:|---|
-| `founder-pack` | Founders doing their own sales | 9 | Social engagement flow, social campaigns, founder AI SDR, inbound follow-up, customer referral thank-you, stalled open-deal workflow |
-| `ae-pack` | Account Executives | 10 | Inbound speed-to-lead, social campaigns, customer referral thank-you, stalled open-deal workflow, meeting-booked stakeholder follow-up, closed-lost re-engage |
-| `bdr-pack` | Business Development Reps | 8 | Inbound speed-to-lead, social engagement flow, social campaigns, target-list AI SDR, lead recovery |
-| `revops-pack` | Revenue Operations | 12 | Workspace audit, sequence QA, customer referral thank-you, social campaigns, stalled open-deal workflow, HubSpot workflow build, team governance |
+| `founder-pack` | Founders doing their own sales | 10 | Social engagement flow, social campaigns, founder AI SDR, inbound follow-up, customer referral thank-you, stalled open-deal workflow |
+| `ae-pack` | Account Executives | 11 | Inbound speed-to-lead, social campaigns, customer referral thank-you, stalled open-deal workflow, meeting-booked stakeholder follow-up, closed-lost re-engage |
+| `bdr-pack` | Business Development Reps | 9 | Inbound speed-to-lead, social engagement flow, social campaigns, target-list AI SDR, lead recovery |
+| `revops-pack` | Revenue Operations | 13 | Workspace audit, sequence QA, customer referral thank-you, social campaigns, stalled open-deal workflow, HubSpot workflow build, team governance |
 
 ### Shared-core model
 
@@ -211,4 +213,4 @@ Re-running the script syncs all packs to the current canonical state, rebuilds t
 - **In-app chat** — chat support inside the FirstTouch app for account-specific issues.
 - **Something broke mid-play?** — [`references/troubleshooting.md`](references/troubleshooting.md) covers MCP failures, LinkedIn warnings, stalled queues, and credit issues.
 
-*Pack version 1.1.0 — last updated 2026-07-01. See [CHANGELOG.md](CHANGELOG.md).*
+*Pack version 1.2.0 — last updated 2026-07-01. See [CHANGELOG.md](CHANGELOG.md).*

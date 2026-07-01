@@ -1,7 +1,7 @@
 {
   "persona": "revops",
   "pack_name": "RevOps Pack",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "persona_pain": "Data chaos and untracked touches make it impossible to prove what's working or govern the team",
   "persona_blurb": "You own the stack and the data. Every untracked touch is attribution you'll never recover. You care about owner routing, approval workflows, HubSpot data hygiene, and whether this creates compliance risk or solves it. These plays give you the governance layer, the attribution readiness checks, reply visibility, and the team-wide setup plays that turn individual reps' outreach into a measurable, auditable revenue motion.",
   "skills": [
@@ -51,6 +51,10 @@
     },
     {
       "name": "team-performance-report",
+      "status": "live"
+    },
+    {
+      "name": "campaign-pause-and-fix",
       "status": "live"
     }
   ],
