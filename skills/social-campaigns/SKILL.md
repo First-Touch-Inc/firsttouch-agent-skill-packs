@@ -25,8 +25,8 @@ Before running this skill for the first time in a workspace, load `../../referen
 - The user wants a product update, event invite, reactivation list, or team-connection push
 
 ## When NOT to use
-- Daily fresh prospecting or recurring AI SDR queues. Use the AI SDR / daily-prospecting recipe included in this pack instead.
-- A BDR's normal daily queue unless the campaign is explicitly a narrow special push. For daily prospecting, use `inbound-speed-to-lead`, `warm-engager-followup`, or the AI SDR / daily-prospecting recipe included in this pack.
+- Daily fresh prospecting or recurring AI SDR queues. Use this pack's persona AI SDR play instead.
+- A BDR's normal daily queue unless the campaign is explicitly a narrow special push. For daily prospecting, use `inbound-speed-to-lead`, `warm-engager-followup`, or the persona AI SDR play included in this pack.
 - Highly personalized one-off account strategy. Use the relevant signal, stalled-deal, or founder play.
 - A broad audience like "all VPs of Sales" without a narrow filter. Narrow it first.
 - Any campaign where the user expects unreviewed AI-generated copy for every recipient. If copy is dynamic per recipient, use row-level approval like AI SDR.

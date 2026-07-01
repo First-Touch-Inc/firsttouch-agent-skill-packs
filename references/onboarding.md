@@ -55,7 +55,7 @@ Never exceed these caps. If the account is new, under warning, or acceptance/rep
 | Founder | Social engagement flow first if Social Engagement is enabled; customer thank-you or stalled deal only when CRM data exists | If Social Engagement is enabled, use founder/executive personal-profile posts or a relevant competitor/influencer personal profile. FirstTouch does not track company-page/profile engagement. If Social Engagement is not enabled and cannot be enabled now, start with Founder-led AI SDR from Discover Contacts or a user-provided/exported engager list. |
 | AE | Auto-connect on meeting or signup is the #1 AE use case; meeting-booked stakeholder follow-up is next for multi-threading; stalled deal after RevOps/admin workflow support is clear | Social engager flow can use leadership/executive personal profiles, competitor founder profiles, or influencer personal profiles. FirstTouch does not track company-page/profile engagement. Position the AE pack as much stronger with HubSpot. |
 | BDR | Auto-connect on meeting/signup for inbound; otherwise BDR AI SDR is the daily engine | BDR AI SDR first when no inbound feed exists; add warm engager follow-up from leadership/competitor/influencer profiles. Social campaigns are special pushes, usually row-level dynamic actions. |
-| RevOps | Pre-launch rollout audit, then HubSpot signal or team-wide high-intent flows | FirstTouch-only workspace audit, sequence QA, social engagement setup on owned or external profiles, and Discover/imported-list campaigns |
+| RevOps | Pre-launch rollout audit, then Team-wide AI SDR, HubSpot signal, or team-wide high-intent flows | FirstTouch-only workspace audit, sequence QA, Team-wide AI SDR from Discover Contacts, social engagement setup on owned or external personal profiles, and Discover/imported-list campaigns |
 
 ## Recommended rollout order
 
@@ -99,7 +99,7 @@ After asking the questions, summarize the answer before running anything:
 - Persona: Founder / AE / BDR / RevOps
 - LinkedIn account: Free/basic or Sales Navigator/Premium
 - Daily connection cap: 10 or 20 shared across all plays
-- Daily message norm: 20/day free/basic or up to 40/day Sales Nav/Premium for already-connected first-message rows
+- Daily message cap: 20/day free/basic or up to 40/day Sales Nav/Premium for already-connected LinkedIn message rows
 - Connection notes: yes for approved warm signals / no for free-basic / blank by default for cold AI SDR
 - HubSpot access: MCP / service key / list only / none
 - Social Engagement enabled: yes/no/unknown

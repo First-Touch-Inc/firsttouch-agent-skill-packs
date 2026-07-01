@@ -91,11 +91,19 @@
       ]
     },
     {
-      "name": "Scoop-up slipped leads \u2014 no-shows and old MQLs",
-      "outcome": "Lead recovery: work no-shows and old MQLs from a HubSpot/event list, RevOps-supplied property, or imported source. If no recovery source exists, use BDR AI SDR instead.",
-      "needs": "HubSpot/event list, RevOps-supplied property, or imported source required",
+      "name": "Scoop-up slipped leads \u2014 HubSpot no-shows and old MQLs",
+      "outcome": "Lead recovery: work no-shows and old MQLs from a HubSpot/event list or RevOps-supplied HubSpot property. If no HubSpot/event source exists, use the imported recovery-list recipe or BDR AI SDR instead.",
+      "needs": "HubSpot/event list or RevOps-supplied HubSpot property required",
       "composes": [
         "hubspot-signal-to-linkedin-touch",
+        "firsttouch-messaging"
+      ]
+    },
+    {
+      "name": "Scoop-up slipped leads \u2014 imported recovery list",
+      "outcome": "Lead recovery from an imported no-show, event, old-MQL, or dormant-lead CSV/list: enrich the provided people, draft recovery touches, and gate each row for approval. If no recovery source exists, use BDR AI SDR instead.",
+      "needs": "Imported event/no-show/recovery list required; no HubSpot required when source rows include enough identity data",
+      "composes": [
         "icp-outbound-builder",
         "firsttouch-messaging"
       ]

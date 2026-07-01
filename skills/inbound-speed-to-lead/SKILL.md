@@ -1,6 +1,6 @@
 ---
 name: inbound-speed-to-lead
-description: Attach LinkedIn connection requests and lightweight follow-up to inbound signups, trial starts, demo requests, or other high-intent inbound lists. Can start from HubSpot events when connected or a FirstTouch-accessible inbound list/import when HubSpot is unavailable. Checks connection status, drafts the smallest possible conversation-starting message, gates for approval, and logs to HubSpot when connected. Use when the user wants to improve speed-to-lead for inbound, connect on LinkedIn after a signup/trial, or add a social touch to inbound conversion.
+description: Attach LinkedIn connection requests and lightweight follow-up to booked meetings, inbound signups, trial starts, demo requests, or other high-intent inbound lists. Can start from HubSpot events when connected or a FirstTouch-accessible inbound list/import when HubSpot is unavailable. Checks connection status, drafts the smallest possible conversation-starting message, gates for approval, and logs to HubSpot when connected. Use when the user wants meeting-booked auto-connect, to improve speed-to-lead for inbound, connect on LinkedIn after a signup/trial/demo request, or add a social touch to inbound conversion.
 metadata:
   author: firsttouch
   version: "1.1"
@@ -13,26 +13,27 @@ metadata:
 **Team-governance note:** For team-wide rollouts, run this with owner-based routing, per-seat cap sharing, approval review, and FirstTouch/HubSpot logging checks — not as an ungoverned single-rep send.
 
 
-**Outcome:** Add a fast, light LinkedIn touch to high-intent inbound moments — signups, trials, demo requests — when the agent runs or on a configured schedule. True live speed-to-lead requires a connected source that continuously feeds FirstTouch.
+**Outcome:** Add a fast, light LinkedIn touch to high-intent inbound moments — booked meetings, signups, trials, demo requests — when the agent runs or on a configured schedule. True live speed-to-lead requires a connected source that continuously feeds FirstTouch.
 
 ## First-run onboarding gate
 Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type (free/basic = no connection notes and 10 connection requests/day max; Sales Navigator/Premium = connection notes available and up to 20/day), HubSpot access (MCP, service key/private app token, HubSpot list only, or none), and which play the user wants to run. Recommend high-intent plays before outbound to keep the LinkedIn account healthy. If HubSpot is unavailable, do not run HubSpot-specific steps unless the user provides a HubSpot list FirstTouch can access.
 
 ## When to use
+- A meeting is booked and the AE wants same-day LinkedIn auto-connect/follow-up
 - New signup or trial starts in HubSpot
 - Demo request submitted
 - Inbound contact reaches a high-intent lifecycle state
 - The user says "attach LinkedIn to inbound" or "improve speed to lead"
 
 ## Inputs
-- **Trigger event:** signup / trial / demo / hand-raise form / list membership
+- **Trigger event:** meeting booked / signup / trial / demo / hand-raise form / list membership
 - **Window:** how soon after trigger to act (default: same day)
 - **Connection-note policy:** use note only if sender has Premium/Sales Nav and the motion is warm enough
 
 ## Step-by-step
 
 ### 1. Pull inbound contacts
-**Path A — HubSpot connected:** query the trigger event and return contacts created or updated in the window. Capture: name, title, company, owner, event type, timestamp, lifecycle stage, LinkedIn URL.
+**Path A — HubSpot connected:** query the trigger event, including meeting booked, signup, trial, demo, form-fill, or list-membership events, and return contacts created or updated in the window. Capture: name, title, company, owner, event type, timestamp, lifecycle stage, LinkedIn URL.
 
 **Path B — no HubSpot access:** ask for a FirstTouch-accessible inbound list, CSV import, audience, or other connected source list containing the hand-raisers. A FirstTouch-accessible list means FirstTouch can read the contacts from an imported CSV/audience or connected source. State clearly: this is list/import-based unless a source continuously feeds FirstTouch; true speed-to-lead automation requires HubSpot or another connected inbound source. Capture the same fields when available. State that HubSpot owner routing and CRM timeline logging are unavailable until HubSpot is connected.
 
@@ -49,7 +50,7 @@ For each contact:
 - **Already connected** → light opener / follow-up
 
 ### 4. Draft the message (load `firsttouch-messaging`)
-Use the inbound event as the signal.
+Use the booked-meeting or inbound event as the signal.
 
 Rules:
 - conversational, usually **2 sentences max**
@@ -58,6 +59,7 @@ Rules:
 - if Premium/Sales Nav is available, a short connection note is allowed
 
 Example directions:
+- Meeting booked → "Saw we have time on the calendar. Wanted to connect here too so it is easy to stay in touch before the conversation."
 - Demo request → "Saw you just requested a demo. Wanted to connect here too in case helpful as you evaluate."
 - Trial signup → "Saw you started a trial. Happy to be useful if anything jumps out as you get into it."
 

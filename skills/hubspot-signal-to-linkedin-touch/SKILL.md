@@ -8,7 +8,7 @@ metadata:
   requires: [firsttouch-mcp, hubspot-mcp]
 ---
 
-**Founder note:** this is a secondary HubSpot motion. Skip it until HubSpot/CRM data or a FirstTouch-accessible HubSpot list exists.
+**Access note:** this is a HubSpot-dependent motion. Skip it until HubSpot/CRM data or a FirstTouch-accessible HubSpot list exists.
 
 # HubSpot Signal → LinkedIn Touch
 

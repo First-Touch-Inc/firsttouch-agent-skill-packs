@@ -12,7 +12,7 @@ metadata:
 
 # Website Visitor Follow-Up
 
-**No-source note:** If the workspace has no HubSpot tracking, RB2B/list source, or visitor export, skip this play and use the AI SDR / daily-prospecting recipe included in this pack instead.
+**No-source note:** If the workspace has no HubSpot tracking, RB2B/list source, or visitor export, skip this play and use this pack's persona AI SDR play instead.
 
 
 **Team-governance note:** For team-wide rollouts, run this with owner-based routing, per-seat cap sharing, approval review, and FirstTouch/HubSpot logging checks — not as an ungoverned single-rep send.
