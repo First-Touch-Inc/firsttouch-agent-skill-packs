@@ -120,7 +120,7 @@ Create the FirstTouch execution object that matches the chosen mode and connecte
 
 Recommended sequence:
 - If already connected: send the approved static first-message template, then optionally one approved static follow-up.
-- If not connected: send a connection request. Use a note only when the account has Sales Navigator/Premium and the user approves a strong reason for the note; otherwise send a blank connection request and use the approved message after accept.
+- If not connected: send a connection request. Use a note only when the account has Sales Navigator/Premium and the user approves a strong reason for the note; otherwise send a blank connection request and append the approved message to the `connection_accepted` branch.
 
 Daily cap:
 - free/basic: recommend 10 connection requests/day; FirstTouch max 20/day
@@ -178,6 +178,7 @@ If the user approves, launch only the approved rows or approved flow. If they ed
 ### 7. Launch and log
 After approval:
 - before queuing per-contact dynamic actions, run `get_dynamic_action_guide`, then call `add_dynamic_action` in the supported order
+- if a LinkedIn message should only send after a connection request is accepted, append it to the `connection_accepted` branch rather than queueing it as an immediate message
 - publish or queue the FirstTouch dynamic actions, flow, campaign, or audience enrollment supported by the connected MCP
 - remember: publishing a flow activates it but does **not** enroll awaiting contacts; explicitly enroll approved contacts/items, then confirm they moved from awaiting to in-progress
 - enroll or queue only the approved audience/rows according to daily caps

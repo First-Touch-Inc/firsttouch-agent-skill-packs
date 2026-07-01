@@ -66,9 +66,11 @@ Before running this skill for the first time in a workspace, load `../../referen
 - Stale contacts (no activity > 180 days) in active lists
 
 ### 8. Produce the readiness scorecard
+The examples below use illustrative placeholder scores and counts only. Replace every number with live workspace data from FirstTouch, HubSpot, and the user's approved source list before presenting the scorecard.
+
 ```
 WORKSPACE READINESS — {customer} — {date}
-Overall: 72/100 — READY WITH FIXES
+Overall: 72/100 — READY WITH FIXES (example placeholder)
 
 Connections:       ✅ 100 — FirstTouch + HubSpot connected
 Account health:    ⚠  60 — Seat near daily connection cap; no warnings
@@ -88,7 +90,7 @@ If HubSpot is not connected, mark CRM-only rows as unavailable rather than faili
 
 ```
 WORKSPACE READINESS — {customer} — {date}
-Overall: 68/100 — FIRSTTOUCH-ONLY PILOT READY
+Overall: 68/100 — FIRSTTOUCH-ONLY PILOT READY (example placeholder)
 
 Connections:       ⚠  70 — FirstTouch connected; HubSpot not connected
 Account health:    ✅  90 — seat below daily caps; no warnings

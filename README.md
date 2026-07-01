@@ -43,7 +43,7 @@ firsttouch-skills/
     ├── hubspot-signal-to-linkedin-touch/
     ├── website-visitor-followup/
     ├── stalled-deal-reactivation/
-    ├── customer-champion/
+    ├── customer-referral/
     ├── sequence-qa-reviewer/
     └── workspace-audit/
 ```
@@ -81,7 +81,7 @@ Every pack should ask three questions before running volume:
 
 **Recommended order:**
 1. For founders, start with **Social Engagement Flow** first. It does not require HubSpot and uses the warmest signal available.
-2. Run other high-intent plays next: inbound speed-to-lead, website visitor follow-up, HubSpot signal touches, customer champion, and stalled-deal reactivation when the required data exists.
+2. Run other high-intent plays next: inbound speed-to-lead, website visitor follow-up, HubSpot signal touches, customer referral thank-you, and stalled-deal reactivation when the required data exists.
 3. Add one-time social campaigns when the audience is narrow and the user can approve static flow templates.
 4. Add AI SDR / Founder AI SDR only after warm motions are running, with daily approval batches of 10 free/basic or 20 Sales Navigator/Premium contacts.
 
@@ -97,7 +97,7 @@ Every pack should ask three questions before running volume:
 6. **Website Visitor Follow-Up** — act on pricing/demo/product-page intent from HubSpot tracking or RB2B/list sources.
 7. **HubSpot Signal Touches** — turn lifecycle, list, or deal events into timely social touches.
 8. **Stalled Deal Reactivation** — trigger a contact-based HubSpot workflow for contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days, then draft a fresh approved LinkedIn touch.
-9. **Customer Champion** — reach out around customer milestones.
+9. **Customer Referral Thank-You** — connect with new customers, thank them, ask for feedback, and invite light referrals.
 10. **Sequence QA / Workspace Audit** — make sure the setup and messaging are safe before scaling.
 
 ---
@@ -115,7 +115,7 @@ Every pack should ask three questions before running volume:
 | HubSpot Signal → LinkedIn Touch | Act on CRM lifecycle/list/deal signals with social outreach | HubSpot required |
 | Website Visitor Follow-Up | Turn website visitor intent into social outreach | HubSpot tracking or RB2B/list source |
 | Stalled Deal Reactivation | Contact-based HubSpot workflow for contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days, then queue reactivation touches | HubSpot required |
-| Customer Champion | Reach out when a customer milestone is reached | HubSpot required |
+| Customer Referral Thank-You | Connect with new customers, thank them, ask for feedback, and invite light referrals | HubSpot Closed Won/customer source or imported customer list required |
 | Sequence QA Reviewer | Review campaigns for risk + quality | No HubSpot required |
 | Workspace Audit | Find setup gaps before launch | No HubSpot required; HubSpot improves CRM checks |
 
@@ -136,10 +136,10 @@ In addition to the flat `skills/` folder above, this repo ships **4 downloadable
 
 | Pack | Persona | Skills included | Key plays |
 |---|---|---:|---|
-| `founder-pack` | Founders doing their own sales | 8 | Social engagement flow, social campaigns, founder AI SDR, inbound follow-up, stalled open-deal workflow |
-| `ae-pack` | Account Executives | 8 | Inbound speed-to-lead, social campaigns, stalled open-deal workflow, meeting-booked stakeholder follow-up, closed-lost re-engage |
-| `bdr-pack` | Business Development Reps | 7 | Inbound speed-to-lead, social engagement flow, social campaigns, target-list AI SDR, lead recovery |
-| `revops-pack` | Revenue Operations | 11 | Workspace audit, sequence QA, social campaigns, stalled open-deal workflow, HubSpot workflow build, team governance |
+| `founder-pack` | Founders doing their own sales | 9 | Social engagement flow, social campaigns, founder AI SDR, inbound follow-up, customer referral thank-you, stalled open-deal workflow |
+| `ae-pack` | Account Executives | 10 | Inbound speed-to-lead, social campaigns, customer referral thank-you, stalled open-deal workflow, meeting-booked stakeholder follow-up, closed-lost re-engage |
+| `bdr-pack` | Business Development Reps | 8 | Inbound speed-to-lead, social engagement flow, social campaigns, target-list AI SDR, lead recovery |
+| `revops-pack` | Revenue Operations | 12 | Workspace audit, sequence QA, customer referral thank-you, social campaigns, stalled open-deal workflow, HubSpot workflow build, team governance |
 
 ### Shared-core model
 

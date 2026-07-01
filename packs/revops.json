@@ -37,7 +37,7 @@
       "status": "live"
     },
     {
-      "name": "customer-champion",
+      "name": "customer-referral",
       "status": "live"
     },
     {
@@ -137,6 +137,15 @@
       ]
     },
     {
+      "name": "New-customer referral thank-you",
+      "outcome": "After a new customer is created or Closed Won, RevOps confirms sender routing and caps, then the right owner connects, thanks them for choosing the product, collects feedback, and asks whether anyone in their network would also find value.",
+      "needs": "HubSpot Closed Won/customer source or imported/FirstTouch-accessible customer list required; HubSpot improves owner/CSM routing and logging",
+      "composes": [
+        "customer-referral",
+        "firsttouch-messaging"
+      ]
+    },
+    {
       "name": "HubSpot setup guide for FirstTouch-triggered actions",
       "outcome": "Coach RevOps/admin through references/hubspot-setup.md: confirm whether FirstTouch action cards exist in HubSpot workflows, or use the supported fallback of a HubSpot list/source that FirstTouch reads before enrolling/queueing actions.",
       "needs": "HubSpot required; confirm action cards exist in the customer portal before promising UI steps",
@@ -152,14 +161,6 @@
         "icp-outbound-builder",
         "hubspot-signal-to-linkedin-touch",
         "firsttouch-messaging"
-      ]
-    },
-    {
-      "name": "Customer thank-you",
-      "outcome": "Reach out when a customer hits a milestone \u2014 deepen the relationship before you need a favor.",
-      "needs": "HubSpot required",
-      "composes": [
-        "customer-champion"
       ]
     }
   ],
@@ -185,5 +186,11 @@
     {
       "src": "references/recipes.md"
     }
+  ],
+  "example_prompts": [
+    "\"Run the pre-launch rollout audit: check FirstTouch and HubSpot connections, approval workflow, owner coverage, LinkedIn caps, logging, and queue hygiene before reps send.\"",
+    "\"Set up Team-wide AI SDR for this ICP: choose senders, apply per-sender caps, create approval queues, and keep owner routing/logging auditable.\"",
+    "\"A new-customer list is ready. Build the governed referral thank-you motion: route owners, connect/message through FirstTouch, ask for feedback, and ask for light network referrals after approval.\"",
+    "\"Pull the last 30 days of FirstTouch team performance by sender and flow, then reconcile sends, replies, positive sentiment, meetings, and HubSpot logging gaps.\""
   ]
 }

@@ -71,6 +71,7 @@ Awaiting approval only.
 ### 6. Execute + log
 On approval per row:
 - before creating any one-contact LinkedIn action, run `get_dynamic_action_guide`, then call `add_dynamic_action` in the supported order
+- if a LinkedIn message should only send after a connection request is accepted, append it to the `connection_accepted` branch rather than queueing it as an immediate message
 - send via FirstTouch
 - log to the HubSpot timeline and tag as `inbound_speed_to_lead` when the connected FirstTouch-HubSpot integration supports it; otherwise log the execution record in FirstTouch and state that CRM logging was skipped
 

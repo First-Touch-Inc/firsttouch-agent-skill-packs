@@ -42,7 +42,7 @@ HubSpot is the system of record — it gives the agent the CRM context that make
 - "If you cannot connect HubSpot yet, can you create a HubSpot list for the audience so FirstTouch can access it?"
 
 **Connect:**
-- **MCP URL:** `https://mcp.hubspot.com/anthropic` (Anthropic-hosted) — or your current HubSpot MCP endpoint. If your agent/connector UI lists a different current URL, use the UI-provided endpoint.
+- **MCP URL:** If your agent has a native HubSpot connector option, use that. Otherwise use `https://mcp.hubspot.com/anthropic` (Anthropic-hosted), unless your agent/connector UI lists a different current HubSpot MCP endpoint.
 - **Auth:** OAuth from HubSpot, or a service key / private app token connected in the user's agent/harness
 - **Scopes typically needed:** contacts (read), companies (read), deals (read), owners (read), lists (read), tasks (read/write when using the HubSpot social task runner), timeline activity (read). Write scopes only if a play explicitly logs back or completes HubSpot tasks.
 
