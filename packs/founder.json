@@ -33,6 +33,10 @@
       "status": "live"
     },
     {
+      "name": "customer-referral",
+      "status": "live"
+    },
+    {
       "name": "hubspot-signal-to-linkedin-touch",
       "status": "live"
     }
@@ -99,6 +103,15 @@
         "stalled-deal-reactivation",
         "firsttouch-messaging"
       ]
+    },
+    {
+      "name": "Customer referral thank-you",
+      "outcome": "Connect with new customers, thank them for choosing the product, ask how the product could be better, and add a light network-value/referral line after row-level approval.",
+      "needs": "HubSpot Closed Won/customer source or imported/FirstTouch-accessible customer list required; HubSpot improves owner/CSM routing and logging",
+      "composes": [
+        "customer-referral",
+        "firsttouch-messaging"
+      ]
     }
   ],
   "references": [
@@ -123,5 +136,11 @@
     {
       "src": "references/recipes.md"
     }
+  ],
+  "example_prompts": [
+    "\"Run the founder social engagement flow from my latest post: qualify the engagers, draft light founder-voice LinkedIn touches, and do not send until I approve each row.\"",
+    "\"Use Founder-led AI SDR for this ICP, keep it under my recommended daily cap, use blank connection requests if they are not connected, and draft in my voice for approval.\"",
+    "\"A new customer just chose us. Connect with the champion and draft a founder thank-you that asks what we could make better and whether anyone in their network would also get value.\"",
+    "\"From this HubSpot list of open deals with no engagement in 60+ days, draft owner-approved founder-voice reactivation touches; do not infer the cohort without the list.\""
   ]
 }

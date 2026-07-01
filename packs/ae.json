@@ -39,6 +39,10 @@
     {
       "name": "stalled-deal-reactivation",
       "status": "live"
+    },
+    {
+      "name": "customer-referral",
+      "status": "live"
     }
   ],
   "recipes": [
@@ -60,7 +64,7 @@
       ]
     },
     {
-      "name": "Social engager flow — leadership's audience",
+      "name": "Social engager flow \u2014 leadership's audience",
       "outcome": "Social Engagement can be enabled through FirstTouch MCP; Reach people engaging with leadership/executive personal-profile content before they go cold.",
       "needs": "Social Engagement can be enabled through FirstTouch MCP; No HubSpot required; use leadership/executive personal-profile, competitor founder, or influencer personal-profile engagement; HubSpot optional for qualification/routing; profile views unavailable",
       "composes": [
@@ -77,7 +81,7 @@
       ]
     },
     {
-      "name": "AE AI SDR — daily approval queue",
+      "name": "AE AI SDR \u2014 daily approval queue",
       "outcome": "View a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to the recommended 10/day free/basic or 20/day Sales Nav/Premium AE-owned LinkedIn touches for approval.",
       "needs": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
       "composes": [
@@ -86,7 +90,7 @@
       ]
     },
     {
-      "name": "Social campaigns — territory and deal expansion",
+      "name": "Social campaigns \u2014 territory and deal expansion",
       "outcome": "Build a narrow AE push for a territory, event, customer expansion, or stalled-pipeline segment. Default to row-level dynamic approvals like AI SDR; use static flow-level approval only when RevOps/founder approves the exact audience and templates.",
       "needs": "No HubSpot required for pure ICP/imported/Discover segments; HubSpot required for territory/deal/customer CRM segments; row-level approval by default",
       "composes": [
@@ -95,11 +99,20 @@
       ]
     },
     {
-      "name": "Stalled deal reactivation — 60-day open-deal workflow",
+      "name": "Stalled deal reactivation \u2014 60-day open-deal workflow",
       "outcome": "From a HubSpot list/workflow of open deals that are not Closed Won/Lost and have had no engagement for 60+ days, build an owner-approved LinkedIn reactivation queue. Treat recurring workflow setup as a RevOps/admin step unless already configured; sub-60-day quiet-deal detection is not a native FirstTouch query.",
       "needs": "HubSpot required; an AE with HubSpot access can run once from a manually built/filtered contact list; RevOps/admin needed only for recurring workflow setup",
       "composes": [
         "stalled-deal-reactivation",
+        "firsttouch-messaging"
+      ]
+    },
+    {
+      "name": "New-customer referral thank-you",
+      "outcome": "After an AE-owned deal becomes a new customer, connect, thank them for choosing the product, ask what could be better, and add a light network-value/referral line after row-level approval.",
+      "needs": "HubSpot Closed Won/customer source or imported/FirstTouch-accessible customer list required; HubSpot improves owner/CSM routing and logging",
+      "composes": [
+        "customer-referral",
         "firsttouch-messaging"
       ]
     },
@@ -150,6 +163,7 @@
     "\"A meeting was just booked at Acme. Auto-connect with the booked contact on LinkedIn today and draft the same-day follow-up for my approval.\"",
     "\"I just booked a meeting at Acme. Draft LinkedIn touches to the other stakeholders so the deal is not single-threaded.\"",
     "\"From this HubSpot list of open deals with no engagement in 60+ days, draft owner-approved LinkedIn reactivations; do not try to infer the cohort without the list.\"",
-    "\"If HubSpot already creates LinkedIn/social tasks daily, find today's due tasks and run the eligible ones through FirstTouch.\""
+    "\"If HubSpot already creates LinkedIn/social tasks daily, find today's due tasks and run the eligible ones through FirstTouch.\"",
+    "\"A new customer just closed from my territory. Connect with the champion on LinkedIn and draft a thank-you, product-feedback, and light referral note for my approval.\""
   ]
 }

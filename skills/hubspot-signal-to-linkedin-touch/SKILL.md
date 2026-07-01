@@ -76,7 +76,7 @@ Cohort tagged by signal type so the team can review which signals produce replie
 **Draft (connection request):** "Hi Devon, saw you're exploring FirstTouch after the demo request. Connecting so I can share setup tips as you evaluate."
 
 **Closed Lost win-back signal:** Contact is associated to a Closed Lost deal selected for a fresh reengagement motion.
-**Draft (re-engage opener):** "Hi Dana, noticed your team previously evaluated FirstTouch and wanted to share what changed since then. Worth comparing notes if social attribution is back on the roadmap."
+**Draft (re-engage opener):** "Hi Dana, noticed your team previously evaluated FirstTouch and wanted to share what changed since then. Worth comparing notes if social attribution is worth revisiting."
 
 ## Why this play wins
 Static sequences message on a timer. This play messages on a **real event** — dramatically higher relevance and reply rate, and fully attributable in HubSpot.
