@@ -26,4 +26,4 @@ For a one-time AE/admin run, first build the filtered contact list in HubSpot:
 - contact has a usable LinkedIn URL or enough data for enrichment
 - owner/sender routing is approved
 
-FirstTouch/MCP cannot natively infer that exact stalled-deal cohort without the HubSpot source/list. If the list is missing, stop and ask the user/admin to create or expose it.
+FirstTouch/MCP cannot natively infer that exact stalled-deal cohort without the HubSpot source/list; compound deal-stage plus engagement-age filtering must come from a HubSpot list or contact-based workflow. If the list is missing, stop and ask the user/admin to create or expose it.

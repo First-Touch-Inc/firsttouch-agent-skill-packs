@@ -1,8 +1,8 @@
 {
   "persona": "ae",
   "pack_name": "AE Pack",
-  "persona_pain": "Deals dying in silence while champions go dark and pipeline looks fine until it doesn't",
-  "persona_blurb": "You carry a number. Your whole job depends on deals staying alive and champions staying warm. Most CRM data tells you what happened last month: these plays tell you what to do today about the deal that's going quiet. You need fast inbound follow-up, multi-threading on booked meetings, and reactivation plays for pipeline that's been silent too long.",
+  "persona_pain": "Booked meetings, signups, and warm deal signals go cold when LinkedIn follow-up and stakeholder expansion happen too late",
+  "persona_blurb": "You carry a number. Your job depends on turning fresh meetings and inbound hand-raisers into active conversations fast, then keeping quiet open opportunities from becoming no-decisions. These plays tell you what to do first when a meeting books, how to multi-thread the account, how to work warm LinkedIn engagement, and how to reactivate genuinely stalled open deals from a HubSpot list or workflow.",
   "skills": [
     {
       "name": "firsttouch-messaging",
@@ -96,7 +96,7 @@
     },
     {
       "name": "Stalled deal reactivation — 60-day open-deal workflow",
-      "outcome": "Find contacts associated to open deals that are not Closed Won/Lost and have had no engagement for 60+ days, then build an owner-approved LinkedIn reactivation queue. Treat recurring workflow setup as a RevOps/admin step unless already configured.",
+      "outcome": "From a HubSpot list/workflow of open deals that are not Closed Won/Lost and have had no engagement for 60+ days, build an owner-approved LinkedIn reactivation queue. Treat recurring workflow setup as a RevOps/admin step unless already configured; sub-60-day quiet-deal detection is not a native FirstTouch query.",
       "needs": "HubSpot required; an AE with HubSpot access can run once from a manually built/filtered contact list; RevOps/admin needed only for recurring workflow setup",
       "composes": [
         "stalled-deal-reactivation",
@@ -149,7 +149,7 @@
   "example_prompts": [
     "\"A meeting was just booked at Acme. Auto-connect with the booked contact on LinkedIn today and draft the same-day follow-up for my approval.\"",
     "\"I just booked a meeting at Acme. Draft LinkedIn touches to the other stakeholders so the deal is not single-threaded.\"",
-    "\"From this HubSpot list of open deals with no engagement in 60+ days, draft owner-approved LinkedIn reactivations.\"",
+    "\"From this HubSpot list of open deals with no engagement in 60+ days, draft owner-approved LinkedIn reactivations; do not try to infer the cohort without the list.\"",
     "\"If HubSpot already creates LinkedIn/social tasks daily, find today's due tasks and run the eligible ones through FirstTouch.\""
   ]
 }

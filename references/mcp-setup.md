@@ -26,7 +26,7 @@ If the agent can return campaign + seat data, the MCP is live.
 - LinkedIn actions — connection request, message, email step, call task, or manual task depending on the flow/action type exposed in the workspace
 - Engagement data — LinkedIn post likes and comments from monitored profiles. Profile-view signals are not available. The agent cannot read arbitrary inbox history; FirstTouch-tracked outreach can report reply/engagement status for actions it manages, and team metrics can summarize reply sentiment where available.
 - Logging — FirstTouch/HubSpot activity logging where the workspace integration supports it
-- Safety — seat usage, daily limits, duplicate checks
+- Safety — seat usage, daily limits, duplicate checks, Exclusion Lists/suppression, and Sending Schedule/quiet-hours settings where exposed by the connected workspace
 
 **Terminology note:** this skill pack uses human-friendly words like "play," "sequence," "campaign," and "queue." In FirstTouch, the actual object may be an **Audience**, **Flow Plan**, **Dynamic Action**, or **Enrollment**. The agent should state which FirstTouch object it created or used.
 
