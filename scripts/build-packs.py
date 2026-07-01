@@ -38,15 +38,15 @@ SKILL_NEEDS = {
 }
 
 START_HERE = {
-    "founder": "1. **Check Social Engagement first:** if Social Engagement is enabled, run **Social engagement flow: founder posts** from owned founder/company posts. If owned engagement is thin, monitor a relevant competitor founder or category influencer, but monitored-profile plays also require Social Engagement enabled.\n2. **No Social Engagement right now:** if Social Engagement is not enabled and cannot be enabled now, run **Founder-led AI SDR** from ICP + FirstTouch Discover Contacts, or use a user-provided/exported engager list.\n3. **Have HubSpot:** add inbound, visitor, and stalled-deal plays as secondary CRM/deal motions, not the default path.",
-    "ae": "1. **No HubSpot/list access:** run **AE AI SDR** first from ICP + Discover Contacts; this cannot touch existing pipeline without HubSpot or a FirstTouch-accessible contact list.\n2. **HubSpot + quiet pipeline:** run **Stalled deal reactivation** first from a manually filtered contact list.\n3. **HubSpot + fresh booked meetings/signups:** run **Meeting-booked stakeholder follow-up** or **Auto-connect on meeting or signup**. RevOps is needed only for recurring workflow automation.\n4. **HubSpot MCP + tasks already created for LinkedIn/social steps:** run **Automate due HubSpot social tasks** as a secondary task runner for tasks due today, not as a cadence/list creator.",
+    "founder": "1. **Check Social Engagement first:** if Social Engagement is enabled, run **Social engagement flow: founder posts** from owned founder or executive personal profiles. If owned personal-profile engagement is thin, monitor a relevant competitor founder or category influencer personal profile, but monitored-profile plays also require Social Engagement enabled. FirstTouch does not track company-page/profile engagement.\n2. **No Social Engagement right now:** if Social Engagement is not enabled and cannot be enabled now, run **Founder-led AI SDR** from ICP + FirstTouch Discover Contacts, or use a user-provided/exported engager list.\n3. **Have HubSpot:** add inbound, visitor, and stalled-deal plays as secondary CRM/deal motions, not the default path.",
+    "ae": "1. **Meeting booked / signup source:** run **Auto-connect on meeting or signup** first. This is the AE #1 use case: same-day LinkedIn auto-connect/follow-up from booked meetings, signups, or a manually exported meeting-booked list.\n2. **HubSpot + stakeholder expansion:** run **Meeting-booked stakeholder follow-up** when a booked-meeting source/list is available and the AE wants to multi-thread the account.\n3. **No HubSpot/list access:** run **AE AI SDR** from ICP + Discover Contacts; this cannot touch existing pipeline without HubSpot or a FirstTouch-accessible contact list.\n4. **HubSpot + quiet pipeline:** run **Stalled deal reactivation** from a manually filtered contact list.\n5. **HubSpot MCP + tasks already created for LinkedIn/social steps:** run **Automate due HubSpot social tasks** as a secondary task runner for tasks due today, not as a cadence/list creator.",
     "bdr": "Use this source-based chooser:\n\n| What you have today | Run first | Why |\n|---|---|---|\n| No source/list yet | **BDR AI SDR** (`icp-outbound-builder`) | Daily meeting engine from ICP + Discover Contacts |\n| No-show, event, old-MQL, or HubSpot list | **Scoop-up slipped leads** | Lead recovery from a provided source |\n| Connected inbound feed or imported signup/demo list | **Auto-connect on meeting or signup** | Same-day inbound follow-up |\n| RB2B/HubSpot visitor source | **Website visitor play** | Conditional; most BDRs skip if no visitor source exists |\n| HubSpot MCP + tasks already created for LinkedIn/social steps | **Automate due HubSpot social tasks** | Secondary task runner for tasks due today in the user/owner queue; not a prospecting engine |\n\nThen add **Social engager flow** for leadership/competitor/influencer post engagement. Use **Social campaigns** only for manager-approved special pushes, not normal daily work.",
     "revops": "Start with **Pre-launch rollout audit** before any rep launches volume. Then govern the core rollout: HubSpot list triggers, AI SDR queue QA, social campaigns, stalled-deal workflows, and **Attribution & team performance review** as the recurring reporting cadence. Keep situational plays such as events, customer thank-you, website visitors, and closed-lost reengagement for after the core governance path is stable.",
 }
 
 NO_HUBSPOT = {
-    "founder": "Social engagement flow from the founder's posts or a relevant competitor founder/influencer profile when Social Engagement is enabled, user-provided/exported engager lists, Founder-led AI SDR from FirstTouch Discover Contacts, Social campaigns from Discover/imported/connection lists, and messaging QA.",
-    "ae": "Social engager flow from company/leadership, competitor founder, or influencer profiles, plus AE AI SDR from FirstTouch Discover Contacts. Most AE deal, customer, territory, and stalled-pipeline use cases need HubSpot.",
+    "founder": "Social engagement flow from the founder's or executive's personal-profile posts, or a relevant competitor founder/influencer personal profile, when Social Engagement is enabled; user-provided/exported engager lists; Founder-led AI SDR from FirstTouch Discover Contacts; Social campaigns from Discover/imported/connection lists; and messaging QA. FirstTouch does not track company-page/profile engagement.",
+    "ae": "Auto-connect on meeting or signup when a booked-meeting/signup source exists; social engager flow from leadership/executive personal profiles, competitor founder profiles, or influencer personal profiles; plus AE AI SDR from FirstTouch Discover Contacts. Most AE deal, customer, territory, and stalled-pipeline use cases need HubSpot.",
     "bdr": "BDR AI SDR from FirstTouch Discover Contacts, social engager flow from leadership/competitor/influencer profiles, and special social campaigns from imported/Discover lists. Inbound speed-to-lead needs HubSpot or a FirstTouch-accessible inbound source.",
     "revops": "Workspace audit of FirstTouch-only settings, sequence QA, AI SDR governance, social engagement setup on owned or relevant external profiles, and social campaigns from imported/Discover lists. Owner/logging/deal/customer checks need HubSpot.",
 }
@@ -176,7 +176,7 @@ This onboarding is scoped to the skills and recipes actually included in this in
    - Sales Navigator/Premium: connection notes available for approved warm signals; up to 20 connection requests/day.
    - AI SDR and all other connection-request plays share the same daily budget.
    - If AI SDR and a social campaign run on the same sender/day, pause/reduce one motion or split the daily cap explicitly before queueing sends.
-   - Already-connected first-message rows use a separate, non-FirstTouch-enforced norm of about 30-40 messages/day. Stay well under it and reduce volume if acceptance or reply quality drops.
+   - Already-connected first-message rows use a separate, non-FirstTouch-enforced norm of 20/day on free/basic LinkedIn and up to 40/day on Sales Navigator/Premium. Stay well under it and reduce volume if acceptance or reply quality drops.
 2. **HubSpot access:** MCP connected by an admin, service key/private app token from an admin, HubSpot list only, or none. Do not ask a rep/BDR to mint credentials they do not own.
 3. **ICP/list/source data:** if HubSpot is absent, ask for ICP criteria or an imported/FirstTouch-accessible list before qualifying prospects.
 4. **Persona start point:** recommend the persona-specific start point below, not a generic catalog dump.
@@ -199,7 +199,7 @@ This onboarding is scoped to the skills and recipes actually included in this in
 - If HubSpot is not used, run only the recipes above whose Needs column says no HubSpot or imported/Discover/list source is enough.
 
 ## Social Engagement source options
-Social Engagement can monitor relevant LinkedIn profiles for post likes and comments. Prefer the user's own founder/leadership/company profile when available; if they do not have enough owned engagement yet, monitor a relevant competitor founder, category influencer, or executive profile and work the ICP-fit people engaging there. Profile views are not an available signal.
+Social Engagement can monitor relevant LinkedIn profiles for post likes and comments. Prefer the user's own founder/leadership personal profile when available; if they do not have enough owned engagement yet, monitor a relevant competitor founder, category influencer, or executive profile and work the ICP-fit people engaging there. Profile views are not an available signal.
 
 ## Approval model
 Publishing a flow activates it but does **not** enroll awaiting contacts. After approval, explicitly enroll the approved contacts/items, then confirm they moved from awaiting to in-progress.
@@ -216,7 +216,7 @@ Publishing a flow activates it but does **not** enroll awaiting contacts. After 
 - Persona: {persona}
 - LinkedIn account: Free/basic or Sales Navigator/Premium
 - Daily connection cap: 10 or 20 shared across all plays
-- Daily message norm: about 30-40/day for already-connected first-message rows, not FirstTouch-enforced; stay well under it
+- Daily message norm: 20/day free/basic or up to 40/day Sales Nav/Premium for already-connected first-message rows, FirstTouch-supported; stay well under it
 - HubSpot access: MCP / service key / list only / none
 - Social Engagement enabled: yes/no/unknown
 - ICP/list available if no HubSpot: yes/no + source
@@ -339,7 +339,7 @@ Before running the first play in this pack, ask the user:
    - Free/basic: no connection notes; cap connection requests at **10/day**.
    - Sales Navigator / Premium: connection notes available; cap connection requests at **20/day**.
    - AI SDR shares the same daily connection-request budget. If AI SDR and another play run on the same day, the total across all plays must stay within 10 or 20.
-   - Already-connected first-message rows use a separate, non-FirstTouch-enforced norm of about 30-40 messages/day. Stay well under it.
+   - Already-connected first-message rows use a separate, non-FirstTouch-enforced norm of 20/day on free/basic LinkedIn and up to 40/day on Sales Navigator/Premium. Stay well under it.
 2. **HubSpot access:** do they use HubSpot, and can an admin connect the HubSpot MCP, provide a service key / private app token, or at least provide a HubSpot list FirstTouch can access?
    - If not, use the FirstTouch-only paths below or ask them to create a HubSpot list/source FirstTouch can access before running HubSpot-specific plays.
 3. **Play choice:** show the catalog below and recommend the persona-specific start-here play above.

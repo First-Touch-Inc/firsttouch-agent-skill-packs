@@ -1,6 +1,6 @@
 ---
 name: warm-engager-followup
-description: Turn people who recently liked or commented on the sender's posts, an executive's posts, company/leadership content, or a relevant competitor founder/influencer profile into conversations and pipeline. Identifies warm engagers via FirstTouch, optionally monitors a CEO/exec, competitor founder, or influencer profile, qualifies engagers when HubSpot is connected, drafts a personalized connection request or opener, and gates the send for human approval. Use when the user wants to follow up on LinkedIn engagement, monitor leadership posts, convert post likers/commenters, or work "warm" social engagement.
+description: Turn people who recently liked or commented on the sender's posts, an executive's posts, leadership/executive personal-profile content, or a relevant competitor founder/influencer profile into conversations and pipeline. Identifies warm engagers via FirstTouch, optionally monitors a CEO/exec, competitor founder, or influencer profile, qualifies engagers when HubSpot is connected, drafts a personalized connection request or opener, and gates the send for human approval. Use when the user wants to follow up on LinkedIn engagement, monitor leadership posts, convert post likers/commenters, or work "warm" social engagement.
 metadata:
   author: firsttouch
   version: "1.1"
@@ -32,7 +32,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 ## Step-by-step
 
 ### 1. Pull engagement (FirstTouch MCP)
-Before using monitored profiles, confirm Social Engagement is enabled in the workspace. If it does not, ask for a user-provided/exported engager list and continue from that list instead of promising monitored-profile capture. Social Engagement can monitor LinkedIn profiles for post likes and comments. Prefer the user's own founder/leadership/company profile. If they do not have enough owned engagement yet, plug in a relevant competitor founder, category influencer, or executive profile and work the ICP-fit people engaging there. User-provided/exported engager lists also work. Do **not** use profile views as a signal; FirstTouch does not provide profile-view capture for this play.
+Before using monitored profiles, confirm Social Engagement is enabled in the workspace. If it does not, ask for a user-provided/exported engager list and continue from that list instead of promising monitored-profile capture. Social Engagement can monitor LinkedIn profiles for post likes and comments. Prefer the user's own founder/leadership personal profile. FirstTouch does not track company-page/profile engagement. If they do not have enough owned engagement yet, plug in a relevant competitor founder, category influencer, or executive profile and work the ICP-fit people engaging there. User-provided/exported engager lists also work. Do **not** use profile views as a signal; FirstTouch does not provide profile-view capture for this play.
 
 Get recent engagers — post likes and comments — within the window. Record for each: name, title, company, engagement type, what they engaged with, timestamp.
 

@@ -75,7 +75,7 @@ For finding LinkedIn URLs, emails, and firmographics when HubSpot is missing the
 - **Surfe MCP** — LinkedIn-native enrichment + CRM sync
 - **Any provider MCP** your team already uses
 
-Social Engagement note: monitor the user's own founder/leadership/company profile when available. If owned engagement is thin, monitor a relevant competitor founder, category influencer, or executive profile and work the ICP-fit people engaging there. Use post likes/comments only; profile views are not available.
+Social Engagement note: monitor the user's own founder/leadership personal profile when available; FirstTouch does not track company-page/profile engagement. If owned engagement is thin, monitor a relevant competitor founder, category influencer, or executive profile and work the ICP-fit people engaging there. Use post likes/comments only; profile views are not available.
 
 Use FirstTouch enrichment when the MCP exposes contact/company enrichment and credits are available. Clay, Surfe, or another enrichment MCP is optional and can supplement FirstTouch data, but it is not a prerequisite for AI SDR or warm-engager qualification.
 

@@ -61,8 +61,8 @@
     },
     {
       "name": "Social engager flow \u2014 leadership's audience",
-      "outcome": "Reach people engaging with company or leadership content before they go cold.",
-      "needs": "No HubSpot required; use company/leadership, competitor founder, or influencer profile engagement; HubSpot optional for qualification/routing; profile views unavailable",
+      "outcome": "Reach people engaging with leadership/executive personal-profile content before they go cold.",
+      "needs": "No HubSpot required; use leadership/executive personal-profile, competitor founder, or influencer personal-profile engagement; HubSpot optional for qualification/routing; profile views unavailable",
       "composes": [
         "warm-engager-followup",
         "firsttouch-messaging"
@@ -147,9 +147,9 @@
     }
   ],
   "example_prompts": [
-    "\"Find contacts on my open deals with no engagement in 60+ days and draft owner-approved LinkedIn reactivations.\"",
+    "\"A meeting was just booked at Acme. Auto-connect with the booked contact on LinkedIn today and draft the same-day follow-up for my approval.\"",
     "\"I just booked a meeting at Acme. Draft LinkedIn touches to the other stakeholders so the deal is not single-threaded.\"",
-    "\"Follow up with everyone who engaged with our leadership LinkedIn posts this week and show me rows for approval.\"",
+    "\"Find contacts on my open deals with no engagement in 60+ days and draft owner-approved LinkedIn reactivations.\"",
     "\"If HubSpot already creates LinkedIn/social tasks daily, find today's due tasks and run the eligible ones through FirstTouch.\""
   ]
 }

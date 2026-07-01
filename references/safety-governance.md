@@ -74,7 +74,8 @@ Capture account type during first-run onboarding, then use the stricter cap. Tun
 |--------|---------------------|---|
 | Free/basic LinkedIn — connection requests | 10 | FirstTouch pack rule / product-backed cap |
 | Sales Navigator / Premium — connection requests | up to 20 | FirstTouch pack rule / product-backed cap |
-| LinkedIn messages | ~30–40 | General LinkedIn safety norm, not FirstTouch-enforced |
+| LinkedIn messages — free/basic | 20/day | FirstTouch-supported cap |
+| LinkedIn messages — Sales Navigator/Premium | up to 40/day | FirstTouch-supported cap |
 | Post engagements | ~50 | General LinkedIn safety norm, not FirstTouch-enforced |
 
 **Connection-note rule:** use connection notes only when the sender has Sales Navigator / Premium and the message is approved. For free/basic accounts, send blank connection requests and use the approved opener after the prospect accepts.

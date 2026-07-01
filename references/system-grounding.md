@@ -93,7 +93,7 @@ Publishing a flow activates it but does **not** enroll awaiting contacts. After 
 
 ## Social Engagement source note
 
-LinkedIn Social Engagement monitoring is a FirstTouch feature for post likes and comments. Prefer the user's own founder, executive, or company profile when there is enough owned engagement. If owned engagement is thin, monitor a relevant competitor founder, category influencer, or executive profile and work the ICP-fit people engaging there. Do not use profile views as a signal.
+LinkedIn Social Engagement monitoring is a FirstTouch feature for post likes and comments. Prefer the user's own founder or executive personal profile when there is enough owned engagement; FirstTouch does not track company-page/profile engagement. If owned engagement is thin, monitor a relevant competitor founder, category influencer, or executive profile and work the ICP-fit people engaging there. Do not use profile views as a signal.
 
 ## FirstTouch object glossary
 
