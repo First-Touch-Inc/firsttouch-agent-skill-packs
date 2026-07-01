@@ -98,7 +98,7 @@ def read_skill_description(skill_name: str) -> str:
     if not match:
         return f"(no frontmatter in {skill_name})"
     frontmatter = match.group(1)
-    desc_match = re.search(r"^description:\s*(.+?)(?=\nmetadata:|\Z)", frontmatter, re.DOTALL | re.MULTILINE)
+    desc_match = re.search(r"^description:\s*(.+?)(?=^[A-Za-z_][\w-]*:|\Z)", frontmatter, re.DOTALL | re.MULTILINE)
     if not desc_match:
         return f"(no description in {skill_name})"
     desc = re.sub(r"\s+", " ", desc_match.group(1)).strip()
@@ -360,7 +360,11 @@ def build_readme(manifest: dict, skill_descriptions: dict) -> str:
         else "\"AI SDR\" in this pack maps to `icp-outbound-builder`."
     )
 
+    version = manifest.get("version", "0.0.0")
+
     return f"""# FirstTouch {pack_name}
+
+*Pack version {version}*
 
 > {pain}: these are the plays for the job you actually do.
 
@@ -431,7 +435,13 @@ def build_pack(persona: str) -> None:
         print(f"  [SKIP] No manifest: {manifest_path}")
         return
 
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        raise SystemExit(
+            f"ERROR: {manifest_path} is not valid JSON: {e}\n"
+            f"Fix the manifest and re-run the build."
+        )
     pack_dir = DIST_DIR / f"{persona}-pack"
     skills_out = pack_dir / "skills"
     pack_dir.mkdir(parents=True, exist_ok=True)
@@ -443,8 +453,11 @@ def build_pack(persona: str) -> None:
         src = SKILLS_DIR / skill_name
         dst = skills_out / skill_name
         if not src.exists():
-            print(f"  [WARN] Skill folder not found: {src}")
-            continue
+            raise SystemExit(
+                f"ERROR: {manifest_path.name} references skill "
+                f"`{skill_name}` but {src} does not exist. "
+                f"Fix the manifest or restore the skill folder."
+            )
         if dst.exists():
             shutil.rmtree(dst)
         shutil.copytree(src, dst)
@@ -464,8 +477,11 @@ def build_pack(persona: str) -> None:
             ref_dst.write_text(build_mcp_setup(manifest), encoding="utf-8")
         else:
             if not ref_src.exists():
-                print(f"  [WARN] Reference not found: {ref_src}")
-                continue
+                raise SystemExit(
+                    f"ERROR: {manifest_path.name} references `{ref_rel}` "
+                    f"but {ref_src} does not exist. "
+                    f"Fix the manifest or restore the reference file."
+                )
             shutil.copy2(ref_src, ref_dst)
         print(f"  + reference: {ref_rel}")
 
@@ -474,6 +490,11 @@ def build_pack(persona: str) -> None:
         recipes_ref.parent.mkdir(parents=True, exist_ok=True)
         recipes_ref.write_text(build_recipes_reference(manifest), encoding="utf-8")
         print("  + reference: references/recipes.md")
+
+    license_src = ROOT / "LICENSE"
+    if license_src.exists():
+        shutil.copy2(license_src, pack_dir / "LICENSE")
+        print("  + LICENSE")
 
     readme_content = build_readme(manifest, skill_descriptions)
     (pack_dir / "README.md").write_text(readme_content, encoding="utf-8")
@@ -486,6 +507,40 @@ def build_pack(persona: str) -> None:
                 zf.write(file_path, file_path.relative_to(pack_dir))
     size_kb = zip_path.stat().st_size // 1024
     print(f"  + {zip_path.name} ({size_kb}KB)")
+
+
+def build_skill_zips() -> list:
+    """Build one zip per canonical skill for Claude.ai single-skill upload.
+
+    Each zip contains <skill>/SKILL.md (plus any other files in the skill
+    folder), the reference files that skill links via ../../references/,
+    and the LICENSE. Bundled references live at <skill>/references/ inside
+    the zip so a single-skill install is self-contained.
+    """
+    skill_zip_dir = DIST_DIR / "skills"
+    skill_zip_dir.mkdir(parents=True, exist_ok=True)
+    built = []
+    for skill_dir in sorted(SKILLS_DIR.iterdir()):
+        if not skill_dir.is_dir():
+            continue
+        name = skill_dir.name
+        content = (skill_dir / "SKILL.md").read_text(encoding="utf-8")
+        linked_refs = sorted(set(re.findall(r"\.\./\.\./references/([\w-]+\.md)", content)))
+        zip_path = skill_zip_dir / f"{name}.zip"
+        with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
+            for file_path in skill_dir.rglob("*"):
+                if file_path.is_file():
+                    zf.write(file_path, Path(name) / file_path.relative_to(skill_dir))
+            for ref_name in linked_refs:
+                ref_src = ROOT / "references" / ref_name
+                if ref_src.exists():
+                    zf.write(ref_src, Path(name) / "references" / ref_name)
+            license_src = ROOT / "LICENSE"
+            if license_src.exists():
+                zf.write(license_src, Path(name) / "LICENSE")
+        built.append(zip_path)
+        print(f"  + skill zip: {name}.zip ({len(linked_refs)} bundled reference(s))")
+    return built
 
 
 def main() -> None:
@@ -504,9 +559,13 @@ def main() -> None:
         build_pack(persona)
         print()
 
+    print("Building per-skill zips (Claude.ai single-skill upload)")
+    skill_zips = build_skill_zips()
+    print()
+
     print("=" * 40)
     built = sorted(DIST_DIR.glob("*.zip"))
-    print(f"Done. {len(built)} pack(s) built:")
+    print(f"Done. {len(built)} pack(s) + {len(skill_zips)} skill zip(s) built:")
     for z in built:
         if publish:
             published = PACKS_DIR / z.name
@@ -514,6 +573,12 @@ def main() -> None:
             print(f"  {z.name} -> packs/{published.name}")
         else:
             print(f"  {z.name} (build only, not published to packs/)")
+    if publish:
+        published_skill_dir = PACKS_DIR / "skills"
+        published_skill_dir.mkdir(parents=True, exist_ok=True)
+        for z in skill_zips:
+            shutil.copy2(z, published_skill_dir / z.name)
+        print(f"  {len(skill_zips)} skill zip(s) -> packs/skills/")
 
 
 if __name__ == "__main__":

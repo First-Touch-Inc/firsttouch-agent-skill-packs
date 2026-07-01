@@ -118,9 +118,23 @@ def validate_zip_freshness() -> None:
     if result.returncode != 0:
         err(f"build-packs.py failed:\n{result.stdout}\n{result.stderr}")
         return
-    for committed in sorted(PACKS_DIR.glob("*-pack.zip")):
-        fresh = DIST_DIR / committed.name
-        if not fresh.exists():
+    committed_zips = sorted(PACKS_DIR.glob("*-pack.zip")) + sorted(
+        (PACKS_DIR / "skills").glob("*.zip")
+    )
+    fresh_by_name = {z.name: z for z in DIST_DIR.glob("*.zip")}
+    fresh_by_name.update({z.name: z for z in (DIST_DIR / "skills").glob("*.zip")})
+    fresh_skill_zips = {z.name for z in (DIST_DIR / "skills").glob("*.zip")}
+    committed_skill_zips = {z.name for z in (PACKS_DIR / "skills").glob("*.zip")}
+    for missing in sorted(fresh_skill_zips - committed_skill_zips):
+        err(
+            f"packs/skills/{missing} is missing but the build produces it. "
+            f"Run `python scripts/build-packs.py` and commit."
+        )
+    for orphan in sorted(committed_skill_zips - fresh_skill_zips):
+        err(f"packs/skills/{orphan} has no corresponding skill in skills/. Delete it.")
+    for committed in committed_zips:
+        fresh = fresh_by_name.get(committed.name)
+        if fresh is None or not fresh.exists():
             err(f"{committed.name}: build did not produce this pack")
             continue
         old, new = _zip_content_map(committed), _zip_content_map(fresh)

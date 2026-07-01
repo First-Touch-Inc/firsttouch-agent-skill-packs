@@ -1,11 +1,14 @@
 # Install in Claude.ai
 
-1. Download the right pack zip from the latest GitHub release.
+Claude.ai registers **one skill per uploaded zip**. Use the per-skill zips — they are self-contained (each bundles the reference files that skill needs plus the license), so nothing else is required.
+
+1. Download the per-skill zips you want from `packs/skills/<skill-name>.zip` in this repository.
 2. Open Claude.ai settings.
 3. Go to Features, Skills.
-4. Upload the pack zip.
-5. If uploading individual skill folders instead, also upload/include the shared `references/` folder so every skill can load onboarding, safety, and messaging rules.
-6. Connect the FirstTouch MCP at `https://mcp.firsttouch.ai`.
-7. Paste the activation prompt from the repository README.
+4. Upload each skill zip individually.
+5. Connect the FirstTouch MCP at `https://mcp.firsttouch.ai`.
+6. Paste the activation prompt from the repository README.
 
-If Claude.ai only registers one skill from a multi-skill zip, unzip the pack locally and upload individual skill folders as separate zips. Include the shared `references/` folder with those uploads so the skills retain their shared grounding.
+**Verify the install:** ask Claude *"What FirstTouch plays do you have available?"* — it should list the skills you uploaded. If a skill can't find its onboarding or safety rules, re-download the zip from `packs/skills/` (older zips did not bundle references).
+
+The full persona pack zips (`packs/<persona>-pack.zip`) are intended for Claude Code, Cursor, and Windsurf, where the whole folder structure is preserved. Avoid uploading a multi-skill pack zip to Claude.ai — it may register only the first skill.

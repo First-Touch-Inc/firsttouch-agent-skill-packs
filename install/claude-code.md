@@ -8,3 +8,10 @@
    - project: `.claude/skills/<skill-name>/`
 5. Connect the FirstTouch MCP at `https://mcp.firsttouch.ai`.
 6. Start Claude Code and paste the activation prompt from the repository README.
+
+**Verify the install** before running a play:
+
+- Global install: confirm `~/.claude/references/onboarding.md` exists.
+- Project install: confirm `.claude/references/onboarding.md` exists.
+
+If that file is missing, the skills will run without their onboarding, safety, and messaging rules. Do not copy a single skill folder without also copying `references/` — the `../../references/` links break silently.
