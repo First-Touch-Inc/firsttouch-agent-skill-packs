@@ -37,10 +37,6 @@
       "status": "live"
     },
     {
-      "name": "customer-champion",
-      "status": "live"
-    },
-    {
       "name": "customer-referral",
       "status": "live"
     },
@@ -142,12 +138,11 @@
     },
     {
       "name": "New-customer referral thank-you",
-      "outcome": "After a new customer is created or Closed Won, route the right sender to connect, thank them for choosing the product, collect feedback, and ask whether anyone in their network would also find value.",
+      "outcome": "After a new customer is created or Closed Won, RevOps confirms sender routing and caps, then the right owner connects, thanks them for choosing the product, collects feedback, and asks whether anyone in their network would also find value.",
       "needs": "HubSpot Closed Won/customer source or imported/FirstTouch-accessible customer list required; HubSpot improves owner/CSM routing and logging",
       "composes": [
         "customer-referral",
-        "firsttouch-messaging",
-        "workspace-audit"
+        "firsttouch-messaging"
       ]
     },
     {

@@ -105,6 +105,7 @@ This pack uses human-friendly terms because users ask for "campaigns," "sequence
 | Audience/list | The contacts/accounts selected for a motion |
 | Flow plan/campaign/sequence | The approved series of LinkedIn actions and timing |
 | Dynamic action queue | Per-contact actions awaiting row-level approval |
+| `connection_accepted` branch | Dynamic Action append target for a LinkedIn message that should run only after a connection request is accepted |
 | Enrollment | Adding approved contacts to the flow/campaign |
 
 The agent should state the exact FirstTouch object used so the user does not have to guess where approval or execution happened.

@@ -92,7 +92,7 @@ Use this mapping:
 | LinkedIn follow-up after accepted connection | LinkedIn message only if connection status or FirstTouch state confirms the contact is connected/accepted. |
 | unclear task | skip and report for manual review |
 
-Before creating any one-contact LinkedIn action, run `get_dynamic_action_guide`, then call `add_dynamic_action` in the supported order. Do not bypass the FirstTouch dynamic-action preflight.
+Before creating any one-contact LinkedIn action, run `get_dynamic_action_guide`, then call `add_dynamic_action` in the supported order. Do not bypass the FirstTouch dynamic-action preflight. If a task explicitly models a follow-up after a pending connection acceptance, append the message to the `connection_accepted` branch rather than queueing it as an immediate message.
 
 ### 6. Execute only approved/eligible rows
 A HubSpot task from an explicitly approved CRM workflow or approved daily task process counts as prior approval to execute exactly that task, as long as it contains enough information to act safely. If the task was ad hoc, ambiguous, late in the day/outside the customer's normal sending schedule, or requires freshly generated copy, show the approval table first and wait.

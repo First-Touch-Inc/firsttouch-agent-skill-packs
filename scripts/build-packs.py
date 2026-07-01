@@ -31,7 +31,6 @@ SKILL_NEEDS = {
     "hubspot-social-task-runner": "HubSpot MCP required; use only when LinkedIn/social tasks already exist daily",
     "social-campaigns": "No HubSpot for pure ICP/imported/connection-list campaigns; HubSpot required for CRM/deal/customer segments",
     "stalled-deal-reactivation": "HubSpot required; may need RevOps/admin for workflow setup",
-    "customer-champion": "HubSpot required",
     "customer-referral": "HubSpot Closed Won/customer source or imported/FirstTouch-accessible customer list required; HubSpot improves owner/CSM routing and logging",
     "sequence-qa-reviewer": "No HubSpot for FirstTouch QA; HubSpot improves duplicate/owner checks",
     "workspace-audit": "No HubSpot for FirstTouch-only audit; HubSpot needed for owner/logging coverage",

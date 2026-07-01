@@ -28,6 +28,8 @@ Before running this skill for the first time in a workspace, load `../../referen
 - **Relationship context:** product purchased, use case, onboarding status, first-value milestone, or why they chose the product
 - **Referral ask style:** soft network ask, partner/customer intro ask, or feedback-only if the relationship is too early
 
+HubSpot is preferred for Closed Won/customer routing and CRM logging. It is not mandatory when the user provides a customer CSV, imported list, or FirstTouch-accessible customer source with explicit customer status.
+
 ## Step-by-step
 
 Before drafting or queueing any contact, run the standard safety gates from `../../references/safety-governance.md`: Gate 0 suppression/DNC, Gate 1 duplicate/recent-contact check, Gate 2 owner/CSM routing, Gate 3 daily cap sharing, and Gate 4 human approval. Suppressed, opted-out, duplicate, recently contacted, or misrouted records are skipped and logged.
@@ -66,13 +68,16 @@ Load `firsttouch-messaging` before drafting. Keep it warm, specific, and usually
 - never make the customer feel immediately monetized
 
 Default pattern:
-> "Thanks again for choosing {product/company}. As you get into it, I would genuinely love to know what we could make better — and if someone in your network would get value from this too, happy to be useful."
+> "Thanks again for choosing {product/company}. As you get into it, I would genuinely love to know what we could make better. If someone in your network would get value from this too, happy to be useful."
 
 Founder-led variant:
-> "Really appreciate you choosing {product/company}. If anything could be sharper as you get started, I would love to hear it — and if another founder/operator in your network is dealing with the same problem, I am always happy to help."
+> "Really appreciate you choosing {product/company}. If anything could be sharper as you get started, I would love to hear it. If another founder/operator in your network is dealing with the same problem, I am always happy to help."
 
 CSM/owner variant:
-> "Excited to have your team onboard. As you get into {product/company}, what is one thing we could make easier — and if anyone in your network is trying to solve this too, I am happy to point them in the right direction."
+> "Excited to have your team onboard. As you get into {product/company}, what is one thing we could make easier? If anyone in your network is trying to solve this too, I am happy to point them in the right direction."
+
+Feedback-only variant:
+> "Thanks for choosing {product/company}. As you get into it, I would genuinely love to know what we could make sharper. No ask, just want to hear it."
 
 ### 5. Present for approval
 Show an approval table:
@@ -109,7 +114,7 @@ After approval per row:
 - **Sounding transactional:** thanking a new customer and immediately asking for referrals can feel extractive. Lead with gratitude and feedback.
 - **Skipping owner routing:** customer relationships are sensitive; route through the person they know or the agreed founder/executive sender.
 - **Using a connection note on free/basic LinkedIn:** free/basic requests should be blank/no note.
-- **Messaging before connection acceptance:** if they are not connected, queue the thank-you message on the accepted branch, not as an immediate message.
+- **Messaging before connection acceptance:** if they are not connected, queue the thank-you message on the `connection_accepted` branch, not as an immediate message.
 - **Autosending without approval:** never. This skill prepares and queues approved FirstTouch actions; it does not bypass human approval.
 
 ## Reference

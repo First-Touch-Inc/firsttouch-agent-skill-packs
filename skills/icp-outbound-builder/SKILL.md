@@ -91,7 +91,7 @@ Rank the remaining candidates by ICP fit, signal strength, seniority, and accoun
 For the top daily batch only, load `firsttouch-messaging` and generate customized LinkedIn-first outreach for each prospect:
 - check whether the prospect is already connected on LinkedIn
 - if already connected: draft the first message and a 2-day follow-up
-- if not connected: queue a blank connection request with **no note** by default for cold AI SDR, then draft the post-accept first message and 2-day follow-up
+- if not connected: queue a blank connection request with **no note** by default for cold AI SDR, then append the first message to the `connection_accepted` branch and draft the 2-day follow-up
 - keep every message to 2 sentences max
 - reference a real signal that might point to the prospect needing the user's solution
 - use a lightweight ask CTA, not a meeting ask
@@ -109,6 +109,7 @@ Every row should be marked `awaiting approval`. Each first-touch outbound row re
 ### 6. After approval → queue execution
 After human approval:
 - before queuing per-contact dynamic actions, run `get_dynamic_action_guide`, then call `add_dynamic_action` in the supported order
+- if a LinkedIn message should only send after a connection request is accepted, append it to the `connection_accepted` branch rather than queueing it as an immediate message
 - add approved contacts to the right FirstTouch flow/campaign, or queue dynamic actions
 - enforce duplicate checks, account-safety limits, and approval status from `../../references/safety-governance.md`
 - log execution and outcomes back to HubSpot when HubSpot is connected

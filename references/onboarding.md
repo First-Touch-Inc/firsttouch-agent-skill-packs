@@ -52,7 +52,7 @@ Never exceed the FirstTouch max. Use the recommended cap by default; if the acco
 
 | Persona | Start here if HubSpot is connected | Start here without HubSpot |
 |---|---|---|
-| Founder | Social engagement flow first; customer thank-you or stalled deal only when CRM data exists | Enable Social Engagement through FirstTouch MCP for founder/executive personal-profile posts or a relevant competitor/influencer personal profile. FirstTouch does not track company-page/profile engagement. If no monitored profile or engager list is available, start with Founder-led AI SDR from Discover Contacts. |
+| Founder | Social engagement flow first; customer referral thank-you or stalled deal only when CRM data exists | Enable Social Engagement through FirstTouch MCP for founder/executive personal-profile posts or a relevant competitor/influencer personal profile. FirstTouch does not track company-page/profile engagement. If no monitored profile or engager list is available, start with Founder-led AI SDR from Discover Contacts. |
 | AE | Auto-connect on meeting or signup is the #1 AE use case; meeting-booked stakeholder follow-up is next for multi-threading; stalled deal after RevOps/admin workflow support is clear | Social engager flow can use leadership/executive personal profiles, competitor founder profiles, or influencer personal profiles. FirstTouch does not track company-page/profile engagement. Position the AE pack as much stronger with HubSpot. |
 | BDR | Auto-connect on meeting/signup for inbound; otherwise BDR AI SDR is the daily engine | BDR AI SDR first when no inbound feed exists; add warm engager follow-up from leadership/competitor/influencer profiles. Social campaigns are special pushes, usually row-level dynamic actions. |
 | RevOps | Pre-launch rollout audit, then Team-wide AI SDR, HubSpot signal, or team-wide high-intent flows | FirstTouch-only workspace audit, sequence QA, Team-wide AI SDR from Discover Contacts, social engagement setup via FirstTouch MCP on owned or external personal profiles, and Discover/imported-list campaigns |
@@ -69,7 +69,7 @@ Recommend **high-intent plays first**. They use warmer signals, protect the Link
 | Inbound Speed-to-Lead | Acts on demo requests, signups, trials, and other fresh hand-raisers. | HubSpot or a FirstTouch-accessible inbound list/import. True automation needs a connected source. |
 | Website Visitor Follow-Up | Uses pricing/demo/product-page intent while the account is researching. | HubSpot tracking or RB2B/list source required. If no signal source exists, this play is unavailable. |
 | HubSpot Signal → LinkedIn Touch | Turns lifecycle/list/deal events into timely social touches. | Yes. |
-| Customer Champion | Warmer customer milestone outreach; low spam risk. | Yes. |
+| Customer Referral Thank-You | Warmer new-customer thank-you, feedback, and light referral outreach; low spam risk. | HubSpot Closed Won/customer source or imported customer list required. |
 | Stalled Deal Reactivation | A contact-based HubSpot workflow for contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days. Deal-based triggers are unsupported. | Yes. May need RevOps/admin setup if workflow creation is unavailable. |
 
 ### Add after high-intent is running — outbound / volume
@@ -87,7 +87,7 @@ Recommend **high-intent plays first**. They use warmer signals, protect the Link
 | Motion | Approval style |
 |---|---|
 | AI SDR / founder AI SDR / dynamic actions | Row-level approval. Each first-touch row must be approved individually; if the workspace uses approval tasks, the task is sent to the owner in HubSpot or appears in the FirstTouch app under **Tasks**. |
-| Warm engager, inbound, website visitor, HubSpot signal, customer champion, stalled deal | Row-level approval unless the connected FirstTouch/approval system records an equivalent per-contact approval; approval tasks route to the owner in HubSpot or the app **Tasks** view when that workflow is enabled. |
+| Warm engager, inbound, website visitor, HubSpot signal, customer referral thank-you, stalled deal | Row-level approval unless the connected FirstTouch/approval system records an equivalent per-contact approval; approval tasks route to the owner in HubSpot or the app **Tasks** view when that workflow is enabled. |
 | Social campaigns | Two modes: rep/BDR dynamic rows use row-level approval like AI SDR; one-time static campaigns can use flow-level approval with exact audience, templates, sender/routing rule, launch window, and daily cap approved. This does not authorize future dynamic or AI-generated campaigns. |
 
 ## Onboarding output format
