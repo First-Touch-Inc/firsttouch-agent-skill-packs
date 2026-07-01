@@ -1,7 +1,7 @@
 {
   "persona": "bdr",
   "pack_name": "BDR Pack",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "persona_pain": "Inbox busywork and slow follow-up make you miss the inbound window and look bad to your AE",
   "persona_blurb": "Your job is meetings. You live in the gap between marketing handing over a lead and sales getting a discovery call on the calendar. Every delay in follow-up, every manual step, every no-show not chased: that's a meeting you didn't book. These plays close that gap: fast inbound response, warm-signal conversion, and lead recovery without the grind.",
   "skills": [
@@ -40,6 +40,10 @@
     {
       "name": "campaign-pause-and-fix",
       "status": "live"
+    },
+    {
+      "name": "team-performance-report",
+      "status": "live"
     }
   ],
   "recipes": [
@@ -50,7 +54,8 @@
       "composes": [
         "inbound-speed-to-lead",
         "firsttouch-messaging"
-      ]
+      ],
+      "run_guide": "1. Pull the day's booked meetings/signups (HubSpot event or your inbound list) with `inbound-speed-to-lead`. 2. Load `firsttouch-messaging` and draft a blank connection request plus a short post-accept opener per contact. 3. Approve the table; the agent queues the requests and appends openers to the connection_accepted branch."
     },
     {
       "name": "Automate due HubSpot social tasks",
@@ -58,7 +63,8 @@
       "needs": "HubSpot MCP required; use only if HubSpot tasks for social steps are already being created each day; not a cadence/list creator or prospecting engine",
       "composes": [
         "hubspot-social-task-runner"
-      ]
+      ],
+      "run_guide": "1. `hubspot-social-task-runner` pulls today's due LinkedIn/social tasks from HubSpot. 2. Review the approval table (task, contact, intended action, copy source). 3. Approve; the agent executes via FirstTouch and marks each task complete only after the action is queued or sent."
     },
     {
       "name": "BDR AI SDR - daily approval queue",
@@ -67,7 +73,8 @@
       "composes": [
         "icp-outbound-builder",
         "firsttouch-messaging"
-      ]
+      ],
+      "run_guide": "1. Pick the source: a HubSpot list or your ICP + FirstTouch Discover Contacts. 2. `icp-outbound-builder` enriches each prospect and drafts the daily batch. 3. Approve rows each morning; the agent queues sends and logs touches."
     },
     {
       "name": "Social engager flow - leadership posts",
@@ -76,7 +83,8 @@
       "composes": [
         "warm-engager-followup",
         "firsttouch-messaging"
-      ]
+      ],
+      "run_guide": "1. Confirm Social Engagement is enabled for the monitored profile (`warm-engager-followup`, step 1). 2. Pull the week's engagers and keep the ICP fits. 3. Draft signal-based openers with `firsttouch-messaging`, approve, queue."
     },
     {
       "name": "Website visitor play",
@@ -84,7 +92,8 @@
       "needs": "Conditional; HubSpot tracking, RB2B/list source, or visitor export required; most BDRs skip if no source exists",
       "composes": [
         "website-visitor-followup"
-      ]
+      ],
+      "run_guide": "1. Confirm a visitor source exists (HubSpot tracking or an RB2B/list source); stop if none. 2. `website-visitor-followup` qualifies visitors and picks a contact-level or account-level motion. 3. Draft soft, non-creepy touches, approve, queue."
     },
     {
       "name": "Social campaigns - special row-level push",
@@ -93,7 +102,8 @@
       "composes": [
         "social-campaigns",
         "firsttouch-messaging"
-      ]
+      ],
+      "run_guide": "1. Define the narrow segment (25-100 people); manager approves the push. 2. `social-campaigns` builds the audience and drafts row-level actions. 3. Approve each row, queue inside your daily cap."
     },
     {
       "name": "Scoop-up slipped leads - HubSpot no-shows and old MQLs",
@@ -102,7 +112,8 @@
       "composes": [
         "hubspot-signal-to-linkedin-touch",
         "firsttouch-messaging"
-      ]
+      ],
+      "run_guide": "1. Build or request the recovery list (no-shows, old MQLs) in HubSpot. 2. `hubspot-signal-to-linkedin-touch` qualifies and drafts low-pressure re-openers. 3. Approve, queue, and put non-responders on cooldown."
     },
     {
       "name": "Scoop-up slipped leads - imported recovery list",
@@ -111,7 +122,17 @@
       "composes": [
         "icp-outbound-builder",
         "firsttouch-messaging"
-      ]
+      ],
+      "run_guide": "1. Import the recovery list so FirstTouch can read it. 2. `icp-outbound-builder` enriches and drafts low-pressure re-openers. 3. Approve, queue, and put non-responders on cooldown."
+    },
+    {
+      "name": "Show your manager the numbers",
+      "outcome": "Weekly one-pager for your manager: connection requests sent, accepts, replies, meetings booked, by day",
+      "needs": "FirstTouch only; HubSpot improves meeting/opportunity reconciliation",
+      "composes": [
+        "team-performance-report"
+      ],
+      "run_guide": "1. Friday: run `team-performance-report` scoped to your sender seat for the trailing 7 days. 2. Keep it honest: sends, accepts, replies, meetings booked; mark anything unverifiable as unverified. 3. Paste the summary table to your manager - same format every week so trends show."
     }
   ],
   "references": [
@@ -138,6 +159,9 @@
     },
     {
       "src": "references/recipes.md"
+    },
+    {
+      "src": "references/hubspot-properties.md"
     }
   ],
   "example_prompts": [

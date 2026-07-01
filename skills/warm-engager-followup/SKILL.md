@@ -44,6 +44,9 @@ Use the FirstTouch social engagement monitored-profile flow before pulling engag
 - if drafts should route through the linked Social Engagement flow instead of one-off dynamic actions, publish that linked flow first with `manage_flow_publication` before expecting captured engagers to enter it
 - if the monitored-profile tool is unavailable in the connected harness, ask the user to provide a FirstTouch-accessible engager list exported from the leadership post; do not imply the play is broken
 
+### 1b. On monitoring external profiles (read this once)
+Monitoring a competitor founder or influencer profile means FirstTouch watches **public** post likes and comments - the same information you would see scrolling their posts yourself. Nothing is scraped, no private data is accessed, and nobody is notified that a profile is monitored. When you reach out to an engager, the honest framing is simply: "Saw you engaged with {person}'s post on {topic}." If a prospect ever asks how you found them, that is the answer, and it is a normal one.
+
 ### 2. Qualify the engager
 If qualification requires FirstTouch discovery or enrichment beyond the captured engager fields, run Gate 3a from `../../references/safety-governance.md`: preview a small sample, state estimated maximum credits, and get approval for bulk credit spend.
 

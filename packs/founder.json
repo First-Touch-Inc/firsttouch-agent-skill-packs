@@ -1,7 +1,7 @@
 {
   "persona": "founder",
   "pack_name": "Founder Pack",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "persona_pain": "Looking automated or spammy on LinkedIn risks the reputation you spent years building",
   "persona_blurb": "You do your own sales. Your name is your brand, and every automated-feeling LinkedIn message risks undoing years of relationship-building. You need outreach that sounds exactly like you - in the signals you'd actually notice, at the volume that feels personal, not like a drip campaign. These plays are designed for founders who want LinkedIn to feel like them, not like an SDR they hired.",
   "skills": [
@@ -54,7 +54,8 @@
       "composes": [
         "warm-engager-followup",
         "firsttouch-messaging"
-      ]
+      ],
+      "run_guide": "1. Confirm Social Engagement is enabled on your profile (or a relevant external profile) - `warm-engager-followup`, step 1. 2. Pull recent engagers and keep the ICP fits. 3. Draft founder-voice openers with `firsttouch-messaging`, approve, queue."
     },
     {
       "name": "Founder-led AI SDR - daily approval queue",
@@ -62,7 +63,8 @@
       "needs": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
       "composes": [
         "founder-led-outbound"
-      ]
+      ],
+      "run_guide": "1. Capture founder voice and ICP once (`founder-led-outbound`, steps 0-0b). 2. The agent discovers, enriches, and drafts 3-5 founder-voice rows. 3. Approve the small batch each run; the agent queues and tracks accepts/replies."
     },
     {
       "name": "Social campaigns - founder-led narrow audience push",
@@ -71,7 +73,8 @@
       "composes": [
         "social-campaigns",
         "firsttouch-messaging"
-      ]
+      ],
+      "run_guide": "1. Define a narrow segment you personally care about (25-100 people). 2. `social-campaigns` drafts founder-voice touches with `firsttouch-messaging`. 3. Approve, enroll, monitor replies personally."
     },
     {
       "name": "Fast personal inbound follow-up",
@@ -80,7 +83,8 @@
       "composes": [
         "inbound-speed-to-lead",
         "firsttouch-messaging"
-      ]
+      ],
+      "run_guide": "1. Pull fresh signups/demo requests from HubSpot or your inbound list (`inbound-speed-to-lead`). 2. Draft a founder-voice connection + opener the same day. 3. Approve, queue - speed is the whole play."
     },
     {
       "name": "Website visitor play",
@@ -89,7 +93,8 @@
       "composes": [
         "website-visitor-followup",
         "firsttouch-messaging"
-      ]
+      ],
+      "run_guide": "1. Confirm a visitor source exists (HubSpot tracking or an RB2B/list source); stop if none. 2. `website-visitor-followup` qualifies visitors and picks a contact-level or account-level motion. 3. Draft soft, non-creepy touches, approve, queue."
     },
     {
       "name": "Scoop-up slipped leads",
@@ -98,7 +103,8 @@
       "composes": [
         "hubspot-signal-to-linkedin-touch",
         "firsttouch-messaging"
-      ]
+      ],
+      "run_guide": "1. Build or request the recovery list (no-shows, old MQLs, quiet signups). 2. Qualify and draft low-pressure re-openers with `firsttouch-messaging`. 3. Approve, queue, and put non-responders on cooldown."
     },
     {
       "name": "Stalled deal reactivation - 60-day open-deal workflow",
@@ -107,7 +113,8 @@
       "composes": [
         "stalled-deal-reactivation",
         "firsttouch-messaging"
-      ]
+      ],
+      "run_guide": "1. Get or self-build the HubSpot list of open-deal contacts quiet for 60+ days (the skill includes the exact filter recipe). 2. `stalled-deal-reactivation` qualifies and drafts value-first touches - never 'just checking in'. 3. Owner approves, queue, log to the deal."
     },
     {
       "name": "Customer referral thank-you",
@@ -116,7 +123,8 @@
       "composes": [
         "customer-referral",
         "firsttouch-messaging"
-      ]
+      ],
+      "run_guide": "1. Pull the Closed Won/customer list. 2. `customer-referral` checks connection state and drafts a thank-you plus light referral ask (both connected and unconnected paths). 3. The account owner approves, then queue."
     }
   ],
   "references": [
@@ -143,6 +151,9 @@
     },
     {
       "src": "references/recipes.md"
+    },
+    {
+      "src": "references/hubspot-properties.md"
     }
   ],
   "example_prompts": [

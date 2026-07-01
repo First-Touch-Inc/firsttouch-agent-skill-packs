@@ -16,6 +16,13 @@ Agents **draft**. Humans **approve**. FirstTouch **executes**. This sequence is 
 
 ---
 
+## It is YOUR account on the line
+If you are a rep or founder sending from your personal LinkedIn: a LinkedIn warning means YOUR account gets restricted, usually for 24-48 hours, and you cannot work your pipeline during that time. Repeat offenses can mean longer restrictions. These rules exist to protect you, not to slow you down.
+
+- If a warning or "action required" prompt appears: **stop immediately**, tell your manager or workspace admin first, and do not push through it.
+- Staying at the recommended daily cap (10/day free/basic, 20/day Sales Navigator/Premium) is how you stay safe. The FirstTouch max (20/30) is a ceiling, not a target.
+- If acceptance or reply rates drop for a few days, lower your volume before LinkedIn lowers it for you.
+
 ## The safety gates (enforce all before any send)
 
 ### Gate 0 - Suppression / DNC check
@@ -101,6 +108,15 @@ The agent should treat these as **hard stops**, not warnings.
 - Drafts may contain prospect data; treat them as sensitive. Don't echo full contact lists into shared channels unnecessarily.
 
 ---
+
+## Central DNC / exclusion list (who owns it)
+Every skill checks suppression at Gate 0, but the list itself needs one owner:
+
+- **Owner:** RevOps (or the workspace admin in smaller teams) owns the do-not-contact source of truth.
+- **Where it lives:** a HubSpot contact property (for example `do_not_contact`) or a FirstTouch Exclusion List. Pick ONE as canonical and have every motion suppress on it; do not maintain parallel lists per rep.
+- **Update SLA:** when a prospect opts out, replies "not interested," or complains, add them the same business day - before the next day's batches queue.
+- **Multi-seat teams:** if reps run separate FirstTouch seats, the shared HubSpot property is the only list all seats can see; verify each seat's motions suppress on it before rollout.
+- **Audit:** review the list monthly as part of the team performance review; a suppression list that never grows usually means opt-outs are being missed, not that everyone loves your outreach.
 
 ## When the agent should STOP and ask
 

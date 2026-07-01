@@ -2,6 +2,23 @@
 
 All notable changes to the FirstTouch Agent Skill Packs.
 
+## 1.3.0 - 2026-07-01
+
+### Added
+- references/hubspot-properties.md: the real first_touch_* property schema FirstTouch writes to HubSpot, app events, timeline objects, and a minimum-scope lockdown table (agent key = read-only)
+- references/team-governance.md (RevOps pack): per-seat cap budgets (platform enforces the hard max), cross-rep collision rules, same-business-day approval SLA, pilot-to-scale runbook, weekly governance check, CRO attribution guidance
+- Run guides on every recipe in all four packs - each "composes X + Y" row now ships 3-step instructions
+- BDR pack: team-performance-report skill + "Show your manager the numbers" weekly recipe
+- BDR onboarding: shared inbound queue rules (duplicate gate, owner mismatch, same-morning collisions)
+- workspace-audit: live approval-routing test - untested routing now means NOT READY
+- stalled-deal-reactivation: AE self-serve HubSpot list walkthrough (exact filters, no admin needed)
+- warm-engager-followup: plain-language note on what monitoring external profiles actually does (public likes/comments only)
+- safety-governance: "It is YOUR account on the line" stakes section and central DNC ownership rules
+
+### Changed
+- Generated pack READMEs reordered: first-run onboarding (with easy-access and credits notes) now comes before Start here
+- Claude Code install docs: Windows paths and an "ask the agent to install it" easiest path
+
 ## 1.2.1 - 2026-07-01
 
 ### Changed

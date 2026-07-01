@@ -51,6 +51,7 @@ Every check below is one of two kinds, and the scorecard must keep them separate
 - Cooldown windows set? ✅/❌
 - Daily limit caps configured? ✅/❌
 - Approval workflow defined (who approves, where)? ✅/❌
+- **Approval routing live test [MANUAL]:** create one test dynamic action to a user-designated test contact (or the operator's own profile) that requires approval, and confirm the approval task actually arrives where it should (owner in HubSpot or FirstTouch app under Tasks). A configured-looking flag is not proof. If the team will not run this test, approval routing is `unverified` and overall readiness is **NOT READY** - do not launch team volume on untested approval routing.
 
 ### 5. Logging, replies & attribution readiness [AUTO + MANUAL test round-trip]
 - FirstTouch→HubSpot timeline logging active? ✅/❌

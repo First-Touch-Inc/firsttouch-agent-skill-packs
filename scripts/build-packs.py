@@ -88,7 +88,7 @@ WEEKLY_RHYTHM = {
 - **Friday:** review the stalled-deal queue and approve next week's reactivation touches.""",
     "bdr": """- **Every morning (15 min):** approve your BDR AI SDR batch - that is the daily engine.
 - **Midweek:** work warm engagers from leadership or competitor posts.
-- **Friday:** sweep no-shows and slipped inbound leads and queue recovery touches.""",
+- **Friday:** sweep no-shows and slipped inbound leads, queue recovery touches, and run "Show your manager the numbers" (`team-performance-report`) so your manager sees the week.""",
     "revops": """- **Monday:** check queue hygiene - stuck approvals, blocked rows, and cap usage across senders.
 - **Midweek:** spot-check any new campaign with sequence QA before it launches.
 - **Monthly:** run the team performance report and review caps, suppression lists, and logging coverage.""",
@@ -96,7 +96,8 @@ WEEKLY_RHYTHM = {
 
 INSTALL_NOTES = """1. Download this pack zip and extract it so `skills/` and `references/` sit side by side. Keep the `references/` folder with the skills; many skills link to `../../references/...`.
 2. Install for your agent:
-   - **Claude Code:** copy `skills/<skill-name>/` folders to `~/.claude/skills/` and copy `references/` to `~/.claude/references/`. The generated recipe catalog lives in `references/recipes.md` and the full onboarding/play chooser lives in `references/onboarding.md`, so recipes survive non-zip installs. From `~/.claude/skills/<skill-name>/SKILL.md`, `../../references/` resolves to `~/.claude/references/`.
+   - **Claude Code (easiest path):** open Claude Code in the unzipped pack folder and say: *"Install these skills and references into my skills directory."* The agent does the copying for you.
+   - **Claude Code (manual):** copy `skills/<skill-name>/` folders into your skills directory and `references/` next to them. On Windows that is `C:\\Users\\<you>\\.claude\\skills\\` and `C:\\Users\\<you>\\.claude\\references\\`; on Mac/Linux it is `~/.claude/skills/` and `~/.claude/references/`. The generated recipe catalog lives in `references/recipes.md` and the onboarding/play chooser in `references/onboarding.md`, so recipes survive non-zip installs.
    - **Claude.ai:** Settings → Features → Skills → upload the full persona pack `.zip` first. If uploading a single skill manually, include the specific referenced markdown files inside that skill folder before zipping, because `../../references/` paths may not resolve in single-skill Claude.ai uploads.
    - **Cursor / Windsurf:** copy this pack into the project or workspace location your agent reads for skills; keep `skills/` and `references/` together at the same root.
    - **ChatGPT:** connect `https://mcp.firsttouch.ai` as an MCP connector. ChatGPT does not consume the skills folder directly; use the README/skill text as operating prompts if needed.
@@ -194,6 +195,17 @@ def build_recipe_sections(persona: str, recipes: list, include_composes: bool = 
     return "\n".join(parts)
 
 
+def build_recipe_run_guides(recipes: list) -> str:
+    """Render per-recipe run guides so 'composes X + Y' comes with actual steps."""
+    guides = [r for r in recipes if r.get("run_guide")]
+    if not guides:
+        return ""
+    parts = ["\n### How to run each recipe"]
+    for r in guides:
+        parts.append(f"\n**{r['name']}**\n{r['run_guide']}")
+    return "\n".join(parts) + "\n"
+
+
 def build_onboarding(manifest: dict) -> str:
     """Generate pack-specific onboarding so bundled docs do not advertise absent plays."""
     persona = manifest["persona"]
@@ -209,6 +221,15 @@ def build_onboarding(manifest: dict) -> str:
     voice_note = ""
     if "founder-led-outbound" in skills:
         voice_note = "\n- Founder voice capture is mandatory: collect 2-3 sample posts/messages or tone rules before founder-led outbound."
+    shared_queue_note = ""
+    if persona == "bdr":
+        shared_queue_note = """
+
+## Shared inbound queue (teams of BDRs)
+If several BDRs work one inbound list, three rules keep you from stepping on each other:
+1. **The duplicate gate protects you.** Before any draft, the agent checks FirstTouch history; if a teammate already touched or queued the contact, your row is skipped and logged - that is correct behavior, not a bug.
+2. **Owner mismatch = flag, not send.** If the contact's HubSpot owner is someone else, the agent flags the row for review instead of sending. Answer honestly: if you're just working the queue and no owner is set, say so and approve consciously; if the owner is a teammate, hand it to them.
+3. **Same-morning collisions:** if two BDRs both queue the same fresh lead before either sends, whoever's row was queued first wins; the second row gets skipped by the duplicate gate at send time. Nothing double-sends."""
     return f"""# First-Run Onboarding - {pack_name}
 
 This onboarding is scoped to the skills and recipes actually included in this installed pack.
@@ -226,7 +247,7 @@ This onboarding is scoped to the skills and recipes actually included in this in
 
 ## Persona start point
 {start_here}
-{social_note}{voice_note}
+{social_note}{voice_note}{shared_queue_note}
 
 ## Quickstart play cards
 {QUICKSTART_CARDS[persona]}
@@ -291,6 +312,7 @@ def build_recipes_reference(manifest: dict) -> str:
     persona = manifest["persona"]
     pack_name = manifest["pack_name"]
     recipes_table = build_recipe_sections(persona, manifest.get("recipes", []), include_composes=True)
+    run_guides = build_recipe_run_guides(manifest.get("recipes", []))
     return f"""# Recipe Catalog - {pack_name}
 
 Use this file when the agent installed `skills/` and `references/` without loading the root README. These recipes are the recommended starting points for the {persona} persona.
@@ -303,7 +325,7 @@ Use this file when the agent installed `skills/` and `references/` without loadi
 
 ## Recipes
 {recipes_table}
-
+{run_guides}
 ## Approval reminder
 Dynamic/AI SDR rows require row-level approval. Static social-campaign flows can use flow-level approval only after the exact audience, static templates, sender/routing rule, launch window, and daily cap are approved.
 """
@@ -365,6 +387,7 @@ def build_readme(manifest: dict, skill_descriptions: dict) -> str:
     support_table = "\n".join(support_rows) if support_rows else "*(none)*"
 
     recipes_table = build_recipe_sections(persona, recipes, include_composes=True)
+    recipe_run_guides = build_recipe_run_guides(recipes)
     example_prompts = manifest.get("example_prompts", [])
     example_prompt_section = ""
     if example_prompts:
@@ -390,6 +413,20 @@ def build_readme(manifest: dict, skill_descriptions: dict) -> str:
 ## What is MCP?
 MCP is the plug that lets your AI agent use FirstTouch. In **ChatGPT** and **Claude.ai** it shows up in settings as a **Connector**; in **Claude Code**, **Cursor**, **Windsurf**, and **Codex** it's called an **MCP server**. Same thing, different label. You set it up once (see `references/mcp-setup.md`), and it never sees your LinkedIn password - it only performs actions you approve.
 
+## First-run onboarding (do this before any play)
+Answer these once; every play depends on them:
+
+1. **LinkedIn account type:** do you have Sales Navigator / Premium, or a free/basic account?
+   - Free/basic: no connection notes; recommend **10/day** connection requests; FirstTouch max **20/day**.
+   - Sales Navigator / Premium: connection notes available; recommend **20/day** connection requests; FirstTouch max **30/day**.
+   - AI SDR shares the same daily connection-request budget. If AI SDR and another play run on the same day, the total across all plays should stay within the recommended 10 or 20 unless the user explicitly approves higher volume; never exceed the FirstTouch max of 20/day free/basic or 30/day Sales Navigator/Premium.
+   - Already-connected LinkedIn message rows use a separate FirstTouch-supported message cap: 20/day on free/basic LinkedIn and 30/day on Sales Navigator/Premium.
+2. **HubSpot access:** getting access is easy - ask your admin to approve HubSpot MCP access (a quick approval), or request a **read-only service key** that lets the agent read deals, contacts, and companies with no write risk. If neither is available yet, plenty of plays below run without HubSpot; you can also ask an admin for a HubSpot list FirstTouch can access.
+3. **Credits:** new FirstTouch workspaces start with **100 credits** - plenty for your first discoveries and enrichments. The agent checks the balance before any bulk run and asks before spending.
+4. **Play choice:** pick from the persona start point below.
+
+Use `references/onboarding.md` for the full question flow and account-type rules. Use `references/recipes.md` for the generated recipe catalog if the README is not loaded by the agent.
+
 ## Start here
 {START_HERE[persona]}
 
@@ -405,22 +442,6 @@ MCP is the plug that lets your AI agent use FirstTouch. In **ChatGPT** and **Cla
 - **Read once:** `references/system-grounding.md` explains how agents, FirstTouch, HubSpot, approvals, and measurement fit together.
 - **FirstTouch terms:** a campaign/sequence/social campaign in this pack becomes a FirstTouch audience, flow plan, dynamic action, or enrollment depending on the play. {term_note} The agent should use FirstTouch's available execution objects and state the exact object it created.
 - **Approval locations:** before assuming approval tasks are enabled, ask the user or check available FirstTouch task/workspace settings. If approval tasks are enabled, route them to the owner in HubSpot or the FirstTouch app under **Tasks**. If that workflow is not enabled or cannot be confirmed, present the table in chat and wait for explicit approval.
-
-## First-run onboarding
-Before running the first play in this pack, ask the user:
-
-1. **LinkedIn account type:** do they have Sales Navigator / Premium, or a free/basic account?
-   - Free/basic: no connection notes; recommend **10/day** connection requests; FirstTouch max **20/day**.
-   - Sales Navigator / Premium: connection notes available; recommend **20/day** connection requests; FirstTouch max **30/day**.
-   - AI SDR shares the same daily connection-request budget. If AI SDR and another play run on the same day, the total across all plays should stay within the recommended 10 or 20 unless the user explicitly approves higher volume; never exceed the FirstTouch max of 20/day free/basic or 30/day Sales Navigator/Premium.
-   - Already-connected LinkedIn message rows use a separate FirstTouch-supported message cap: 20/day on free/basic LinkedIn and 30/day on Sales Navigator/Premium.
-2. **HubSpot access:** do they use HubSpot, and can an admin connect the HubSpot MCP, provide a service key / private app token, or at least provide a HubSpot list FirstTouch can access?
-   - Getting access is easy: ask your admin to approve HubSpot MCP access (a quick approval), or request a **read-only service key** that lets the agent read deals, contacts, and companies with no write risk.
-   - If not, use the FirstTouch-only paths below or ask them to create a HubSpot list/source FirstTouch can access before running HubSpot-specific plays.
-3. **Credits:** new FirstTouch workspaces start with **100 credits** - plenty for your first discoveries and enrichments. The agent checks the balance before any bulk run and asks before spending.
-4. **Play choice:** show the catalog below and recommend the persona-specific start-here play above.
-
-Use `references/onboarding.md` for the full question flow and account-type rules. Use `references/recipes.md` for the generated recipe catalog if the README is not loaded by the agent.
 
 ## HubSpot reality check
 - **What works without HubSpot:** {NO_HUBSPOT[persona]}
@@ -440,7 +461,7 @@ Use `references/onboarding.md` for the full question flow and account-type rules
 
 ### Recipes (recommended starting points)
 {recipes_table}
-{example_prompt_section}
+{recipe_run_guides}{example_prompt_section}
 ## Install
 {INSTALL_NOTES}
 

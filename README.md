@@ -213,4 +213,4 @@ Re-running the script syncs all packs to the current canonical state, rebuilds t
 - **In-app chat** - chat support inside the FirstTouch app for account-specific issues.
 - **Something broke mid-play?** - [`references/troubleshooting.md`](references/troubleshooting.md) covers MCP failures, LinkedIn warnings, stalled queues, and credit issues.
 
-*Pack version 1.2.1 - last updated 2026-07-01. See [CHANGELOG.md](CHANGELOG.md).*
+*Pack version 1.3.0 - last updated 2026-07-01. See [CHANGELOG.md](CHANGELOG.md).*

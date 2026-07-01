@@ -1,7 +1,7 @@
 {
   "persona": "revops",
   "pack_name": "RevOps Pack",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "persona_pain": "Data chaos and untracked touches make it impossible to prove what's working or govern the team",
   "persona_blurb": "You own the stack and the data. Every untracked touch is attribution you'll never recover. You care about owner routing, approval workflows, HubSpot data hygiene, and whether this creates compliance risk or solves it. These plays give you the governance layer, the attribution readiness checks, reply visibility, and the team-wide setup plays that turn individual reps' outreach into a measurable, auditable revenue motion.",
   "skills": [
@@ -66,7 +66,8 @@
       "composes": [
         "workspace-audit",
         "sequence-qa-reviewer"
-      ]
+      ],
+      "run_guide": "1. Run `workspace-audit` for the readiness scorecard (verified vs manual-check areas). 2. Run `sequence-qa-reviewer` on any campaign prepared for launch. 3. Fix the priority items; do not launch with unverified logging or an account warning."
     },
     {
       "name": "Attribution & team performance review",
@@ -74,7 +75,8 @@
       "needs": "No HubSpot required for FirstTouch team metrics; HubSpot improves opportunity/pipeline reconciliation",
       "composes": [
         "team-performance-report"
-      ]
+      ],
+      "run_guide": "1. `team-performance-report` pulls the trailing 30 days by flow, sender, and date. 2. Reconcile with HubSpot logging coverage; mark unverifiable metrics as unverified. 3. Share the summary and adjust caps, plays, and coaching."
     },
     {
       "name": "HubSpot list trigger - team-wide LinkedIn flows",
@@ -83,7 +85,8 @@
       "composes": [
         "hubspot-signal-to-linkedin-touch",
         "inbound-speed-to-lead"
-      ]
+      ],
+      "run_guide": "1. An admin builds the contact-based workflow or list (see `references/hubspot-setup.md`). 2. `hubspot-signal-to-linkedin-touch` / `inbound-speed-to-lead` consume the events. 3. Approvals route to owners; approve, then queue."
     },
     {
       "name": "Social engager setup for team",
@@ -92,7 +95,8 @@
       "composes": [
         "warm-engager-followup",
         "icp-outbound-builder"
-      ]
+      ],
+      "run_guide": "1. Enable Social Engagement monitoring on the chosen executive/competitor profiles. 2. Pull weekly engagers and route them to reps by owner. 3. Reps qualify against ICP criteria and run the warm-engager approval flow."
     },
     {
       "name": "Website visitor play",
@@ -100,7 +104,8 @@
       "needs": "HubSpot tracking or RB2B/list source required; if no visitor signal source exists, use Team-wide AI SDR as a separate prospecting motion",
       "composes": [
         "website-visitor-followup"
-      ]
+      ],
+      "run_guide": "1. Confirm a visitor source exists (HubSpot tracking or an RB2B/list source); stop if none. 2. `website-visitor-followup` qualifies visitors and picks a contact-level or account-level motion. 3. Draft soft, non-creepy touches, approve, queue."
     },
     {
       "name": "Team-wide AI SDR - daily approval queues",
@@ -110,7 +115,8 @@
         "icp-outbound-builder",
         "firsttouch-messaging",
         "workspace-audit"
-      ]
+      ],
+      "run_guide": "1. Run `workspace-audit` before launch. 2. Each rep runs their own daily `icp-outbound-builder` queue inside per-seat caps. 3. RevOps reviews cap usage and draft quality weekly."
     },
     {
       "name": "Social campaigns - team-routed operational campaigns",
@@ -120,7 +126,8 @@
         "social-campaigns",
         "firsttouch-messaging",
         "workspace-audit"
-      ]
+      ],
+      "run_guide": "1. RevOps defines the segment and static templates; run `workspace-audit` if it is the first campaign. 2. QA the templates, then flow-level approval for the exact audience + templates + caps. 3. Enroll and monitor by sender."
     },
     {
       "name": "Stalled deal reactivation spec - team-wide",
@@ -129,7 +136,8 @@
       "composes": [
         "stalled-deal-reactivation",
         "firsttouch-messaging"
-      ]
+      ],
+      "run_guide": "1. RevOps builds the contact-based 60-day workflow (see `references/hubspot-setup.md`). 2. Reps approve their own owner-routed queues. 3. Track reactivation outcomes in the monthly performance review."
     },
     {
       "name": "Closed-lost reengagement - team-wide",
@@ -139,7 +147,8 @@
         "hubspot-signal-to-linkedin-touch",
         "icp-outbound-builder",
         "firsttouch-messaging"
-      ]
+      ],
+      "run_guide": "1. Pull the HubSpot Closed Lost contact list (keep it separate from stalled open deals). 2. Use `hubspot-signal-to-linkedin-touch` for known contacts and `icp-outbound-builder` to find new stakeholders at those accounts. 3. Draft a win-back angle that references what changed since the loss; owners approve their own rows."
     },
     {
       "name": "New-customer referral thank-you",
@@ -148,7 +157,8 @@
       "composes": [
         "customer-referral",
         "firsttouch-messaging"
-      ]
+      ],
+      "run_guide": "1. Pull the Closed Won/customer list. 2. `customer-referral` checks connection state and drafts a thank-you plus light referral ask (both connected and unconnected paths). 3. The account owner approves, then queue."
     },
     {
       "name": "HubSpot setup guide for FirstTouch-triggered actions",
@@ -156,7 +166,8 @@
       "needs": "HubSpot required; confirm action cards exist in the customer portal before promising UI steps",
       "composes": [
         "hubspot-signal-to-linkedin-touch"
-      ]
+      ],
+      "run_guide": "1. Follow `references/hubspot-setup.md` to build the contact-based workflow. 2. Verify the FirstTouch action card is available, or fall back to a static list handoff. 3. Test with one designated test contact before any volume."
     },
     {
       "name": "Event plays - pre-invite and post-follow-up",
@@ -166,7 +177,8 @@
         "icp-outbound-builder",
         "hubspot-signal-to-linkedin-touch",
         "firsttouch-messaging"
-      ]
+      ],
+      "run_guide": "1. Build the invite segment from a HubSpot list or Discover Contacts. 2. Pre-event: personalized invites through the approval queue. 3. Post-event: follow up attendees and no-shows separately with different angles."
     }
   ],
   "references": [
@@ -193,6 +205,12 @@
     },
     {
       "src": "references/recipes.md"
+    },
+    {
+      "src": "references/hubspot-properties.md"
+    },
+    {
+      "src": "references/team-governance.md"
     }
   ],
   "example_prompts": [

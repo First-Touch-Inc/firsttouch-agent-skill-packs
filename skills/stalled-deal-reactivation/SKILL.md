@@ -31,6 +31,16 @@ Before running this skill for the first time in a workspace, load `../../referen
 - **Owner routing:** HubSpot deal owner/contact owner and authorized FirstTouch sender
 - **Workflow action:** create list/queue, enroll in FirstTouch flow, or prepare an approval table depending on the connected portal's available workflow actions
 
+## AE self-serve: build the list yourself (no admin needed)
+You can build the one-time list in HubSpot's UI with a normal sales seat:
+1. In HubSpot: **Contacts -> Lists -> Create list -> Active list** (contact-based).
+2. Add filters:
+   - **Associated deal** -> Deal stage -> is none of -> Closed Won, Closed Lost
+   - **Last activity date** -> is more than -> 60 days ago
+3. Optional: add "Contact owner is me" to scope it to your book.
+4. Name it (for example "Stalled open deals - 60d quiet") and give the list name to the agent.
+Property labels vary slightly by portal; if a filter is missing, ask RevOps which property tracks last engagement. RevOps is only needed when you want this to run automatically every day as a workflow.
+
 ## Step-by-step
 
 ### 1. Query or define the contact-based stalled-deal audience

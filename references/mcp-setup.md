@@ -46,6 +46,7 @@ HubSpot is the system of record - it gives the agent the CRM context that makes 
 **Connect:**
 - **MCP URL:** If your agent has a native HubSpot connector option, use that. Otherwise use `https://mcp.hubspot.com/anthropic` (Anthropic-hosted), unless your agent/connector UI lists a different current HubSpot MCP endpoint.
 - **Auth:** OAuth from HubSpot, or a service key / private app token connected in the user's agent/harness
+- **Scope lockdown:** grant read-only wherever possible - the agent's key never needs property-edit, deal-stage, or owner-change scopes. Full minimum-scope table and the exact `first_touch_*` properties FirstTouch writes: [`hubspot-properties.md`](hubspot-properties.md).
 - **Scopes typically needed:** contacts (read), companies (read), deals (read), owners (read), lists (read), tasks (read/write when using the HubSpot social task runner), timeline activity (read). Write scopes only if a play explicitly logs back or completes HubSpot tasks.
 
 **If HubSpot is not connected:**
