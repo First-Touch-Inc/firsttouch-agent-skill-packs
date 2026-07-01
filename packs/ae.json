@@ -149,7 +149,7 @@
   "example_prompts": [
     "\"A meeting was just booked at Acme. Auto-connect with the booked contact on LinkedIn today and draft the same-day follow-up for my approval.\"",
     "\"I just booked a meeting at Acme. Draft LinkedIn touches to the other stakeholders so the deal is not single-threaded.\"",
-    "\"Find contacts on my open deals with no engagement in 60+ days and draft owner-approved LinkedIn reactivations.\"",
+    "\"From this HubSpot list of open deals with no engagement in 60+ days, draft owner-approved LinkedIn reactivations.\"",
     "\"If HubSpot already creates LinkedIn/social tasks daily, find today's due tasks and run the eligible ones through FirstTouch.\""
   ]
 }

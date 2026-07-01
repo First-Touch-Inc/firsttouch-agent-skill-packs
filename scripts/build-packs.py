@@ -41,7 +41,7 @@ START_HERE = {
     "founder": "1. **Check Social Engagement first:** run **Social engagement flow: founder posts** from owned founder or executive personal profiles. If Social Engagement is not enabled, turn it on through FirstTouch MCP for the monitored profile. If owned personal-profile engagement is thin, monitor a relevant competitor founder or category influencer personal profile. FirstTouch does not track company-page/profile engagement.\n2. **No engager source right now:** if no monitored profile or engager list is available, run **Founder-led AI SDR** from ICP + FirstTouch Discover Contacts.\n3. **Have HubSpot:** add inbound, visitor, and stalled-deal plays as secondary CRM/deal motions, not the default path.",
     "ae": "1. **Meeting booked / signup source:** run **Auto-connect on meeting or signup** first. This is the AE #1 use case: same-day LinkedIn auto-connect/follow-up from booked meetings, signups, or a manually exported meeting-booked list.\n2. **HubSpot + stakeholder expansion:** run **Meeting-booked stakeholder follow-up** when a booked-meeting source/list is available and the AE wants to multi-thread the account. It can run from the same booked-meeting source as auto-connect because it targets other stakeholders, not duplicate outreach to the booked contact.\n3. **Warm LinkedIn engagers:** run **Social engager flow — leadership's audience** when prospects engage with leadership, competitor, or influencer personal-profile posts.\n4. **No HubSpot/list access:** run **AE AI SDR** from ICP + Discover Contacts; this cannot touch existing pipeline without HubSpot or a FirstTouch-accessible contact list.\n5. **HubSpot + quiet pipeline:** run **Stalled deal reactivation** from a manually filtered contact list.\n6. **HubSpot MCP + tasks already created for LinkedIn/social steps:** run **Automate due HubSpot social tasks** as a secondary task runner for tasks due today, not as a cadence/list creator.",
     "bdr": "Use this source-based chooser:\n\n| What you have today | Run first | Why |\n|---|---|---|\n| No source/list yet | **BDR AI SDR** (`icp-outbound-builder`) | Daily approval engine from ICP + Discover Contacts |\n| No-show, event, old-MQL, or HubSpot list | **Scoop-up slipped leads** | Lead recovery from a provided source |\n| Connected inbound feed or imported signup/demo list | **Auto-connect on meeting or signup** | Same-day inbound follow-up |\n| Leadership/competitor post engagement | **Social engager flow** | Work warm engagers before they go cold |\n| RB2B/HubSpot visitor source | **Website visitor play** | Conditional; most BDRs skip if no visitor source exists |\n| HubSpot MCP + tasks already created for LinkedIn/social steps | **Automate due HubSpot social tasks** | Secondary task runner for tasks due today in the user/owner queue; not a prospecting engine |\n\n**Daily engine means approval queue, not autosend:** the agent discovers, enriches, drafts, and queues rows; every first-touch row still requires individual BDR approval before sending. Use **Social campaigns** only for manager-approved special pushes, not normal daily work.",
-    "revops": "Start with **Pre-launch rollout audit** before any rep launches volume. Then govern the core rollout: HubSpot list triggers, **Team-wide AI SDR**, social campaigns, stalled-deal workflows, and **Attribution & team performance review** as the recurring reporting cadence. Keep situational plays such as events, customer thank-you, website visitors, and closed-lost reengagement for after the core governance path is stable.",
+    "revops": "Start with **Pre-launch rollout audit** before any rep launches volume. Then govern the core rollout: HubSpot list triggers, **Team-wide AI SDR**, social campaigns, stalled-deal workflows, and **Attribution & team performance review** as the recurring reporting cadence. **Ad hoc queue diagnostics:** if a rep asks why a LinkedIn/email action has not sent, ask the agent a direct queue/status question first; you do not need to run the full workspace audit. Keep situational plays such as events, customer thank-you, website visitors, and closed-lost reengagement for after the core governance path is stable.",
 }
 
 QUICKSTART_CARDS = {
@@ -71,7 +71,8 @@ QUICKSTART_CARDS = {
 | Team prospecting | Team-wide AI SDR | Configure senders, owners, caps, and approval queues |
 | HubSpot-driven outreach | HubSpot list trigger | Launch FirstTouch from approved CRM source |
 | Governance / QA | Sequence QA reviewer | Catch risk before reps send |
-| Reporting | Attribution & team performance review | Pull team metrics and reconcile CRM logging |""",
+| Reporting | Attribution & team performance review | Pull team metrics and reconcile CRM logging |
+| Rep asks why an action has not sent | Direct queue/status question | Inspect outreach queue blockers without running a full audit |""",
 }
 
 NO_HUBSPOT = {
@@ -239,7 +240,7 @@ Publishing a flow activates it but does **not** enroll awaiting contacts. After 
 
 | Motion | Approval style |
 |---|---|
-| AI SDR / dynamic actions | Row-level approval. Each first-touch row must be approved individually; if approval tasks are enabled, route them to the owner in HubSpot or the FirstTouch app under **Tasks**. |
+| AI SDR / dynamic actions | Row-level approval. Each first-touch row must be approved individually; if approval tasks are confirmed enabled, route them to the owner in HubSpot or the FirstTouch app under **Tasks**. |
 | Warm engager, inbound, website visitor, HubSpot signal, customer/stalled deal | Row-level approval unless FirstTouch records an equivalent per-contact approval; approval tasks route to the owner in HubSpot or app **Tasks** when enabled. |
 | Social campaigns | Two modes: rep/BDR dynamic rows use row-level approval like AI SDR; RevOps/founder one-time static campaigns can use flow-level approval after exact audience, templates, sender/routing rule, launch window, and daily cap are approved. |
 
@@ -256,7 +257,7 @@ Publishing a flow activates it but does **not** enroll awaiting contacts. After 
 - Plays available now from this pack: ...
 - Plays blocked until HubSpot access/list or source data exists: ...
 - Recommended first play: ...
-- Approval workflow: row-level for dynamic plays; approval tasks route to the owner in HubSpot or FirstTouch app Tasks when enabled; flow-level only for approved one-time social campaigns
+- Approval workflow: row-level for dynamic plays; confirm whether approval tasks are enabled before routing to the owner in HubSpot or FirstTouch app Tasks; flow-level only for approved one-time social campaigns
 ```
 """
 
@@ -381,7 +382,7 @@ def build_readme(manifest: dict, skill_descriptions: dict) -> str:
 - **Skills** are the individual building blocks. Run a skill directly only when you know the exact motion you want.
 - **Read once:** `references/system-grounding.md` explains how agents, FirstTouch, HubSpot, approvals, and measurement fit together.
 - **FirstTouch terms:** a campaign/sequence/social campaign in this pack becomes a FirstTouch audience, flow plan, dynamic action, or enrollment depending on the play. {term_note} The agent should use FirstTouch's available execution objects and state the exact object it created.
-- **Approval locations:** if approval tasks are enabled, route them to the owner in HubSpot or the FirstTouch app under **Tasks**. If that workflow is not enabled, present the table in chat and wait for explicit approval.
+- **Approval locations:** before assuming approval tasks are enabled, ask the user or check available FirstTouch task/workspace settings. If approval tasks are enabled, route them to the owner in HubSpot or the FirstTouch app under **Tasks**. If that workflow is not enabled or cannot be confirmed, present the table in chat and wait for explicit approval.
 
 ## First-run onboarding
 Before running the first play in this pack, ask the user:

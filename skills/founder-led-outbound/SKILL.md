@@ -13,7 +13,7 @@ metadata:
 **Outcome:** Produce a daily approval-ready batch of founder-voice LinkedIn touches from either an existing HubSpot/contact list or a newly discovered ICP list, without requiring HubSpot to start.
 
 ## First-run onboarding gate
-Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type (free/basic = no connection notes; recommend 10 connection requests/day and never exceed the FirstTouch max of 20/day; Sales Navigator/Premium = connection notes available; recommend 20 connection requests/day and never exceed the FirstTouch max of 30/day), HubSpot access (MCP, service key/private app token, HubSpot list only, or none), and which play the user wants to run. For founders, recommend the **social engagement flow first**, then founder-led AI SDR once warm-signal motions are running. If HubSpot is unavailable, this play can still run by building a new ICP list with FirstTouch Discover Contacts.
+Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type (free/basic = no connection notes; recommend 10 connection requests/day and never exceed the FirstTouch max of 20/day; Sales Navigator/Premium = connection notes available; recommend 20 connection requests/day and never exceed the FirstTouch max of 30/day), HubSpot access (MCP, service key/private app token, HubSpot list only, or none), and which play the user wants to run. For founders, recommend the **social engagement flow first** when a monitored profile or engager list exists. If no engager source is available right now, this play is the immediate fallback and can run by building a new ICP list with FirstTouch Discover Contacts without HubSpot.
 
 ## When to use
 - "I'm the founder, help me do my own outbound"
@@ -111,6 +111,7 @@ Every row should be marked `awaiting founder approval`.
 
 ### 5. After approval, queue in FirstTouch
 After founder approval:
+- before queueing per-contact dynamic actions, run `get_dynamic_action_guide`, then call `add_dynamic_action` in the supported order
 - add approved contacts to the right FirstTouch flow/campaign, or queue dynamic actions
 - remember: publishing a flow activates it but does **not** enroll awaiting contacts; explicitly enroll approved contacts/items, then confirm they moved from awaiting to in-progress
 - enforce duplicate checks, account-safety limits, and approval status from `../../references/safety-governance.md`

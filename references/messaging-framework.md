@@ -73,7 +73,7 @@ Before presenting a draft, the agent verifies:
 - [ ] **Conversational tone** — sounds like a human, not a campaign robot
 - [ ] **No jargon** — no "revolutionary," "leverage," "synergy," "supercharge"
 - [ ] **No flattery** — no "I love what you're building at {company}" (lazy)
-- [ ] **No em dashes in outreach copy** — write naturally without em dashes
+- [ ] **No em dashes in outreach copy.** Write naturally without them
 - [ ] **One ask max** — never stack multiple CTAs
 - [ ] **Simplest possible ask** — the message tries to start a conversation, not force a meeting
 - [ ] **Seniority-calibrated** — tone shifts for IC vs Manager vs VP/Founder
@@ -147,7 +147,7 @@ If {topic} comes back on your plate, I'm happy to compare notes. Either way, goo
 Most tools personalize *the copy*. FirstTouch lets the agent personalize **the trigger and the attribution**:
 
 - The signal can come **from HubSpot** (lifecycle change, deal stall), not just LinkedIn
-- Every message is **logged to the contact timeline**, so the next touch has context
-- Outreach is **owner-aware** — it respects who owns the relationship
+- Every message is **logged to the contact timeline when HubSpot is connected**, so the next touch has context
+- Outreach is **owner-aware when HubSpot owner data is connected**; without HubSpot, the agent states that CRM owner routing is unavailable and requires explicit approval
 
 Teach the agent to use HubSpot context as a signal source, not just LinkedIn activity. That's the differentiator.

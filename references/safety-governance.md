@@ -46,7 +46,7 @@ Never exceed the authorized account's safe daily/weekly limits.
 ### Gate 3a — Credit/spend governance
 Discovery and enrichment can consume FirstTouch credits.
 - Before any bulk Discover Contacts, contact enrichment, email enrichment, phone enrichment, or company enrichment, preview a small sample first.
-- State the estimated **maximum** credits before bulk work.
+- State the estimated **maximum** credits before bulk work. Use the connected FirstTouch credit/cost tools when available, such as `get_credits_usage` and `get_feature_costs`; otherwise state that the estimate could not be verified.
 - Require explicit human approval for the bulk credit spend before importing/enriching the full audience.
 - If credit balance or feature costs are unavailable, report that uncertainty and ask before proceeding.
 
@@ -56,8 +56,9 @@ Present the **exact** draft (recipient, message, intended action) to a human.
 - Edit → re-queue with edits
 - Deny → log and stop
 - Slack/email approval delivery requires external workspace configuration and is not assumed FirstTouch-native. If Slack/email/FirstTouch approval workflow is not configured, use in-agent approval: show the approval table in chat and wait for the human response before executing anything.
+- Before assuming approval tasks are enabled, ask the user or check the FirstTouch workspace/task settings available to the connected agent. If approval-task routing is not confirmed, fall back to in-agent approval.
 
-> **Approval must be per-send for dynamic first-touch outbound.** Batch approval is acceptable only for follow-ups in an already-approved sequence, or for a one-time `social-campaigns` flow where the human approves the exact segment, sender/routing rule, static templates, launch window, and daily cap before the flow launches. When approval tasks are enabled, route the approval task to the contact/account owner in HubSpot or the FirstTouch app under **Tasks**. Do not treat social-campaign flow approval as permission for future dynamic or AI-generated campaigns.
+> **Approval must be per-send for dynamic first-touch outbound.** Batch approval is acceptable only for follow-ups in an already-approved sequence, or for a one-time `social-campaigns` flow where the human approves the exact segment, sender/routing rule, static templates, launch window, and daily cap before the flow launches. When approval tasks are confirmed enabled, route the approval task to the contact/account owner in HubSpot or the FirstTouch app under **Tasks**. Do not treat social-campaign flow approval as permission for future dynamic or AI-generated campaigns.
 
 ### Gate 5 — Log after send
 When HubSpot is connected, every executed action is logged to the HubSpot contact timeline via FirstTouch, within minutes.
@@ -76,7 +77,8 @@ Capture account type during first-run onboarding, then use the stricter cap. Tun
 | Sales Navigator / Premium — connection requests | 20/day | 30/day | FirstTouch-supported max; pack recommends lower for safety |
 | LinkedIn messages — free/basic | 20/day | 20/day | FirstTouch-supported max |
 | LinkedIn messages — Sales Navigator/Premium | 30/day | 30/day | FirstTouch-supported max |
-| Post engagements | ~50/day | N/A | General LinkedIn safety norm, not FirstTouch-enforced |
+
+**General LinkedIn hygiene:** post engagement activity is a LinkedIn behavior norm, not a FirstTouch-sourced or FirstTouch-enforced cap. If a user asks about liking/commenting volume, keep it conservative and separate from the FirstTouch connection/message caps above.
 
 **Connection-note rule:** use connection notes only when the sender has Sales Navigator / Premium and the message is approved. For free/basic accounts, send blank connection requests and use the approved opener after the prospect accepts.
 

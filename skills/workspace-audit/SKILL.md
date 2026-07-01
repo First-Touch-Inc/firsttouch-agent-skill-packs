@@ -50,7 +50,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 ### 5. Logging, replies & attribution readiness
 - FirstTouch→HubSpot timeline logging active? ✅/❌
 - HubSpot write scope for timeline tags/properties confirmed? ✅/❌
-- Test action round-trip completed: create/approve one safe test action, then verify the HubSpot timeline/logging record and FirstTouch reply/status visibility came back as expected. If the team will not run a test action, mark attribution/logging `unverified`, not `ready`.
+- Test action round-trip completed: create/approve one safe test action to a contact/record explicitly designated by the user as a test recipient, or to the operator's own profile. Never use a live prospect just to verify logging. Then verify the HubSpot timeline/logging record and FirstTouch reply/status visibility came back as expected. If the team will not run a test action, mark attribution/logging `unverified`, not `ready`.
 - Attribution tags/properties created or writable (e.g. `linkedin_intent`, play tags)? ✅/❌/manual HubSpot check
 - FirstTouch reply tracking visible for outreach actions? ✅/❌ — the agent cannot read arbitrary inbox history, but FirstTouch-tracked outreach can surface reply/engagement status for actions it manages.
 - Deals associated with contacts that have timeline activity? ✅/❌
