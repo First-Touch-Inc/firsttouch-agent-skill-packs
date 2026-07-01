@@ -6,7 +6,8 @@ metadata:
   version: "1.1"
   category: play
   requires: [firsttouch-mcp]
-  optional: [hubspot-mcp]
+  optional: [hubspot-mcp-for-crm-visitor-sources]
+  requires_one_of: [hubspot-tracking, rb2b-or-visitor-list-source]
 ---
 
 # Website Visitor Follow-Up
@@ -69,7 +70,7 @@ Keep it light, conversational, and 2 sentences max.
 Show the visitor signal, confidence level, target contact, and draft.
 
 ### 6. Execute + log
-On approval: send via FirstTouch. If HubSpot is connected, log to HubSpot and tag `website_visitor_followup`; if the source is RB2B/import without HubSpot, log the execution record in FirstTouch and state that CRM timeline logging was skipped.
+On approval: send via FirstTouch. Log to HubSpot and tag `website_visitor_followup` when the connected FirstTouch-HubSpot integration supports it; if the source is RB2B/import without supported HubSpot logging, log the execution record in FirstTouch and state that CRM timeline logging was skipped.
 
 ### 7. Track
 Measure reply and meeting rate by page type and signal confidence.

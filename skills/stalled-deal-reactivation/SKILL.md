@@ -8,6 +8,8 @@ metadata:
   requires: [firsttouch-mcp, hubspot-mcp]
 ---
 
+**Founder note:** this is a secondary HubSpot motion. Skip it until HubSpot/CRM data or a FirstTouch-accessible HubSpot list exists.
+
 # Stalled Deal Reactivation
 
 **Outcome:** Find contacts associated to open deals that are not Closed Won/Lost and have had no engagement for 60+ days, then build an owner-approved LinkedIn reactivation queue. If RevOps wants automation, create or document the contact-based HubSpot workflow as an optional setup step. If the connected HubSpot portal or MCP cannot create workflows, output exact RevOps/admin setup steps and do not pretend it was automated.
@@ -80,7 +82,7 @@ Output a table: deal, company, amount, stage, owner, last engagement date, stall
 ### 8. Execute + log (FirstTouch MCP)
 After approval only:
 - send or queue the approved FirstTouch action
-- run Gate 5 by logging the executed action to the HubSpot deal + contact timeline within minutes
+- run Gate 5 by logging the executed action to the HubSpot deal + contact timeline within minutes when the connected FirstTouch-HubSpot integration supports it; otherwise keep the FirstTouch execution record and state CRM logging was skipped
 - tag `stalled_open_deal_60d` and the stall cause for attribution
 - if HubSpot workflow action cards are unavailable in the connected portal, or the user lacks admin rights, output the manual HubSpot workflow/list setup steps from `../../references/hubspot-setup.md` for RevOps/admin instead of pretending the UI exists
 

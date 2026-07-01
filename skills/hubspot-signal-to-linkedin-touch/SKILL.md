@@ -1,12 +1,14 @@
 ---
 name: hubspot-signal-to-linkedin-touch
-description: Turn a HubSpot CRM event — lifecycle stage change, deal stage movement, form fill, list addition — into a timely, personalized LinkedIn touch. Reads the signal from HubSpot, qualifies the contact, drafts outreach via FirstTouch, gates for approval, and logs back to the timeline. Use when the user wants to act on HubSpot activity with LinkedIn outreach, trigger social touches from CRM events, or make outbound "event-driven."
+description: Turn a HubSpot CRM event — lifecycle stage change, deal stage movement, form fill, list addition — into a timely, personalized LinkedIn touch. Reads the signal from HubSpot, qualifies the contact, drafts outreach via FirstTouch, gates for approval, and logs back to HubSpot when the connected FirstTouch-HubSpot integration supports it. Use when the user wants to act on HubSpot activity with LinkedIn outreach, trigger social touches from CRM events, or make outbound "event-driven."
 metadata:
   author: firsttouch
   version: "1.1"
   category: play
   requires: [firsttouch-mcp, hubspot-mcp]
 ---
+
+**Founder note:** this is a secondary HubSpot motion. Skip it until HubSpot/CRM data or a FirstTouch-accessible HubSpot list exists.
 
 # HubSpot Signal → LinkedIn Touch
 
@@ -47,7 +49,7 @@ The HubSpot event determines the message:
 | Lifecycle up (SQL→Opportunity) | Opener to connected | Warm the opp |
 | Meeting logged on an associated deal | Connection request to unconnected stakeholders, or opener/value touch to connected stakeholders | Multi-thread the account after a real meeting signal. Configure as a contact-based HubSpot list/workflow, for example: contacts at companies where an associated deal has a meeting logged in the last 7 days. |
 | Deal moved forward | Value touch to stakeholders | Reinforce |
-| Open deal not Closed Won/Lost and no engagement for 60+ days | Re-engage | Use a contact-based stalled-deal list/workflow-output pattern; if this pack does not include the stalled-deal skill, ask RevOps/admin to supply the qualifying HubSpot list or setup steps. Deal triggers are unsupported. |
+| Open deal not Closed Won/Lost and no engagement for 60+ days | Re-engage | Use a contact-based stalled-deal list/workflow-output pattern. If no stalled-deal list is provided, ask RevOps/admin to supply the qualifying HubSpot list or setup steps. Deal triggers are unsupported. |
 | Closed Lost deal selected for win-back | Connection request or re-engage | Use a contact-based list of contacts associated to Closed Lost deals; keep this separate from stalled open-deal reactivation. |
 | Re-engaged after silence | Opener | Context renewed |
 
@@ -58,7 +60,7 @@ The **signal is the HubSpot event itself** — e.g. "saw you just downloaded the
 Table of: contact, triggering event, owner, message type, draft. All marked awaiting approval.
 
 ### 6. Execute + log (FirstTouch MCP)
-On approval: send via FirstTouch, log to HubSpot timeline, tag with `signal_triggered_touch` + the signal type for attribution.
+On approval: send via FirstTouch. Log to the HubSpot timeline when the connected FirstTouch-HubSpot integration supports it; otherwise log the execution record in FirstTouch and state CRM logging was skipped. Tag with `signal_triggered_touch` + the signal type for attribution when tagging is available.
 
 ### 7. Track
 Cohort tagged by signal type so the team can review which signals produce replies, meetings, and pipeline. When FirstTouch team metrics are available, pull metrics filtered by this flow/tag to report replies, meetings, and opportunities.

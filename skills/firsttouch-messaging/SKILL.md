@@ -88,7 +88,7 @@ State clearly: *"Drafted for review. This will not send until you approve."*
 ### Good opener (Manager tier)
 > **Signal:** HubSpot shows Acme moved to "Scaling" lifecycle + 2 SDR hires last month
 > **To:** Dana Lee, Dir. Sales Ops @ Acme
-> "Dana, thanks for connecting. With the SDR team doubling, most ops leaders we talk to are scrambling to keep LinkedIn activity attributed in HubSpot. Is that on your plate? Happy to send how Drift set theirs up."
+> "Dana, thanks for connecting. With the SDR team doubling, are you looking at how to keep LinkedIn activity attributed in HubSpot?"
 
 ### Bad (do not do this)
 > "Hi Dana, I'd love to learn about your challenges and show you how our AI-powered platform can supercharge your outreach. Do you have 15 mins this week?"

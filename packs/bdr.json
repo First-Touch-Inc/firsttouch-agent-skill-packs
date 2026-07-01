@@ -2,7 +2,7 @@
   "persona": "bdr",
   "pack_name": "BDR Pack",
   "persona_pain": "Inbox busywork and slow follow-up make you miss the inbound window and look bad to your AE",
-  "persona_blurb": "Your job is meetings. You live in the gap between marketing handing over a lead and sales getting a discovery call on the calendar. Every delay in follow-up, every manual step, every no-show not chased \u2014 that's a meeting you didn't book. These plays close that gap: fast inbound response, warm-signal conversion, and lead recovery without the grind.",
+  "persona_blurb": "Your job is meetings. You live in the gap between marketing handing over a lead and sales getting a discovery call on the calendar. Every delay in follow-up, every manual step, every no-show not chased: that's a meeting you didn't book. These plays close that gap: fast inbound response, warm-signal conversion, and lead recovery without the grind.",
   "skills": [
     {
       "name": "firsttouch-messaging",
@@ -125,8 +125,9 @@
     }
   ],
   "example_prompts": [
-    "\"Find my HubSpot LinkedIn tasks due today and execute the eligible ones through FirstTouch.\"",
-    "\"Work the LinkedIn connection request and LinkedIn message tasks due today in my BDR HubSpot queue.\"",
-    "\"Check my HubSpot tasks for LinkedIn/social follow-ups due today, run the safe ones, and tell me what stayed open.\""
+    "\"Run the FirstTouch AI SDR play for today: discover ICP-fit prospects, enrich them, and show me an approval table up to my daily connection cap. Do not send until I approve.\"",
+    "\"Build today's LinkedIn outbound batch from this ICP and gate every row for approval.\"",
+    "\"Find people who engaged with our leadership profile this week and draft connection requests for my approval.\"",
+    "\"If HubSpot already creates LinkedIn/social tasks daily, find today's due tasks and run the eligible ones through FirstTouch.\""
   ]
 }

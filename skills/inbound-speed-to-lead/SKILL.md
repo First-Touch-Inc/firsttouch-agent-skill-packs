@@ -67,7 +67,7 @@ Show per contact:
 Awaiting approval only.
 
 ### 6. Execute + log
-On approval: send via FirstTouch. If HubSpot is connected, log to the HubSpot timeline and tag as `inbound_speed_to_lead`; if not, log the execution record in FirstTouch and state that CRM logging was skipped.
+On approval: send via FirstTouch. Log to the HubSpot timeline and tag as `inbound_speed_to_lead` when the connected FirstTouch-HubSpot integration supports it; otherwise log the execution record in FirstTouch and state that CRM logging was skipped.
 
 ### 7. Track
 Measure touch-to-meeting rate and reply rate for inbound contacts who received the LinkedIn touch versus those who did not.

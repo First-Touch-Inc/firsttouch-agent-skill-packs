@@ -2,7 +2,7 @@
   "persona": "ae",
   "pack_name": "AE Pack",
   "persona_pain": "Deals dying in silence while champions go dark and pipeline looks fine until it doesn't",
-  "persona_blurb": "You carry a number. Your whole job depends on deals staying alive and champions staying warm. Most CRM data tells you what happened last month \u2014 these plays tell you what to do today about the deal that's going quiet. You need fast inbound follow-up, multi-threading on booked meetings, and reactivation plays for pipeline that's been silent too long.",
+  "persona_blurb": "You carry a number. Your whole job depends on deals staying alive and champions staying warm. Most CRM data tells you what happened last month: these plays tell you what to do today about the deal that's going quiet. You need fast inbound follow-up, multi-threading on booked meetings, and reactivation plays for pipeline that's been silent too long.",
   "skills": [
     {
       "name": "firsttouch-messaging",
@@ -147,8 +147,9 @@
     }
   ],
   "example_prompts": [
-    "\"Find my HubSpot LinkedIn tasks due today and execute the eligible ones through FirstTouch.\"",
-    "\"Work the LinkedIn connection request and LinkedIn message tasks due today in my AE HubSpot queue.\"",
-    "\"Check my HubSpot tasks for LinkedIn/social follow-ups due today, run the safe ones, and tell me what stayed open.\""
+    "\"Find contacts on my open deals with no engagement in 60+ days and draft owner-approved LinkedIn reactivations.\"",
+    "\"I just booked a meeting at Acme. Draft LinkedIn touches to the other stakeholders so the deal is not single-threaded.\"",
+    "\"Follow up with everyone who engaged with our leadership LinkedIn posts this week and show me rows for approval.\"",
+    "\"If HubSpot already creates LinkedIn/social tasks daily, find today's due tasks and run the eligible ones through FirstTouch.\""
   ]
 }

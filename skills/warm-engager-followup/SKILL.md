@@ -13,7 +13,7 @@ metadata:
 **Team-governance note:** For team-wide rollouts, run this with owner-based routing, per-seat cap sharing, approval review, and FirstTouch/HubSpot logging checks — not as an ungoverned single-rep send.
 
 
-**Outcome:** Convert recent LinkedIn engagement (post likes and comments) into booked conversations. Log to HubSpot when connected; otherwise log the execution record in FirstTouch and state that CRM timeline logging is unavailable.
+**Outcome:** Convert recent LinkedIn engagement (post likes and comments) into booked conversations. Log to HubSpot when the connected FirstTouch-HubSpot integration supports it; otherwise log the execution record in FirstTouch and state that CRM timeline logging is unavailable.
 
 ## First-run onboarding gate
 Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type (free/basic = no connection notes and 10 connection requests/day max; Sales Navigator/Premium = connection notes available and up to 20/day), HubSpot access (MCP, service key/private app token, HubSpot list only, or none), and which play the user wants to run. Recommend high-intent plays before outbound to keep the LinkedIn account healthy. If HubSpot is unavailable, do not run HubSpot-specific steps unless the user provides a HubSpot list FirstTouch can access.
@@ -78,7 +78,7 @@ Each row clearly marked *"awaiting approval — will not send."*
 ### 6. After approval → execute + log (FirstTouch MCP)
 On human approval per row:
 - FirstTouch sends the LinkedIn action
-- If HubSpot is connected, FirstTouch logs the touch to the HubSpot contact timeline and confirms log success; if it fails, alert (Gate 5)
+- If the connected FirstTouch-HubSpot integration supports timeline logging, log the touch to the HubSpot contact timeline and confirm log success; if it fails or is unsupported, alert (Gate 5) and keep the FirstTouch execution record
 - If HubSpot is not connected, log the execution record in FirstTouch and clearly state that CRM timeline logging was skipped
 
 ### 7. Track
@@ -88,7 +88,7 @@ Tag these contacts with a `warm_engager_followup` property/list so the team can 
 A **Warm Engager Follow-Up batch**:
 - Prioritized engager list with signals
 - Drafted messages, gated for approval
-- Send log + HubSpot timeline confirmation when HubSpot is connected; FirstTouch execution log when it is not
+- Send log + HubSpot timeline confirmation when the connected integration supports it; FirstTouch execution log when it does not
 - Tracked cohort for attribution
 
 ## Examples

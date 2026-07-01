@@ -64,7 +64,7 @@ Example direction:
 Show an approval table: contact, company, owner/CSM, milestone, relationship state, message type, draft, gate status. Each row must be marked awaiting approval and must not send until approved.
 
 ### 6. Execute + log
-On approval: send via FirstTouch, log to HubSpot timeline, tag as `customer_champion`.
+On approval: send via FirstTouch. Log to the HubSpot timeline when the connected FirstTouch-HubSpot integration supports it; otherwise log the execution record in FirstTouch and state CRM logging was skipped. Tag as `customer_champion` when tagging is available.
 
 ### 7. Hand off if needed
 If the reply indicates expansion interest, route to AE/CSM. If advocacy interest, route to marketing/CS.

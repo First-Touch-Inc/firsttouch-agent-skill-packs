@@ -44,21 +44,25 @@ HubSpot is the system of record — it gives the agent the CRM context that make
 **Connect:**
 - **MCP URL:** `https://mcp.hubspot.com/anthropic` (Anthropic-hosted) — or your HubSpot MCP endpoint
 - **Auth:** OAuth from HubSpot, or a service key / private app token connected in the user's agent/harness
-- **Scopes typically needed:** contacts (read), companies (read), deals (read), owners (read), lists (read), timeline activity (read). Write scopes only if a play explicitly logs back.
+- **Scopes typically needed:** contacts (read), companies (read), deals (read), owners (read), lists (read), tasks (read/write when using the HubSpot social task runner), timeline activity (read). Write scopes only if a play explicitly logs back or completes HubSpot tasks.
 
 **If HubSpot is not connected:**
 - Do **not** run HubSpot-specific plays that require CRM owners, lifecycle/deal data, lists, or logging.
 - Ask the user to create a HubSpot list that FirstTouch can access, then run only the list-based portions of the play.
 - If neither HubSpot access nor a list exists, run only plays that can operate from FirstTouch data. For AI SDR, ask for the user's ICP and build the list with FirstTouch Discover Contacts.
 
-**Verify:**
+**Verify contacts/owners:**
 > *"Show me 5 contacts in lifecycle stage 'Marketing Qualified Lead' and their owner."*
+
+**Verify task access for the HubSpot social task runner:**
+> *"Show my open HubSpot tasks due today that mention LinkedIn, connection request, message on LinkedIn, LI, or social touch. Confirm whether you can mark one selected test task complete, but do not complete it yet."*
 
 **What it exposes:**
 - Contacts & companies — properties, lifecycle, owner, activity
 - Deals — stage, amount, last activity, close date
 - Lists — active/static membership
 - Owners — the humans who own relationships (for routing)
+- Tasks — read due tasks and mark selected tasks complete when the HubSpot social task runner is approved and the connected MCP supports task writes
 
 ---
 
@@ -84,6 +88,7 @@ If no enrichment MCP is connected, the agent should use HubSpot, FirstTouch, CSV
 - [ ] FirstTouch MCP connected and returns campaign data
 - [ ] LinkedIn account type captured: free/basic (10 connection requests/day max, no connection notes) or Sales Navigator/Premium (up to 20/day, connection notes available)
 - [ ] HubSpot MCP or service key/private app token connected and returns contacts + owners (if your play needs it)
+- [ ] HubSpot MCP can read open tasks and supports task completion before running the HubSpot social task runner
 - [ ] If HubSpot is not connected, a HubSpot list or other FirstTouch-accessible source is available for any HubSpot-dependent play
 - [ ] The authorized FirstTouch user's LinkedIn account is healthy (not near limits)
 - [ ] You know **who owns** the target contacts in HubSpot (plays route by owner)
