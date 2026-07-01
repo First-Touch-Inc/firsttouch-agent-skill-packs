@@ -34,7 +34,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 ### 1. Pull engagement (FirstTouch MCP)
 Before using monitored profiles, confirm Social Engagement is enabled in the workspace (`get_social_engagement_config`). If it is not enabled, turn it on through the FirstTouch MCP monitored-profile flow when the connected account has permission (`manage_social_engagement_monitored_profile` with `action=add` and `enableSocialEngagement=true`, or `write_social_engagement_config` with `isEnabled=true`); otherwise ask for a user-provided/exported engager list and continue from that list instead of promising monitored-profile capture. Social Engagement can monitor LinkedIn profiles for post likes and comments. Prefer the user's own founder/leadership personal profile. FirstTouch does not track company-page/profile engagement. If they do not have enough owned engagement yet, plug in a relevant competitor founder, category influencer, or executive profile and work the ICP-fit people engaging there. User-provided/exported engager lists also work. Do **not** use profile views as a signal; FirstTouch does not provide profile-view capture for this play.
 
-Get recent engagers — post likes and comments — within the window (`list_social_engagement_engagers`). Record for each: name, title, company, engagement type, what they engaged with, timestamp.
+Get recent engagers - post likes and comments - within the window (`list_social_engagement_engagers`). Record for each: name, title, company, engagement type, what they engaged with, timestamp.
 
 ### 1a. If monitoring a leader, competitor, or influencer profile
 Use the FirstTouch social engagement monitored-profile flow before pulling engagement:
@@ -74,7 +74,7 @@ Keep drafts conversational, usually **2 sentences max**, and optimize for the sm
 ### 5. Present batch for approval
 Output a review table:
 | # | Prospect | Engagement | Signal | Owner | Message type | Draft |
-Each row clearly marked *"awaiting approval — will not send."*
+Each row clearly marked *"awaiting approval - will not send."*
 
 ### 6. After approval → execute + log (FirstTouch MCP)
 On human approval per row:
@@ -100,11 +100,11 @@ A **Warm Engager Follow-Up batch**:
 **Draft (connection request, ≤300 chars):** "Hi Maya, appreciated your comment on the HubSpot attribution post. Connecting with RevOps leaders thinking through social attribution. Happy to compare notes on what good measurement looks like."
 
 ## Pitfalls
-- **Treating all engagers equally** — a competitor employee who liked your post is not a lead. Filter by ICP.
-- **Skipping the duplicate check** — half of engagers may already be in a sequence. Always gate.
-- **Generic "thanks for the like"** — that's not a signal-led message. Tie it to their context.
-- **External-profile ambiguity** — if the signal came from a CEO/exec/company, competitor founder, or influencer profile, name that monitored profile and route through the right sender rather than pretending it was the rep's own post.
-- **Sending without approval** — never. Gate 4.
+- **Treating all engagers equally** - a competitor employee who liked your post is not a lead. Filter by ICP.
+- **Skipping the duplicate check** - half of engagers may already be in a sequence. Always gate.
+- **Generic "thanks for the like"** - that's not a signal-led message. Tie it to their context.
+- **External-profile ambiguity** - if the signal came from a CEO/exec/company, competitor founder, or influencer profile, name that monitored profile and route through the right sender rather than pretending it was the rep's own post.
+- **Sending without approval** - never. Gate 4.
 
 ## Reference
 - Messaging: [`../../references/messaging-framework.md`](../../references/messaging-framework.md)

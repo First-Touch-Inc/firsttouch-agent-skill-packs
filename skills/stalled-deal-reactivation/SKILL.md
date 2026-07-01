@@ -106,11 +106,11 @@ Measure: reactivation replies, meetings re-opened, stage movement, and influence
 "No decision" is the #1 competitor. This workflow catches quiet open deals while they can still be revived, routes by owner, and keeps every touch approval-gated and attributable.
 
 ## Pitfalls
-- **Including Closed Won or Closed Lost deals** — do not. This play is only for open deals not Closed Won/Lost.
-- **Using a 14-day default** — too noisy for a workflow. Default to 60+ days with configurable thresholds.
-- **"Just checking in"** — the kiss of death. Always lead with new value/context.
-- **Ignoring the cause** — a reactivation message that doesn't address why it stalled wastes the touch.
-- **Skipping suppression checks** — RevOps must be able to prove DNC/opt-out handling before any workflow-based outreach.
+- **Including Closed Won or Closed Lost deals** - do not. This play is only for open deals not Closed Won/Lost.
+- **Using a 14-day default** - too noisy for a workflow. Default to 60+ days with configurable thresholds.
+- **"Just checking in"** - the kiss of death. Always lead with new value/context.
+- **Ignoring the cause** - a reactivation message that doesn't address why it stalled wastes the touch.
+- **Skipping suppression checks** - RevOps must be able to prove DNC/opt-out handling before any workflow-based outreach.
 
 ## Reference
 - HubSpot setup reference: [`../../references/hubspot-setup.md`](../../references/hubspot-setup.md)

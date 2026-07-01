@@ -53,7 +53,7 @@ If HubSpot is connected, compare performance reporting against HubSpot logging c
 Use this structure:
 
 ```markdown
-# FirstTouch Team Performance — {date_range}
+# FirstTouch Team Performance - {date_range}
 Scope: {flows/senders/team}
 HubSpot reconciliation: connected / not connected / unverified
 

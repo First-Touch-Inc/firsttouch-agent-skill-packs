@@ -1,7 +1,7 @@
 {
   "persona": "bdr",
   "pack_name": "BDR Pack",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "persona_pain": "Inbox busywork and slow follow-up make you miss the inbound window and look bad to your AE",
   "persona_blurb": "Your job is meetings. You live in the gap between marketing handing over a lead and sales getting a discovery call on the calendar. Every delay in follow-up, every manual step, every no-show not chased: that's a meeting you didn't book. These plays close that gap: fast inbound response, warm-signal conversion, and lead recovery without the grind.",
   "skills": [
@@ -61,7 +61,7 @@
       ]
     },
     {
-      "name": "BDR AI SDR — daily approval queue",
+      "name": "BDR AI SDR - daily approval queue",
       "outcome": "Daily engine: discover or load ICP-fit prospects, enrich each prospect, and draft connection-request rows up to the recommended 10/day free/basic or 20/day Sales Nav/Premium connection-request cap for approval. Already-connected message rows use the separate message cap.",
       "needs": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
       "composes": [
@@ -70,7 +70,7 @@
       ]
     },
     {
-      "name": "Social engager flow — leadership posts",
+      "name": "Social engager flow - leadership posts",
       "outcome": "Social Engagement can be enabled through FirstTouch MCP; Convert engagement on CEO/exec/leadership posts into booked meetings before interest fades.",
       "needs": "Social Engagement can be enabled through FirstTouch MCP; No HubSpot required; use leadership, competitor founder, or influencer profile engagement; HubSpot optional for qualification/routing; profile views unavailable",
       "composes": [
@@ -87,7 +87,7 @@
       ]
     },
     {
-      "name": "Social campaigns — special row-level push",
+      "name": "Social campaigns - special row-level push",
       "outcome": "Build a manager-approved narrow BDR push such as tradeshow-city buyers, no-shows from a provided event/HubSpot list, or connected leadership titles. Default to AI-SDR-like row-level dynamic approvals, not self-serve flow building.",
       "needs": "No HubSpot required for Discover Contacts or imported/event lists; HubSpot required for no-show or CRM-history segments; row-level approval by default; manager/RevOps approval recommended",
       "composes": [
@@ -96,7 +96,7 @@
       ]
     },
     {
-      "name": "Scoop-up slipped leads — HubSpot no-shows and old MQLs",
+      "name": "Scoop-up slipped leads - HubSpot no-shows and old MQLs",
       "outcome": "Lead recovery: work no-shows and old MQLs from a HubSpot/event list or RevOps-supplied HubSpot property. If no HubSpot/event source exists, use the imported recovery-list recipe or BDR AI SDR instead.",
       "needs": "HubSpot/event list or RevOps-supplied HubSpot property required",
       "composes": [
@@ -105,7 +105,7 @@
       ]
     },
     {
-      "name": "Scoop-up slipped leads — imported recovery list",
+      "name": "Scoop-up slipped leads - imported recovery list",
       "outcome": "Lead recovery from an imported no-show, event, old-MQL, or dormant-lead CSV/list: enrich the provided people, draft recovery touches, and gate each row for approval. If no recovery source exists, use BDR AI SDR instead.",
       "needs": "Imported event/no-show/recovery list required; no HubSpot required when source rows include enough identity data",
       "composes": [

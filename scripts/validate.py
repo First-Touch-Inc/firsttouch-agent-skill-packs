@@ -80,7 +80,7 @@ def validate_manifests() -> None:
         try:
             manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         except json.JSONDecodeError as e:
-            err(f"{manifest_path.name}: invalid JSON — {e}")
+            err(f"{manifest_path.name}: invalid JSON - {e}")
             continue
         for entry in manifest.get("skills", []):
             if entry.get("name") not in skill_names:

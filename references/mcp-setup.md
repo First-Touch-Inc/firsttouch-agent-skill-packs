@@ -1,4 +1,6 @@
-# MCP Setup — Connecting the Tools Your Plays Need
+# MCP Setup - Connecting the Tools Your Plays Need
+
+**What is MCP?** It's the plug that lets your AI agent use FirstTouch. In ChatGPT and Claude.ai it shows up in settings as a **Connector**; in Claude Code, Cursor, Windsurf, and Codex it's called an **MCP server**. Same thing, different label. You set it up once, and it never sees your LinkedIn password - it only performs the actions you approve.
 
 Each play lists the MCPs it requires. Connect them once; they're shared across all plays.
 
@@ -8,7 +10,7 @@ Each play lists the MCPs it requires. Connect them once; they're shared across a
 
 ## 1. FirstTouch MCP (required by every play)
 
-FirstTouch is the execution layer — it's what lets the agent actually perform LinkedIn actions and log them.
+FirstTouch is the execution layer - it's what lets the agent actually perform LinkedIn actions and log them.
 
 **Connect in Claude / Cursor / your harness:**
 - **Server URL:** `https://mcp.firsttouch.ai`
@@ -21,12 +23,12 @@ FirstTouch is the execution layer — it's what lets the agent actually perform 
 If the agent can return campaign + seat data, the MCP is live.
 
 **What it exposes (conceptual tool surface):**
-- FirstTouch execution objects — audiences, flow plans/campaigns, dynamic actions, and enrollments depending on the connected workspace
-- Campaign/flow control — launch, pause, edit when the connected workspace exposes those actions
-- LinkedIn actions — connection request, message, email step, call task, or manual task depending on the flow/action type exposed in the workspace
-- Engagement data — LinkedIn post likes and comments from monitored profiles. Profile-view signals are not available. The agent cannot read arbitrary inbox history; FirstTouch-tracked outreach can report reply/engagement status for actions it manages, and team metrics can summarize reply sentiment where available.
-- Logging — FirstTouch/HubSpot activity logging where the workspace integration supports it
-- Safety — seat usage, daily limits, duplicate checks, Exclusion Lists/suppression, and Sending Schedule/quiet-hours settings where exposed by the connected workspace
+- FirstTouch execution objects - audiences, flow plans/campaigns, dynamic actions, and enrollments depending on the connected workspace
+- Campaign/flow control - launch, pause, edit when the connected workspace exposes those actions
+- LinkedIn actions - connection request, message, email step, call task, or manual task depending on the flow/action type exposed in the workspace
+- Engagement data - LinkedIn post likes and comments from monitored profiles. Profile-view signals are not available. The agent cannot read arbitrary inbox history; FirstTouch-tracked outreach can report reply/engagement status for actions it manages, and team metrics can summarize reply sentiment where available.
+- Logging - FirstTouch/HubSpot activity logging where the workspace integration supports it
+- Safety - seat usage, daily limits, duplicate checks, Exclusion Lists/suppression, and Sending Schedule/quiet-hours settings where exposed by the connected workspace
 
 **Terminology note:** this skill pack uses human-friendly words like "play," "sequence," "campaign," and "queue." In FirstTouch, the actual object may be an **Audience**, **Flow Plan**, **Dynamic Action**, or **Enrollment**. The agent should state which FirstTouch object it created or used.
 
@@ -34,7 +36,7 @@ If the agent can return campaign + seat data, the MCP is live.
 
 ## 2. HubSpot MCP or service key (required by HubSpot-specific plays)
 
-HubSpot is the system of record — it gives the agent the CRM context that makes outreach *smart* and *owner-safe*.
+HubSpot is the system of record - it gives the agent the CRM context that makes outreach *smart* and *owner-safe*.
 
 **Ask during onboarding:**
 - "Do you use HubSpot?"
@@ -58,11 +60,11 @@ HubSpot is the system of record — it gives the agent the CRM context that make
 > *"Show my open HubSpot tasks due today that mention LinkedIn, connection request, message on LinkedIn, LI, or social touch. Confirm whether you can mark one selected test task complete, but do not complete it yet."*
 
 **What it exposes:**
-- Contacts & companies — properties, lifecycle, owner, activity
-- Deals — stage, amount, last activity, close date
-- Lists — active/static membership
-- Owners — the humans who own relationships (for routing)
-- Tasks — read due tasks and mark selected tasks complete when the HubSpot social task runner is approved and the connected MCP supports task writes
+- Contacts & companies - properties, lifecycle, owner, activity
+- Deals - stage, amount, last activity, close date
+- Lists - active/static membership
+- Owners - the humans who own relationships (for routing)
+- Tasks - read due tasks and mark selected tasks complete when the HubSpot social task runner is approved and the connected MCP supports task writes
 
 ---
 
@@ -71,8 +73,8 @@ HubSpot is the system of record — it gives the agent the CRM context that make
 For finding LinkedIn URLs, emails, and firmographics when HubSpot is missing them.
 
 **Options:**
-- **Clay MCP** — richest for ICP + waterfall enrichment
-- **Surfe MCP** — LinkedIn-native enrichment + CRM sync
+- **Clay MCP** - richest for ICP + waterfall enrichment
+- **Surfe MCP** - LinkedIn-native enrichment + CRM sync
 - **Any provider MCP** your team already uses
 
 Social Engagement note: monitor the user's own founder/leadership personal profile when available; FirstTouch does not track company-page/profile engagement. If owned engagement is thin, monitor a relevant competitor founder, category influencer, or executive profile and work the ICP-fit people engaging there. Use post likes/comments only; profile views are not available.
@@ -92,7 +94,7 @@ If no enrichment MCP is connected, the agent should use HubSpot, FirstTouch, CSV
 - [ ] If HubSpot is not connected, a HubSpot list or other FirstTouch-accessible source is available for any HubSpot-dependent play
 - [ ] The authorized FirstTouch user's LinkedIn account is healthy (not near limits)
 - [ ] You know **who owns** the target contacts in HubSpot (plays route by owner)
-- [ ] You've decided the **approval workflow** — FirstTouch/in-agent by default; Slack/email only if externally configured (see `safety-governance.md`)
+- [ ] You've decided the **approval workflow** - FirstTouch/in-agent by default; Slack/email only if externally configured (see `safety-governance.md`)
 
 Slack/email approval delivery requires external workspace configuration and is not assumed FirstTouch-native. If Slack/email/FirstTouch approvals are not configured yet, use in-agent approval: the agent presents the approval table in chat, marks every row or flow as awaiting approval, and waits for the human before executing anything.
 

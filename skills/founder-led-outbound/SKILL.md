@@ -77,7 +77,7 @@ If HubSpot is unavailable or no saved ICP exists, ask the founder for a concise 
 **Path B - no HubSpot access or no list:**
 - Use the saved founder ICP from Step 0b, or ask for it if missing: target industries, company size, geography, titles/seniority, exclusions, and must-have signals.
 - Use **FirstTouch Discover Contacts** (`discover_contacts`) to build a small prospect list from that ICP.
-- Before larger imports, quote the cost: check per-action pricing with `get_feature_costs` and current balance with `get_credits_usage`, preview a small sample, and get approval — discovery/enrichment consumes FirstTouch credits.
+- Before larger imports, quote the cost: check per-action pricing with `get_feature_costs` and current balance with `get_credits_usage`, preview a small sample, and get approval - discovery/enrichment consumes FirstTouch credits. New workspaces start with 100 credits, which is plenty for the first discoveries; this check is about transparency, not scarcity.
 - Save the discovered contacts into a FirstTouch audience (`create_audience` or `create_audience_from_profiles`) for future daily runs.
 
 ### 2. Enrich and prioritize

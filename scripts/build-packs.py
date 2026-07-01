@@ -41,7 +41,7 @@ SKILL_NEEDS = {
 
 START_HERE = {
     "founder": "1. **Check Social Engagement first:** run **Social engagement flow: founder posts** from owned founder or executive personal profiles. If Social Engagement is not enabled, turn it on through FirstTouch MCP for the monitored profile. If owned personal-profile engagement is thin, monitor a relevant competitor founder or category influencer personal profile. FirstTouch does not track company-page/profile engagement.\n2. **No engager source right now:** if no monitored profile or engager list is available, run **Founder-led AI SDR** from ICP + FirstTouch Discover Contacts.\n3. **Have HubSpot:** add inbound, visitor, and stalled-deal plays as secondary CRM/deal motions, not the default path.",
-    "ae": "1. **Meeting booked / signup source:** run **Auto-connect on meeting or signup** first for fresh booked meetings, signups, or a manually exported meeting-booked list.\n2. **HubSpot + stakeholder expansion:** run **Meeting-booked stakeholder follow-up** when a booked-meeting source/list is available and the AE wants to multi-thread the account. It can run from the same booked-meeting source as auto-connect because it targets other stakeholders, not duplicate outreach to the booked contact.\n3. **Warm LinkedIn engagers:** run **Social engager flow — leadership's audience** when prospects engage with leadership, competitor, or influencer personal-profile posts.\n4. **No HubSpot/list access:** run **AE AI SDR** from ICP + Discover Contacts; this cannot touch existing pipeline without HubSpot or a FirstTouch-accessible contact list.\n5. **HubSpot + quiet pipeline:** run **Stalled deal reactivation** from a manually filtered HubSpot list of open deals with no engagement for 60+ days. If a deal only went quiet this week, use HubSpot signal/meeting-trigger follow-up; sub-60-day quiet-deal detection is not a native FirstTouch query.\n6. **HubSpot MCP + tasks already created for LinkedIn/social steps:** run **Automate due HubSpot social tasks** as a secondary task runner for tasks due today, not as a cadence/list creator.",
+    "ae": "1. **Meeting booked / signup source:** run **Auto-connect on meeting or signup** first for fresh booked meetings, signups, or a manually exported meeting-booked list.\n2. **HubSpot + stakeholder expansion:** run **Meeting-booked stakeholder follow-up** when a booked-meeting source/list is available and the AE wants to multi-thread the account. It can run from the same booked-meeting source as auto-connect because it targets other stakeholders, not duplicate outreach to the booked contact.\n3. **Warm LinkedIn engagers:** run **Social engager flow - leadership's audience** when prospects engage with leadership, competitor, or influencer personal-profile posts.\n4. **No HubSpot/list access:** run **AE AI SDR** from ICP + Discover Contacts; this cannot touch existing pipeline without HubSpot or a FirstTouch-accessible contact list.\n5. **HubSpot + quiet pipeline:** run **Stalled deal reactivation** from a manually filtered HubSpot list of open deals with no engagement for 60+ days. If a deal only went quiet this week, use HubSpot signal/meeting-trigger follow-up; sub-60-day quiet-deal detection is not a native FirstTouch query.\n6. **HubSpot MCP + tasks already created for LinkedIn/social steps:** run **Automate due HubSpot social tasks** as a secondary task runner for tasks due today, not as a cadence/list creator.",
     "bdr": "Use this source-based chooser:\n\n| What you have today | Run first | Why |\n|---|---|---|\n| No source/list yet | **BDR AI SDR** (`icp-outbound-builder`) | Daily approval engine from ICP + Discover Contacts |\n| No-show, event, old-MQL, or HubSpot list | **Scoop-up slipped leads** | Lead recovery from a provided source |\n| Connected inbound feed or imported signup/demo list | **Auto-connect on meeting or signup** | Same-day inbound follow-up |\n| Leadership/competitor post engagement | **Social engager flow** | Work warm engagers before they go cold |\n| RB2B/HubSpot visitor source | **Website visitor play** | Conditional; most BDRs skip if no visitor source exists |\n| HubSpot MCP + tasks already created for LinkedIn/social steps | **Automate due HubSpot social tasks** | Secondary task runner for tasks due today in the user/owner queue; not a prospecting engine |\n\n**Daily engine means approval queue, not autosend:** the agent discovers, enriches, drafts, and queues rows; every first-touch row still requires individual BDR approval before sending. Use **Social campaigns** only for manager-approved special pushes, not normal daily work.",
     "revops": "Start with **Pre-launch rollout audit** before any rep launches volume. Then govern the core rollout: HubSpot list triggers, **Team-wide AI SDR**, social campaigns, stalled-deal workflows, and **Attribution & team performance review** as the recurring reporting cadence. **Ad hoc queue diagnostics:** if a rep asks why a LinkedIn/email action has not sent, ask the agent a direct queue/status question first; you do not need to run the full workspace audit. Keep situational plays such as events, new-customer referral thank-you, website visitors, and closed-lost reengagement for after the core governance path is stable.",
 }
@@ -57,7 +57,7 @@ QUICKSTART_CARDS = {
 |---|---|---|
 | Meeting booked | Auto-connect on meeting/signup | Connect the booked contact same day |
 | Same account has other stakeholders | Meeting-booked stakeholder follow-up | Multi-thread the account without duplicating outreach |
-| Warm LinkedIn engagement | Social engager flow — leadership's audience | Work engagers from leadership / competitor / influencer posts |
+| Warm LinkedIn engagement | Social engager flow - leadership's audience | Work engagers from leadership / competitor / influencer posts |
 | Quiet open opp | Stalled deal reactivation | One-time HubSpot list or recurring workflow |
 | No warm source/list | AE AI SDR | Discover, enrich, and draft approval rows |""",
     "bdr": "Use the source-based chooser above as the quickstart. The recipe table below has execution details; Social campaigns are only the manager-approved special-push mode, not daily prospecting.",
@@ -77,6 +77,21 @@ NO_HUBSPOT = {
     "ae": "Auto-connect on meeting or signup when a booked-meeting/signup source exists; social engager flow from leadership/executive personal profiles, competitor founder profiles, or influencer personal profiles; plus AE AI SDR from FirstTouch Discover Contacts. Most AE deal, customer, territory, and stalled-pipeline use cases need HubSpot.",
     "bdr": "BDR AI SDR from FirstTouch Discover Contacts, social engager flow from leadership/competitor/influencer profiles, and special social campaigns from imported/Discover lists. Inbound speed-to-lead needs HubSpot or a FirstTouch-accessible inbound source.",
     "revops": "Workspace audit of FirstTouch-only settings, sequence QA, team-wide AI SDR from Discover Contacts, social engagement setup via FirstTouch MCP on owned or relevant external personal profiles, and social campaigns from imported/Discover lists. Owner/logging/deal/customer checks need HubSpot.",
+}
+
+WEEKLY_RHYTHM = {
+    "founder": """- **Daily (10 min):** check new warm engagers from your monitored profile and approve any drafts.
+- **2-3x per week:** approve your founder AI SDR batch. 3-5 contacts per run is plenty for a solo founder - you have to service the conversations you start.
+- **Friday:** scan replies, move anything warm to your calendar, and pause any motion that feels off-voice.""",
+    "ae": """- **Every morning (10 min):** approve auto-connect drafts for yesterday's booked meetings and signups.
+- **Midweek:** work warm engagers from leadership posts and multi-thread your active deals.
+- **Friday:** review the stalled-deal queue and approve next week's reactivation touches.""",
+    "bdr": """- **Every morning (15 min):** approve your BDR AI SDR batch - that is the daily engine.
+- **Midweek:** work warm engagers from leadership or competitor posts.
+- **Friday:** sweep no-shows and slipped inbound leads and queue recovery touches.""",
+    "revops": """- **Monday:** check queue hygiene - stuck approvals, blocked rows, and cap usage across senders.
+- **Midweek:** spot-check any new campaign with sequence QA before it launches.
+- **Monthly:** run the team performance report and review caps, suppression lists, and logging coverage.""",
 }
 
 INSTALL_NOTES = """1. Download this pack zip and extract it so `skills/` and `references/` sit side by side. Keep the `references/` folder with the skills; many skills link to `../../references/...`.
@@ -118,7 +133,7 @@ def recipe_category(persona: str, recipe: dict) -> str:
     needs = recipe.get("needs", "")
     if persona == "founder":
         if needs.startswith("No HubSpot required"):
-            return "Start here — no HubSpot needed"
+            return "Start here - no HubSpot needed"
         return "Needs HubSpot, RB2B, or a FirstTouch-accessible source"
     if persona == "ae":
         if "HubSpot MCP required" in needs or name.startswith("Automate due HubSpot social tasks"):
@@ -194,7 +209,7 @@ def build_onboarding(manifest: dict) -> str:
     voice_note = ""
     if "founder-led-outbound" in skills:
         voice_note = "\n- Founder voice capture is mandatory: collect 2-3 sample posts/messages or tone rules before founder-led outbound."
-    return f"""# First-Run Onboarding — {pack_name}
+    return f"""# First-Run Onboarding - {pack_name}
 
 This onboarding is scoped to the skills and recipes actually included in this installed pack.
 
@@ -205,7 +220,7 @@ This onboarding is scoped to the skills and recipes actually included in this in
    - AI SDR and all other connection-request plays share the same daily budget.
    - If AI SDR and a social campaign run on the same sender/day, pause/reduce one motion or split the recommended daily cap explicitly before queueing sends; never exceed the FirstTouch max.
    - Already-connected LinkedIn message rows use a separate FirstTouch-supported message cap: 20/day on free/basic LinkedIn and 30/day on Sales Navigator/Premium. Reduce volume if acceptance or reply quality drops.
-2. **HubSpot access:** MCP connected by an admin, service key/private app token from an admin, HubSpot list only, or none. Do not ask a rep/BDR to mint credentials they do not own.
+2. **HubSpot access:** MCP connected by an admin, service key/private app token from an admin, HubSpot list only, or none. Getting access is easy: ask an admin to approve HubSpot MCP access (a quick approval) or to issue a **read-only service key** that lets the agent read deals, contacts, and companies with no write risk. Do not ask a rep/BDR to mint credentials they do not own.
 3. **ICP/list/source data:** if HubSpot is absent, ask for ICP criteria or an imported/FirstTouch-accessible list before qualifying prospects.
 4. **Persona start point:** recommend the persona-specific start point below, not a generic catalog dump.
 
@@ -266,7 +281,7 @@ def build_mcp_setup(manifest: dict) -> str:
     if "hubspot-social-task-runner" not in skills:
         text = text.replace(", tasks (read/write when using the HubSpot social task runner)", "")
         text = re.sub(r"\n\*\*Verify task access for the HubSpot social task runner:\*\*\n> \*.*?\*\n", "\n", text, flags=re.DOTALL)
-        text = text.replace("\n- Tasks — read due tasks and mark selected tasks complete when the HubSpot social task runner is approved and the connected MCP supports task writes", "")
+        text = text.replace("\n- Tasks - read due tasks and mark selected tasks complete when the HubSpot social task runner is approved and the connected MCP supports task writes", "")
         text = text.replace("\n- [ ] HubSpot MCP can read open tasks and supports task completion before running the HubSpot social task runner", "")
     return text
 
@@ -276,7 +291,7 @@ def build_recipes_reference(manifest: dict) -> str:
     persona = manifest["persona"]
     pack_name = manifest["pack_name"]
     recipes_table = build_recipe_sections(persona, manifest.get("recipes", []), include_composes=True)
-    return f"""# Recipe Catalog — {pack_name}
+    return f"""# Recipe Catalog - {pack_name}
 
 Use this file when the agent installed `skills/` and `references/` without loading the root README. These recipes are the recommended starting points for the {persona} persona.
 
@@ -372,8 +387,14 @@ def build_readme(manifest: dict, skill_descriptions: dict) -> str:
 ## Who this is for
 {blurb}
 
+## What is MCP?
+MCP is the plug that lets your AI agent use FirstTouch. In **ChatGPT** and **Claude.ai** it shows up in settings as a **Connector**; in **Claude Code**, **Cursor**, **Windsurf**, and **Codex** it's called an **MCP server**. Same thing, different label. You set it up once (see `references/mcp-setup.md`), and it never sees your LinkedIn password - it only performs actions you approve.
+
 ## Start here
 {START_HERE[persona]}
+
+## Your week
+{WEEKLY_RHYTHM[persona]}
 
 ## Quickstart play cards
 {QUICKSTART_CARDS[persona]}
@@ -394,8 +415,10 @@ Before running the first play in this pack, ask the user:
    - AI SDR shares the same daily connection-request budget. If AI SDR and another play run on the same day, the total across all plays should stay within the recommended 10 or 20 unless the user explicitly approves higher volume; never exceed the FirstTouch max of 20/day free/basic or 30/day Sales Navigator/Premium.
    - Already-connected LinkedIn message rows use a separate FirstTouch-supported message cap: 20/day on free/basic LinkedIn and 30/day on Sales Navigator/Premium.
 2. **HubSpot access:** do they use HubSpot, and can an admin connect the HubSpot MCP, provide a service key / private app token, or at least provide a HubSpot list FirstTouch can access?
+   - Getting access is easy: ask your admin to approve HubSpot MCP access (a quick approval), or request a **read-only service key** that lets the agent read deals, contacts, and companies with no write risk.
    - If not, use the FirstTouch-only paths below or ask them to create a HubSpot list/source FirstTouch can access before running HubSpot-specific plays.
-3. **Play choice:** show the catalog below and recommend the persona-specific start-here play above.
+3. **Credits:** new FirstTouch workspaces start with **100 credits** - plenty for your first discoveries and enrichments. The agent checks the balance before any bulk run and asks before spending.
+4. **Play choice:** show the catalog below and recommend the persona-specific start-here play above.
 
 Use `references/onboarding.md` for the full question flow and account-type rules. Use `references/recipes.md` for the generated recipe catalog if the README is not loaded by the agent.
 

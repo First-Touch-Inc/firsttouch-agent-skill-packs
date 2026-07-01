@@ -105,7 +105,7 @@ Approval/execution table:
 ### 7. Mark HubSpot task complete after FirstTouch queues/sends
 After FirstTouch confirms the LinkedIn action is queued or sent:
 - if the task lives in FirstTouch Tasks, mark it complete with `complete_task` (use `skip_task` for rows the user rejected)
-- if the task lives in HubSpot, attempt to mark it complete through the connected HubSpot MCP (requires task write access — verified during `mcp-setup.md` preflight)
+- if the task lives in HubSpot, attempt to mark it complete through the connected HubSpot MCP (requires task write access - verified during `mcp-setup.md` preflight)
 - add a completion note such as `Executed via FirstTouch: LinkedIn connection request queued` or `LinkedIn message queued/sent`
 - if the task-complete action is unavailable, rejected by the connector, or returns an error, leave the HubSpot task open and report the failure reason in the output table
 - if FirstTouch action fails, leave the HubSpot task open and add/report the failure reason

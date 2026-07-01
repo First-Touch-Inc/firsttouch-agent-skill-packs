@@ -116,7 +116,7 @@ Run Gate 0 suppression/DNC and Gate 1 duplicate checks from `../../references/sa
 Create the FirstTouch execution object that matches the chosen mode and connected MCP support. State the exact object created.
 
 - **Rep/BDR dynamic-row mode:** build an audience and queue dynamic actions/manual approval rows, one prospect at a time; before adding per-contact dynamic actions, run `get_dynamic_action_guide`, then call `add_dynamic_action` in the supported order.
-- **Static campaign-flow mode:** build an audience (`create_audience`), create the flow plan with the approved static templates (`create_flow_plan` — run `get_flow_creation_guide` first), attach the audience (`attach_audience_to_flow`), and publish with `manage_flow_publication` only after flow-level approval.
+- **Static campaign-flow mode:** build an audience (`create_audience`), create the flow plan with the approved static templates (`create_flow_plan` - run `get_flow_creation_guide` first), attach the audience (`attach_audience_to_flow`), and publish with `manage_flow_publication` only after flow-level approval.
 
 Recommended sequence:
 - If already connected: send the approved static first-message template, then optionally one approved static follow-up.

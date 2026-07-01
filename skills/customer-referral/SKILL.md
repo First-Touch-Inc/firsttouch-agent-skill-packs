@@ -54,7 +54,7 @@ If owner routing is missing or ambiguous, stop and ask. Do not send a customer t
 For each customer contact:
 - **Already connected** → draft a LinkedIn message.
 - **Not connected** → queue a connection request first; after the connection is accepted, queue the thank-you/referral message on the `connection_accepted` branch.
-- **Unknown connection state** → check FirstTouch relationship data where available (`list_linkedin_team_connections` shows team connections); if still unknown, present the row for review with BOTH drafts (a connection request and a connected-path message) and let the human pick — never assume connected.
+- **Unknown connection state** → check FirstTouch relationship data where available (`list_linkedin_team_connections` shows team connections); if still unknown, present the row for review with BOTH drafts (a connection request and a connected-path message) and let the human pick - never assume connected.
 
 Connection-note behavior:
 - Free/basic LinkedIn: connection request must be blank/no note.
@@ -85,7 +85,7 @@ Show an approval table:
 | Contact | Company | Owner/sender | Customer signal | Connected? | Action path | Draft | Gate status |
 |---|---|---|---|---|---|---|---|
 
-Every row must be marked `awaiting approval — will not send` until the assigned human approves that row. Do not treat one table-level approval as approval to send the whole batch unless the user explicitly approves every listed row.
+Every row must be marked `awaiting approval - will not send` until the assigned human approves that row. Do not treat one table-level approval as approval to send the whole batch unless the user explicitly approves every listed row.
 
 ### 6. Queue FirstTouch Dynamic Actions
 After approval per row:

@@ -14,4 +14,4 @@
 - Global install: confirm `~/.claude/references/onboarding.md` exists.
 - Project install: confirm `.claude/references/onboarding.md` exists.
 
-If that file is missing, the skills will run without their onboarding, safety, and messaging rules. Do not copy a single skill folder without also copying `references/` — the `../../references/` links break silently.
+If that file is missing, the skills will run without their onboarding, safety, and messaging rules. Do not copy a single skill folder without also copying `references/` - the `../../references/` links break silently.

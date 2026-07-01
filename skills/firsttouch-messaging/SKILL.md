@@ -1,6 +1,6 @@
 ---
 name: firsttouch-messaging
-description: Write on-brand, high-converting LinkedIn outreach messages — connection requests, openers, follow-ups, and meeting asks — calibrated to the prospect's seniority and a real signal. Use this BEFORE any other FirstTouch play that involves drafting a message, or whenever the user asks to write LinkedIn outreach copy, draft a connection request, or personalize a sequence.
+description: Write on-brand, high-converting LinkedIn outreach messages - connection requests, openers, follow-ups, and meeting asks - calibrated to the prospect's seniority and a real signal. Use this BEFORE any other FirstTouch play that involves drafting a message, or whenever the user asks to write LinkedIn outreach copy, draft a connection request, or personalize a sequence.
 metadata:
   author: firsttouch
   version: "1.1"
@@ -9,7 +9,7 @@ metadata:
 
 # FirstTouch Messaging
 
-Every FirstTouch play that involves sending words to a human builds on this skill. It defines **how to draft** LinkedIn outreach that actually converts — signal-first, seniority-calibrated, and always gated for human approval before send.
+Every FirstTouch play that involves sending words to a human builds on this skill. It defines **how to draft** LinkedIn outreach that actually converts - signal-first, seniority-calibrated, and always gated for human approval before send.
 
 
 ## First-run onboarding gate
@@ -48,7 +48,7 @@ If you cannot find a real signal, **do not fabricate one.** Either drop the tier
 
 ### 3. Pick the message type
 - Connection request (first touch, no relationship) → goal: get accepted
-- Opener (post-accept, day 1–3) → goal: earn a reply, **no ask**
+- Opener (post-accept, day 1-3) → goal: earn a reply, **no ask**
 - Value touch (warming) → share something useful, zero ask
 - Meeting ask → only after ≥1 exchange; propose specific times
 - Break-up / re-engage → last touch, low pressure
@@ -58,7 +58,7 @@ If you cannot find a real signal, **do not fabricate one.** Either drop the tier
 ### 4. Draft using the structure
 `Signal (why now) → Relevance (why you/this) → Soft CTA (what next)`
 
-Adapt a template from [`../../references/messaging-framework.md`](../../references/messaging-framework.md) — but **never copy blindly**. Every {{variable}} must resolve to something real.
+Adapt a template from [`../../references/messaging-framework.md`](../../references/messaging-framework.md) - but **never copy blindly**. Every {{variable}} must resolve to something real.
 
 ### 5. Run the quality gate (mandatory self-check)
 Before presenting the draft, verify ALL:
@@ -75,7 +75,7 @@ If any check fails → **rewrite before showing.**
 
 ### 6. Present for approval (never send)
 Output the draft(s) for human review. Format:
-- **To:** {name} — {title} @ {company} (owner: {hubspot_owner})
+- **To:** {name} - {title} @ {company} (owner: {hubspot_owner})
 - **Type:** {connection request / opener / follow-up}
 - **Signal used:** {the one fact}
 - **Draft:** "{message}"
@@ -100,10 +100,10 @@ This skill is called by any installed play that drafts LinkedIn copy, including 
 
 ## Pitfalls
 
-- **Fabricated signals** — the #1 quality risk. If unsure, mark the field and ask for enrichment rather than inventing.
-- **Meeting ask creep** — reps love to ask early. Enforce the iron rule.
-- **Same message to everyone** — if your drafts across 10 prospects look identical, the personalization failed. Re-signal.
-- **Sending without approval** — never. The gate is in `safety-governance.md` and every play.
+- **Fabricated signals** - the #1 quality risk. If unsure, mark the field and ask for enrichment rather than inventing.
+- **Meeting ask creep** - reps love to ask early. Enforce the iron rule.
+- **Same message to everyone** - if your drafts across 10 prospects look identical, the personalization failed. Re-signal.
+- **Sending without approval** - never. The gate is in `safety-governance.md` and every play.
 
 ## Reference
 

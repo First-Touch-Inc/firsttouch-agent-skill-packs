@@ -15,7 +15,7 @@ Generic outreach fails because it leads with the sender. Good outreach leads wit
 
 The first is a template. The second is a **signal + curiosity question**. The agent's job is to find the signal.
 
-## Rule of thumb — the goal is to start the conversation, not finish the sale
+## Rule of thumb - the goal is to start the conversation, not finish the sale
 
 Every message should optimize for **the simplest possible next step**.
 
@@ -33,8 +33,8 @@ A good first-touch message creates curiosity or earns a lightweight response. It
 | Type | When | Goal |
 |------|------|------|
 | **Connection request** | First touch, no prior relationship | Get accepted |
-| **Opener (post-accept)** | Connection accepted, day 1–3 | Earn a reply, no ask |
-| **Value touch** | Warming, day 4–10 | Share something useful, zero ask |
+| **Opener (post-accept)** | Connection accepted, day 1-3 | Earn a reply, no ask |
+| **Value touch** | Warming, day 4-10 | Share something useful, zero ask |
 | **Meeting ask** | After ≥1 exchange | Propose a specific time |
 | **Re-engage / break-up** | No reply after full sequence | One last low-pressure note |
 
@@ -49,17 +49,17 @@ A good first-touch message creates curiosity or earns a lightweight response. It
 
 ## Anatomy of a high-converting message
 
-**1. Signal (the "why now")** — one specific, true thing about them.
+**1. Signal (the "why now")** - one specific, true thing about them.
 - Hiring move, funding, product launch, post they wrote, role change, mutual connection
 
-**2. Relevance (the "why you")** — connect the signal to their likely priority in ≤1 sentence.
+**2. Relevance (the "why you")** - connect the signal to their likely priority in ≤1 sentence.
 - Don't pitch the product. Pitch the *problem* you suspect they own.
 
-**3. Soft CTA (the "what next")** — a low-friction, value-based ask.
+**3. Soft CTA (the "what next")** - a low-friction, value-based ask.
 - ❌ "Can we hop on a call?" (meeting ask too early)
 - ✅ "Worth a quick compare against how you handle this today?" / "Open to me sending a one-pager?"
 
-**4. Constraints** — short, human, no jargon, no flattery.
+**4. Constraints** - short, human, no jargon, no flattery.
 
 ---
 
@@ -67,16 +67,16 @@ A good first-touch message creates curiosity or earns a lightweight response. It
 
 Before presenting a draft, the agent verifies:
 
-- [ ] **Signal is real** — references an actual, verifiable fact (not invented)
+- [ ] **Signal is real** - references an actual, verifiable fact (not invented)
 - [ ] **No meeting ask** if this is a connection request or opener
-- [ ] **Under length** — prefer **2 sentences max**; connection note ≤300 chars, opener ≤60 words, follow-up ≤80 words
-- [ ] **Conversational tone** — sounds like a human, not a campaign robot
-- [ ] **No jargon** — no "revolutionary," "leverage," "synergy," "supercharge"
-- [ ] **No flattery** — no "I love what you're building at {company}" (lazy)
+- [ ] **Under length** - prefer **2 sentences max**; connection note ≤300 chars, opener ≤60 words, follow-up ≤80 words
+- [ ] **Conversational tone** - sounds like a human, not a campaign robot
+- [ ] **No jargon** - no "revolutionary," "leverage," "synergy," "supercharge"
+- [ ] **No flattery** - no "I love what you're building at {company}" (lazy)
 - [ ] **No em dashes in outreach copy.** Write naturally without them
-- [ ] **One ask max** — never stack multiple CTAs
-- [ ] **Simplest possible ask** — the message tries to start a conversation, not force a meeting
-- [ ] **Seniority-calibrated** — tone shifts for IC vs Manager vs VP/Founder
+- [ ] **One ask max** - never stack multiple CTAs
+- [ ] **Simplest possible ask** - the message tries to start a conversation, not force a meeting
+- [ ] **Seniority-calibrated** - tone shifts for IC vs Manager vs VP/Founder
 
 If any check fails, the agent rewrites before showing the draft.
 
@@ -86,9 +86,9 @@ If any check fails, the agent rewrites before showing the draft.
 
 | Account tier | Personalization |
 |--------------|-----------------|
-| **Tier 1 (strategic)** | Deep research — read their posts, recent hires, funding, tech stack. Custom signal. |
-| **Tier 2 (mid-market)** | Moderate — role + company + one public signal. |
-| **Tier 3 (volume)** | Light — role-appropriate template with first-name + company variable. |
+| **Tier 1 (strategic)** | Deep research - read their posts, recent hires, funding, tech stack. Custom signal. |
+| **Tier 2 (mid-market)** | Moderate - role + company + one public signal. |
+| **Tier 3 (volume)** | Light - role-appropriate template with first-name + company variable. |
 
 The agent should ask which tier a play targets before drafting.
 

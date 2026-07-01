@@ -1,8 +1,8 @@
-# FirstTouch Revenue Skills — Customer Pack
+# FirstTouch Revenue Skills - Customer Pack
 
 > **Turn Claude, Cursor, Codex, and ChatGPT into FirstTouch-native LinkedIn revenue operators.**
 
-This pack gives customers a structured set of **plays** — reusable skills that execute real LinkedIn-outreach workflows with FirstTouch, human approvals, account-safety limits, and HubSpot context when available.
+This pack gives customers a structured set of **plays** - reusable skills that execute real LinkedIn-outreach workflows with FirstTouch, human approvals, account-safety limits, and HubSpot context when available.
 
 It is built to the open **Agent Skills** standard ([agentskills.io](https://agentskills.io)), so every skill works in Claude Code, Claude.ai, Cursor, Windsurf, and any MCP-compatible harness.
 
@@ -53,18 +53,18 @@ firsttouch-skills/
 ```
 
 **Two layers:**
-1. **Foundation** (`references/` + `firsttouch-messaging`) — shared grounding every play assumes.
-2. **Customer plays** — self-contained, revenue-tied workflows. Governance and attribution rules live in shared references instead of separate customer-facing plays.
+1. **Foundation** (`references/` + `firsttouch-messaging`) - shared grounding every play assumes.
+2. **Customer plays** - self-contained, revenue-tied workflows. Governance and attribution rules live in shared references instead of separate customer-facing plays.
 
 ---
 
 ## Get started in 5 steps
 
-1. **Download your pack** (below) — or grab individual skills from [`packs/skills/`](packs/skills/).
-2. **Install it** for your agent — platform guides in [`install/`](install/): [Claude Code](install/claude-code.md) · [Claude.ai](install/claude-ai.md) · [Cursor/Windsurf](install/cursor-windsurf.md) · [ChatGPT](install/chatgpt.md).
-3. **Connect the FirstTouch MCP** (`https://mcp.firsttouch.ai`) — required by every play. HubSpot MCP is optional but unlocks the CRM plays. See [`references/mcp-setup.md`](references/mcp-setup.md).
-4. **Answer the 3 onboarding questions** in [`references/onboarding.md`](references/onboarding.md) — LinkedIn account type, HubSpot access, which play to run first.
-5. **Run your first play and approve the drafts** — nothing sends without your approval.
+1. **Download your pack** (below) - or grab individual skills from [`packs/skills/`](packs/skills/).
+2. **Install it** for your agent - platform guides in [`install/`](install/): [Claude Code](install/claude-code.md) · [Claude.ai](install/claude-ai.md) · [Cursor/Windsurf](install/cursor-windsurf.md) · [ChatGPT](install/chatgpt.md).
+3. **Connect the FirstTouch MCP** (`https://mcp.firsttouch.ai`) - required by every play. HubSpot MCP is optional but unlocks the CRM plays. See [`references/mcp-setup.md`](references/mcp-setup.md).
+4. **Answer the 3 onboarding questions** in [`references/onboarding.md`](references/onboarding.md) - LinkedIn account type, HubSpot access, which play to run first.
+5. **Run your first play and approve the drafts** - nothing sends without your approval.
 
 ### Download your pack
 
@@ -85,7 +85,7 @@ Single skills for Claude.ai (one skill per zip, references bundled): [`packs/ski
    - **Claude Code:** `~/.claude/skills/<skill-name>/` (or `.claude/skills/` per-project)
    - **Claude.ai:** Settings → Features → upload a single-skill zip from [`packs/skills/`](packs/skills/)
    - **Cursor / Windsurf / custom:** copy the folder anywhere the agent can read
-2. Connect the MCPs your plays need — see [`references/mcp-setup.md`](references/mcp-setup.md).
+2. Connect the MCPs your plays need - see [`references/mcp-setup.md`](references/mcp-setup.md).
    - **FirstTouch MCP** is required for FirstTouch execution and approvals.
    - **HubSpot MCP or a service key/private app token** unlocks HubSpot-specific plays.
    - If HubSpot is unavailable, run FirstTouch-only plays such as social engagement, social campaigns from Discover Contacts or imported lists, AI SDR from Discover Contacts, founder AI SDR, sequence QA, and workspace audit.
@@ -114,16 +114,16 @@ Every pack should ask three questions before running volume:
 
 ## The plays that drive the most value
 
-1. **Social Engagement Flow** — act on post likes/comments first; for founders this is the number one starter play and can use owned posts or a relevant competitor founder/influencer profile.
-2. **Social Campaigns** — build a narrow campaign using either row-level dynamic approvals for rep/BDR pushes or static templates with flow-level approval for governed one-time campaigns.
-3. **AI SDR / ICP Outbound** — build daily approval-ready batches from a HubSpot list or FirstTouch Discover Contacts.
-4. **Founder AI SDR** — the AI SDR workflow in founder voice, with the same approval queue and recommended 10/20 daily connection caps.
-5. **Inbound Speed-to-Lead** — attach LinkedIn connection and follow-up to signups, trials, or demo requests.
-6. **Website Visitor Follow-Up** — act on pricing/demo/product-page intent from HubSpot tracking or RB2B/list sources.
-7. **HubSpot Signal Touches** — turn lifecycle, list, or deal events into timely social touches.
-8. **Stalled Deal Reactivation** — trigger a contact-based HubSpot workflow for contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days, then draft a fresh approved LinkedIn touch.
-9. **Customer Referral Thank-You** — connect with new customers, thank them, ask for feedback, and invite light referrals.
-10. **Sequence QA / Workspace Audit** — make sure the setup and messaging are safe before scaling.
+1. **Social Engagement Flow** - act on post likes/comments first; for founders this is the number one starter play and can use owned posts or a relevant competitor founder/influencer profile.
+2. **Social Campaigns** - build a narrow campaign using either row-level dynamic approvals for rep/BDR pushes or static templates with flow-level approval for governed one-time campaigns.
+3. **AI SDR / ICP Outbound** - build daily approval-ready batches from a HubSpot list or FirstTouch Discover Contacts.
+4. **Founder AI SDR** - the AI SDR workflow in founder voice, with the same approval queue and recommended 10/20 daily connection caps.
+5. **Inbound Speed-to-Lead** - attach LinkedIn connection and follow-up to signups, trials, or demo requests.
+6. **Website Visitor Follow-Up** - act on pricing/demo/product-page intent from HubSpot tracking or RB2B/list sources.
+7. **HubSpot Signal Touches** - turn lifecycle, list, or deal events into timely social touches.
+8. **Stalled Deal Reactivation** - trigger a contact-based HubSpot workflow for contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days, then draft a fresh approved LinkedIn touch.
+9. **Customer Referral Thank-You** - connect with new customers, thank them, ask for feedback, and invite light referrals.
+10. **Sequence QA / Workspace Audit** - make sure the setup and messaging are safe before scaling.
 
 ---
 
@@ -151,16 +151,16 @@ Every pack should ask three questions before running volume:
 
 ## Design principles (Anthropic Agent Skills standard)
 
-- **Progressive disclosure** — only the relevant context loads. Metadata is always present; the body loads on trigger; references load on demand.
-- **Passive, deliverable-oriented** — each skill defines a deliverable, not a goal. The agent produces an artifact; a human approves before anything sends.
-- **Human-in-the-loop by default** — no play sends outbound autonomously. Dynamic plays require per-send approval; one-time social campaigns can use flow-level approval for the exact audience and static templates (see [`references/safety-governance.md`](references/safety-governance.md)).
-- **HubSpot-aware, not HubSpot-blocked where possible** — HubSpot-specific plays say so clearly; AI SDR and founder AI SDR can run from FirstTouch Discover Contacts when no HubSpot list exists.
+- **Progressive disclosure** - only the relevant context loads. Metadata is always present; the body loads on trigger; references load on demand.
+- **Passive, deliverable-oriented** - each skill defines a deliverable, not a goal. The agent produces an artifact; a human approves before anything sends.
+- **Human-in-the-loop by default** - no play sends outbound autonomously. Dynamic plays require per-send approval; one-time social campaigns can use flow-level approval for the exact audience and static templates (see [`references/safety-governance.md`](references/safety-governance.md)).
+- **HubSpot-aware, not HubSpot-blocked where possible** - HubSpot-specific plays say so clearly; AI SDR and founder AI SDR can run from FirstTouch Discover Contacts when no HubSpot list exists.
 
 ---
 
 ## Persona Packs
 
-In addition to the flat `skills/` folder above, this repo ships **4 downloadable persona packs** — self-contained bundles that collect the right skills for a specific role.
+In addition to the flat `skills/` folder above, this repo ships **4 downloadable persona packs** - self-contained bundles that collect the right skills for a specific role.
 
 | Pack | Persona | Skills included | Key plays |
 |---|---|---:|---|
@@ -173,18 +173,18 @@ In addition to the flat `skills/` folder above, this repo ships **4 downloadable
 
 All 4 packs include the same 6 core plays, each with a persona-specific lens:
 
-1. **Inbound speed-to-lead** — fast LinkedIn touch on signups, trials, demo requests
-2. **Social engagement flow** — act on post engagement from your posts, leadership posts, or company content
-3. **Social campaigns** — one-time campaigns for narrow ICP segments with static flow templates and flow-level approval
-4. **Website visitor play** — turn high-intent page visits into outreach
-5. **AI SDR build** — daily approval-ready outbound from a HubSpot contact/company list, or from a newly discovered ICP list when no HubSpot list exists
-6. **Scoop-up slipped leads** — recover dormant MQLs, no-shows, and stale pipeline when HubSpot/list data exists. Stalled-deal reactivation specifically means a contact-based HubSpot workflow enrolling contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days.
+1. **Inbound speed-to-lead** - fast LinkedIn touch on signups, trials, demo requests
+2. **Social engagement flow** - act on post engagement from your posts, leadership posts, or company content
+3. **Social campaigns** - one-time campaigns for narrow ICP segments with static flow templates and flow-level approval
+4. **Website visitor play** - turn high-intent page visits into outreach
+5. **AI SDR build** - daily approval-ready outbound from a HubSpot contact/company list, or from a newly discovered ICP list when no HubSpot list exists
+6. **Scoop-up slipped leads** - recover dormant MQLs, no-shows, and stale pipeline when HubSpot/list data exists. Stalled-deal reactivation specifically means a contact-based HubSpot workflow enrolling contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days.
 
 Each pack then adds persona-unique plays on top of this shared core.
 
 ### How packs are built
 
-Packs are **vendored copies** of canonical skills — no symlinks, no shared imports. This is required by the Agent Skills standard: every install path (Claude Code `~/.claude/skills/`, Claude.ai zip upload, Cursor folder copy) works with isolated skill folders. The build script handles sync so canonical `skills/` remains the single source of truth.
+Packs are **vendored copies** of canonical skills - no symlinks, no shared imports. This is required by the Agent Skills standard: every install path (Claude Code `~/.claude/skills/`, Claude.ai zip upload, Cursor folder copy) works with isolated skill folders. The build script handles sync so canonical `skills/` remains the single source of truth.
 
 ```bash
 python scripts/build-packs.py
@@ -209,8 +209,8 @@ Re-running the script syncs all packs to the current canonical state, rebuilds t
 
 ## Support
 
-- **Slack community** — [firsttouch-workspace.slack.com](https://firsttouch-workspace.slack.com): the best place to ask questions, share plays, and get help from the FirstTouch team.
-- **In-app chat** — chat support inside the FirstTouch app for account-specific issues.
-- **Something broke mid-play?** — [`references/troubleshooting.md`](references/troubleshooting.md) covers MCP failures, LinkedIn warnings, stalled queues, and credit issues.
+- **Slack community** - [firsttouch-workspace.slack.com](https://firsttouch-workspace.slack.com): the best place to ask questions, share plays, and get help from the FirstTouch team.
+- **In-app chat** - chat support inside the FirstTouch app for account-specific issues.
+- **Something broke mid-play?** - [`references/troubleshooting.md`](references/troubleshooting.md) covers MCP failures, LinkedIn warnings, stalled queues, and credit issues.
 
-*Pack version 1.2.0 — last updated 2026-07-01. See [CHANGELOG.md](CHANGELOG.md).*
+*Pack version 1.2.1 - last updated 2026-07-01. See [CHANGELOG.md](CHANGELOG.md).*

@@ -1,6 +1,6 @@
 ---
 name: workspace-audit
-description: Audit a FirstTouch + HubSpot workspace for readiness before launching outreach — checks MCP connections, owner coverage, LinkedIn account health, safety limits, logging setup, and data hygiene. Produces a readiness scorecard with prioritized fixes. Use when onboarding a new customer, before launching a campaign, or when outreach "isn't working" and you suspect setup issues.
+description: Audit a FirstTouch + HubSpot workspace for readiness before launching outreach - checks MCP connections, owner coverage, LinkedIn account health, safety limits, logging setup, and data hygiene. Produces a readiness scorecard with prioritized fixes. Use when onboarding a new customer, before launching a campaign, or when outreach "isn't working" and you suspect setup issues.
 metadata:
   author: firsttouch
   version: "1.1"
@@ -25,8 +25,8 @@ Before running this skill for the first time in a workspace, load `../../referen
 
 Every check below is one of two kinds, and the scorecard must keep them separate so a "ready" score can never hide unverified areas:
 
-- **[AUTO]** — verifiable through the connected MCPs. Mark ✅/❌ from live data only.
-- **[MANUAL]** — needs the user or the FirstTouch/HubSpot dashboard. Mark `manual check required`; never guess, and never count an unchecked item toward the readiness score.
+- **[AUTO]** - verifiable through the connected MCPs. Mark ✅/❌ from live data only.
+- **[MANUAL]** - needs the user or the FirstTouch/HubSpot dashboard. Mark `manual check required`; never guess, and never count an unchecked item toward the readiness score.
 
 ### 1. Check MCP connectivity [AUTO]
 - FirstTouch MCP reachable + returns campaign/seat data? ✅/❌
@@ -37,7 +37,7 @@ Every check below is one of two kinds, and the scorecard must keep them separate
 - Seat connected and authenticated? ✅/❌
 - Current usage vs. daily limits (connection requests, messages, views) when available from FirstTouch
 - Any active warnings/restrictions on the account? 🚩 (hard stop if yes)
-- SSI / account age / warmup status — manual/dashboard check unless FirstTouch exposes it directly
+- SSI / account age / warmup status - manual/dashboard check unless FirstTouch exposes it directly
 - If FirstTouch cannot return a metric, ask the user to check the FirstTouch dashboard and mark that metric `manual check required`
 
 ### 3. Owner coverage (HubSpot) [AUTO when HubSpot connected, else MANUAL]
@@ -57,7 +57,7 @@ Every check below is one of two kinds, and the scorecard must keep them separate
 - HubSpot write scope for timeline tags/properties confirmed? ✅/❌
 - Test action round-trip completed: create/approve one safe test action to a contact/record explicitly designated by the user as a test recipient, or to the operator's own profile. Never use a live prospect just to verify logging. Then verify the HubSpot timeline/logging record and FirstTouch reply/status visibility came back as expected. If the team will not run a test action, mark attribution/logging `unverified`, not `ready`.
 - Attribution tags/properties created or writable (e.g. `linkedin_intent`, play tags)? ✅/❌/manual HubSpot check
-- FirstTouch reply tracking visible for outreach actions? ✅/❌ — the agent cannot read arbitrary inbox history, but FirstTouch-tracked outreach can surface reply/engagement status for actions it manages.
+- FirstTouch reply tracking visible for outreach actions? ✅/❌ - the agent cannot read arbitrary inbox history, but FirstTouch-tracked outreach can surface reply/engagement status for actions it manages.
 - Deals associated with contacts that have timeline activity? ✅/❌
 
 ### 6. Queue/status hygiene [AUTO]
@@ -74,14 +74,14 @@ Every check below is one of two kinds, and the scorecard must keep them separate
 Present verified and unverified areas separately. Replace every number with live workspace data before presenting; never score an unverified area.
 
 ```
-WORKSPACE READINESS — {customer} — {date}
-Verified score: {x}/100 across {n} MCP-verified areas — {READY / READY WITH FIXES / NOT READY}
+WORKSPACE READINESS - {customer} - {date}
+Verified score: {x}/100 across {n} MCP-verified areas - {READY / READY WITH FIXES / NOT READY}
 
 VERIFIED (live MCP data)
-  Connections:     ✅ — FirstTouch + HubSpot connected
-  Owner coverage:  ❌ — 38% of target contacts have no owner
-  Safety config:   ✅ — all gates configured
-  Queue hygiene:   ⚠ — 14 rows pending approval >2 days
+  Connections:     ✅ - FirstTouch + HubSpot connected
+  Owner coverage:  ❌ - 38% of target contacts have no owner
+  Safety config:   ✅ - all gates configured
+  Queue hygiene:   ⚠ - 14 rows pending approval >2 days
 
 MANUAL CHECK REQUIRED (not counted in score)
   Account warnings/SSI: user must confirm in FirstTouch dashboard
@@ -92,7 +92,7 @@ PRIORITY FIXES (do before launch):
 2. Confirm no LinkedIn account warnings before any volume
 ```
 
-If HubSpot is not connected, mark CRM-only rows `N/A — HubSpot not connected` rather than failing the workspace, and recommend piloting FirstTouch-only plays (warm engagers, social campaigns from Discover/imported lists, AI SDR via Discover Contacts) while HubSpot gets connected.
+If HubSpot is not connected, mark CRM-only rows `N/A - HubSpot not connected` rather than failing the workspace, and recommend piloting FirstTouch-only plays (warm engagers, social campaigns from Discover/imported lists, AI SDR via Discover Contacts) while HubSpot gets connected.
 
 ### 9. Outcome metrics handoff
 For recurring attribution reporting, run `team-performance-report`. In this readiness audit, only verify whether FirstTouch team metrics access and HubSpot logging coverage are available; do not treat a setup audit as the recurring report itself.
@@ -112,9 +112,9 @@ For recurring attribution reporting, run `team-performance-report`. In this read
 Most outreach failures are setup failures dressed up as copy failures. This play surfaces the real blocker in 10 minutes instead of 3 weeks of "why aren't we getting replies?"
 
 ## Pitfalls
-- **Auditing once** — workspaces drift. Run quarterly + before any major push.
-- **Ignoring the "no owner" red flag** — it's the #1 cause of misrouted outreach.
-- **Launching with account warnings** — never. A restricted account is a hard stop.
+- **Auditing once** - workspaces drift. Run quarterly + before any major push.
+- **Ignoring the "no owner" red flag** - it's the #1 cause of misrouted outreach.
+- **Launching with account warnings** - never. A restricted account is a hard stop.
 
 ## Reference
 - MCP setup requirements: [`../../references/mcp-setup.md`](../../references/mcp-setup.md)

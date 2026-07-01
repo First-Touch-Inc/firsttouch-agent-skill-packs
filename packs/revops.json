@@ -1,7 +1,7 @@
 {
   "persona": "revops",
   "pack_name": "RevOps Pack",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "persona_pain": "Data chaos and untracked touches make it impossible to prove what's working or govern the team",
   "persona_blurb": "You own the stack and the data. Every untracked touch is attribution you'll never recover. You care about owner routing, approval workflows, HubSpot data hygiene, and whether this creates compliance risk or solves it. These plays give you the governance layer, the attribution readiness checks, reply visibility, and the team-wide setup plays that turn individual reps' outreach into a measurable, auditable revenue motion.",
   "skills": [
@@ -77,7 +77,7 @@
       ]
     },
     {
-      "name": "HubSpot list trigger — team-wide LinkedIn flows",
+      "name": "HubSpot list trigger - team-wide LinkedIn flows",
       "outcome": "Use HubSpot lists or contact-based workflow outputs as the trigger source for FirstTouch LinkedIn outreach across your team. Confirm FirstTouch action cards using references/hubspot-setup.md; if cards are not present, use the documented HubSpot list/source fallback.",
       "needs": "HubSpot required",
       "composes": [
@@ -103,7 +103,7 @@
       ]
     },
     {
-      "name": "Team-wide AI SDR — daily approval queues",
+      "name": "Team-wide AI SDR - daily approval queues",
       "outcome": "Action AI SDR across the whole team, not just one user: define the ICP, choose senders/owners, discover or load prospects, enrich each prospect, apply per-sender recommended 10/20 connection caps, FirstTouch 20/30 connection max, and 20/30 message caps, then produce team-wide approval queues.",
       "needs": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot/list optional for owner routing and account context",
       "composes": [
@@ -113,7 +113,7 @@
       ]
     },
     {
-      "name": "Social campaigns — team-routed operational campaigns",
+      "name": "Social campaigns - team-routed operational campaigns",
       "outcome": "Build governed campaigns such as inbound-signup decision-maker enrichment, CEO touches to stuck $50k+ deals, or product-update messaging to first-degree team connections at target accounts. RevOps chooses row-level dynamic approvals or a static flow-level campaign based on risk.",
       "needs": "No HubSpot required for imported target-account/connection lists; HubSpot required for inbound owner routing, deal amount, deal age, or customer/deal segments",
       "composes": [
@@ -123,7 +123,7 @@
       ]
     },
     {
-      "name": "Stalled deal reactivation spec — team-wide",
+      "name": "Stalled deal reactivation spec - team-wide",
       "outcome": "Produce the contact-based stalled-deal qualification spec, qualifying HubSpot list/workflow setup steps, and owner-approved LinkedIn reactivation queue. Automation is only claimed after RevOps confirms the portal/source can feed FirstTouch.",
       "needs": "HubSpot required; RevOps/admin may be needed only for recurring workflow setup",
       "composes": [
@@ -132,7 +132,7 @@
       ]
     },
     {
-      "name": "Closed-lost reengagement — team-wide",
+      "name": "Closed-lost reengagement - team-wide",
       "outcome": "Re-engage historical closed-lost accounts across all reps when RevOps explicitly chooses a win-back motion; keep this separate from stalled open-deal reactivation.",
       "needs": "HubSpot required; separate from stalled open-deal workflow",
       "composes": [
@@ -159,7 +159,7 @@
       ]
     },
     {
-      "name": "Event plays — pre-invite and post-follow-up",
+      "name": "Event plays - pre-invite and post-follow-up",
       "outcome": "Build audience and invite flow before an event, then run follow-up flows to attendees and no-shows.",
       "needs": "HubSpot or imported attendee/source list required",
       "composes": [

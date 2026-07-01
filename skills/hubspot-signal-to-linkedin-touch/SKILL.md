@@ -1,6 +1,6 @@
 ---
 name: hubspot-signal-to-linkedin-touch
-description: Turn a HubSpot CRM event — lifecycle stage change, deal stage movement, form fill, list addition — into a timely, personalized LinkedIn touch. Reads the signal from HubSpot, qualifies the contact, drafts outreach via FirstTouch, gates for approval, and logs back to HubSpot when the connected FirstTouch-HubSpot integration supports it. Use when the user wants to act on HubSpot activity with LinkedIn outreach, trigger social touches from CRM events, or make outbound "event-driven." Covers any CRM event; for high-intent inbound (booked meeting, signup, trial, demo) prefer inbound-speed-to-lead.
+description: Turn a HubSpot CRM event - lifecycle stage change, deal stage movement, form fill, list addition - into a timely, personalized LinkedIn touch. Reads the signal from HubSpot, qualifies the contact, drafts outreach via FirstTouch, gates for approval, and logs back to HubSpot when the connected FirstTouch-HubSpot integration supports it. Use when the user wants to act on HubSpot activity with LinkedIn outreach, trigger social touches from CRM events, or make outbound "event-driven." Covers any CRM event; for high-intent inbound (booked meeting, signup, trial, demo) prefer inbound-speed-to-lead.
 metadata:
   author: firsttouch
   version: "1.1"
@@ -12,7 +12,7 @@ metadata:
 
 # HubSpot Signal → LinkedIn Touch
 
-**Outcome:** Make LinkedIn outreach event-driven — every touch is triggered by a real CRM event, not a cadence timer.
+**Outcome:** Make LinkedIn outreach event-driven - every touch is triggered by a real CRM event, not a cadence timer.
 
 ## First-run onboarding gate
 Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type (free/basic = no connection notes; recommend 10 connection requests/day and never exceed the FirstTouch max of 20/day; Sales Navigator/Premium = connection notes available; recommend 20 connection requests/day and never exceed the FirstTouch max of 30/day), HubSpot access (MCP, service key/private app token, HubSpot list only, or none), and which play the user wants to run. Recommend high-intent plays before outbound to keep the LinkedIn account healthy. If HubSpot is unavailable, do not run HubSpot-specific steps unless the user provides a HubSpot list FirstTouch can access.
@@ -54,7 +54,7 @@ The HubSpot event determines the message:
 | Re-engaged after silence | Opener | Context renewed |
 
 ### 4. Draft (load `firsttouch-messaging`)
-The **signal is the HubSpot event itself** — e.g. "saw you just downloaded the outbound playbook." Draft accordingly. Run the quality gate.
+The **signal is the HubSpot event itself** - e.g. "saw you just downloaded the outbound playbook." Draft accordingly. Run the quality gate.
 
 ### 5. Present for approval (Gate 4)
 Table of: contact, triggering event, owner, message type, draft. All marked awaiting approval.
@@ -84,12 +84,12 @@ Cohort tagged by signal type so the team can review which signals produce replie
 **Draft (re-engage opener):** "Hi Dana, noticed your team previously evaluated FirstTouch and wanted to share what changed since then. Worth comparing notes if social attribution is worth revisiting."
 
 ## Why this play wins
-Static sequences message on a timer. This play messages on a **real event** — dramatically higher relevance and reply rate, and fully attributable in HubSpot.
+Static sequences message on a timer. This play messages on a **real event** - dramatically higher relevance and reply rate, and fully attributable in HubSpot.
 
 ## Pitfalls
-- **Triggering on too-broad events** — "any lifecycle change" floods the queue. Scope triggers tightly.
-- **Ignoring owner** — messaging a contact another AE owns causes internal friction. Always check owner (Gate 2).
-- **No cooldown** — a contact bouncing stages gets spammed. Enforce cooldown.
+- **Triggering on too-broad events** - "any lifecycle change" floods the queue. Scope triggers tightly.
+- **Ignoring owner** - messaging a contact another AE owns causes internal friction. Always check owner (Gate 2).
+- **No cooldown** - a contact bouncing stages gets spammed. Enforce cooldown.
 
 ## Reference
 - HubSpot setup reference: [`../../references/hubspot-setup.md`](../../references/hubspot-setup.md)

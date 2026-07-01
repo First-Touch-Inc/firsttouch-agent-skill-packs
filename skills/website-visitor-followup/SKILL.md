@@ -42,9 +42,9 @@ Before drafting or queueing any contact, run Gate 0 suppression/DNC from `../../
 This play requires a website visitor signal source. If neither HubSpot tracking nor an RB2B/list source exists, stop and say the website-visitor play is unavailable; offer to run the persona AI SDR recipe separately using ICP filters instead.
 
 Get recent high-intent visits with page path, timestamp, company/contact match confidence, and any associated HubSpot owner. **Two paths to the data:**
-- **HubSpot native tracking pixel** (default) — HubSpot logs known-contact page activity automatically. Sufficient for most accounts with steady inbound.
-- **RB2B (or similar de-anon tool)** — recommended when HubSpot-native web-visit volume is low or you need company-level identification for anonymous visitors. RB2B pushes identified visitors to a HubSpot list (or Slack), which FirstTouch then picks up. Wire RB2B → HubSpot list → FirstTouch picks up from the list.
-- **Either way:** the play then runs identically — check connection status, draft, gate for approval.
+- **HubSpot native tracking pixel** (default) - HubSpot logs known-contact page activity automatically. Sufficient for most accounts with steady inbound.
+- **RB2B (or similar de-anon tool)** - recommended when HubSpot-native web-visit volume is low or you need company-level identification for anonymous visitors. RB2B pushes identified visitors to a HubSpot list (or Slack), which FirstTouch then picks up. Wire RB2B → HubSpot list → FirstTouch picks up from the list.
+- **Either way:** the play then runs identically - check connection status, draft, gate for approval.
 
 ### 2. Decide contact-level vs account-level motion
 - **Known contact identified** → work contact directly
@@ -56,7 +56,7 @@ Get recent high-intent visits with page path, timestamp, company/contact match c
 - recently contacted? yes/no
 
 ### 4. Draft the touch (load `firsttouch-messaging`)
-Use the website visit as a soft signal — never sound creepy.
+Use the website visit as a soft signal - never sound creepy.
 
 Do **not** say: "I saw you were on our pricing page at 2:14pm."
 

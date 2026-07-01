@@ -1,4 +1,4 @@
-# First-Run Onboarding — Choose the Right Plays Before Running Volume
+# First-Run Onboarding - Choose the Right Plays Before Running Volume
 
 Every persona pack starts here. The agent must complete this onboarding once per workspace before running the first play, then reuse the answers for later runs.
 
@@ -11,8 +11,12 @@ Ask these questions before recommending or executing plays:
 
 2. **HubSpot access**
    - "Do you use HubSpot? If yes, can you connect the HubSpot MCP or provide a HubSpot service key / private app token so the agent can access internal CRM data?"
+   - Getting access is easy for reps: ask your admin to approve HubSpot MCP access (a quick approval), or request a **read-only service key** that lets the agent read deals, contacts, and companies with no write risk. Do not mint credentials yourself.
    - If they use HubSpot but cannot connect access yet: ask them to create a HubSpot list for the target audience so FirstTouch can access the contacts/accounts.
    - If they do not use HubSpot: HubSpot-specific plays are unavailable, but FirstTouch-only plays can still run from Discover Contacts, social engagement, one-time social campaigns from imported lists, or FirstTouch-accessible lists.
+
+2b. **Credits note**
+   - New FirstTouch workspaces start with **100 credits** - plenty for your first discoveries and enrichments. The agent checks the balance before any bulk run and asks before spending; you never get surprise-charged mid-play.
 
 3. **ICP / source data**
    - "If HubSpot is not connected, what ICP or list should we use? Please provide target industries, company size, geography, titles/seniority, exclusions, and any must-have signals, or provide a CSV/imported list."
@@ -61,7 +65,7 @@ Never exceed the FirstTouch max. Use the recommended cap by default; if the acco
 
 Recommend **high-intent plays first**. They use warmer signals, protect the LinkedIn account, and prove value before opening broader outbound volume.
 
-### Start here — high-intent / account-healthy
+### Start here - high-intent / account-healthy
 
 | Play | Why first | HubSpot needed? |
 |---|---|---|
@@ -72,7 +76,7 @@ Recommend **high-intent plays first**. They use warmer signals, protect the Link
 | Customer Referral Thank-You | Warmer new-customer thank-you, feedback, and light referral outreach; low spam risk. | HubSpot Closed Won/customer source or imported customer list required. |
 | Stalled Deal Reactivation | A contact-based HubSpot workflow for contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days. Deal-based triggers are unsupported. | Yes. May need RevOps/admin setup if workflow creation is unavailable. |
 
-### Add after high-intent is running — outbound / volume
+### Add after high-intent is running - outbound / volume
 
 | Play | When to add | HubSpot needed? |
 |---|---|---|

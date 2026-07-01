@@ -59,15 +59,15 @@ For every approved AI SDR prospect, first check LinkedIn connection status:
 
 ### 1. Choose the source path
 
-**Path A — HubSpot list exists:**
+**Path A - HubSpot list exists:**
 - Open the HubSpot contact or company list the user provides.
 - If it is a company list, select the best contacts at each company using the target personas.
 - Capture contact/company fields, owner, lifecycle/deal context, prior activity, and LinkedIn URL if present.
 
-**Path B — no HubSpot access or no existing list:**
+**Path B - no HubSpot access or no existing list:**
 - Ask the user for their ideal ICP: target industries, company size, geography, titles/seniority, exclusions, and any must-have signals.
 - Use **FirstTouch Discover Contacts** (`discover_contacts`) to build a prospect list from that ICP.
-- Run Gate 3a from `../../references/safety-governance.md`: check per-action pricing with `get_feature_costs` and current balance with `get_credits_usage`, preview a small sample, state estimated maximum discovery/enrichment credits, and get approval before larger imports.
+- Run Gate 3a from `../../references/safety-governance.md`: check per-action pricing with `get_feature_costs` and current balance with `get_credits_usage`, preview a small sample, state estimated maximum discovery/enrichment credits, and get approval before larger imports. New workspaces start with 100 credits, which is plenty for the first discoveries; this check is about transparency, not scarcity.
 - Save the discovered contacts into a FirstTouch audience (`create_audience` or `create_audience_from_profiles`) for future daily runs.
 
 ### 2. Enrich every candidate
