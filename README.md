@@ -44,6 +44,8 @@ firsttouch-skills/
     ├── website-visitor-followup/
     ├── stalled-deal-reactivation/
     ├── customer-referral/
+    ├── hubspot-social-task-runner/        ← execute due HubSpot social tasks
+    ├── team-performance-report/           ← FirstTouch team metrics + attribution
     ├── sequence-qa-reviewer/
     └── workspace-audit/
 ```
@@ -75,7 +77,7 @@ Every pack should ask three questions before running volume:
 
 | Question | Why it matters |
 |---|---|
-| Do you have Sales Navigator / Premium, or a free/basic LinkedIn account? | Free/basic accounts are capped at **10** connection requests/day and cannot use connection notes; Sales Navigator / Premium can use notes and go up to **20**/day. |
+| Do you have Sales Navigator / Premium, or a free/basic LinkedIn account? | Free/basic accounts cannot use connection notes; recommend **10** connection requests/day (FirstTouch max 20/day). Sales Navigator / Premium can use notes; recommend **20**/day (FirstTouch max 30/day). |
 | Do you use HubSpot, and can you connect the HubSpot MCP or provide a service key/private app token? | HubSpot-specific plays need internal CRM context. Without it, run FirstTouch-only plays or ask the user to create a HubSpot list/source FirstTouch can access. |
 | Which plays do you want to run first? | Recommend high-intent plays first, then outbound once warm motions are running to keep the account healthy. |
 
@@ -116,6 +118,8 @@ Every pack should ask three questions before running volume:
 | Website Visitor Follow-Up | Turn website visitor intent into social outreach | HubSpot tracking or RB2B/list source |
 | Stalled Deal Reactivation | Contact-based HubSpot workflow for contacts associated to open deals not Closed Won/Lost with no engagement for 60+ days, then queue reactivation touches | HubSpot required |
 | Customer Referral Thank-You | Connect with new customers, thank them, ask for feedback, and invite light referrals | HubSpot Closed Won/customer source or imported customer list required |
+| HubSpot Social Task Runner | Execute due HubSpot LinkedIn/social tasks through FirstTouch and mark them complete after queueing | HubSpot MCP with task read/write required |
+| Team Performance Report | Summarize sends, replies, meetings, opportunities, and HubSpot logging coverage by flow/sender/date | FirstTouch; HubSpot improves logging coverage checks |
 | Sequence QA Reviewer | Review campaigns for risk + quality | No HubSpot required |
 | Workspace Audit | Find setup gaps before launch | No HubSpot required; HubSpot improves CRM checks |
 

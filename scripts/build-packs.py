@@ -10,6 +10,7 @@ Idempotent: cleans dist/ on every run, then rebuilds from canonical source and r
 import json
 import re
 import shutil
+import sys
 import zipfile
 from pathlib import Path
 
@@ -488,6 +489,8 @@ def build_pack(persona: str) -> None:
 
 
 def main() -> None:
+    publish = "--no-publish" not in sys.argv
+
     print("FirstTouch Pack Builder")
     print("=" * 40)
 
@@ -505,9 +508,12 @@ def main() -> None:
     built = sorted(DIST_DIR.glob("*.zip"))
     print(f"Done. {len(built)} pack(s) built:")
     for z in built:
-        published = PACKS_DIR / z.name
-        shutil.copy2(z, published)
-        print(f"  {z.name} -> packs/{published.name}")
+        if publish:
+            published = PACKS_DIR / z.name
+            shutil.copy2(z, published)
+            print(f"  {z.name} -> packs/{published.name}")
+        else:
+            print(f"  {z.name} (build only, not published to packs/)")
 
 
 if __name__ == "__main__":
