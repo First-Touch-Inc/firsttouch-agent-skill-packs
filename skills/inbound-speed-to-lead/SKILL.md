@@ -10,10 +10,10 @@ metadata:
 
 # Inbound Speed-to-Lead
 
-**Team-governance note:** For team-wide rollouts, run this with owner-based routing, per-seat cap sharing, approval review, and FirstTouch/HubSpot logging checks — not as an ungoverned single-rep send.
+**Solo/default path:** a single AE or founder can run this from a meeting-booked/signup list and approve every touch themselves. If you later run it with a team, add owner-based routing, per-seat cap sharing, approval review, and FirstTouch/HubSpot logging checks.
 
 
-**Outcome:** Add a fast, light LinkedIn touch to high-intent inbound moments — booked meetings, signups, trials, demo requests — when the agent runs or on a configured schedule. True live speed-to-lead requires a connected source that continuously feeds FirstTouch.
+**Outcome:** Add a fast, light LinkedIn touch to high-intent inbound moments — booked meetings, signups, trials, demo requests — when the agent runs or on a configured schedule. True live speed-to-lead uses the HubSpot workflow → FirstTouch action-card path when the portal supports it; agent-run or scheduled list/import workflows are fallback paths.
 
 ## First-run onboarding gate
 Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type (free/basic = no connection notes; recommend 10 connection requests/day and never exceed the FirstTouch max of 20/day; Sales Navigator/Premium = connection notes available; recommend 20 connection requests/day and never exceed the FirstTouch max of 30/day), HubSpot access (MCP, service key/private app token, HubSpot list only, or none), and which play the user wants to run. Recommend high-intent plays before outbound to keep the LinkedIn account healthy. If HubSpot is unavailable, do not run HubSpot-specific steps unless the user provides a HubSpot list FirstTouch can access.
@@ -86,5 +86,6 @@ Measure touch-to-meeting rate and reply rate for inbound contacts who received t
 - missing the same-day window — this play depends on running the agent quickly or scheduling it against a connected inbound source
 
 ## Reference
+- HubSpot setup / real-time action-card path: [`../../references/hubspot-setup.md`](../../references/hubspot-setup.md)
 - Messaging: [`../../references/messaging-framework.md`](../../references/messaging-framework.md)
 - Safety: [`../../references/safety-governance.md`](../../references/safety-governance.md)

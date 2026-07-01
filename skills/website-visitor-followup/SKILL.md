@@ -15,7 +15,7 @@ metadata:
 **No-source note:** If the workspace has no HubSpot tracking, RB2B/list source, or visitor export, skip this play and use this pack's persona AI SDR play instead.
 
 
-**Team-governance note:** For team-wide rollouts, run this with owner-based routing, per-seat cap sharing, approval review, and FirstTouch/HubSpot logging checks — not as an ungoverned single-rep send.
+**Solo/default path:** a single owner can run this from an approved visitor/source list and approve every touch themselves. If you later run it with a team, add owner-based routing, per-seat cap sharing, approval review, and FirstTouch/HubSpot logging checks.
 
 
 **Outcome:** Convert high-intent website visits into social touches while the account is actively researching.

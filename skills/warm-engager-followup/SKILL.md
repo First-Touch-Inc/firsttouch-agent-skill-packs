@@ -10,7 +10,7 @@ metadata:
 
 # Warm Engager Follow-Up
 
-**Team-governance note:** For team-wide rollouts, run this with owner-based routing, per-seat cap sharing, approval review, and FirstTouch/HubSpot logging checks — not as an ungoverned single-rep send.
+**Solo/default path:** a founder, AE, or BDR can run this from one monitored personal profile or engager list and approve every touch themselves. If you later run it with a team, add owner-based routing, per-seat cap sharing, approval review, and FirstTouch/HubSpot logging checks.
 
 
 **Outcome:** Convert recent LinkedIn engagement (post likes and comments) into booked conversations. Log to HubSpot when the connected FirstTouch-HubSpot integration supports it; otherwise log the execution record in FirstTouch and state that CRM timeline logging is unavailable.
@@ -41,6 +41,7 @@ Use the FirstTouch social engagement monitored-profile flow before pulling engag
 - add or confirm the CEO/founder/exec, competitor founder, or influencer profile as a monitored profile, for example `manage_social_engagement_monitored_profile` with `action=add` and `enableSocialEngagement=true` when that tool is available in the connected harness
 - confirm the monitored profile is authorized by the customer and relevant to the sender/team
 - pull engagers from that monitored profile's posts, then route drafts through the appropriate sender/owner for approval
+- if drafts should route through the linked Social Engagement flow instead of one-off dynamic actions, publish that linked flow first with `manage_flow_publication` before expecting captured engagers to enter it
 - if the monitored-profile tool is unavailable in the connected harness, ask the user to provide a FirstTouch-accessible engager list exported from the leadership post; do not imply the play is broken
 
 ### 2. Qualify the engager

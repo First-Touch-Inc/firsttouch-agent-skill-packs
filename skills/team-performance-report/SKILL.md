@@ -13,7 +13,7 @@ metadata:
 **Outcome:** Give RevOps a recurring performance report, not just a setup audit: what ran, who sent it, how prospects engaged, and whether the results are attributable.
 
 ## First-run onboarding gate
-Run the first-run gate in `../../references/onboarding.md` before first use, unless onboarding has already been completed in this session. Confirm reporting date range, flows/campaigns to include, and whether HubSpot is connected for opportunity/pipeline reconciliation.
+Run the first-run gate in `../../references/onboarding.md` before first use, unless onboarding has already been completed for this workspace. Confirm reporting date range, flows/campaigns to include, and whether HubSpot is connected for opportunity/pipeline reconciliation.
 
 ## When to use
 - "Show me FirstTouch performance for the last 30 days"

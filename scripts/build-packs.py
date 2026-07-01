@@ -39,9 +39,39 @@ SKILL_NEEDS = {
 
 START_HERE = {
     "founder": "1. **Check Social Engagement first:** run **Social engagement flow: founder posts** from owned founder or executive personal profiles. If Social Engagement is not enabled, turn it on through FirstTouch MCP for the monitored profile. If owned personal-profile engagement is thin, monitor a relevant competitor founder or category influencer personal profile. FirstTouch does not track company-page/profile engagement.\n2. **No engager source right now:** if no monitored profile or engager list is available, run **Founder-led AI SDR** from ICP + FirstTouch Discover Contacts.\n3. **Have HubSpot:** add inbound, visitor, and stalled-deal plays as secondary CRM/deal motions, not the default path.",
-    "ae": "1. **Meeting booked / signup source:** run **Auto-connect on meeting or signup** first. This is the AE #1 use case: same-day LinkedIn auto-connect/follow-up from booked meetings, signups, or a manually exported meeting-booked list.\n2. **HubSpot + stakeholder expansion:** run **Meeting-booked stakeholder follow-up** when a booked-meeting source/list is available and the AE wants to multi-thread the account.\n3. **No HubSpot/list access:** run **AE AI SDR** from ICP + Discover Contacts; this cannot touch existing pipeline without HubSpot or a FirstTouch-accessible contact list.\n4. **HubSpot + quiet pipeline:** run **Stalled deal reactivation** from a manually filtered contact list.\n5. **HubSpot MCP + tasks already created for LinkedIn/social steps:** run **Automate due HubSpot social tasks** as a secondary task runner for tasks due today, not as a cadence/list creator.",
-    "bdr": "Use this source-based chooser:\n\n| What you have today | Run first | Why |\n|---|---|---|\n| No source/list yet | **BDR AI SDR** (`icp-outbound-builder`) | Daily meeting engine from ICP + Discover Contacts |\n| No-show, event, old-MQL, or HubSpot list | **Scoop-up slipped leads** | Lead recovery from a provided source |\n| Connected inbound feed or imported signup/demo list | **Auto-connect on meeting or signup** | Same-day inbound follow-up |\n| RB2B/HubSpot visitor source | **Website visitor play** | Conditional; most BDRs skip if no visitor source exists |\n| HubSpot MCP + tasks already created for LinkedIn/social steps | **Automate due HubSpot social tasks** | Secondary task runner for tasks due today in the user/owner queue; not a prospecting engine |\n\nThen add **Social engager flow** for leadership/competitor/influencer post engagement. Use **Social campaigns** only for manager-approved special pushes, not normal daily work.",
+    "ae": "1. **Meeting booked / signup source:** run **Auto-connect on meeting or signup** first. This is the AE #1 use case: same-day LinkedIn auto-connect/follow-up from booked meetings, signups, or a manually exported meeting-booked list.\n2. **HubSpot + stakeholder expansion:** run **Meeting-booked stakeholder follow-up** when a booked-meeting source/list is available and the AE wants to multi-thread the account. It can run from the same booked-meeting source as auto-connect because it targets other stakeholders, not duplicate outreach to the booked contact.\n3. **Warm LinkedIn engagers:** run **Social engager flow — leadership's audience** when prospects engage with leadership, competitor, or influencer personal-profile posts.\n4. **No HubSpot/list access:** run **AE AI SDR** from ICP + Discover Contacts; this cannot touch existing pipeline without HubSpot or a FirstTouch-accessible contact list.\n5. **HubSpot + quiet pipeline:** run **Stalled deal reactivation** from a manually filtered contact list.\n6. **HubSpot MCP + tasks already created for LinkedIn/social steps:** run **Automate due HubSpot social tasks** as a secondary task runner for tasks due today, not as a cadence/list creator.",
+    "bdr": "Use this source-based chooser:\n\n| What you have today | Run first | Why |\n|---|---|---|\n| No source/list yet | **BDR AI SDR** (`icp-outbound-builder`) | Daily approval engine from ICP + Discover Contacts |\n| No-show, event, old-MQL, or HubSpot list | **Scoop-up slipped leads** | Lead recovery from a provided source |\n| Connected inbound feed or imported signup/demo list | **Auto-connect on meeting or signup** | Same-day inbound follow-up |\n| Leadership/competitor post engagement | **Social engager flow** | Work warm engagers before they go cold |\n| RB2B/HubSpot visitor source | **Website visitor play** | Conditional; most BDRs skip if no visitor source exists |\n| HubSpot MCP + tasks already created for LinkedIn/social steps | **Automate due HubSpot social tasks** | Secondary task runner for tasks due today in the user/owner queue; not a prospecting engine |\n\n**Daily engine means approval queue, not autosend:** the agent discovers, enriches, drafts, and queues rows; every first-touch row still requires individual BDR approval before sending. Use **Social campaigns** only for manager-approved special pushes, not normal daily work.",
     "revops": "Start with **Pre-launch rollout audit** before any rep launches volume. Then govern the core rollout: HubSpot list triggers, **Team-wide AI SDR**, social campaigns, stalled-deal workflows, and **Attribution & team performance review** as the recurring reporting cadence. Keep situational plays such as events, customer thank-you, website visitors, and closed-lost reengagement for after the core governance path is stable.",
+}
+
+QUICKSTART_CARDS = {
+    "founder": """| Situation | Run this | What happens |
+|---|---|---|
+| Has founder/executive post engagement | Social engagement flow | Work warm engagers from personal-profile posts |
+| Thin owned engagement | Monitor competitor/influencer profile | Use relevant external personal-profile engagement |
+| No warm source | Founder-led AI SDR | Discover ICP prospects and draft founder-voice outreach |
+| Has CRM data | Stalled deal / customer thank-you | Work high-intent relationship motions |""",
+    "ae": """| Situation | Run this | What happens |
+|---|---|---|
+| Meeting booked | Auto-connect on meeting/signup | Connect the booked contact same day |
+| Same account has other stakeholders | Meeting-booked stakeholder follow-up | Multi-thread the account without duplicating outreach |
+| Warm LinkedIn engagement | Social engager flow — leadership's audience | Work engagers from leadership / competitor / influencer posts |
+| Quiet open opp | Stalled deal reactivation | One-time HubSpot list or recurring workflow |
+| No warm source/list | AE AI SDR | Discover, enrich, and draft approval rows |""",
+    "bdr": """| Situation | Run this | What happens |
+|---|---|---|
+| No source/list yet | BDR AI SDR | Daily approval queue from ICP + Discover |
+| No-show/event/old-MQL list | Scoop-up slipped leads | Recover warm-ish lists |
+| Inbound/demo/signup feed | Auto-connect on meeting/signup | Same-day response |
+| Leadership/competitor post engagement | Social engager flow | Work warm engagers |
+| Manager-approved segment push | Social campaign | Static campaign, not daily prospecting |""",
+    "revops": """| Situation | Run this | What happens |
+|---|---|---|
+| Before launch | Pre-launch rollout audit | Validate seats, caps, approvals, and logging |
+| Team prospecting | Team-wide AI SDR | Configure senders, owners, caps, and approval queues |
+| HubSpot-driven outreach | HubSpot list trigger | Launch FirstTouch from approved CRM source |
+| Governance / QA | Sequence QA reviewer | Catch risk before reps send |
+| Reporting | Attribution & team performance review | Pull team metrics and reconcile CRM logging |""",
 }
 
 NO_HUBSPOT = {
@@ -54,7 +84,7 @@ NO_HUBSPOT = {
 INSTALL_NOTES = """1. Download this pack zip and extract it so `skills/` and `references/` sit side by side. Keep the `references/` folder with the skills; many skills link to `../../references/...`.
 2. Install for your agent:
    - **Claude Code:** copy `skills/<skill-name>/` folders to `~/.claude/skills/` and copy `references/` to `~/.claude/references/`. The generated recipe catalog lives in `references/recipes.md` and the full onboarding/play chooser lives in `references/onboarding.md`, so recipes survive non-zip installs. From `~/.claude/skills/<skill-name>/SKILL.md`, `../../references/` resolves to `~/.claude/references/`.
-   - **Claude.ai:** Settings → Features → Skills → upload the pack `.zip`. If only one skill registers, unzip locally and upload each `<skill>/` folder zip individually, but include or copy the shared `references/` folder so `../../references/...` links still resolve.
+   - **Claude.ai:** Settings → Features → Skills → upload the full persona pack `.zip` first. If uploading a single skill manually, include the specific referenced markdown files inside that skill folder before zipping, because `../../references/` paths may not resolve in single-skill Claude.ai uploads.
    - **Cursor / Windsurf:** copy this pack into the project or workspace location your agent reads for skills; keep `skills/` and `references/` together at the same root.
    - **ChatGPT:** connect `https://mcp.firsttouch.ai` as an MCP connector. ChatGPT does not consume the skills folder directly; use the README/skill text as operating prompts if needed.
 3. Connect **FirstTouch MCP**. Connect **HubSpot MCP** only for HubSpot-specific plays. See `references/mcp-setup.md`.
@@ -185,6 +215,9 @@ This onboarding is scoped to the skills and recipes actually included in this in
 {start_here}
 {social_note}{voice_note}
 
+## Quickstart play cards
+{QUICKSTART_CARDS[persona]}
+
 ## Available recipes in this pack
 {recipes_table}
 
@@ -228,6 +261,18 @@ Publishing a flow activates it but does **not** enroll awaiting contacts. After 
 """
 
 
+def build_mcp_setup(manifest: dict) -> str:
+    """Generate a pack-scoped MCP setup reference without absent-play checklist items."""
+    text = (ROOT / "references" / "mcp-setup.md").read_text(encoding="utf-8")
+    skills = {s["name"] for s in manifest.get("skills", [])}
+    if "hubspot-social-task-runner" not in skills:
+        text = text.replace(", tasks (read/write when using the HubSpot social task runner)", "")
+        text = re.sub(r"\n\*\*Verify task access for the HubSpot social task runner:\*\*\n> \*.*?\*\n", "\n", text, flags=re.DOTALL)
+        text = text.replace("\n- Tasks — read due tasks and mark selected tasks complete when the HubSpot social task runner is approved and the connected MCP supports task writes", "")
+        text = text.replace("\n- [ ] HubSpot MCP can read open tasks and supports task completion before running the HubSpot social task runner", "")
+    return text
+
+
 def build_recipes_reference(manifest: dict) -> str:
     """Generate a pack-specific recipe catalog for agents that install only skills + references."""
     persona = manifest["persona"]
@@ -239,6 +284,9 @@ Use this file when the agent installed `skills/` and `references/` without loadi
 
 ## Recommended start point
 {START_HERE[persona]}
+
+## Quickstart play cards
+{QUICKSTART_CARDS[persona]}
 
 ## Recipes
 {recipes_table}
@@ -324,6 +372,9 @@ def build_readme(manifest: dict, skill_descriptions: dict) -> str:
 
 ## Start here
 {START_HERE[persona]}
+
+## Quickstart play cards
+{QUICKSTART_CARDS[persona]}
 
 ## How to use this pack
 - **Recipes** are the best starting point. They combine the right skills into the job you actually want done.
@@ -412,6 +463,8 @@ def build_pack(persona: str) -> None:
             ref_dst.write_text(build_onboarding(manifest), encoding="utf-8")
         elif ref_rel == "references/recipes.md":
             ref_dst.write_text(build_recipes_reference(manifest), encoding="utf-8")
+        elif ref_rel == "references/mcp-setup.md":
+            ref_dst.write_text(build_mcp_setup(manifest), encoding="utf-8")
         else:
             if not ref_src.exists():
                 print(f"  [WARN] Reference not found: {ref_src}")

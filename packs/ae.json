@@ -44,7 +44,7 @@
   "recipes": [
     {
       "name": "Auto-connect on meeting or signup",
-      "outcome": "Draft a same-day LinkedIn touch for approval when prospects book or submit. An AE can run this once today from a HubSpot/exported inbound contact list; recurring automation needs a connected source or RevOps workflow.",
+      "outcome": "Draft a same-day LinkedIn touch for approval when prospects book or submit. An AE can run this once today from a HubSpot/exported inbound contact list; recurring automation needs a connected source or RevOps workflow. This can run alongside Meeting-booked stakeholder follow-up because it targets the booked contact.",
       "needs": "HubSpot or FirstTouch-accessible inbound list/import required; AE can run once from a manual list; RevOps needed only for recurring automation",
       "composes": [
         "inbound-speed-to-lead",
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "name": "Social engager flow \u2014 leadership's audience",
+      "name": "Social engager flow — leadership's audience",
       "outcome": "Social Engagement can be enabled through FirstTouch MCP; Reach people engaging with leadership/executive personal-profile content before they go cold.",
       "needs": "Social Engagement can be enabled through FirstTouch MCP; No HubSpot required; use leadership/executive personal-profile, competitor founder, or influencer personal-profile engagement; HubSpot optional for qualification/routing; profile views unavailable",
       "composes": [
@@ -77,8 +77,8 @@
       ]
     },
     {
-      "name": "AE AI SDR \u2014 daily approval queue",
-      "outcome": "View a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to the recommended recommended 10/day free/basic or 20/day Sales Nav/Premium AE-owned LinkedIn touches for approval.",
+      "name": "AE AI SDR — daily approval queue",
+      "outcome": "View a HubSpot contact/company list or discover a new ICP list, enrich each prospect, and draft up to the recommended 10/day free/basic or 20/day Sales Nav/Premium AE-owned LinkedIn touches for approval.",
       "needs": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
       "composes": [
         "icp-outbound-builder",
@@ -86,7 +86,7 @@
       ]
     },
     {
-      "name": "Social campaigns \u2014 territory and deal expansion",
+      "name": "Social campaigns — territory and deal expansion",
       "outcome": "Build a narrow AE push for a territory, event, customer expansion, or stalled-pipeline segment. Default to row-level dynamic approvals like AI SDR; use static flow-level approval only when RevOps/founder approves the exact audience and templates.",
       "needs": "No HubSpot required for pure ICP/imported/Discover segments; HubSpot required for territory/deal/customer CRM segments; row-level approval by default",
       "composes": [
@@ -95,7 +95,7 @@
       ]
     },
     {
-      "name": "Stalled deal reactivation \u2014 60-day open-deal workflow",
+      "name": "Stalled deal reactivation — 60-day open-deal workflow",
       "outcome": "Find contacts associated to open deals that are not Closed Won/Lost and have had no engagement for 60+ days, then build an owner-approved LinkedIn reactivation queue. Treat recurring workflow setup as a RevOps/admin step unless already configured.",
       "needs": "HubSpot required; an AE with HubSpot access can run once from a manually built/filtered contact list; RevOps/admin needed only for recurring workflow setup",
       "composes": [
@@ -105,7 +105,7 @@
     },
     {
       "name": "Meeting-booked stakeholder follow-up",
-      "outcome": "Draft stakeholder LinkedIn touches from a meeting-booked contact list/source so the deal is not single-threaded. An AE can run this once today from a manually filtered HubSpot list; RevOps is needed only for recurring setup.",
+      "outcome": "Draft stakeholder LinkedIn touches from a meeting-booked contact list/source so the deal is not single-threaded. This can run from the same booked-meeting source as Auto-connect because it targets other stakeholders, not duplicate outreach to the booked contact. An AE can run this once today from a manually filtered HubSpot list; RevOps is needed only for recurring setup.",
       "needs": "HubSpot required; AE can run once from a manually built meeting-booked contact list/source; RevOps needed only for recurring workflow setup",
       "composes": [
         "hubspot-signal-to-linkedin-touch",

@@ -57,7 +57,7 @@
     },
     {
       "name": "BDR AI SDR \u2014 daily approval queue",
-      "outcome": "Daily engine: discover or load ICP-fit prospects, enrich each prospect, and draft connection-request rows up to the recommended recommended 10/day free/basic or 20/day Sales Nav/Premium connection-request cap for approval. Already-connected message rows use the separate message cap.",
+      "outcome": "Daily engine: discover or load ICP-fit prospects, enrich each prospect, and draft connection-request rows up to the recommended 10/day free/basic or 20/day Sales Nav/Premium connection-request cap for approval. Already-connected message rows use the separate message cap.",
       "needs": "No HubSpot required with ICP brief + FirstTouch Discover Contacts; HubSpot list optional",
       "composes": [
         "icp-outbound-builder",
