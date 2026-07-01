@@ -24,7 +24,7 @@ Before running this skill for the first time in a workspace, load `../../referen
 ## Step-by-step
 
 ### 1. Pull the campaign (FirstTouch MCP)
-Get the available FirstTouch campaign/flow/sequence definition: steps, message types, timing, target list, sender seat, and personalization variables used. If the MCP cannot retrieve the full definition, ask the user to paste or export the sequence steps and mark missing fields as `manual review required` rather than failing silently.
+List the workspace's flow plans with `list_flow_plans` and pull the matching definition (use `get_flow_workspace` for workspace context and `get_flow_available_variables` to see which personalization variables the flow can resolve). Get the campaign/flow/sequence definition: steps, message types, timing, target list, sender seat, and personalization variables used. If the MCP cannot retrieve the full definition, ask the user to paste or export the sequence steps and mark missing fields as `manual review required` rather than failing silently.
 
 ### 2. Run the 5 review dimensions
 

@@ -1,6 +1,6 @@
 ---
 name: founder-led-outbound
-description: Run the founder AI SDR motion: build a targeted prospect list from a HubSpot list or FirstTouch Discover Contacts, enrich each prospect, draft founder-voice LinkedIn outreach, and queue a small daily batch for founder approval. Use when a founder wants their own version of AI SDR, strategic-account outbound, founder-led growth, or daily founder-voice prospecting without sounding like an SDR.
+description: Run the founder AI SDR motion (for founders/CEOs sending as themselves only): build a targeted prospect list from a HubSpot list or FirstTouch Discover Contacts, enrich each prospect, draft founder-voice LinkedIn outreach, and queue a small daily batch for founder approval. Use when a founder wants their own version of AI SDR, strategic-account outbound, founder-led growth, or daily founder-voice prospecting without sounding like an SDR.
 metadata:
   author: firsttouch
   version: "1.1"
@@ -76,9 +76,9 @@ If HubSpot is unavailable or no saved ICP exists, ask the founder for a concise 
 
 **Path B - no HubSpot access or no list:**
 - Use the saved founder ICP from Step 0b, or ask for it if missing: target industries, company size, geography, titles/seniority, exclusions, and must-have signals.
-- Use **FirstTouch Discover Contacts** to build a small prospect list from that ICP.
-- Preview a small sample before larger imports because discovery/enrichment can consume FirstTouch credits.
-- Save the discovered contacts into a FirstTouch audience or list for future daily runs.
+- Use **FirstTouch Discover Contacts** (`discover_contacts`) to build a small prospect list from that ICP.
+- Before larger imports, quote the cost: check per-action pricing with `get_feature_costs` and current balance with `get_credits_usage`, preview a small sample, and get approval — discovery/enrichment consumes FirstTouch credits.
+- Save the discovered contacts into a FirstTouch audience (`create_audience` or `create_audience_from_profiles`) for future daily runs.
 
 ### 2. Enrich and prioritize
 For each contact/company, enrich missing fields before drafting:

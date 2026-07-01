@@ -1,6 +1,6 @@
 ---
 name: icp-outbound-builder
-description: Run the AI SDR motion: start from a HubSpot contact/company list or build a new ICP list via FirstTouch Discover Contacts, enrich each prospect, generate customized LinkedIn-first outreach, and queue a daily batch for human approval. Use when the user wants AI SDR, outbound against a HubSpot list, fresh daily leads, ICP prospecting, or customized outreach for contacts/companies.
+description: Run the daily recurring team AI SDR motion (for SDRs, BDRs, and AEs): start from a HubSpot contact/company list or build a new ICP list via FirstTouch Discover Contacts, enrich each prospect, generate customized LinkedIn-first outreach, and queue a daily batch for human approval. Use when the user wants AI SDR, outbound against a HubSpot list, fresh daily leads, ICP prospecting, or customized outreach for contacts/companies. For founder-voice outbound use founder-led-outbound; for a one-time campaign use social-campaigns.
 metadata:
   author: firsttouch
   version: "1.1"
@@ -66,9 +66,9 @@ For every approved AI SDR prospect, first check LinkedIn connection status:
 
 **Path B — no HubSpot access or no existing list:**
 - Ask the user for their ideal ICP: target industries, company size, geography, titles/seniority, exclusions, and any must-have signals.
-- Use **FirstTouch Discover Contacts** to build a prospect list from that ICP.
-- Run Gate 3a from `../../references/safety-governance.md`: preview a small sample, state estimated maximum discovery/enrichment credits, and get approval before larger imports because discovery/enrichment can consume FirstTouch credits.
-- Save the discovered contacts into a FirstTouch audience or list for future daily runs.
+- Use **FirstTouch Discover Contacts** (`discover_contacts`) to build a prospect list from that ICP.
+- Run Gate 3a from `../../references/safety-governance.md`: check per-action pricing with `get_feature_costs` and current balance with `get_credits_usage`, preview a small sample, state estimated maximum discovery/enrichment credits, and get approval before larger imports.
+- Save the discovered contacts into a FirstTouch audience (`create_audience` or `create_audience_from_profiles`) for future daily runs.
 
 ### 2. Enrich every candidate
 For each contact/company, enrich missing fields before drafting. If no enrichment MCP is connected, use HubSpot, FirstTouch, CSV, or user-provided fields; skip or queue records missing a usable LinkedIn URL rather than fabricating data:

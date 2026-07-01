@@ -1,6 +1,6 @@
 ---
 name: hubspot-signal-to-linkedin-touch
-description: Turn a HubSpot CRM event — lifecycle stage change, deal stage movement, form fill, list addition — into a timely, personalized LinkedIn touch. Reads the signal from HubSpot, qualifies the contact, drafts outreach via FirstTouch, gates for approval, and logs back to HubSpot when the connected FirstTouch-HubSpot integration supports it. Use when the user wants to act on HubSpot activity with LinkedIn outreach, trigger social touches from CRM events, or make outbound "event-driven."
+description: Turn a HubSpot CRM event — lifecycle stage change, deal stage movement, form fill, list addition — into a timely, personalized LinkedIn touch. Reads the signal from HubSpot, qualifies the contact, drafts outreach via FirstTouch, gates for approval, and logs back to HubSpot when the connected FirstTouch-HubSpot integration supports it. Use when the user wants to act on HubSpot activity with LinkedIn outreach, trigger social touches from CRM events, or make outbound "event-driven." Covers any CRM event; for high-intent inbound (booked meeting, signup, trial, demo) prefer inbound-speed-to-lead.
 metadata:
   author: firsttouch
   version: "1.1"

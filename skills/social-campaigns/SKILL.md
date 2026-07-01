@@ -1,6 +1,6 @@
 ---
 name: social-campaigns
-description: Build a focused LinkedIn social campaign for a very narrow ICP segment: define precise audience criteria, source/enrich contacts from FirstTouch and optional HubSpot lists, then choose either row-level dynamic actions for rep/BDR one-at-a-time execution or static flow templates for RevOps/founder-approved one-time campaigns. Use for product updates, event invites, territory pushes, reengagement lists, or team-routed social motions.
+description: Build a ONE-TIME (not recurring) LinkedIn social campaign for a very narrow ICP segment: define precise audience criteria, source/enrich contacts from FirstTouch and optional HubSpot lists, then choose either row-level dynamic actions for rep/BDR one-at-a-time execution or static flow templates for RevOps/founder-approved one-time campaigns. Use for one-time pushes: product updates, event invites, territory pushes, reengagement lists, or team-routed social motions. For a daily recurring outbound queue, use icp-outbound-builder instead.
 metadata:
   author: firsttouch
   version: "1.1"
@@ -116,7 +116,7 @@ Run Gate 0 suppression/DNC and Gate 1 duplicate checks from `../../references/sa
 Create the FirstTouch execution object that matches the chosen mode and connected MCP support. State the exact object created.
 
 - **Rep/BDR dynamic-row mode:** build an audience and queue dynamic actions/manual approval rows, one prospect at a time; before adding per-contact dynamic actions, run `get_dynamic_action_guide`, then call `add_dynamic_action` in the supported order.
-- **Static campaign-flow mode:** build an audience plus flow plan/campaign with approved static templates.
+- **Static campaign-flow mode:** build an audience (`create_audience`), create the flow plan with the approved static templates (`create_flow_plan` — run `get_flow_creation_guide` first), attach the audience (`attach_audience_to_flow`), and publish with `manage_flow_publication` only after flow-level approval.
 
 Recommended sequence:
 - If already connected: send the approved static first-message template, then optionally one approved static follow-up.
@@ -180,7 +180,7 @@ After approval:
 - before queuing per-contact dynamic actions, run `get_dynamic_action_guide`, then call `add_dynamic_action` in the supported order
 - if a LinkedIn message should only send after a connection request is accepted, append it to the `connection_accepted` branch rather than queueing it as an immediate message
 - publish or queue the FirstTouch dynamic actions, flow, campaign, or audience enrollment supported by the connected MCP
-- remember: publishing a flow activates it but does **not** enroll awaiting contacts; explicitly enroll approved contacts/items, then confirm they moved from awaiting to in-progress
+- remember: publishing a flow activates it but does **not** enroll awaiting contacts; explicitly enroll approved contacts/items with `enroll_awaiting_flow_items` (or `add_manual_flow_enrollment` for individual adds), then confirm via `list_enrollments` that they moved from awaiting to in-progress
 - enroll or queue only the approved audience/rows according to daily caps
 - log the campaign and attribution tag in FirstTouch and HubSpot when HubSpot is connected
 - report queued, sent, blocked, failed, and completed counts
