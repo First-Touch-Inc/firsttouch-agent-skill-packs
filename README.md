@@ -32,7 +32,8 @@ firsttouch-skills/
 │   ├── system-grounding.md                ← how FirstTouch + HubSpot + agents fit together
 │   ├── mcp-setup.md                       ← connect HubSpot MCP, FirstTouch MCP, enrichment MCPs
 │   ├── messaging-framework.md             ← FirstTouch LinkedIn messaging methodology
-│   └── safety-governance.md               ← approval gates, send safety, account limits
+│   ├── safety-governance.md               ← approval gates, send safety, account limits
+│   └── troubleshooting.md                 ← MCP failures, LinkedIn warnings, recovery
 └── skills/
     ├── firsttouch-messaging/              ← foundation: how to write outreach
     ├── warm-engager-followup/             ← social engagement flow
@@ -56,11 +57,32 @@ firsttouch-skills/
 
 ---
 
+## Get started in 5 steps
+
+1. **Download your pack** (below) — or grab individual skills from [`packs/skills/`](packs/skills/).
+2. **Install it** for your agent — platform guides in [`install/`](install/): [Claude Code](install/claude-code.md) · [Claude.ai](install/claude-ai.md) · [Cursor/Windsurf](install/cursor-windsurf.md) · [ChatGPT](install/chatgpt.md).
+3. **Connect the FirstTouch MCP** (`https://mcp.firsttouch.ai`) — required by every play. HubSpot MCP is optional but unlocks the CRM plays. See [`references/mcp-setup.md`](references/mcp-setup.md).
+4. **Answer the 3 onboarding questions** in [`references/onboarding.md`](references/onboarding.md) — LinkedIn account type, HubSpot access, which play to run first.
+5. **Run your first play and approve the drafts** — nothing sends without your approval.
+
+### Download your pack
+
+| Pack | For | Download |
+|---|---|---|
+| Founder Pack | Founders doing their own sales | [`packs/founder-pack.zip`](packs/founder-pack.zip) |
+| AE Pack | Account Executives | [`packs/ae-pack.zip`](packs/ae-pack.zip) |
+| BDR Pack | Business Development Reps | [`packs/bdr-pack.zip`](packs/bdr-pack.zip) |
+| RevOps Pack | Revenue Operations | [`packs/revops-pack.zip`](packs/revops-pack.zip) |
+
+Single skills for Claude.ai (one skill per zip, references bundled): [`packs/skills/`](packs/skills/)
+
+---
+
 ## Install (for end customers)
 
 1. Drop any skill folder into your agent's skills directory:
    - **Claude Code:** `~/.claude/skills/<skill-name>/` (or `.claude/skills/` per-project)
-   - **Claude.ai:** Settings → Features → upload as zip
+   - **Claude.ai:** Settings → Features → upload a single-skill zip from [`packs/skills/`](packs/skills/)
    - **Cursor / Windsurf / custom:** copy the folder anywhere the agent can read
 2. Connect the MCPs your plays need — see [`references/mcp-setup.md`](references/mcp-setup.md).
    - **FirstTouch MCP** is required for FirstTouch execution and approvals.
@@ -179,4 +201,14 @@ dist/
 └── revops-pack/  ...
 ```
 
-Re-running the script syncs all packs to the current canonical state, rebuilds the zips in `dist/`, and publishes the distributable zips to `packs/*-pack.zip`.
+Re-running the script syncs all packs to the current canonical state, rebuilds the zips in `dist/`, and publishes the distributable zips to `packs/*-pack.zip` plus self-contained single-skill zips to `packs/skills/`. CI validates frontmatter, manifests, and zip freshness on every push.
+
+---
+
+## Support
+
+- **Slack community** — [firsttouch-workspace.slack.com](https://firsttouch-workspace.slack.com): the best place to ask questions, share plays, and get help from the FirstTouch team.
+- **In-app chat** — chat support inside the FirstTouch app for account-specific issues.
+- **Something broke mid-play?** — [`references/troubleshooting.md`](references/troubleshooting.md) covers MCP failures, LinkedIn warnings, stalled queues, and credit issues.
+
+*Pack version 1.1.0 — last updated 2026-07-01. See [CHANGELOG.md](CHANGELOG.md).*

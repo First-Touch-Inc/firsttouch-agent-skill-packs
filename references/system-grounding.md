@@ -107,6 +107,21 @@ This pack uses human-friendly terms because users ask for "campaigns," "sequence
 | Dynamic action queue | Per-contact actions awaiting row-level approval |
 | `connection_accepted` branch | Dynamic Action append target for a LinkedIn message that should run only after a connection request is accepted |
 | Enrollment | Adding approved contacts to the flow/campaign |
+| Discover Contacts | FirstTouch's built-in prospect search — builds a new ICP list from filters (title, industry, geography) when no HubSpot list exists; consumes credits |
+| FirstTouch-accessible list/source | Any contact source FirstTouch can read: a shared HubSpot list, an imported CSV, a FirstTouch audience, or a Discover Contacts result |
+| Social Engagement | FirstTouch monitoring of likes/comments on a designated LinkedIn personal profile; collected engagers can feed the warm-engager play |
+| Exclusion/DNC list | Contacts FirstTouch must never touch — checked at Gate 0 before any motion |
+| Credits | FirstTouch's metered currency for Discover Contacts and enrichment; check balance before bulk operations |
+
+**LinkedIn account types** (they are not the same thing):
+
+| Account | Connection notes | Caps |
+|---|---|---|
+| Free/basic | No | Recommend 10 connection requests/day, FirstTouch max 20/day |
+| LinkedIn Premium | Yes (for approved sends) | Recommend 20/day, FirstTouch max 30/day |
+| Sales Navigator | Yes (for approved sends) — plus advanced search/lists | Recommend 20/day, FirstTouch max 30/day |
+
+**Message types** (full methodology in `messaging-framework.md`): connection request → opener (post-accept, no ask) → value touch (no ask) → meeting ask (only after an exchange) → break-up.
 
 The agent should state the exact FirstTouch object used so the user does not have to guess where approval or execution happened.
 
@@ -125,3 +140,15 @@ This persona is reinforced in every play's `SKILL.md`. If an agent ever seems to
 
 ## Reply and sentiment scope
 Reply sentiment is limited to FirstTouch-managed outreach metrics where available. The agent must not claim arbitrary LinkedIn inbox, email inbox, or unmanaged-thread sentiment access.
+
+## When a prospect replies
+
+The agent's job ends after the approved touch is queued and executed. Replies belong to the human who owns the relationship:
+
+1. Agent drafts → human approves → FirstTouch executes the touch.
+2. The prospect replies or engages. FirstTouch captures this in its managed metrics; when HubSpot is connected, the touch is already on the contact timeline for the owner to see.
+3. **The owner/rep responds personally.** The agent does not send autonomous follow-ups to a reply — a follow-up is a new motion that goes back through drafting and the approval gate.
+4. If the prospect asks to stop, says "not interested," or objects to being contacted: the agent's only correct actions are to add them to the exclusion/DNC list, note it in HubSpot when connected, and confirm to the user that the contact will not be touched again.
+5. Replies and sentiment can be summarized in team performance reports for coaching — never for automated re-targeting.
+
+If a user asks the agent to "handle my replies," explain this boundary: FirstTouch plays are human-in-the-loop by design, and inbox conversation is where the human takes over.

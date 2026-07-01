@@ -100,9 +100,4 @@ Slack/email approval delivery requires external workspace configuration and is n
 
 ## Troubleshooting
 
-| Symptom | Likely cause | Fix |
-|---------|-------------|-----|
-| Agent says it "can't send" | FirstTouch MCP not connected or OAuth expired | Re-auth in workspace settings |
-| Agent ignores owner routing | HubSpot MCP missing or no owner scope | Reconnect HubSpot MCP with owner read scope |
-| Agent drafts but never logs | Logging not enabled / wrong HubSpot portal | Confirm FirstTouch↔HubSpot sync is active |
-| Duplicate messages sent | Duplicate-check skipped | Ensure the play runs the "already contacted?" gate (see `safety-governance.md`) |
+Setup and operational failures (MCP auth, LinkedIn warnings, stalled queues, credit spend, suppression misses, mid-run recovery) are covered in [`troubleshooting.md`](troubleshooting.md). Load that file whenever something breaks after setup.
