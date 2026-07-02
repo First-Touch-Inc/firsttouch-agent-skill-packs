@@ -1,0 +1,43 @@
+name: Publish pack release
+
+# The website (firsttouch.com homepage + /mcp) sends users to
+# github.com/First-Touch-Inc/firsttouch-agent-skill-packs/releases/latest,
+# so every change to the committed pack zips must become a release.
+# This publishes one automatically whenever packs/ changes on main.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "packs/**"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate zips match sources
+        run: python scripts/validate.py
+
+      - name: Compute tag
+        id: tag
+        run: echo "tag=packs-$(date -u +%Y%m%d-%H%M%S)-${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
+
+      - name: Publish release with current zips
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ steps.tag.outputs.tag }}" \
+            --title "Skill Packs $(date -u +%Y-%m-%d) (${GITHUB_SHA::7})" \
+            --notes "Automated release of the committed pack zips from main @ ${GITHUB_SHA}.
+
+The stable download URLs under releases/latest/download/ always serve these newest zips:
+- founder-pack.zip, ae-pack.zip, bdr-pack.zip, revops-pack.zip
+- per-skill zips from packs/skills/" \
+            --latest \
+            packs/*.zip packs/skills/*.zip
