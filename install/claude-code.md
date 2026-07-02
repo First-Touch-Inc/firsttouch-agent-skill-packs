@@ -7,6 +7,8 @@
 /plugin install founder-pack@firsttouch        # or ae-pack / bdr-pack / revops-pack
 ```
 
+The plugin registers the FirstTouch MCP but it still needs a one-time login: run `/mcp`, pick the **firsttouch** server, and complete the OAuth prompt ("Needs authentication" before this step is expected, not a bug). If you already connected the FirstTouch MCP manually, you can keep using that connection and skip this.
+
 Verify with `/plugin list`, then ask *"What FirstTouch plays do you have available?"* The zip-based paths below still work if you prefer manual installs.
 
 **Easiest zip path (no file wrangling):** unzip the pack, open Claude Code in that folder, and say: *"Install these skills and references into my skills directory."* The agent copies everything for you. Manual steps below if you prefer.

@@ -70,7 +70,7 @@ firsttouch-skills/
 /plugin install founder-pack@firsttouch        # or ae-pack / bdr-pack / revops-pack
 ```
 
-Then answer the onboarding questions when the agent asks and run your first play. Everyone else:
+Then run `/mcp` once to authorize the FirstTouch server (a "Needs authentication" status before that is expected), answer the onboarding questions when the agent asks, and run your first play. Everyone else:
 
 1. **Download your pack** (below) - or grab individual skills from [`packs/skills/`](packs/skills/).
 2. **Install it** for your agent - platform guides in [`install/`](install/): [Claude Code](install/claude-code.md) · [Claude.ai](install/claude-ai.md) · [Cursor/Windsurf](install/cursor-windsurf.md) · [ChatGPT](install/chatgpt.md).

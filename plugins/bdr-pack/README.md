@@ -153,7 +153,8 @@ Use the source-based chooser above as the quickstart. The recipe table below has
 ## Install
 1. Download this pack zip and extract it so `skills/` and `references/` sit side by side. Keep the `references/` folder with the skills; many skills link to `../../references/...`.
 2. Install for your agent:
-   - **Claude Code (easiest path):** open Claude Code in the unzipped pack folder and say: *"Install these skills and references into my skills directory."* The agent does the copying for you.
+   - **Claude Code (recommended):** install as a plugin instead of this zip - `/plugin marketplace add First-Touch-Inc/firsttouch-agent-skill-packs`, then `/plugin install <persona>-pack@firsttouch`, then `/mcp` once to authorize the bundled FirstTouch server ("Needs authentication" before that is expected).
+   - **Claude Code (zip path):** open Claude Code in the unzipped pack folder and say: *"Install these skills and references into my skills directory."* The agent does the copying for you.
    - **Claude Code (manual):** copy `skills/<skill-name>/` folders into your skills directory and `references/` next to them. On Windows that is `C:\Users\<you>\.claude\skills\` and `C:\Users\<you>\.claude\references\`; on Mac/Linux it is `~/.claude/skills/` and `~/.claude/references/`. The generated recipe catalog lives in `references/recipes.md` and the onboarding/play chooser in `references/onboarding.md`, so recipes survive non-zip installs.
    - **Claude.ai:** Settings → Features → Skills → upload the full persona pack `.zip` first. If uploading a single skill manually, include the specific referenced markdown files inside that skill folder before zipping, because `../../references/` paths may not resolve in single-skill Claude.ai uploads.
    - **Cursor / Windsurf:** copy this pack into the project or workspace location your agent reads for skills; keep `skills/` and `references/` together at the same root.
