@@ -11,7 +11,7 @@ Ask these questions before recommending or executing plays:
 
 2. **HubSpot access**
    - "Do you use HubSpot? If yes, can you connect the HubSpot MCP or provide a HubSpot service key / private app token so the agent can access internal CRM data?"
-   - Getting access is easy for reps: ask your admin to approve HubSpot MCP access (a quick approval), or request a **read-only service key** that lets the agent read deals, contacts, and companies with no write risk. Do not mint credentials yourself.
+   - Getting access is easy for reps: ask your admin to approve HubSpot MCP access (a quick approval - this is the preferred path). As a fallback, request a **read-only service key** that lets the agent read deals, contacts, and companies with no write risk. Do not mint credentials yourself.
    - If they use HubSpot but cannot connect access yet: ask them to create a HubSpot list for the target audience so FirstTouch can access the contacts/accounts.
    - If they do not use HubSpot: HubSpot-specific plays are unavailable, but FirstTouch-only plays can still run from Discover Contacts, social engagement, one-time social campaigns from imported lists, or FirstTouch-accessible lists.
 
