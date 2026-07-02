@@ -49,7 +49,10 @@ firsttouch-skills/
     ├── team-performance-report/           ← FirstTouch team metrics + attribution
     ├── sequence-qa-reviewer/
     ├── workspace-audit/
-    └── campaign-pause-and-fix/            ← mid-send escape hatch: pause, fix, restart
+    ├── campaign-pause-and-fix/            ← mid-send escape hatch: pause, fix, restart
+    ├── founder-post-generator/            ← posts that create the engagement to harvest
+    ├── post-demo-followup/                ← same-day demo follow-up + stakeholder expansion
+    └── champion-job-change/               ← champion moved: new-company path + old-account protection
 ```
 
 **Two layers:**
@@ -145,6 +148,9 @@ Every pack should ask three questions before running volume:
 | Team Performance Report | Summarize sends, replies, meetings, opportunities, and HubSpot logging coverage by flow/sender/date | FirstTouch; HubSpot improves logging coverage checks |
 | Sequence QA Reviewer | Review campaigns for risk + quality | No HubSpot required |
 | Campaign Pause & Fix | Pause a live flow mid-send, diagnose, fix copy/audience/volume, and restart with safe re-enrollment | No HubSpot required |
+| Founder Post Generator | Draft founder-voice posts that attract ICP engagers; feeds the warm-engager play | No HubSpot required; drafts only |
+| Post-Demo Follow-Up | Same-day buyer follow-up, champion thank-you, stakeholder expansion, momentum touch | HubSpot recommended; works from meeting notes |
+| Champion Job Change | Congrats now, reconnect later, protect the old account when a champion moves | HubSpot recommended for CRM updates |
 | Workspace Audit | Find setup gaps before launch | No HubSpot required; HubSpot improves CRM checks |
 
 ---
@@ -164,8 +170,8 @@ In addition to the flat `skills/` folder above, this repo ships **4 downloadable
 
 | Pack | Persona | Skills included | Key plays |
 |---|---|---:|---|
-| `founder-pack` | Founders doing their own sales | 10 | Social engagement flow, social campaigns, founder AI SDR, inbound follow-up, customer referral thank-you, stalled open-deal workflow |
-| `ae-pack` | Account Executives | 11 | Inbound speed-to-lead, social campaigns, customer referral thank-you, stalled open-deal workflow, meeting-booked stakeholder follow-up, closed-lost re-engage |
+| `founder-pack` | Founders doing their own sales | 11 | Social engagement flow, social campaigns, founder AI SDR, inbound follow-up, customer referral thank-you, stalled open-deal workflow |
+| `ae-pack` | Account Executives | 13 | Inbound speed-to-lead, social campaigns, customer referral thank-you, stalled open-deal workflow, meeting-booked stakeholder follow-up, closed-lost re-engage |
 | `bdr-pack` | Business Development Reps | 9 | Inbound speed-to-lead, social engagement flow, social campaigns, target-list AI SDR, lead recovery |
 | `revops-pack` | Revenue Operations | 13 | Workspace audit, sequence QA, customer referral thank-you, social campaigns, stalled open-deal workflow, HubSpot workflow build, team governance |
 
@@ -213,4 +219,4 @@ Re-running the script syncs all packs to the current canonical state, rebuilds t
 - **In-app chat** - chat support inside the FirstTouch app for account-specific issues.
 - **Something broke mid-play?** - [`references/troubleshooting.md`](references/troubleshooting.md) covers MCP failures, cooldowns, stalled queues, and credit issues.
 
-*Pack version 1.3.1 - last updated 2026-07-01. See [CHANGELOG.md](CHANGELOG.md).*
+*Pack version 1.4.0 - last updated 2026-07-01. See [CHANGELOG.md](CHANGELOG.md).*

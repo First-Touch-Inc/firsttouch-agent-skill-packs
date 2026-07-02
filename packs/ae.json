@@ -1,7 +1,7 @@
 {
   "persona": "ae",
   "pack_name": "AE Pack",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "persona_pain": "Booked meetings, signups, and warm deal signals go cold when LinkedIn follow-up and stakeholder expansion happen too late",
   "persona_blurb": "You carry a number. Your job depends on turning fresh meetings and inbound hand-raisers into active conversations fast, then keeping quiet open opportunities from becoming no-decisions. These plays tell you what to do first when a meeting books, how to multi-thread the account, how to work warm LinkedIn engagement, and how to reactivate genuinely stalled open deals from a HubSpot list or workflow.",
   "skills": [
@@ -47,6 +47,14 @@
     },
     {
       "name": "campaign-pause-and-fix",
+      "status": "live"
+    },
+    {
+      "name": "post-demo-followup",
+      "status": "live"
+    },
+    {
+      "name": "champion-job-change",
       "status": "live"
     }
   ],
@@ -149,6 +157,26 @@
         "firsttouch-messaging"
       ],
       "run_guide": "1. Pull the HubSpot Closed Lost contact list (keep it separate from stalled open deals). 2. Use `hubspot-signal-to-linkedin-touch` for known contacts and `icp-outbound-builder` to find new stakeholders at those accounts. 3. Draft a win-back angle that references what changed since the loss, approve, queue."
+    },
+    {
+      "name": "Post-demo follow-up",
+      "outcome": "Same-day buyer follow-up, champion thank-you, stakeholder expansion, and a 3-day momentum touch drafted from the real meeting",
+      "needs": "HubSpot recommended for meeting/deal context; works from your meeting notes without it",
+      "composes": [
+        "post-demo-followup",
+        "firsttouch-messaging"
+      ],
+      "run_guide": "1. Right after the demo, give the agent the meeting context (or let it pull from HubSpot): attendees, resonant pains, promises, next step. 2. Review the drafted set - recap, thank-you, 1-2 stakeholder intros, momentum touch. 3. Approve per row; the momentum touch only sends if the thread goes quiet."
+    },
+    {
+      "name": "Champion job change",
+      "outcome": "Turn a champion's move into a warm path at the new company and a protected relationship at the old account",
+      "needs": "No HubSpot required for outreach; HubSpot recommended for CRM updates. Reacts to a known move - FirstTouch does not monitor job changes",
+      "composes": [
+        "champion-job-change",
+        "firsttouch-messaging"
+      ],
+      "run_guide": "1. Confirm the move (enrich_contact if unsure). 2. Approve the no-pitch congratulations now and the reconnect note queued 3-4 weeks out. 3. Send the continuity touch to the old account's remaining stakeholders and update HubSpot."
     }
   ],
   "references": [

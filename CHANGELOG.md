@@ -2,6 +2,18 @@
 
 All notable changes to the FirstTouch Agent Skill Packs.
 
+## 1.4.0 - 2026-07-01
+
+Depth without clutter: persona-specific growth plays plus optional admin depth. The default install stays self-serve.
+
+### Added
+- New skill `founder-post-generator` (founder pack): 5 post types, CTA rules (no hard demo CTA), and the 24-72h bridge into warm-engager-followup - fixes the top-of-funnel gap where founders have no engagement to harvest
+- New skill `post-demo-followup` (AE pack): same-day buyer follow-up, champion thank-you, stakeholder expansion, 3-day momentum touch, and a no-show recovery path; never fabricates meeting details
+- New skill `champion-job-change` (AE pack): no-pitch congratulations, delayed reconnect, old-account continuity, HubSpot updates; explicitly reactive - FirstTouch does not monitor job changes
+- references/bdr-seat-and-queue.md (BDR pack): reassuring one-pager - cooldowns are normal, which statuses need action, how shared queues avoid double touches, weekly hygiene
+- references/revops-admin-appendix.md (RevOps pack): HubSpot read/write surface (first_touch_* properties, app events, timeline), read-only-by-default access model, lightweight exclusion governance, and readiness tiers by rollout size (solo -> pilot -> team -> enterprise review)
+- Founder start-here and weekly rhythm now route thin-engagement founders through the post generator first
+
 ## 1.3.1 - 2026-07-01
 
 ### Changed

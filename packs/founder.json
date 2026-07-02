@@ -1,7 +1,7 @@
 {
   "persona": "founder",
   "pack_name": "Founder Pack",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "persona_pain": "Looking automated or spammy on LinkedIn risks the reputation you spent years building",
   "persona_blurb": "You do your own sales. Your name is your brand, and every automated-feeling LinkedIn message risks undoing years of relationship-building. You need outreach that sounds exactly like you - in the signals you'd actually notice, at the volume that feels personal, not like a drip campaign. These plays are designed for founders who want LinkedIn to feel like them, not like an SDR they hired.",
   "skills": [
@@ -43,6 +43,10 @@
     },
     {
       "name": "campaign-pause-and-fix",
+      "status": "live"
+    },
+    {
+      "name": "founder-post-generator",
       "status": "live"
     }
   ],
@@ -125,6 +129,17 @@
         "firsttouch-messaging"
       ],
       "run_guide": "1. Pull the Closed Won/customer list. 2. `customer-referral` checks connection state and drafts a thank-you plus light referral ask (both connected and unconnected paths). 3. The account owner approves, then queue."
+    },
+    {
+      "name": "Founder post engine",
+      "outcome": "Draft 3-5 founder-voice posts per week that attract ICP engagers, then harvest them into warm conversations",
+      "needs": "No HubSpot required; drafts only - the founder posts from their own account",
+      "composes": [
+        "founder-post-generator",
+        "warm-engager-followup",
+        "firsttouch-messaging"
+      ],
+      "run_guide": "1. Feed the generator one real input (customer lesson, market POV, build-in-public moment); get 3-5 drafts with suggested days. 2. Post from your own account; no hard CTA on most posts. 3. 24-72h later, run warm-engager-followup on the ICP-fit engagers while the post is fresh."
     }
   ],
   "references": [

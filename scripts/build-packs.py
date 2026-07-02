@@ -37,10 +37,13 @@ SKILL_NEEDS = {
     "workspace-audit": "No HubSpot for FirstTouch-only audit; HubSpot needed for owner/logging coverage",
     "team-performance-report": "No HubSpot required for FirstTouch team metrics; HubSpot improves opportunity/pipeline reconciliation",
     "campaign-pause-and-fix": "No HubSpot required; works on any running FirstTouch flow",
+    "founder-post-generator": "No HubSpot required; drafts posts only, sends nothing",
+    "post-demo-followup": "HubSpot recommended for meeting/deal context; can run from user-provided meeting notes",
+    "champion-job-change": "No HubSpot required for the outreach; HubSpot recommended for CRM updates and old-account context",
 }
 
 START_HERE = {
-    "founder": "1. **Check Social Engagement first:** run **Social engagement flow: founder posts** from owned founder or executive personal profiles. If Social Engagement is not enabled, turn it on through FirstTouch MCP for the monitored profile. If owned personal-profile engagement is thin, monitor a relevant competitor founder or category influencer personal profile. FirstTouch does not track company-page/profile engagement.\n2. **No engager source right now:** if no monitored profile or engager list is available, run **Founder-led AI SDR** from ICP + FirstTouch Discover Contacts.\n3. **Have HubSpot:** add inbound, visitor, and stalled-deal plays as secondary CRM/deal motions, not the default path.",
+    "founder": "1. **Check Social Engagement first:** run **Social engagement flow: founder posts** from owned founder or executive personal profiles. If Social Engagement is not enabled, turn it on through FirstTouch MCP for the monitored profile. If owned personal-profile engagement is thin, monitor a relevant competitor founder or category influencer personal profile. FirstTouch does not track company-page/profile engagement.\n2. **No engagement to harvest yet:** run **Founder post generator** to draft a week of founder-voice posts that create it - then harvest engagers 24-72h after posting. If you need pipeline this week regardless, run **Founder-led AI SDR** from ICP + FirstTouch Discover Contacts in parallel.\n3. **Have HubSpot:** add inbound, visitor, and stalled-deal plays as secondary CRM/deal motions, not the default path.",
     "ae": "1. **Meeting booked / signup source:** run **Auto-connect on meeting or signup** first for fresh booked meetings, signups, or a manually exported meeting-booked list.\n2. **HubSpot + stakeholder expansion:** run **Meeting-booked stakeholder follow-up** when a booked-meeting source/list is available and the AE wants to multi-thread the account. It can run from the same booked-meeting source as auto-connect because it targets other stakeholders, not duplicate outreach to the booked contact.\n3. **Warm LinkedIn engagers:** run **Social engager flow - leadership's audience** when prospects engage with leadership, competitor, or influencer personal-profile posts.\n4. **No HubSpot/list access:** run **AE AI SDR** from ICP + Discover Contacts; this cannot touch existing pipeline without HubSpot or a FirstTouch-accessible contact list.\n5. **HubSpot + quiet pipeline:** run **Stalled deal reactivation** from a manually filtered HubSpot list of open deals with no engagement for 60+ days. If a deal only went quiet this week, use HubSpot signal/meeting-trigger follow-up; sub-60-day quiet-deal detection is not a native FirstTouch query.\n6. **HubSpot MCP + tasks already created for LinkedIn/social steps:** run **Automate due HubSpot social tasks** as a secondary task runner for tasks due today, not as a cadence/list creator.",
     "bdr": "Use this source-based chooser:\n\n| What you have today | Run first | Why |\n|---|---|---|\n| No source/list yet | **BDR AI SDR** (`icp-outbound-builder`) | Daily approval engine from ICP + Discover Contacts |\n| No-show, event, old-MQL, or HubSpot list | **Scoop-up slipped leads** | Lead recovery from a provided source |\n| Connected inbound feed or imported signup/demo list | **Auto-connect on meeting or signup** | Same-day inbound follow-up |\n| Leadership/competitor post engagement | **Social engager flow** | Work warm engagers before they go cold |\n| RB2B/HubSpot visitor source | **Website visitor play** | Conditional; most BDRs skip if no visitor source exists |\n| HubSpot MCP + tasks already created for LinkedIn/social steps | **Automate due HubSpot social tasks** | Secondary task runner for tasks due today in the user/owner queue; not a prospecting engine |\n\n**Daily engine means approval queue, not autosend:** the agent discovers, enriches, drafts, and queues rows; every first-touch row still requires individual BDR approval before sending. Use **Social campaigns** only for manager-approved special pushes, not normal daily work.",
     "revops": "Start with **Pre-launch rollout audit** before any rep launches volume. Then govern the core rollout: HubSpot list triggers, **Team-wide AI SDR**, social campaigns, stalled-deal workflows, and **Attribution & team performance review** as the recurring reporting cadence. **Ad hoc queue diagnostics:** if a rep asks why a LinkedIn/email action has not sent, ask the agent a direct queue/status question first; you do not need to run the full workspace audit. Keep situational plays such as events, new-customer referral thank-you, website visitors, and closed-lost reengagement for after the core governance path is stable.",
@@ -50,12 +53,15 @@ QUICKSTART_CARDS = {
     "founder": """| Situation | Run this | What happens |
 |---|---|---|
 | Has founder/executive post engagement | Social engagement flow | Work warm engagers from personal-profile posts |
-| Thin owned engagement | Monitor competitor/influencer profile | Use relevant external personal-profile engagement |
+| Thin owned engagement | Founder post generator | Draft posts that create ICP engagement to harvest |
+| Still thin after posting | Monitor competitor/influencer profile | Use relevant external personal-profile engagement |
 | No warm source | Founder-led AI SDR | Discover ICP prospects and draft founder-voice outreach |
 | Has CRM data | Stalled deal / customer referral thank-you | Work high-intent relationship motions |""",
     "ae": """| Situation | Run this | What happens |
 |---|---|---|
 | Meeting booked | Auto-connect on meeting/signup | Connect the booked contact same day |
+| Demo just happened | Post-demo follow-up | Same-day recap, thank-you, stakeholder expansion, momentum touch |
+| Champion changed jobs | Champion job change | Congrats now, reconnect later, protect the old account |
 | Same account has other stakeholders | Meeting-booked stakeholder follow-up | Multi-thread the account without duplicating outreach |
 | Warm LinkedIn engagement | Social engager flow - leadership's audience | Work engagers from leadership / competitor / influencer posts |
 | Quiet open opp | Stalled deal reactivation | One-time HubSpot list or recurring workflow |
@@ -81,6 +87,7 @@ NO_HUBSPOT = {
 
 WEEKLY_RHYTHM = {
     "founder": """- **Daily (10 min):** check new warm engagers from your monitored profile and approve any drafts.
+- **2x per week:** post from the founder-post-generator batch; harvest engagers 24-72h later.
 - **2-3x per week:** approve your founder AI SDR batch. 3-5 contacts per run is plenty for a solo founder - you have to service the conversations you start.
 - **Friday:** scan replies, move anything warm to your calendar, and pause any motion that feels off-voice.""",
     "ae": """- **Every morning (10 min):** approve auto-connect drafts for yesterday's booked meetings and signups.
