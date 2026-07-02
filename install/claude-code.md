@@ -2,7 +2,7 @@
 
 **Easiest path (no file wrangling):** unzip the pack, open Claude Code in that folder, and say: *"Install these skills and references into my skills directory."* The agent copies everything for you. Manual steps below if you prefer.
 
-1. Download the right pack zip from the latest GitHub release.
+1. Download the right pack zip from [`packs/`](../packs/) in this repository (see the README download table) - the committed zips are always current with the latest source.
 2. Unzip it locally.
 3. Copy the shared `references/` folder alongside the skills so `../../references/` links resolve; for global installs, place it at `~/.claude/references/` (Windows: `C:\Users\<you>\.claude\references\`), and for project installs, place it at `.claude/references/`.
 4. Copy every folder under `skills/` into one of these locations:
