@@ -582,7 +582,14 @@ def build_skill_zips() -> list:
         with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
             for file_path in skill_dir.rglob("*"):
                 if file_path.is_file():
-                    zf.write(file_path, Path(name) / file_path.relative_to(skill_dir))
+                    arcname = (Path(name) / file_path.relative_to(skill_dir)).as_posix()
+                    if file_path.suffix == ".md":
+                        # References are vendored at <skill>/references/ in this zip,
+                        # so repo-relative ../../references/ links must be rewritten.
+                        text = file_path.read_text(encoding="utf-8").replace("../../references/", "references/")
+                        zf.writestr(arcname, text)
+                    else:
+                        zf.write(file_path, arcname)
             for ref_name in linked_refs:
                 ref_src = ROOT / "references" / ref_name
                 if ref_src.exists():
