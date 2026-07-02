@@ -39,17 +39,19 @@ Draft all applicable pieces in one pass using `firsttouch-messaging` quality gat
 1. **Same-day buyer follow-up** (email or LinkedIn message to the main attendee): recap in one line, the promised item, the agreed next step with date. No new pitch.
 2. **Champion thank-you** (LinkedIn message): short, human, references one specific moment from the call. Builds the relationship, asks for nothing.
 3. **Stakeholder expansion** (connection request + opener to 1-2 people who were not in the room): references the live evaluation without leaking details - "We're working with {champion} on {topic}; wanted to connect since this touches your team." Never make the champion look bypassed - when in doubt, ask the champion first.
-4. **3-day momentum touch** (queued, sends only if no reply): light value-add tied to the discussed pain - a relevant resource or a specific answer to an open question. Not "just checking in."
+4. **3-day momentum touch** (queued, sends only if no reply): drafted against the stored promise from step 1 - deliver the promised item or answer the open question that came up in the meeting. Never a generic "just checking in."
 
 **No-show variant:** skip 1-3. Draft a zero-guilt recovery: assume good faith, offer two specific new times, add one line of value so the reschedule feels worth it.
 
 ### 3. Route and gate
 - Run Gate 0-2 checks from `../../references/safety-governance.md` on every stakeholder-expansion target (suppression, duplicates, owner).
-- Present the full set in one approval table: recipient, channel, piece, draft, timing. The user approves per row.
+- Present the full set in one approval table: recipient, channel, piece, draft, timing, and a **Promise / next step** column showing the captured promised item and its date - so the user can see the momentum touch is anchored to the real promise before approving it.
 - Queue approved rows through FirstTouch (`get_dynamic_action_guide` then `add_dynamic_action` for LinkedIn pieces; the momentum touch goes on the appropriate delay).
 
-### 4. Log
-When HubSpot is connected, activity logs to the contact/deal timeline automatically via the FirstTouch integration. Note the promised-item and next-step date in the deal notes if the user wants it.
+### 4. Store the promise, then log
+The promise must survive outside this chat - it is what the momentum touch references three days from now:
+- **HubSpot connected:** write the promised item and next-step date to the deal notes (show it in the approval table; the user approves the note like any other row). Activity itself logs to the contact/deal timeline automatically via the FirstTouch integration.
+- **No HubSpot:** restate the promised item and next-step date prominently in the run output and tell the user to save them wherever they track deals - the queued momentum touch already carries the promise in its draft, so it sends correctly either way.
 
 ## Output
 - Approval table: buyer follow-up, champion thank-you, 1-2 stakeholder expansions, 3-day momentum touch (or the no-show recovery)

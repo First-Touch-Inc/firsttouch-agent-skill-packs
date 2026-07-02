@@ -14,7 +14,7 @@ metadata:
 
 ## First-run note
 This skill sends nothing and uses no daily send budget. Before the first run, capture two things (reuse them every run):
-1. **Founder voice:** 2-3 sample posts or messages the founder actually wrote, plus tone rules - phrases they use, phrases they hate, formality level, topics they will not touch.
+1. **Founder voice profile:** 2-3 sample posts or messages the founder actually wrote, plus tone rules - phrases they use, phrases they hate, formality level, topics they will not touch. **Save this as a reusable profile:** restate it in the first run's output so the founder can keep it (notes file, saved prompt, agent memory). On every later run, if a profile exists, confirm "still accurate?" and reuse it - never make the founder re-explain their voice. Re-calibrate when a draft sounds off or roughly monthly.
 2. **Audience:** who should engage (the ICP from `../../references/onboarding.md`). A post that attracts the wrong engagers creates busywork downstream.
 
 ## When to use
@@ -64,6 +64,7 @@ After each post has been live 24-72 hours, run `warm-engager-followup` on the qu
 
 ## Output
 - 3-5 founder-voice post drafts with type, suggested day, and target-audience note
+- First run only: the voice profile (samples, tone rules, exclusions) restated in a copy-saveable block for reuse
 - A rotation suggestion for next week's types
 - Reminder of the 24-72h warm-engager bridge
 

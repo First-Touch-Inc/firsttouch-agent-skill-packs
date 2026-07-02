@@ -2,6 +2,16 @@
 
 All notable changes to the FirstTouch Agent Skill Packs.
 
+## 1.4.1 - 2026-07-02
+
+Grader-verified polish (persona scores: founder 92, BDR 91, RevOps 92, AE 87 -> fixes below):
+
+### Changed
+- post-demo-followup: promised item + next-step date are now captured explicitly - shown as a Promise/next-step column in the approval table, written to HubSpot deal notes when connected (restated in output when not), and the 3-day momentum touch is drafted against the stored promise
+- founder-post-generator: voice profile is a saved, reusable artifact - restated in the first run's output and reused on later runs instead of re-asking the founder
+- RevOps start-here: rolling out to 2+ reps now points explicitly at admin appendix section D (readiness by rollout size)
+- Generated READMEs: explicit "Next:" hand-off from first-run onboarding to Start here
+
 ## 1.4.0 - 2026-07-01
 
 Depth without clutter: persona-specific growth plays plus optional admin depth. The default install stays self-serve.
