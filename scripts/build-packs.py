@@ -268,6 +268,8 @@ This onboarding is scoped to the skills and recipes actually included in this in
 Social Engagement can be enabled through FirstTouch MCP and can monitor relevant LinkedIn profiles for post likes and comments. Prefer the user's own founder/leadership personal profile when available; if they do not have enough owned engagement yet, monitor a relevant competitor founder, category influencer, or executive profile and work the ICP-fit people engaging there. Profile views are not an available signal.
 
 ## Approval model
+Approval always happens in chat first: the agent shows the exact draft and waits for a yes. FirstTouch's optional in-product human-in-the-loop layer (off by default) additionally pauses sends as approval tasks in the FirstTouch app under **Tasks** or in HubSpot. Approval tasks have **no automatic escalation or SLA** - if one sits unactioned, following up is manual, so recurring plays should check the pending-approval queue as part of the routine.
+
 Publishing a flow activates it but does **not** enroll awaiting contacts. After approval, explicitly enroll the approved contacts/items, then confirm they moved from awaiting to in-progress.
 
 | Motion | Approval style |
@@ -275,6 +277,9 @@ Publishing a flow activates it but does **not** enroll awaiting contacts. After 
 | AI SDR / dynamic actions | Row-level approval. Each first-touch row must be approved individually; if approval tasks are confirmed enabled, route them to the owner in HubSpot or the FirstTouch app under **Tasks**. |
 | Warm engager, inbound, website visitor, HubSpot signal, customer/stalled deal | Row-level approval unless FirstTouch records an equivalent per-contact approval; approval tasks route to the owner in HubSpot or app **Tasks** when enabled. |
 | Social campaigns | Two modes: rep/BDR dynamic rows use row-level approval like AI SDR; RevOps/founder one-time static campaigns can use flow-level approval after exact audience, templates, sender/routing rule, launch window, and daily cap are approved. |
+
+## Trial-window expectation
+FirstTouch trials run **two weeks**. Sequence the rollout so the user sees real results inside that window: high-intent plays in the first days (they convert fastest), outbound added once warm motions are running. Do not quote benchmark accept/reply/meeting rates - FirstTouch does not publish them. Instead, measure the user's own numbers with the team-metrics tools and compare week 1 to week 2.
 
 ## Onboarding output format
 ```markdown
@@ -468,8 +473,8 @@ Use `references/onboarding.md` for the full question flow and account-type rules
 {INSTALL_NOTES}
 
 ## Safety
-- No play sends on its own. Every outbound action passes an approval gate.
-- Dynamic outbound and AI SDR require row-level approval; when approval tasks are enabled, approval is sent to the owner in HubSpot or appears in the FirstTouch app under Tasks. Social campaigns support two modes: rep/BDR one-at-a-time dynamic rows use row-level approval; one-time static campaign flows can use flow-level approval only after the exact audience, templates, sender routing, launch window, and daily cap are approved.
+- The agent never sends a message or publishes a flow without showing it in chat and getting an explicit yes. FirstTouch also offers an optional in-product human-in-the-loop layer (off by default) that pauses sends as approval tasks in the FirstTouch app under Tasks or in HubSpot - enable it on send actions for any flow that keeps enrolling contacts after the chat ends.
+- Dynamic outbound and AI SDR require row-level approval. Approval tasks have no automatic escalation or SLA; checking the pending-approval queue is part of the routine. Social campaigns support two modes: rep/BDR one-at-a-time dynamic rows use row-level approval; one-time static campaign flows can use flow-level approval only after the exact audience, templates, sender routing, launch window, and daily cap are approved.
 - Publishing a flow activates it but does **not** enroll awaiting contacts. After approval, explicitly enroll the approved contacts/items, then confirm they moved from awaiting to in-progress.
 - Built around FirstTouch-supported limits and safer recommendations: recommend 10/day free/basic or 20/day Sales Navigator/Premium connection requests; never exceed 20/day free/basic or 30/day Sales Navigator/Premium. When possible, inspect current queue/usage before adding more connection-request rows, rather than relying on estimates.
 - See `references/safety-governance.md`.

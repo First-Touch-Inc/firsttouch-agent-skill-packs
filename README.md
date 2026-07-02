@@ -159,7 +159,7 @@ Every pack should ask three questions before running volume:
 
 - **Progressive disclosure** - only the relevant context loads. Metadata is always present; the body loads on trigger; references load on demand.
 - **Passive, deliverable-oriented** - each skill defines a deliverable, not a goal. The agent produces an artifact; a human approves before anything sends.
-- **Human-in-the-loop by default** - no play sends outbound autonomously. Dynamic plays require per-send approval; one-time social campaigns can use flow-level approval for the exact audience and static templates (see [`references/safety-governance.md`](references/safety-governance.md)).
+- **Human-in-the-loop by default** - the agent never sends or publishes a flow without chat approval. Dynamic plays require per-send approval; one-time social campaigns can use flow-level approval for the exact audience and static templates. FirstTouch also offers an optional in-product approval layer (off by default) that pauses sends as approval tasks in FirstTouch or HubSpot - recommended for any flow that keeps running after the chat ends (see [`references/safety-governance.md`](references/safety-governance.md)).
 - **HubSpot-aware, not HubSpot-blocked where possible** - HubSpot-specific plays say so clearly; AI SDR and founder AI SDR can run from FirstTouch Discover Contacts when no HubSpot list exists.
 
 ---

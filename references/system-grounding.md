@@ -91,6 +91,9 @@ Full setup instructions: [`mcp-setup.md`](mcp-setup.md).
 ## Publish and enroll rule
 Publishing a flow activates it but does **not** enroll awaiting contacts. After approval, explicitly enroll the approved contacts/items, then confirm they moved from awaiting to in-progress before telling the user the motion is live.
 
+## Queueing and priority
+FirstTouch queues actions per sender, first-come-first-serve within that sender's queue. One rep's queued actions never delay another rep's - a shared team queue does not exist. Enrollments carry a priority: set it to high when a send is time-sensitive and should move ahead of the sender's other queued work.
+
 ## Social Engagement source note
 
 LinkedIn Social Engagement monitoring is a FirstTouch feature for post likes and comments. Prefer the user's own founder or executive personal profile when there is enough owned engagement; FirstTouch does not track company-page/profile engagement. If owned engagement is thin, monitor a relevant competitor founder, category influencer, or executive profile and work the ICP-fit people engaging there. Do not use profile views as a signal.
@@ -139,7 +142,7 @@ The agent should behave like a **competent, cautious SDR**, not a script:
 This persona is reinforced in every play's `SKILL.md`. If an agent ever seems to be racing to send volume, something is wrong - pull it back to draft-and-gate.
 
 ## Attribution is automatic
-FirstTouch auto-tags every enrollment - no custom tag schema is needed. When the HubSpot integration is connected and engagement tracking is enabled, FirstTouch logs supported LinkedIn activity back automatically: contact properties, app events (connection request sent, connection accepted, message sent, reply received), and timeline entries for LinkedIn messages. Verify the integration settings once during setup (`mcp-setup.md`), then attribution runs on its own.
+FirstTouch auto-tags every enrollment - no custom tag schema is needed. When the HubSpot integration is connected and engagement tracking is enabled, FirstTouch logs supported LinkedIn activity back automatically: contact properties, app events (connection request sent, connection accepted, message sent, reply received), and timeline entries for LinkedIn messages. Verify the integration settings once during setup (`mcp-setup.md`), then attribution runs on its own. After capture is first enabled, allow up to a day for social engagement signals to start appearing.
 
 ## Reply and sentiment scope
 Reply sentiment is limited to FirstTouch-managed outreach metrics where available. The agent must not claim arbitrary LinkedIn inbox, email inbox, or unmanaged-thread sentiment access.

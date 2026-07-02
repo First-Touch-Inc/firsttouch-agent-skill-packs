@@ -16,10 +16,10 @@ Planning guidance: recommend 10/day (free/basic) or 20/day (Sales Navigator/Prem
 - **Duplicate checks:** FirstTouch campaign history backs the Gate 1 duplicate/recent-contact check, so reps working the same accounts do not double-touch prospects.
 - **Auto-tagging:** FirstTouch auto-tags every enrollment - no custom tag schema needed. When the HubSpot integration is connected and engagement tracking is enabled, it writes activity back automatically (contact properties, app events for connect request / accept / message sent / reply received, and timeline entries).
 
-## Approval SLA
+## Approval SLA (team policy, not product enforcement)
 
-- **SLA: same business day.** Rows queued in the morning are approved or rejected by end of day.
-- Anything still awaiting approval the next morning goes to the rep's manager or a designated backup approver - an unapproved speed-to-lead row from yesterday is already late.
+- **Set the expectation: same business day.** Rows queued in the morning are approved or rejected by end of day.
+- Escalation is manual - FirstTouch does not auto-reassign or escalate a stale approval task. Make it team policy that anything still awaiting approval the next morning goes to the rep's manager or a designated backup approver; an unapproved speed-to-lead row from yesterday is already late.
 
 ## Rollout path
 

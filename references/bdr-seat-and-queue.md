@@ -29,7 +29,8 @@ If several BDRs work one inbound list, the system keeps you out of each other's 
 
 - **The duplicate gate has your back:** before any draft, the agent checks FirstTouch history. If a teammate already touched or queued the contact, your row is skipped - that is correct behavior, not a bug.
 - **Owner mismatch = flag, not send:** if the contact's HubSpot owner is someone else, the row is flagged for review instead of sending.
-- **Same-morning collisions:** if two BDRs queue the same fresh lead, the first-queued row wins and the later one is skipped at send time. Nothing double-sends.
+- **Your queue is your own:** FirstTouch queues actions per rep, first-come-first-serve within your own queue - a teammate's queued actions never slow yours down. For a time-sensitive row, set its priority to high to move it ahead of your other queued work.
+- **Same-morning collisions:** if two BDRs pick up the same fresh lead, the duplicate gate catches it when the second row is drafted or queued - the second row is skipped and nothing double-sends.
 
 ## What good BDR hygiene looks like
 

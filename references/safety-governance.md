@@ -8,11 +8,18 @@ LinkedIn account safety and CRM trust are the two things you cannot afford to br
 
 ## The Golden Rule
 
-> **No play sends outbound autonomously. Every LinkedIn action goes through a human approval gate before it executes.**
+> **The agent never sends a message or publishes a flow without showing it to a human first. Approval happens in the chat: the agent presents the exact draft (or the exact flow) and waits for an explicit yes.**
 
-Agents **draft**. Humans **approve**. FirstTouch **executes**. This sequence is hardcoded into every play.
+Agents **draft**. Humans **approve**. FirstTouch **executes**. These skills require that sequence in every play.
 
-**Default recommendation:** if AI-generated messaging is new for the customer, keep approvals **ON for at least the first few weeks** until the team trusts the quality and safety of the drafts.
+There are two approval layers, and they are different things:
+
+1. **Chat approval (always - required by these skills).** Before queueing any send or publishing any flow, the agent shows the human exactly what will go out and waits for approval in the conversation. This is agent behavior the plays require, not a product setting.
+2. **FirstTouch human-in-the-loop (optional product layer - off by default).** FirstTouch can additionally require an in-product approval on individual flow actions. When enabled, the send pauses as an approval task in the FirstTouch app under **Tasks** (or as an approval task in HubSpot when the action runs through a HubSpot workflow) until a human completes it.
+
+**The consequence that matters:** a published flow keeps running after the chat ends. Chat approval covers what the human saw at build time - it does not cover sends the flow generates later from new signals or new enrollees. For any flow that keeps enrolling contacts over time (social engagement, signal-triggered, recurring), either enable FirstTouch human-in-the-loop on the send actions, or get the human's explicit acknowledgment in chat that future sends from this flow are autonomous and limited to the exact static templates they approved.
+
+**Default recommendation:** if AI-generated messaging is new for the customer, keep FirstTouch human-in-the-loop approvals **ON for at least the first two weeks** until the team trusts the quality and safety of the drafts.
 
 ---
 
@@ -43,6 +50,7 @@ Never exceed the authorized account's safe daily/weekly limits.
 - If near limit → **stop and report**, do not push volume.
 - AI SDR and all other plays share the same daily **connection-request** budget for rows that send connection requests. First messages to already-connected contacts draw from the separate LinkedIn message cap. If multiple plays run in one day, keep the combined connection-request total under the recommended 10/day for free/basic or 20/day for Sales Navigator/Premium unless the user explicitly approves more; never exceed the FirstTouch max of 20/day free/basic or 30/day Sales Navigator/Premium.
 - When a social campaign and AI SDR run on the same sender/day, either pause/reduce AI SDR during the campaign window or split the daily cap explicitly (for example, 6 AI SDR + 4 campaign against the recommended 10/day free/basic cap). Recompute campaign sending-day estimates against the reduced allocation, not the full daily cap.
+- Queues are per sender: each rep's actions process first-come-first-serve within their own queue, and another rep's queued actions never delay yours. For a time-sensitive send, set the enrollment's priority to high so it moves ahead of that sender's other queued work - do not try to beat the queue by adding volume.
 
 ### Gate 3a - Credit/spend governance
 Discovery and enrichment can consume FirstTouch credits.
@@ -52,14 +60,14 @@ Discovery and enrichment can consume FirstTouch credits.
 - If credit balance or feature costs are unavailable, report that uncertainty and ask before proceeding.
 
 ### Gate 4 - Human approval
-Present the **exact** draft (recipient, message, intended action) to a human.
+Present the **exact** draft (recipient, message, intended action) to a human in chat.
 - Approve → execute via FirstTouch
 - Edit → re-queue with edits
 - Deny → log and stop
-- Slack/email approval delivery requires external workspace configuration and is not assumed FirstTouch-native. If Slack/email/FirstTouch approval workflow is not configured, use in-agent approval: show the approval table in chat and wait for the human response before executing anything.
-- Before assuming approval tasks are enabled, ask the user or check the FirstTouch workspace/task settings available to the connected agent. If approval-task routing is not confirmed, fall back to in-agent approval.
+- When FirstTouch human-in-the-loop is enabled on the action, the send also pauses as an approval task assigned to the owner - in the FirstTouch app under **Tasks**, or as an approval task in HubSpot when the action runs through a HubSpot workflow. There is **no automatic escalation or SLA** on approval tasks: if an approval sits unactioned, following up is manual. Recurring plays should include checking the pending-approval queue (`list_user_tasks`) as part of the routine.
+- Slack/email approval delivery requires external workspace configuration and is not assumed FirstTouch-native. If no in-product approval workflow is configured, use in-agent approval: show the approval table in chat and wait for the human response before executing anything.
 
-> **Approval must be per-send for dynamic first-touch outbound.** Batch approval is acceptable only for follow-ups in an already-approved sequence, or for a one-time `social-campaigns` flow where the human approves the exact segment, sender/routing rule, static templates, launch window, and daily cap before the flow launches. When approval tasks are confirmed enabled, route the approval task to the contact/account owner in HubSpot or the FirstTouch app under **Tasks**. Do not treat social-campaign flow approval as permission for future dynamic or AI-generated campaigns.
+> **Approval must be per-send for dynamic first-touch outbound.** Batch approval is acceptable only for follow-ups in an already-approved sequence, or for a one-time `social-campaigns` flow where the human approves the exact segment, sender/routing rule, static templates, launch window, and daily cap before the flow launches. Do not treat social-campaign flow approval as permission for future dynamic or AI-generated campaigns.
 
 ### Gate 5 - Log after send
 When HubSpot is connected, every executed action is logged to the HubSpot contact timeline via FirstTouch, within minutes.

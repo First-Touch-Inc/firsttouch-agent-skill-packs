@@ -94,6 +94,12 @@ Recommend **high-intent plays first**. They use warmer signals, protect the Link
 | Warm engager, inbound, website visitor, HubSpot signal, customer referral thank-you, stalled deal | Row-level approval unless the connected FirstTouch/approval system records an equivalent per-contact approval; approval tasks route to the owner in HubSpot or the app **Tasks** view when that workflow is enabled. |
 | Social campaigns | Two modes: rep/BDR dynamic rows use row-level approval like AI SDR; one-time static campaigns can use flow-level approval with exact audience, templates, sender/routing rule, launch window, and daily cap approved. This does not authorize future dynamic or AI-generated campaigns. |
 
+Approval always happens in chat first: the agent shows the exact draft and waits for a yes. FirstTouch's optional in-product human-in-the-loop layer (off by default) additionally pauses sends as approval tasks in the FirstTouch app under **Tasks** or in HubSpot. Approval tasks have **no automatic escalation or SLA** - if one sits unactioned, following up is manual, so recurring plays should check the pending-approval queue as part of the routine.
+
+## Trial-window expectation
+
+FirstTouch trials run **two weeks**. Sequence the rollout so the user sees real results inside that window: high-intent plays in the first days (they convert fastest), outbound added once warm motions are running. Do not quote benchmark accept/reply/meeting rates - FirstTouch does not publish them. Instead, measure the user's own numbers with the team-metrics tools and compare week 1 to week 2.
+
 ## Onboarding output format
 
 After asking the questions, summarize the answer before running anything:
