@@ -1,0 +1,96 @@
+---
+name: website-visitor-followup
+description: Turn website-visitor intent into LinkedIn outreach by using identified-visitor data or HubSpot website-visitor signals, checking connection status, drafting a lightweight message, and gating execution for approval. Use when the user wants to act on website visitors, use visitor-identification tools like RB2B with FirstTouch, or add social touches to pricing-page and high-intent web activity.
+metadata:
+  author: firsttouch
+  version: "1.1"
+  category: play
+  requires: [firsttouch-mcp]
+  optional: [hubspot-mcp-for-crm-visitor-sources]
+  requires_one_of: [hubspot-tracking, rb2b-or-visitor-list-source]
+---
+
+# Website Visitor Follow-Up
+
+**No-source note:** If the workspace has no HubSpot tracking, RB2B/list source, or visitor export, skip this play and use this pack's persona AI SDR play instead.
+
+
+**Solo/default path:** a single owner can run this from an approved visitor/source list and approve every touch themselves. If you later run it with a team, add owner-based routing, per-seat cap sharing, approval review, and FirstTouch/HubSpot logging checks.
+
+
+**Outcome:** Convert high-intent website visits into social touches while the account is actively researching.
+
+## First-run onboarding gate
+Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type (free/basic = no connection notes; recommend 10 connection requests/day and never exceed the FirstTouch max of 20/day; Sales Navigator/Premium = connection notes available; recommend 20 connection requests/day and never exceed the FirstTouch max of 30/day), HubSpot access (MCP, service key/private app token, HubSpot list only, or none), and which play the user wants to run. Recommend high-intent plays before outbound to keep the LinkedIn account healthy. If HubSpot is unavailable, do not run HubSpot-specific steps unless the user provides a HubSpot list FirstTouch can access.
+
+## When to use
+- a de-anon tool identifies a target account/contact on key pages
+- HubSpot website activity shows pricing / demo / product-page interest
+- the user says "work website visitors"
+
+## Inputs
+- **signal source:** HubSpot's native website tracking (default) OR a de-anon platform like RB2B (recommended if native HubSpot web-visit volume is too low to be useful)
+- **page threshold:** which pages count (pricing, demo, product, integrations, etc.)
+- **identity confidence:** known contact vs likely account only
+
+## Step-by-step
+
+Before drafting or queueing any contact, run Gate 0 suppression/DNC from `../../references/safety-governance.md`. Suppressed, unsubscribed, opted-out, or do-not-contact records are skipped and logged.
+
+
+### 1. Pull visitor signals
+This play requires a website visitor signal source. If neither HubSpot tracking nor an RB2B/list source exists, stop and say the website-visitor play is unavailable; offer to run the persona AI SDR recipe separately using ICP filters instead.
+
+Get recent high-intent visits with page path, timestamp, company/contact match confidence, and any associated HubSpot owner. **Two paths to the data:**
+- **HubSpot native tracking pixel** (default) - HubSpot logs known-contact page activity automatically. Sufficient for most accounts with steady inbound.
+- **RB2B (or similar de-anon tool)** - recommended when HubSpot-native web-visit volume is low or you need company-level identification for anonymous visitors. RB2B pushes identified visitors to a HubSpot list (or Slack), which FirstTouch then picks up. Wire RB2B → HubSpot list → FirstTouch picks up from the list.
+- **Either way:** the play then runs identically - check connection status, draft, gate for approval.
+
+### 2. Decide contact-level vs account-level motion
+- **Known contact identified** → work contact directly
+- **Only company known** → use the target personas and available FirstTouch/HubSpot contact data to identify likely stakeholders at the account
+
+### 3. Check connection status + routing
+- connected? yes/no
+- owner assigned? yes/no
+- recently contacted? yes/no
+
+### 4. Draft the touch (load `firsttouch-messaging`)
+Use the website visit as a soft signal - never sound creepy.
+
+Do **not** say: "I saw you were on our pricing page at 2:14pm."
+
+Instead, abstract the signal:
+- "Looks like {company} may be evaluating options around {category}."
+- "Seems like this might be live on your side right now."
+
+Keep it light, conversational, and 2 sentences max.
+
+### 5. Present for approval
+Show the visitor signal, confidence level, target contact, and draft.
+
+### 6. Execute + log
+On approval per row:
+- before creating any one-contact LinkedIn action, run `get_dynamic_action_guide`, then call `add_dynamic_action` in the supported order
+- if a LinkedIn message should only send after a connection request is accepted, append it to the `connection_accepted` branch rather than queueing it as an immediate message
+- send via FirstTouch
+- log to HubSpot and tag `website_visitor_followup` when the connected FirstTouch-HubSpot integration supports it; if the source is RB2B/import without supported HubSpot logging, log the execution record in FirstTouch and state that CRM timeline logging was skipped.
+
+### 7. Track
+Measure reply and meeting rate by page type and signal confidence.
+
+## Output
+- high-intent visitor queue
+- drafted messages, gated for approval
+- send + log confirmation
+- visitor tags for attribution
+
+## Pitfalls
+- being too explicit about the visit (comes off creepy)
+- acting on low-confidence identity matches as if they are certain
+- hitting visitors too late after the signal cools down
+
+## Reference
+- Safety: [`../../references/safety-governance.md`](../../references/safety-governance.md)
+- Messaging: [`../../references/messaging-framework.md`](../../references/messaging-framework.md)
+- If only company is known, use target personas and available FirstTouch/HubSpot contact data to select likely stakeholders.

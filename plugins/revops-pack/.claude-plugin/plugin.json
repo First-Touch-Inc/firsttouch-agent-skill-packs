@@ -1,0 +1,11 @@
+{
+  "name": "revops-pack",
+  "version": "1.5.0",
+  "description": "RevOps persona pack: workspace audit, sequence QA, team performance reporting, and governed team-wide outreach plays. Installs with the FirstTouch MCP auto-connected.",
+  "author": {
+    "name": "First Touch Inc.",
+    "url": "https://www.firsttouch.com"
+  },
+  "homepage": "https://github.com/First-Touch-Inc/firsttouch-agent-skill-packs",
+  "license": "MIT"
+}

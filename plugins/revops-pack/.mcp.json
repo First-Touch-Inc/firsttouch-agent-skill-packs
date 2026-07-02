@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "firsttouch": {
+      "type": "http",
+      "url": "https://mcp.firsttouch.ai"
+    }
+  }
+}

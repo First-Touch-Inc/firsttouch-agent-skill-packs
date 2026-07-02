@@ -1,0 +1,11 @@
+{
+  "name": "ae-pack",
+  "version": "1.5.0",
+  "description": "AE persona pack: meeting/signup auto-connect, stakeholder multi-threading, stalled-deal reactivation, and territory push plays. Installs with the FirstTouch MCP auto-connected.",
+  "author": {
+    "name": "First Touch Inc.",
+    "url": "https://www.firsttouch.com"
+  },
+  "homepage": "https://github.com/First-Touch-Inc/firsttouch-agent-skill-packs",
+  "license": "MIT"
+}

@@ -1,6 +1,15 @@
 # Install in Claude Code
 
-**Easiest path (no file wrangling):** unzip the pack, open Claude Code in that folder, and say: *"Install these skills and references into my skills directory."* The agent copies everything for you. Manual steps below if you prefer.
+**Recommended: install as a plugin** - two commands, and the FirstTouch MCP connects automatically:
+
+```
+/plugin marketplace add First-Touch-Inc/firsttouch-agent-skill-packs
+/plugin install founder-pack@firsttouch        # or ae-pack / bdr-pack / revops-pack
+```
+
+Verify with `/plugin list`, then ask *"What FirstTouch plays do you have available?"* The zip-based paths below still work if you prefer manual installs.
+
+**Easiest zip path (no file wrangling):** unzip the pack, open Claude Code in that folder, and say: *"Install these skills and references into my skills directory."* The agent copies everything for you. Manual steps below if you prefer.
 
 1. Download the right pack zip from [`packs/`](../packs/) in this repository (see the README download table) - the committed zips are always current with the latest source.
 2. Unzip it locally.

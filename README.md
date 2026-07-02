@@ -63,6 +63,15 @@ firsttouch-skills/
 
 ## Get started in 5 steps
 
+**Claude Code users: skip the steps below** - install your pack as a plugin and the FirstTouch MCP connects automatically:
+
+```
+/plugin marketplace add First-Touch-Inc/firsttouch-agent-skill-packs
+/plugin install founder-pack@firsttouch        # or ae-pack / bdr-pack / revops-pack
+```
+
+Then answer the onboarding questions when the agent asks and run your first play. Everyone else:
+
 1. **Download your pack** (below) - or grab individual skills from [`packs/skills/`](packs/skills/).
 2. **Install it** for your agent - platform guides in [`install/`](install/): [Claude Code](install/claude-code.md) · [Claude.ai](install/claude-ai.md) · [Cursor/Windsurf](install/cursor-windsurf.md) · [ChatGPT](install/chatgpt.md).
 3. **Connect the FirstTouch MCP** (`https://mcp.firsttouch.ai`) - required by every play. HubSpot MCP is optional but unlocks the CRM plays. See [`references/mcp-setup.md`](references/mcp-setup.md).

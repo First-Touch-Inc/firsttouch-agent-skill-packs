@@ -1,0 +1,11 @@
+{
+  "name": "bdr-pack",
+  "version": "1.5.0",
+  "description": "BDR persona pack: daily AI SDR queue, inbound speed-to-lead, warm engager follow-up, and special-push campaign plays. Installs with the FirstTouch MCP auto-connected.",
+  "author": {
+    "name": "First Touch Inc.",
+    "url": "https://www.firsttouch.com"
+  },
+  "homepage": "https://github.com/First-Touch-Inc/firsttouch-agent-skill-packs",
+  "license": "MIT"
+}

@@ -15,6 +15,7 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
+PLUGINS_DIR = ROOT / "plugins"
 SKILLS_DIR = ROOT / "skills"
 PACKS_DIR = ROOT / "packs"
 DIST_DIR = ROOT / "dist"
@@ -602,6 +603,58 @@ def build_skill_zips() -> list:
     return built
 
 
+# Bump when plugin contents change in a way users should re-install for.
+PLUGIN_VERSION = "1.5.0"
+
+PLUGIN_DESCRIPTIONS = {
+    "founder": "Founder persona pack: social engagement, founder-voice AI SDR, warm engager follow-up, and customer plays for founders doing their own sales. Installs with the FirstTouch MCP auto-connected.",
+    "ae": "AE persona pack: meeting/signup auto-connect, stakeholder multi-threading, stalled-deal reactivation, and territory push plays. Installs with the FirstTouch MCP auto-connected.",
+    "bdr": "BDR persona pack: daily AI SDR queue, inbound speed-to-lead, warm engager follow-up, and special-push campaign plays. Installs with the FirstTouch MCP auto-connected.",
+    "revops": "RevOps persona pack: workspace audit, sequence QA, team performance reporting, and governed team-wide outreach plays. Installs with the FirstTouch MCP auto-connected.",
+}
+
+
+def publish_plugins() -> list:
+    """Publish each built pack as a Claude Code plugin under plugins/.
+
+    Each plugin is the pack's skills/, references/, README.md, and LICENSE
+    plus .claude-plugin/plugin.json and a .mcp.json that auto-connects the
+    FirstTouch MCP on install. The root .claude-plugin/marketplace.json
+    points at these directories so users can run
+    /plugin marketplace add First-Touch-Inc/firsttouch-agent-skill-packs
+    followed by /plugin install <persona>-pack.
+    """
+    published = []
+    for persona in PERSONAS:
+        pack_dir = DIST_DIR / f"{persona}-pack"
+        if not pack_dir.exists():
+            continue
+        plugin_dir = PLUGINS_DIR / f"{persona}-pack"
+        if plugin_dir.exists():
+            shutil.rmtree(plugin_dir)
+        shutil.copytree(pack_dir, plugin_dir)
+        meta_dir = plugin_dir / ".claude-plugin"
+        meta_dir.mkdir()
+        manifest = {
+            "name": f"{persona}-pack",
+            "version": PLUGIN_VERSION,
+            "description": PLUGIN_DESCRIPTIONS[persona],
+            "author": {"name": "First Touch Inc.", "url": "https://www.firsttouch.com"},
+            "homepage": "https://github.com/First-Touch-Inc/firsttouch-agent-skill-packs",
+            "license": "MIT",
+        }
+        (meta_dir / "plugin.json").write_text(
+            json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
+        )
+        mcp = {"mcpServers": {"firsttouch": {"type": "http", "url": "https://mcp.firsttouch.ai"}}}
+        (plugin_dir / ".mcp.json").write_text(
+            json.dumps(mcp, indent=2) + "\n", encoding="utf-8"
+        )
+        published.append(plugin_dir)
+        print(f"  + plugin: plugins/{persona}-pack")
+    return published
+
+
 def main() -> None:
     publish = "--no-publish" not in sys.argv
 
@@ -638,6 +691,8 @@ def main() -> None:
         for z in skill_zips:
             shutil.copy2(z, published_skill_dir / z.name)
         print(f"  {len(skill_zips)} skill zip(s) -> packs/skills/")
+        plugins = publish_plugins()
+        print(f"  {len(plugins)} Claude Code plugin(s) -> plugins/")
 
 
 if __name__ == "__main__":

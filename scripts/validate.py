@@ -170,10 +170,90 @@ def validate_zip_freshness() -> None:
             )
 
 
+def _tree_content_map(root: Path) -> dict:
+    return {
+        p.relative_to(root).as_posix(): hashlib.md5(
+            p.read_bytes().replace(b"\r\n", b"\n")
+        ).hexdigest()
+        for p in root.rglob("*")
+        if p.is_file()
+    }
+
+
+def validate_plugins() -> None:
+    """Committed plugins/ must match the freshly built dist packs plus the
+    two generated plugin files, and marketplace.json must point at them.
+    Requires validate_zip_freshness() to have populated dist/ first."""
+    print("Validating Claude Code plugins and marketplace...")
+    plugins_dir = ROOT / "plugins"
+    marketplace_path = ROOT / ".claude-plugin" / "marketplace.json"
+    if not marketplace_path.exists():
+        err(".claude-plugin/marketplace.json is missing")
+        return
+    try:
+        marketplace = json.loads(marketplace_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        err(f"marketplace.json: invalid JSON - {e}")
+        return
+    listed = {p.get("name"): p for p in marketplace.get("plugins", [])}
+    for name, entry in listed.items():
+        src = entry.get("source", "")
+        if not entry.get("description"):
+            err(f"marketplace.json: plugin `{name}` missing description")
+        if not (ROOT / src).is_dir():
+            err(f"marketplace.json: plugin `{name}` source `{src}` does not exist")
+    committed = {d.name for d in plugins_dir.iterdir() if d.is_dir()} if plugins_dir.exists() else set()
+    for orphan in sorted(committed - set(listed)):
+        err(f"plugins/{orphan} is not listed in marketplace.json")
+    for missing in sorted(set(listed) - committed):
+        err(f"marketplace.json lists `{missing}` but plugins/{missing} does not exist")
+    plugin_extras = {".claude-plugin/plugin.json", ".mcp.json"}
+    for name in sorted(committed & set(listed)):
+        plugin_dir = plugins_dir / name
+        dist_pack = DIST_DIR / name
+        if not dist_pack.exists():
+            err(f"plugins/{name}: build did not produce dist/{name}")
+            continue
+        plugin_map = _tree_content_map(plugin_dir)
+        dist_map = _tree_content_map(dist_pack)
+        for extra in plugin_extras:
+            if extra not in plugin_map:
+                err(f"plugins/{name}: missing {extra}")
+            plugin_map.pop(extra, None)
+        removed = sorted(set(dist_map) - set(plugin_map))
+        added = sorted(set(plugin_map) - set(dist_map))
+        changed = sorted(n for n in set(dist_map) & set(plugin_map) if dist_map[n] != plugin_map[n])
+        if removed or added or changed:
+            err(
+                f"plugins/{name} is STALE vs source "
+                f"(removed: {removed}, added: {added}, changed: {changed}). "
+                f"Run `python scripts/build-packs.py` and commit."
+            )
+        manifest_path = plugin_dir / ".claude-plugin" / "plugin.json"
+        if manifest_path.exists():
+            try:
+                manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+                if manifest.get("name") != name:
+                    err(f"plugins/{name}: plugin.json name `{manifest.get('name')}` != folder")
+                if not manifest.get("description"):
+                    err(f"plugins/{name}: plugin.json missing description")
+            except json.JSONDecodeError as e:
+                err(f"plugins/{name}: plugin.json invalid JSON - {e}")
+        mcp_path = plugin_dir / ".mcp.json"
+        if mcp_path.exists():
+            try:
+                mcp = json.loads(mcp_path.read_text(encoding="utf-8"))
+                if "firsttouch" not in mcp.get("mcpServers", {}):
+                    err(f"plugins/{name}: .mcp.json missing firsttouch server")
+            except json.JSONDecodeError as e:
+                err(f"plugins/{name}: .mcp.json invalid JSON - {e}")
+
+
 def main() -> None:
     validate_skills()
     validate_manifests()
     validate_zip_freshness()
+    validate_plugins()
     print("=" * 40)
     if errors:
         print(f"FAILED: {len(errors)} validation error(s)")

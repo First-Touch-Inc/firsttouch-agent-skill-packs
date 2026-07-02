@@ -1,0 +1,34 @@
+{
+  "name": "firsttouch",
+  "owner": {
+    "name": "First Touch Inc.",
+    "url": "https://www.firsttouch.com"
+  },
+  "description": "FirstTouch persona skill packs - governed LinkedIn outreach plays that run on the FirstTouch MCP (https://mcp.firsttouch.ai). Pick the pack for your role; the MCP auto-connects on install.",
+  "plugins": [
+    {
+      "name": "founder-pack",
+      "description": "Founder persona pack: social engagement, founder-voice AI SDR, warm engager follow-up, and customer plays for founders doing their own sales. Installs with the FirstTouch MCP auto-connected.",
+      "category": "sales",
+      "source": "./plugins/founder-pack"
+    },
+    {
+      "name": "ae-pack",
+      "description": "AE persona pack: meeting/signup auto-connect, stakeholder multi-threading, stalled-deal reactivation, and territory push plays. Installs with the FirstTouch MCP auto-connected.",
+      "category": "sales",
+      "source": "./plugins/ae-pack"
+    },
+    {
+      "name": "bdr-pack",
+      "description": "BDR persona pack: daily AI SDR queue, inbound speed-to-lead, warm engager follow-up, and special-push campaign plays. Installs with the FirstTouch MCP auto-connected.",
+      "category": "sales",
+      "source": "./plugins/bdr-pack"
+    },
+    {
+      "name": "revops-pack",
+      "description": "RevOps persona pack: workspace audit, sequence QA, team performance reporting, and governed team-wide outreach plays. Installs with the FirstTouch MCP auto-connected.",
+      "category": "sales",
+      "source": "./plugins/revops-pack"
+    }
+  ]
+}
