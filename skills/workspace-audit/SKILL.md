@@ -10,7 +10,7 @@ metadata:
 
 # Workspace Audit
 
-**Outcome:** Catch setup problems *before* they burn an account or waste sends. Produce a readiness scorecard so a customer knows exactly what to fix before going live.
+**Outcome:** An optional pre-flight check for teams that want to verify their setup before scaling - catch configuration gaps before they waste sends. Produce a readiness scorecard so a customer knows exactly what to fix before going live.
 
 ## First-run onboarding gate
 Before running this skill for the first time in a workspace, load `../../references/onboarding.md` and complete the onboarding questions. Do not proceed until you know: LinkedIn account type (free/basic = no connection notes; recommend 10 connection requests/day and never exceed the FirstTouch max of 20/day; Sales Navigator/Premium = connection notes available; recommend 20 connection requests/day and never exceed the FirstTouch max of 30/day), HubSpot access (MCP, service key/private app token, HubSpot list only, or none), and which play the user wants to run. Recommend high-intent plays before outbound to keep the LinkedIn account healthy. If HubSpot is unavailable, do not run HubSpot-specific steps unless the user provides a HubSpot list FirstTouch can access.
@@ -36,7 +36,7 @@ Every check below is one of two kinds, and the scorecard must keep them separate
 ### 2. LinkedIn account health (FirstTouch) [AUTO + MANUAL]
 - Seat connected and authenticated? ✅/❌
 - Current usage vs. daily limits (connection requests, messages, views) when available from FirstTouch
-- Any active warnings/restrictions on the account? 🚩 (hard stop if yes)
+- Seat status in FirstTouch Social settings: Available = good; cooldown = hit its daily limit (normal, plan volume accordingly); Action required / Disconnected / Restricted = resolve before that seat sends
 - SSI / account age / warmup status - manual/dashboard check unless FirstTouch exposes it directly
 - If FirstTouch cannot return a metric, ask the user to check the FirstTouch dashboard and mark that metric `manual check required`
 
@@ -51,12 +51,12 @@ Every check below is one of two kinds, and the scorecard must keep them separate
 - Cooldown windows set? ✅/❌
 - Daily limit caps configured? ✅/❌
 - Approval workflow defined (who approves, where)? ✅/❌
-- **Approval routing live test [MANUAL]:** create one test dynamic action to a user-designated test contact (or the operator's own profile) that requires approval, and confirm the approval task actually arrives where it should (owner in HubSpot or FirstTouch app under Tasks). A configured-looking flag is not proof. If the team will not run this test, approval routing is `unverified` and overall readiness is **NOT READY** - do not launch team volume on untested approval routing.
+- Optional: if the team wants extra confidence, route one test dynamic action to a designated test contact and confirm the approval task arrives where expected (owner in HubSpot or FirstTouch app under Tasks).
 
 ### 5. Logging, replies & attribution readiness [AUTO + MANUAL test round-trip]
 - FirstTouch→HubSpot timeline logging active? ✅/❌
 - HubSpot write scope for timeline tags/properties confirmed? ✅/❌
-- Test action round-trip completed: create/approve one safe test action to a contact/record explicitly designated by the user as a test recipient, or to the operator's own profile. Never use a live prospect just to verify logging. Then verify the HubSpot timeline/logging record and FirstTouch reply/status visibility came back as expected. If the team will not run a test action, mark attribution/logging `unverified`, not `ready`.
+- Test action round-trip completed: create/approve one safe test action to a contact/record explicitly designated by the user as a test recipient, or to the operator's own profile. Never use a live prospect just to verify logging. Then verify the HubSpot timeline/logging record and FirstTouch reply/status visibility came back as expected. This test is optional - if the team skips it, simply mark attribution/logging `unverified` in the scorecard so nobody assumes it was checked.
 - Attribution tags/properties created or writable (e.g. `linkedin_intent`, play tags)? ✅/❌/manual HubSpot check
 - FirstTouch reply tracking visible for outreach actions? ✅/❌ - the agent cannot read arbitrary inbox history, but FirstTouch-tracked outreach can surface reply/engagement status for actions it manages.
 - Deals associated with contacts that have timeline activity? ✅/❌
@@ -85,12 +85,12 @@ VERIFIED (live MCP data)
   Queue hygiene:   ⚠ - 14 rows pending approval >2 days
 
 MANUAL CHECK REQUIRED (not counted in score)
-  Account warnings/SSI: user must confirm in FirstTouch dashboard
+  SSI / seat volume settings / seat status: user can confirm in FirstTouch dashboard
   Logging round-trip:   pending user-designated test contact
 
 PRIORITY FIXES (do before launch):
 1. Assign owners to orphaned contacts (blocks owner-routed plays)
-2. Confirm no LinkedIn account warnings before any volume
+2. Set each seat's daily volume in the FirstTouch app to the recommended cap and resolve any non-Available seat status before volume
 ```
 
 If HubSpot is not connected, mark CRM-only rows `N/A - HubSpot not connected` rather than failing the workspace, and recommend piloting FirstTouch-only plays (warm engagers, social campaigns from Discover/imported lists, AI SDR via Discover Contacts) while HubSpot gets connected.
@@ -115,7 +115,7 @@ Most outreach failures are setup failures dressed up as copy failures. This play
 ## Pitfalls
 - **Auditing once** - workspaces drift. Run quarterly + before any major push.
 - **Ignoring the "no owner" red flag** - it's the #1 cause of misrouted outreach.
-- **Launching with account warnings** - never. A restricted account is a hard stop.
+- **Ignoring frequent cooldowns** - a seat that keeps hitting its limit should run lower daily volume so sends flow evenly instead of bunching.
 
 ## Reference
 - MCP setup requirements: [`../../references/mcp-setup.md`](../../references/mcp-setup.md)

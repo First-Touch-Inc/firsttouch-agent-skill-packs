@@ -32,7 +32,8 @@ List the workspace's flow plans with `list_flow_plans` and pull the matching def
 - Total volume vs. seat daily/weekly limits
 - Step timing (too aggressive = account risk)
 - Mix of action types (connection request, LinkedIn message, email/call/manual task where supported) within safe bounds
-- Any active account warnings? → **hard stop**
+- Seat on frequent cooldown? → recommend lower daily volume so sends flow evenly
+- Seat status not Available (Action required / Disconnected / Restricted)? → resolve before launch
 
 #### B. Messaging quality (load `firsttouch-messaging`)
 For each step's message, run the quality gate:
@@ -93,7 +94,7 @@ FIXES (in order):
 **Outcome:** ❌ Do not launch. Fix the two issues, re-QA, then go.
 
 ## Why this play wins
-One bad launch can restrict a LinkedIn account for weeks. This play is cheap insurance - a 5-minute review that prevents the most common, most damaging mistakes.
+One bad launch wastes a week of sends on copy that will not convert. This play is cheap insurance - a 5-minute review that prevents the most common, most expensive mistakes.
 
 ## Pitfalls
 - **QA-ing the copy but not the volume** - the message can be perfect and still get the account flagged if volume is unsafe. Always check send safety first.

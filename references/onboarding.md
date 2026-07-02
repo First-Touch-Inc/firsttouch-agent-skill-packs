@@ -33,7 +33,7 @@ Ask these questions before recommending or executing plays:
 | Free/basic | No connection notes; send blank connection requests and use a light post-connect opener | 10/day | 20/day |
 | Sales Navigator / Premium | Connection notes are available for approved warm-signal requests | 20/day | 30/day |
 
-Never exceed the FirstTouch max. Use the recommended cap by default; if the account is new, under warning, or acceptance/reply rates drop, lower the cap and pause for human review.
+FirstTouch enforces these limits automatically - you can adjust volume in the FirstTouch app and can never go over the peak limits; hitting a limit just puts the seat on cooldown until the next window. Use the recommended cap by default; if the account is new or acceptance/reply rates drop, lower the cap.
 
 **Shared cap rule:** AI SDR uses the same daily connection-request budget as every other play. If AI SDR and another play run on the same day, keep combined connection requests under the recommended 10/day free/basic or 20/day Sales Navigator/Premium cap unless the user explicitly approves a higher day; never exceed the FirstTouch max of 20/day free/basic or 30/day Sales Navigator/Premium.
 

@@ -221,15 +221,6 @@ def build_onboarding(manifest: dict) -> str:
     voice_note = ""
     if "founder-led-outbound" in skills:
         voice_note = "\n- Founder voice capture is mandatory: collect 2-3 sample posts/messages or tone rules before founder-led outbound."
-    shared_queue_note = ""
-    if persona == "bdr":
-        shared_queue_note = """
-
-## Shared inbound queue (teams of BDRs)
-If several BDRs work one inbound list, three rules keep you from stepping on each other:
-1. **The duplicate gate protects you.** Before any draft, the agent checks FirstTouch history; if a teammate already touched or queued the contact, your row is skipped and logged - that is correct behavior, not a bug.
-2. **Owner mismatch = flag, not send.** If the contact's HubSpot owner is someone else, the agent flags the row for review instead of sending. Answer honestly: if you're just working the queue and no owner is set, say so and approve consciously; if the owner is a teammate, hand it to them.
-3. **Same-morning collisions:** if two BDRs both queue the same fresh lead before either sends, whoever's row was queued first wins; the second row gets skipped by the duplicate gate at send time. Nothing double-sends."""
     return f"""# First-Run Onboarding - {pack_name}
 
 This onboarding is scoped to the skills and recipes actually included in this installed pack.
@@ -241,13 +232,14 @@ This onboarding is scoped to the skills and recipes actually included in this in
    - AI SDR and all other connection-request plays share the same daily budget.
    - If AI SDR and a social campaign run on the same sender/day, pause/reduce one motion or split the recommended daily cap explicitly before queueing sends; never exceed the FirstTouch max.
    - Already-connected LinkedIn message rows use a separate FirstTouch-supported message cap: 20/day on free/basic LinkedIn and 30/day on Sales Navigator/Premium. Reduce volume if acceptance or reply quality drops.
+   - FirstTouch enforces these limits automatically - you can adjust volume anytime in the FirstTouch app, and you can never go over the peak limits. If a seat hits its daily limit it simply goes on cooldown until the next window.
 2. **HubSpot access:** MCP connected by an admin, service key/private app token from an admin, HubSpot list only, or none. Getting access is easy: ask an admin to approve HubSpot MCP access (a quick approval) or to issue a **read-only service key** that lets the agent read deals, contacts, and companies with no write risk. Do not ask a rep/BDR to mint credentials they do not own.
 3. **ICP/list/source data:** if HubSpot is absent, ask for ICP criteria or an imported/FirstTouch-accessible list before qualifying prospects.
 4. **Persona start point:** recommend the persona-specific start point below, not a generic catalog dump.
 
 ## Persona start point
 {start_here}
-{social_note}{voice_note}{shared_queue_note}
+{social_note}{voice_note}
 
 ## Quickstart play cards
 {QUICKSTART_CARDS[persona]}
@@ -421,6 +413,7 @@ Answer these once; every play depends on them:
    - Sales Navigator / Premium: connection notes available; recommend **20/day** connection requests; FirstTouch max **30/day**.
    - AI SDR shares the same daily connection-request budget. If AI SDR and another play run on the same day, the total across all plays should stay within the recommended 10 or 20 unless the user explicitly approves higher volume; never exceed the FirstTouch max of 20/day free/basic or 30/day Sales Navigator/Premium.
    - Already-connected LinkedIn message rows use a separate FirstTouch-supported message cap: 20/day on free/basic LinkedIn and 30/day on Sales Navigator/Premium.
+   - FirstTouch enforces these limits automatically - adjust volume anytime in the FirstTouch app; you can never go over the peak limits. Hitting a limit just puts the seat on cooldown until the next window.
 2. **HubSpot access:** getting access is easy - ask your admin to approve HubSpot MCP access (a quick approval), or request a **read-only service key** that lets the agent read deals, contacts, and companies with no write risk. If neither is available yet, plenty of plays below run without HubSpot; you can also ask an admin for a HubSpot list FirstTouch can access.
 3. **Credits:** new FirstTouch workspaces start with **100 credits** - plenty for your first discoveries and enrichments. The agent checks the balance before any bulk run and asks before spending.
 4. **Play choice:** pick from the persona start point below.

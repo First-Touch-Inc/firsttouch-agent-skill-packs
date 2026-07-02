@@ -125,7 +125,7 @@ Recommended sequence:
 Daily cap:
 - free/basic: recommend 10 connection requests/day; FirstTouch max 20/day
 - Sales Navigator/Premium: recommend 20 connection requests/day; FirstTouch max 30/day
-- lower the cap if the account is new, under warning, or close to limits
+- lower the cap if the account is new or frequently hitting cooldown
 
 ### 5. Draft messages or static templates
 Load `firsttouch-messaging` for tone and quality rules. In rep/BDR dynamic-row mode, draft one row at a time for approval. In static campaign-flow mode, produce static campaign templates rather than unique AI-generated messages per recipient.

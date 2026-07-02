@@ -1,6 +1,6 @@
 ---
 name: campaign-pause-and-fix
-description: Pause a live FirstTouch campaign/flow mid-send, diagnose what is wrong, cancel or hold the affected enrollments, fix the messaging or audience, and safely restart with re-enrollment - without duplicate sends. Use when the user says "pause this campaign," "stop sending," replies or acceptance rates look bad mid-run, a mistake shipped in live copy, LinkedIn issued a warning, or a running flow needs its message or audience changed.
+description: Pause a live FirstTouch campaign/flow mid-send, diagnose what is wrong, cancel or hold the affected enrollments, fix the messaging or audience, and safely restart with re-enrollment - without duplicate sends. Use when the user says "pause this campaign," "stop sending," replies or acceptance rates look bad mid-run, a mistake shipped in live copy, or a running flow needs its message or audience changed.
 metadata:
   author: firsttouch
   version: "1.0"
@@ -19,8 +19,8 @@ Before running this skill for the first time in a workspace, load `../../referen
 - "Pause the campaign" / "stop sending right now"
 - Bad copy, wrong audience, or a broken variable shipped in a live flow
 - Acceptance or reply rates dropped mid-run, or replies are negative
-- LinkedIn warning or restriction appeared (see `../../references/troubleshooting.md` - that protocol takes precedence)
 - The user wants to change the message or audience of a flow that is already running
+- The sender seat shows Action required, Disconnected, or Restricted in FirstTouch Social settings mid-campaign
 
 ## Step-by-step
 
@@ -35,7 +35,7 @@ Present a status snapshot before touching anything: total enrolled, sent so far,
 ### 2. Stop the bleeding
 - Unpublish/pause the flow with `manage_flow_publication`. This stops new sends; it does not undo anything already sent.
 - Confirm to the user what is now frozen and what already went out. Anything already sent is a fact to work with, not something to hide.
-- If the trigger was a LinkedIn warning, stop here and follow the hard-stop protocol in `../../references/troubleshooting.md` before any fix-and-restart.
+- If the trigger was a non-Available seat status (Action required / Disconnected / Restricted), stop sends for that seat and follow the account-statuses section in `../../references/troubleshooting.md` before any fix-and-restart.
 
 ### 3. Diagnose
 Establish which of these is the actual problem - the fix differs:
@@ -85,5 +85,5 @@ Every outbound motion eventually needs a mid-flight correction. Without a clean 
 
 ## Reference
 - Safety gates for the restart: [`../../references/safety-governance.md`](../../references/safety-governance.md)
-- LinkedIn warning hard-stop protocol: [`../../references/troubleshooting.md`](../../references/troubleshooting.md)
+- Cooldowns and limits: [`../../references/troubleshooting.md`](../../references/troubleshooting.md)
 - Messaging quality gates for fixed copy: [`../../references/messaging-framework.md`](../../references/messaging-framework.md)

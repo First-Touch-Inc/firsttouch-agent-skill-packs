@@ -1,59 +1,40 @@
 # Team Governance - Rolling Out to Multiple Reps
 
-For RevOps / the workspace admin. How to run FirstTouch skills across a team without burning accounts, double-touching prospects, or losing the attribution story.
+For RevOps / the workspace admin. How to run FirstTouch skills across a team.
 
-## Daily cap budget across seats
+## Limits are handled for you
 
-Caps are **per seat** (per rep's LinkedIn account), and FirstTouch enforces the hard max platform-side - a seat cannot exceed 20/day (free/basic) or 30/day (Sales Navigator/Premium) connection requests. Your job is managing the *recommended* level, not policing the ceiling:
+FirstTouch enforces each seat's configured sending limits automatically. Reps can adjust their volume in the FirstTouch web app (Settings -> User Accounts -> Daily limits), and FirstTouch will not push a seat past its peak limits (20/day free-basic, 30/day Sales Navigator/Premium connection requests). If a seat hits its daily limit, it goes on **cooldown** - sends resume in the next window. Frequent cooldowns just mean that seat should run a lower daily volume so the queue flows evenly.
 
-- **Team budget formula:** reps x recommended cap (10 free/basic, 20 Sales Nav/Premium) = the volume you plan around.
-- **Per-seat discipline:** each rep's motions share their seat's daily budget. If a rep runs AI SDR and a social campaign the same day, the combined requests should stay within their recommended cap - the agent checks the queue before approving more rows.
-- **New/warming seats:** start new reps at half the recommended cap for the first two weeks.
-- **Health check:** any seat with falling acceptance rates drops to half volume until it recovers. One rep's restricted account is a week of lost pipeline; volume is never worth it.
+Account health still depends on quality, not just volume: keep acceptance rates healthy (above ~40% per FirstTouch Trust & Safety guidance; below ~25% is the danger zone), keep copy personal, and make sure no other automation tool runs on the same LinkedIn account. If a seat shows Action required, Disconnected, or Restricted in Social settings, pause it until resolved (see `troubleshooting.md`).
 
-## Preventing cross-rep collisions
+Planning guidance: recommend 10/day (free/basic) or 20/day (Sales Navigator/Premium) per rep, and plan team volume as reps x recommended cap. New reps can start at half volume for their first two weeks while they calibrate messaging.
 
-- One shared FirstTouch workspace gives all seats one campaign history, so the Gate 1 duplicate check sees everyone's touches. This is the recommended setup.
-- If reps run **separate FirstTouch workspaces**, the duplicate check cannot see across them - the shared HubSpot `first_touch_*` properties become the only common record. Require every motion to check `first_touch_latest_linkedin_connection_request_date` / `first_touch_number_of_linkedin_messages_sent` before drafting, and keep the central DNC property authoritative (see `safety-governance.md`).
-- Account-level rule: when two reps work the same company, split by persona or department *before* launching, not after the prospect gets two connection requests in one week.
+## Keeping outreach clean across the team
+
+- **Exclusion Lists:** connect FirstTouch Exclusion Lists so no motion touches current customers, deals in pipeline, or opted-out contacts. Gate 0 checks them on every play.
+- **Duplicate checks:** FirstTouch campaign history backs the Gate 1 duplicate/recent-contact check, so reps working the same accounts do not double-touch prospects.
+- **Auto-tagging:** FirstTouch auto-tags every enrollment - no custom tag schema needed. When the HubSpot integration is connected and engagement tracking is enabled, it writes activity back automatically (contact properties, app events for connect request / accept / message sent / reply received, and timeline entries).
 
 ## Approval SLA
 
 - **SLA: same business day.** Rows queued in the morning are approved or rejected by end of day.
-- **Escalation:** anything still awaiting approval the next morning escalates to the rep's manager or a designated backup approver. An unapproved speed-to-lead row from yesterday is already late.
-- **Monday hygiene:** the weekly governance check (below) lists all approval rows older than one business day. A growing aged-approval queue means an owner is on vacation or the routing is broken - fix routing, don't let rows rot.
+- Anything still awaiting approval the next morning goes to the rep's manager or a designated backup approver - an unapproved speed-to-lead row from yesterday is already late.
 
-## Pilot-to-scale runbook
+## Rollout path
 
-Do not roll out to the full team on day 1. The gate between each phase is evidence, not enthusiasm.
+A phased rollout keeps things easy to coach:
 
-**Phase 1 - 2 reps, 2 weeks**
-- Run `workspace-audit` first, including the approval-routing live test and the logging round-trip. Readiness must be READY, not "unverified."
-- Reps run the daily AI SDR queue plus one warm motion, at recommended caps.
-- Exit gates: zero LinkedIn warnings; 100% of sends went through approval; timeline logging and `first_touch_*` properties updating on touched contacts; reply quality sane.
+1. **Start with 1-2 reps** running the daily AI SDR queue plus one warm motion. Optional: run `workspace-audit` first if you want to verify MCP connections and HubSpot logging before scaling.
+2. **Add the next group** once the first reps have a smooth weekly rhythm - approvals moving same-day, replies coming in, logging visible in HubSpot.
+3. **Full team** once the signal plays (inbound, stalled-deal) are routing to the right owners.
 
-**Phase 2 - add 3 more reps (5 total), 2 weeks**
-- Add the signal plays (inbound, stalled-deal) with owner routing under real multi-owner conditions.
-- Exit gates: no cross-rep double-touches (spot-check 20 contacts); aged-approval queue stays near zero under SLA; DNC list growing and being respected.
+## Weekly check (Monday, ~10 min)
 
-**Phase 3 - full team**
-- Add remaining motions (social campaigns, referral, website visitor where sources exist).
-- Standing cadence: weekly governance check + monthly `team-performance-report` review.
-
-**Rollback rule:** any LinkedIn warning during pilot = that seat pauses 24-48h and restarts at half volume (see `troubleshooting.md`); two warnings across the team = pause expansion and re-audit before adding reps.
-
-## Weekly governance check (Monday, ~15 min)
-
-1. Queue hygiene: pending / blocked / failed counts per seat (`list_enrollments`, `list_linkedin_outreach_queue`); flag approval rows older than one business day.
-2. Cap usage: any seat that hit its recommended cap 4+ days last week gets reviewed - either raise deliberately or investigate queue stacking.
-3. Duplicate/suppression: check Gate 1 skip counts and DNC list growth; zero skips + zero growth usually means the checks aren't running, not that everything is clean.
-4. Account health: any warnings, acceptance-rate drops, or "action required" prompts across seats - hard stop rules apply.
-5. Output one line per seat: green / yellow (one issue, owned) / red (stop sends, debug now).
+1. Queue hygiene: pending / blocked counts per seat (`list_enrollments`, `list_linkedin_outreach_queue`); nudge any approval rows older than a business day.
+2. Volume and health: seats on frequent cooldown should lower daily volume; seats with strong acceptance (>40%) can step up toward the recommended cap; any seat showing Action required / Disconnected / Restricted pauses until resolved.
+3. Results: replies and meetings by seat - coach messaging where acceptance is fine but replies lag.
 
 ## Attribution for the CRO
 
-`team-performance-report` proves the sequence (touch -> reply -> meeting -> opportunity) via the `first_touch_*` properties and timeline entries - that is influence, not causation. To make the story stronger over a quarter:
-
-- Build HubSpot lists/reports keyed on `first_touch_latest_linkedin_reply_date` and compare meeting rates for touched vs untouched contacts in the same segment.
-- Track velocity: days from `first_touch_first_linkedin_connection_request_date` to meeting booked, per flow.
-- Be honest in the report: influenced pipeline, stated as influenced. Overclaiming causation is how attribution reports die in CRO meetings.
+`team-performance-report` pulls sends, accepts, replies, and meetings by flow, sender, and date. Because FirstTouch auto-tags every enrollment and logs to HubSpot, you can compare touched vs untouched contacts in the same segment and track time from first touch to meeting. Report influenced pipeline as influenced - the honest framing is also the durable one.

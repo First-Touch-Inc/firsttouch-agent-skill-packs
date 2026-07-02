@@ -20,19 +20,26 @@ Operational playbook for the failures customers actually hit. Load this when an 
 
 ---
 
-## LinkedIn warnings and restrictions
+## Cooldowns and limits
 
-`safety-governance.md` says warnings are a **hard stop**. Here is what a hard stop means in practice:
+FirstTouch enforces your configured send limits per seat - you can adjust volume in the FirstTouch app (Settings -> User Accounts -> Daily limits), and FirstTouch will not push a seat past its peak limits. Cooldowns are normal; account-action statuses are not. Know the difference:
 
-1. **Stop all queued sends immediately** - pause the flow (`manage_flow_publication`) or hold the daily approval batch. Do not "finish today's batch."
-2. **Tell the user what happened** and which motion was running when the warning appeared.
-3. **Wait at least 24-48 hours** with zero connection requests before resuming anything.
-4. **Resume at half volume**: if the account was at the recommended cap (10/day free-basic, 20/day Sales Navigator/Premium), restart at 5/day or 10/day respectively and hold there for a week.
-5. **Escalate instead of resuming** if any of these are true: a second warning, an "action required" prompt from LinkedIn, or a restriction (not just a warning). The user should contact LinkedIn support before any further automation runs on that seat.
+- **Seat on cooldown?** Normal. The seat hit its daily limit and sends resume in the next window - nothing to fix. If it happens often, lower the daily volume so the queue flows evenly instead of bunching at the cap.
+- **Acceptance rate dropping?** This is both a targeting/messaging signal AND an account-health signal - FirstTouch's Trust & Safety guidance treats above ~40% acceptance as healthy and below ~25% as the danger zone. Lower volume, tighten the ICP filter, and improve personalization before scaling back up; pause expansion until quality recovers.
+- **Replies going cold or "I don't know this person" responses?** Same treatment, and take it seriously - even a handful of "I don't know this person" reports hurts account standing. Smaller batches, warmer signals, better first lines.
 
-**Soft signals that deserve the same treatment before LinkedIn complains:** acceptance rate dropping below ~20%, reply quality falling off, or several "I don't know this person" responses. Lower the cap and slow down - cheaper than a restriction.
+## Account statuses that need attention
 
----
+FirstTouch shows each connected seat's status under Social settings. **Available** means ready to send. These statuses mean pause that seat until resolved:
+
+| Status | What it means | What to do |
+|---|---|---|
+| 2FA / OTP code required, Confirm in app | The platform wants a verification step | Complete the verification in FirstTouch / the LinkedIn mobile app, then resume |
+| Action required | The platform requested an extra manual check | Resolve the check before any more sends from that seat |
+| Disconnected | The session expired or was disconnected | Reconnect the account in FirstTouch; automation stops automatically while disconnected |
+| Restricted | The platform has restricted the account | Stop sends on that seat, resolve with the platform, and restart at lower volume with tighter targeting once cleared |
+
+Also avoid **tool stacking**: running another LinkedIn automation tool or DOM-injecting extension on the same account multiplies risk and is the most common cause of trouble that looks like "FirstTouch's fault" but is not.
 
 ## Sends queued but nothing goes out
 
@@ -42,7 +49,8 @@ Operational playbook for the failures customers actually hit. Load this when an 
 | Are rows stuck awaiting approval? | Look for awaiting-approval status in the queue (`list_linkedin_outreach_queue`, `list_user_tasks`). Approval tasks route to the owner - is the right human seeing them? |
 | Sending schedule / quiet hours? | FirstTouch sends inside the configured schedule. A row queued at 6pm may wait until tomorrow morning. This is correct behavior, not a bug. |
 | Daily cap already consumed? | Other motions on the same sender share the daily budget. If AI SDR and a social campaign run on the same seat/day, one waits. |
-| Account warning blocking the queue? | See the LinkedIn section above - check before force-retrying anything. |
+| Seat on cooldown? | It hit its daily limit - sends resume in the next window automatically. Do not force-retry; lower volume if this happens often. |
+| Seat status not Available? | Action required / Disconnected / Restricted stop automation on that seat - see the account statuses section above. |
 
 ---
 

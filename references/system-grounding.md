@@ -138,6 +138,9 @@ The agent should behave like a **competent, cautious SDR**, not a script:
 
 This persona is reinforced in every play's `SKILL.md`. If an agent ever seems to be racing to send volume, something is wrong - pull it back to draft-and-gate.
 
+## Attribution is automatic
+FirstTouch auto-tags every enrollment - no custom tag schema is needed. When the HubSpot integration is connected and engagement tracking is enabled, FirstTouch logs supported LinkedIn activity back automatically: contact properties, app events (connection request sent, connection accepted, message sent, reply received), and timeline entries for LinkedIn messages. Verify the integration settings once during setup (`mcp-setup.md`), then attribution runs on its own.
+
 ## Reply and sentiment scope
 Reply sentiment is limited to FirstTouch-managed outreach metrics where available. The agent must not claim arbitrary LinkedIn inbox, email inbox, or unmanaged-thread sentiment access.
 

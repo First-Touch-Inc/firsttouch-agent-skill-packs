@@ -2,6 +2,21 @@
 
 All notable changes to the FirstTouch Agent Skill Packs.
 
+## 1.3.1 - 2026-07-01
+
+### Changed
+- Safety reframed around how FirstTouch actually works, grounded in docs.firsttouch.com: configured limits are enforced automatically per seat (adjustable in the web app, never above peak); cooldowns are normal, account-action statuses (Action required / Disconnected / Restricted) are the thing to resolve; acceptance rate is both a targeting and account-health signal (>40% healthy, <25% danger zone). Fear-based warning language removed; accurate status guidance kept.
+- Exclusion Lists positioned as the way to protect customers and pipeline (replaces the DNC-governance process docs)
+- Attribution documented as automatic once the HubSpot integration is connected and engagement tracking is enabled; no custom tag schema needed - FirstTouch auto-tags every enrollment and writes properties, app events, and timeline entries
+- workspace-audit is explicitly optional; approval-routing and logging round-trip tests are optional confidence checks, not launch gates (skipped tests are still marked unverified)
+- External-profile monitoring note shortened to clarify it uses public likes/comments only
+- team-governance slimmed to match: enforced limits, exclusion lists, auto-tagging, same-business-day approval SLA, simple rollout path
+
+### Removed
+- "It is YOUR account on the line" section in safety-governance
+- BDR shared-queue onboarding section
+- references/hubspot-properties.md and the HubSpot scope-lockdown guidance
+
 ## 1.3.0 - 2026-07-01
 
 ### Added

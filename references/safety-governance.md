@@ -16,13 +16,6 @@ Agents **draft**. Humans **approve**. FirstTouch **executes**. This sequence is 
 
 ---
 
-## It is YOUR account on the line
-If you are a rep or founder sending from your personal LinkedIn: a LinkedIn warning means YOUR account gets restricted, usually for 24-48 hours, and you cannot work your pipeline during that time. Repeat offenses can mean longer restrictions. These rules exist to protect you, not to slow you down.
-
-- If a warning or "action required" prompt appears: **stop immediately**, tell your manager or workspace admin first, and do not push through it.
-- Staying at the recommended daily cap (10/day free/basic, 20/day Sales Navigator/Premium) is how you stay safe. The FirstTouch max (20/30) is a ceiling, not a target.
-- If acceptance or reply rates drop for a few days, lower your volume before LinkedIn lowers it for you.
-
 ## The safety gates (enforce all before any send)
 
 ### Gate 0 - Suppression / DNC check
@@ -77,7 +70,7 @@ When HubSpot is connected, every executed action is logged to the HubSpot contac
 
 ## Account-safety reference (LinkedIn norms)
 
-Capture account type during first-run onboarding, then use the stricter cap. Tune down for new/warned accounts; never exceed:
+Capture account type during first-run onboarding. FirstTouch enforces these limits automatically - you can adjust your volume anytime in the FirstTouch app, and you can never go over the peak limits. Tune down for new accounts:
 
 | Account / action | Recommended safe daily cap | FirstTouch max | Source of limit |
 |---|---:|---:|---|
@@ -92,12 +85,12 @@ Capture account type during first-run onboarding, then use the stricter cap. Tun
 
 **Play-specific AI SDR cap:** AI SDR uses the recommended recurring outbound cap of **10 connection-request rows/day** for free/basic accounts and **20 connection-request rows/day** for Sales Navigator/Premium. Already-connected message rows still require approval and should respect the separate message cap: 20/day free/basic and 30/day Sales Navigator/Premium.
 
-**Escalation cues - if any appear, pause the account:**
-- Warnings or restrictions from LinkedIn
-- Sudden drop in acceptance/reply rate
-- "Action required" / verification prompts
+**Volume signals - when to dial down:**
+- **Account on cooldown:** normal. The seat hit its daily limit; FirstTouch enforced it and sends resume in the next window. If cooldowns happen often, lower daily volume so the queue flows evenly.
+- **Acceptance rate dropping:** a targeting/messaging signal AND an account-health signal. FirstTouch Trust & Safety guidance: above ~40% acceptance is healthy; below ~25% is the danger zone. Lower volume and tighten targeting before scaling back up.
+- **Seat status not Available** (Action required / Disconnected / Restricted in FirstTouch Social settings): pause that seat until the status is resolved - see `troubleshooting.md`.
 
-The agent should treat these as **hard stops**, not warnings.
+FirstTouch enforces your configured send limits and prevents over-volume inside FirstTouch. Account health also depends on things FirstTouch cannot control: list quality, acceptance rate, copy quality, and whether other automation tools run on the same account. Send warm, targeted, approved outreach to help keep the account healthy.
 
 ---
 
@@ -109,24 +102,18 @@ The agent should treat these as **hard stops**, not warnings.
 
 ---
 
-## Central DNC / exclusion list (who owns it)
-Every skill checks suppression at Gate 0, but the list itself needs one owner:
-
-- **Owner:** RevOps (or the workspace admin in smaller teams) owns the do-not-contact source of truth.
-- **Where it lives:** a HubSpot contact property (for example `do_not_contact`) or a FirstTouch Exclusion List. Pick ONE as canonical and have every motion suppress on it; do not maintain parallel lists per rep.
-- **Update SLA:** when a prospect opts out, replies "not interested," or complains, add them the same business day - before the next day's batches queue.
-- **Multi-seat teams:** if reps run separate FirstTouch seats, the shared HubSpot property is the only list all seats can see; verify each seat's motions suppress on it before rollout.
-- **Audit:** review the list monthly as part of the team performance review; a suppression list that never grows usually means opt-outs are being missed, not that everyone loves your outreach.
+## Exclusion lists
+Connect FirstTouch **Exclusion Lists** to keep outreach away from people you should not touch - current customers, deals in pipeline, partners, or anyone who opted out. Gate 0 checks them before any draft. Manage the lists in the FirstTouch app; when a prospect asks to stop or marks not interested, add them and they are excluded from every future motion.
 
 ## When the agent should STOP and ask
 
-Hard-stop conditions (agent must pause and ask a human):
+Pause-and-ask conditions (agent stops and checks with a human):
 
 1. Prospect is suppressed, unsubscribed, opted out, bounced, marked do-not-contact, or appears on a suppression list
 2. Owner is missing or disputed
 3. Contact is already being actively worked by another sequence
 4. Account is near or over safety limits
-5. A safety/verification prompt appeared on the LinkedIn account
+5. The LinkedIn seat is on cooldown and the user is asking to push more volume anyway
 6. The prospect asked to stop / marked not interested → **permanently suppress** and log
 7. Logging to HubSpot failed after a send
 8. Anything that "feels off" - ambiguous intent, missing context, conflicting data

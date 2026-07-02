@@ -33,7 +33,7 @@ firsttouch-skills/
 │   ├── mcp-setup.md                       ← connect HubSpot MCP, FirstTouch MCP, enrichment MCPs
 │   ├── messaging-framework.md             ← FirstTouch LinkedIn messaging methodology
 │   ├── safety-governance.md               ← approval gates, send safety, account limits
-│   └── troubleshooting.md                 ← MCP failures, LinkedIn warnings, recovery
+│   └── troubleshooting.md                 ← MCP failures, cooldowns, recovery
 └── skills/
     ├── firsttouch-messaging/              ← foundation: how to write outreach
     ├── warm-engager-followup/             ← social engagement flow
@@ -211,6 +211,6 @@ Re-running the script syncs all packs to the current canonical state, rebuilds t
 
 - **Slack community** - [firsttouch-workspace.slack.com](https://firsttouch-workspace.slack.com): the best place to ask questions, share plays, and get help from the FirstTouch team.
 - **In-app chat** - chat support inside the FirstTouch app for account-specific issues.
-- **Something broke mid-play?** - [`references/troubleshooting.md`](references/troubleshooting.md) covers MCP failures, LinkedIn warnings, stalled queues, and credit issues.
+- **Something broke mid-play?** - [`references/troubleshooting.md`](references/troubleshooting.md) covers MCP failures, cooldowns, stalled queues, and credit issues.
 
-*Pack version 1.3.0 - last updated 2026-07-01. See [CHANGELOG.md](CHANGELOG.md).*
+*Pack version 1.3.1 - last updated 2026-07-01. See [CHANGELOG.md](CHANGELOG.md).*
