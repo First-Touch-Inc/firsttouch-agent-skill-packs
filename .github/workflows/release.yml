@@ -32,12 +32,14 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          printf '%s\n' \
+            "Automated release of the committed pack zips from main @ ${GITHUB_SHA}." \
+            "" \
+            "The stable download URLs under releases/latest/download/ always serve these newest zips:" \
+            "- founder-pack.zip, ae-pack.zip, bdr-pack.zip, revops-pack.zip" \
+            "- per-skill zips from packs/skills/" > /tmp/notes.md
           gh release create "${{ steps.tag.outputs.tag }}" \
             --title "Skill Packs $(date -u +%Y-%m-%d) (${GITHUB_SHA::7})" \
-            --notes "Automated release of the committed pack zips from main @ ${GITHUB_SHA}.
-
-The stable download URLs under releases/latest/download/ always serve these newest zips:
-- founder-pack.zip, ae-pack.zip, bdr-pack.zip, revops-pack.zip
-- per-skill zips from packs/skills/" \
+            --notes-file /tmp/notes.md \
             --latest \
             packs/*.zip packs/skills/*.zip
