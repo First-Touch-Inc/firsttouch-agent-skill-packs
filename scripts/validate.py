@@ -49,6 +49,18 @@ def validate_skills() -> None:
             err(f"{skill_dir.name}: no YAML frontmatter")
             continue
         fm = match.group(1)
+        # Strict YAML parse when PyYAML is available: unquoted colons in
+        # description break strict parsers (e.g. Claude.ai uploads) even
+        # though the regex checks below still pass.
+        try:
+            import yaml  # type: ignore
+
+            try:
+                yaml.safe_load(fm)
+            except yaml.YAMLError as exc:
+                err(f"{skill_dir.name}: frontmatter is not strict YAML ({exc})")
+        except ImportError:
+            pass
         name_match = re.search(r"^name:\s*(.+)$", fm, re.MULTILINE)
         if not name_match:
             err(f"{skill_dir.name}: frontmatter missing `name`")

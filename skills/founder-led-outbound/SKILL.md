@@ -1,6 +1,6 @@
 ---
 name: founder-led-outbound
-description: Run the founder AI SDR motion (for founders/CEOs sending as themselves only): build a targeted prospect list from a HubSpot list or FirstTouch Discover Contacts, enrich each prospect, draft founder-voice LinkedIn outreach, and queue a small daily batch for founder approval. Use when a founder wants their own version of AI SDR, strategic-account outbound, founder-led growth, or daily founder-voice prospecting without sounding like an SDR.
+description: "Run the founder AI SDR motion (for founders/CEOs sending as themselves only): build a targeted prospect list from a HubSpot list or FirstTouch Discover Contacts, enrich each prospect, draft founder-voice LinkedIn outreach, and queue a small daily batch for founder approval. Use when a founder wants their own version of AI SDR, strategic-account outbound, founder-led growth, or daily founder-voice prospecting without sounding like an SDR."
 metadata:
   author: firsttouch
   version: "1.1"

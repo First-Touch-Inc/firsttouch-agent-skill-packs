@@ -1,6 +1,6 @@
 ---
 name: icp-outbound-builder
-description: Run the daily recurring team AI SDR motion (for SDRs, BDRs, and AEs): start from a HubSpot contact/company list or build a new ICP list via FirstTouch Discover Contacts, enrich each prospect, generate customized LinkedIn-first outreach, and queue a daily batch for human approval. Use when the user wants AI SDR, outbound against a HubSpot list, fresh daily leads, ICP prospecting, or customized outreach for contacts/companies. For founder-voice outbound use founder-led-outbound; for a one-time campaign use social-campaigns.
+description: "Run the daily recurring team AI SDR motion (for SDRs, BDRs, and AEs): start from a HubSpot contact/company list or build a new ICP list via FirstTouch Discover Contacts, enrich each prospect, generate customized LinkedIn-first outreach, and queue a daily batch for human approval. Use when the user wants AI SDR, outbound against a HubSpot list, fresh daily leads, ICP prospecting, or customized outreach for contacts/companies. For founder-voice outbound use founder-led-outbound; for a one-time campaign use social-campaigns."
 metadata:
   author: firsttouch
   version: "1.1"

@@ -1,6 +1,6 @@
 ---
 name: social-campaigns
-description: Build a ONE-TIME (not recurring) LinkedIn social campaign for a very narrow ICP segment: define precise audience criteria, source/enrich contacts from FirstTouch and optional HubSpot lists, then choose either row-level dynamic actions for rep/BDR one-at-a-time execution or static flow templates for RevOps/founder-approved one-time campaigns. Use for one-time pushes: product updates, event invites, territory pushes, reengagement lists, or team-routed social motions. For a daily recurring outbound queue, use icp-outbound-builder instead.
+description: "Build a ONE-TIME (not recurring) LinkedIn social campaign for a very narrow ICP segment: define precise audience criteria, source/enrich contacts from FirstTouch and optional HubSpot lists, then choose either row-level dynamic actions for rep/BDR one-at-a-time execution or static flow templates for RevOps/founder-approved one-time campaigns. Use for one-time pushes: product updates, event invites, territory pushes, reengagement lists, or team-routed social motions. For a daily recurring outbound queue, use icp-outbound-builder instead."
 metadata:
   author: firsttouch
   version: "1.1"

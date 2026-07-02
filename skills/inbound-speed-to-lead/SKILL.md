@@ -1,6 +1,6 @@
 ---
 name: inbound-speed-to-lead
-description: Attach LinkedIn connection requests and lightweight follow-up to booked meetings, inbound signups, trial starts, demo requests, or other high-intent inbound lists. Can start from HubSpot events when connected or a FirstTouch-accessible inbound list/import when HubSpot is unavailable. Checks connection status, drafts the smallest possible conversation-starting message, gates for approval, and logs to HubSpot when connected. Use when the user wants meeting-booked auto-connect, to improve speed-to-lead for inbound, connect on LinkedIn after a signup/trial/demo request, or add a social touch to inbound conversion. Inbound-only: for other CRM events (lifecycle, deal stage, list adds) use hubspot-signal-to-linkedin-touch.
+description: "Attach LinkedIn connection requests and lightweight follow-up to booked meetings, inbound signups, trial starts, demo requests, or other high-intent inbound lists. Can start from HubSpot events when connected or a FirstTouch-accessible inbound list/import when HubSpot is unavailable. Checks connection status, drafts the smallest possible conversation-starting message, gates for approval, and logs to HubSpot when connected. Use when the user wants meeting-booked auto-connect, to improve speed-to-lead for inbound, connect on LinkedIn after a signup/trial/demo request, or add a social touch to inbound conversion. Inbound-only: for other CRM events (lifecycle, deal stage, list adds) use hubspot-signal-to-linkedin-touch."
 metadata:
   author: firsttouch
   version: "1.1"
