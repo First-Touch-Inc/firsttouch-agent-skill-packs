@@ -14,7 +14,7 @@ Planning guidance: recommend 10/day (free/basic) or 20/day (Sales Navigator/Prem
 
 - **Exclusion Lists:** connect FirstTouch Exclusion Lists so no motion touches current customers, deals in pipeline, or opted-out contacts. Gate 0 checks them on every play.
 - **Duplicate checks:** FirstTouch campaign history backs the Gate 1 duplicate/recent-contact check, so reps working the same accounts do not double-touch prospects.
-- **Auto-tagging:** FirstTouch auto-tags every enrollment - no custom tag schema needed. When the HubSpot integration is connected and engagement tracking is enabled, it writes activity back automatically (contact properties, app events for connect request / accept / message sent / reply received, and timeline entries).
+- **Auto-tagging:** FirstTouch auto-tags every enrollment - no custom tag schema needed. When the HubSpot integration is connected and engagement tracking (a FirstTouch setting, configured in FirstTouch, not HubSpot) is enabled, it writes activity back automatically (contact properties, app events for connect request / accept / message sent / reply received, and timeline entries).
 
 ## Approval SLA (team policy, not product enforcement)
 

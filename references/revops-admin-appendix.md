@@ -4,7 +4,7 @@ Optional depth for admins and security reviewers. Nothing here is required to ru
 
 ## A. HubSpot data surface
 
-**What FirstTouch writes (via its own app integration, once HubSpot is connected and engagement tracking is enabled):**
+**What FirstTouch writes (via its own app integration, once HubSpot is connected and engagement tracking - a FirstTouch setting, configured in FirstTouch, not HubSpot - is enabled):**
 
 - **Contact properties** - the `first_touch_*` property group, created automatically by the integration. Highlights: `first_touch_enrollment`, `first_touch_source`, `first_touch_score`, `first_touch_is_linkedin_connected`, first/latest connection request dates, first/latest connection accepted dates, first/latest reply dates, `first_touch_number_of_linkedin_connection_requests`, `first_touch_number_of_linkedin_messages_sent`, connecting-user fields, `first_touch_enriched_date`.
 - **App events** - unique events for connection request sent, connection accepted, message sent, and reply received.
